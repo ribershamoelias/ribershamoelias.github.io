@@ -1229,324 +1229,355 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menu-toggle');
-            const mainNav = document.getElementById('main-nav');
-            const navLinks = mainNav.querySelectorAll('a');
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
 
-            menuToggle.addEventListener('click', function() {
-                mainNav.classList.toggle('active');
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
             });
+        });
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mainNav.classList.remove('active');
-                });
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
 
-            // Smooth Scrolling
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    if (this.getAttribute('href') !== '#') {
-                        e.preventDefault();
-                        document.querySelector(this.getAttribute('href')).scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
+        /* ==================================== */
+        /* Tic Tac Toe Game Logic */
+        /* ==================================== */
+        const ticTacToeGameModal = document.getElementById('ticTacToeGameModal');
+        const openGameModalBtn = document.getElementById('openGameModal');
+        const closeGameButton = ticTacToeGameModal.querySelector('.game-close-button');
+        const ticTacToeBoard = document.getElementById('ticTacToeBoard');
+        const cells = document.querySelectorAll('.cell');
+        const gameStatusMessage = document.getElementById('gameStatusMessage');
+        const resetGameBtn = document.getElementById('resetGameBtn');
+        const scoreXDisplay = document.getElementById('scoreX');
+        const scoreODisplay = document.getElementById('scoreO');
+        const playerVsPlayerBtn = document.getElementById('playerVsPlayerBtn');
+        const playerVsComputerBtn = document.getElementById('playerVsComputerBtn');
+        const f1EasterEggMessage = document.getElementById('f1EasterEggMessage');
+
+
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X'; // X for Player 1 (Car), O for Player 2/Computer (Tyre)
+        let isGameActive = false; // Game active only after mode selection
+        let gameMode = 'PvP'; // 'PvP' or 'PvC'
+        let scores = { X: 0, O: 0 }; // Scores are now loaded from LocalStorage
+
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6]             // Diagonals
+        ];
+
+        const F1_EASTER_EGGS = {
+            START: "Lights out and away we go!",
+            CENTER_MOVE: "Pole position secured!",
+            CORNER_MOVE: "Taking the racing line!",
+            EDGE_MOVE: "Holding the middle sector.",
+            WIN: (player) => `Chequered flag for ${player}! Victory lap!`,
+            LOSE: "DNF! Better luck next time.",
+            DRAW: "Safety Car deployed. A true battle!",
+            BLOCK_OPPONENT: "DRS activated to overtake!", // Placeholder, needs logic to detect
+            FIRST_PLAYER_FIRST_MOVE: "Starting on pole, let's go!", // Special first move for player X
+            COMPUTER_BLOCK: "Strategic move, but we're prepared!" // When computer blocks player
+        };
+
+        // --- LocalStorage Functions ---
+        function saveScores() {
+            try {
+                localStorage.setItem('f1TicTacToeScores', JSON.stringify(scores));
+            } catch (e) {
+                console.error("Error saving scores to LocalStorage:", e);
+            }
+        }
+
+        function loadScores() {
+            try {
+                const savedScores = localStorage.getItem('f1TicTacToeScores');
+                if (savedScores) {
+                    scores = JSON.parse(savedScores);
+                } else {
+                    scores = { X: 0, O: 0 }; // Reset if no saved scores
+                }
+            } catch (e) {
+                console.error("Error loading scores from LocalStorage:", e);
+                scores = { X: 0, O: 0 }; // Fallback to default if loading fails
+            }
+        }
+        // --- End LocalStorage Functions ---
+
+
+        function updateEasterEgg(message) {
+            f1EasterEggMessage.textContent = message;
+        }
+
+        function initializeGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('x', 'o');
             });
+            currentPlayer = 'X'; // Always start with X
+            gameStatusMessage.textContent = 'Wähle einen Spielmodus, um zu starten!';
+            isGameActive = false; // Game is not active until mode is chosen and new game is clicked
+            loadScores(); // Load scores when initializing the game
+            updateScores();
+            updateEasterEgg(""); // Clear Easter egg message
+            resetGameBtn.textContent = 'Neues Spiel';
+        }
 
-            /* ==================================== */
-            /* Tic Tac Toe Game Logic */
-            /* ==================================== */
-            const ticTacToeGameModal = document.getElementById('ticTacToeGameModal');
-            const openGameModalBtn = document.getElementById('openGameModal');
-            const closeGameButton = ticTacToeGameModal.querySelector('.game-close-button');
-            const ticTacToeBoard = document.getElementById('ticTacToeBoard');
-            const cells = document.querySelectorAll('.cell');
-            const gameStatusMessage = document.getElementById('gameStatusMessage');
-            const resetGameBtn = document.getElementById('resetGameBtn');
-            const scoreXDisplay = document.getElementById('scoreX');
-            const scoreODisplay = document.getElementById('scoreO');
-            const playerVsPlayerBtn = document.getElementById('playerVsPlayerBtn');
-            const playerVsComputerBtn = document.getElementById('playerVsComputerBtn');
-            const f1EasterEggMessage = document.getElementById('f1EasterEggMessage');
+        function updateScores() {
+            scoreXDisplay.textContent = scores.X;
+            scoreODisplay.textContent = scores.O;
+        }
 
+        function handleResultValidation() {
+            let roundWon = false;
+            for (let i = 0; i < winningConditions.length; i++) {
+                const winCondition = winningConditions[i];
+                let a = board[winCondition[0]];
+                let b = board[winCondition[1]];
+                let c = board[winCondition[2]];
 
-            let board = ['', '', '', '', '', '', '', '', ''];
-            let currentPlayer = 'X'; // X for Player 1 (Car), O for Player 2/Computer (Tyre)
-            let isGameActive = false; // Game active only after mode selection
-            let gameMode = 'PvP'; // 'PvP' or 'PvC'
-            let scores = { X: 0, O: 0 };
-
-            const winningConditions = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-                [0, 4, 8], [2, 4, 6]             // Diagonals
-            ];
-
-            const F1_EASTER_EGGS = {
-                START: "Lights out and away we go!",
-                CENTER_MOVE: "Pole position secured!",
-                CORNER_MOVE: "Taking the racing line!",
-                EDGE_MOVE: "Holding the middle sector.",
-                WIN: (player) => `Chequered flag for ${player}! Victory lap!`,
-                LOSE: "DNF! Better luck next time.",
-                DRAW: "Safety Car deployed. A true battle!",
-                BLOCK_OPPONENT: "DRS activated to overtake!", // Placeholder, needs logic to detect
-                FIRST_PLAYER_FIRST_MOVE: "Starting on pole, let's go!", // Special first move for player X
-                COMPUTER_BLOCK: "Strategic move, but we're prepared!" // When computer blocks player
-            };
-
-            function updateEasterEgg(message) {
-                f1EasterEggMessage.textContent = message;
+                if (a === '' || b === '' || c === '') {
+                    continue;
+                }
+                if (a === b && b === c) {
+                    roundWon = true;
+                    break;
+                }
             }
 
-            function initializeGame() {
-                board = ['', '', '', '', '', '', '', '', ''];
-                cells.forEach(cell => {
-                    cell.textContent = '';
-                    cell.classList.remove('x', 'o');
-                });
-                currentPlayer = 'X'; // Always start with X
-                gameStatusMessage.textContent = 'Wähle einen Spielmodus, um zu starten!';
-                isGameActive = false; // Game is not active until mode is chosen and new game is clicked
+            if (roundWon) {
+                gameStatusMessage.textContent = `${currentPlayer} gewinnt!`;
+                scores[currentPlayer]++;
+                saveScores(); // Save scores after a win
                 updateScores();
-                updateEasterEgg(""); // Clear Easter egg message
-                resetGameBtn.textContent = 'Neues Spiel';
+                updateEasterEgg(F1_EASTER_EGGS.WIN(currentPlayer));
+                isGameActive = false;
+                resetGameBtn.textContent = 'Erneut spielen';
+                return;
             }
 
-            function updateScores() {
-                scoreXDisplay.textContent = scores.X;
-                scoreODisplay.textContent = scores.O;
+            if (!board.includes('')) {
+                gameStatusMessage.textContent = 'Unentschieden!';
+                updateEasterEgg(F1_EASTER_EGGS.DRAW);
+                isGameActive = false;
+                resetGameBtn.textContent = 'Erneut spielen';
+                return;
             }
 
-            function handleResultValidation() {
-                let roundWon = false;
+            // If no win or draw, continue game
+            changePlayer();
+        }
+
+        function changePlayer() {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            gameStatusMessage.textContent = `Spieler ${currentPlayer} ist am Zug.`;
+        }
+
+        function playerMove(clickedCell, clickedCellIndex) {
+            if (board[clickedCellIndex] !== '' || !isGameActive) {
+                return;
+            }
+
+            board[clickedCellIndex] = currentPlayer;
+            clickedCell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘'; // F1 car and tyre
+            clickedCell.classList.add(currentPlayer.toLowerCase());
+
+            applyEasterEgg(clickedCellIndex);
+
+            handleResultValidation();
+        }
+
+        function applyEasterEgg(index) {
+            let message = '';
+            // Only show initial Easter egg if the game is just starting (first move in the current game)
+            if (board.filter(s => s !== '').length === 1 && isGameActive) {
+                message = F1_EASTER_EGGS.START;
+            } else if (index === 4) { // Center cell
+                message = F1_EASTER_EGGS.CENTER_MOVE;
+            } else if ([0, 2, 6, 8].includes(index)) { // Corner cells
+                message = F1_EASTER_EGGS.CORNER_MOVE;
+            } else { // Edge cells
+                message = F1_EASTER_EGGS.EDGE_MOVE;
+            }
+            updateEasterEgg(message);
+        }
+
+        function computerMove() {
+            if (!isGameActive) return;
+
+            let bestMove = getBestMove();
+
+            if (bestMove !== -1) {
+                const cell = cells[bestMove];
+                board[bestMove] = currentPlayer;
+                cell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘';
+                cell.classList.add(currentPlayer.toLowerCase());
+
+                // Check if the computer move was a block
+                let isBlock = false;
+                const prevPlayer = currentPlayer === 'X' ? 'O' : 'X'; // The player the AI is blocking
                 for (let i = 0; i < winningConditions.length; i++) {
                     const winCondition = winningConditions[i];
-                    let a = board[winCondition[0]];
-                    let b = board[winCondition[1]];
-                    let c = board[winCondition[2]];
-
-                    if (a === '' || b === '' || c === '') {
-                        continue;
-                    }
-                    if (a === b && b === c) {
-                        roundWon = true;
+                    let countPrevPlayer = 0;
+                    let emptyCellInWin = -1;
+                    winCondition.forEach(idx => {
+                        if (board[idx] === prevPlayer) {
+                            countPrevPlayer++;
+                        } else if (board[idx] === '') {
+                            emptyCellInWin = idx;
+                        }
+                    });
+                    if (countPrevPlayer === 2 && emptyCellInWin === bestMove) { // If opponent has 2 in a row and this move blocks it
+                        isBlock = true;
                         break;
                     }
                 }
 
-                if (roundWon) {
-                    gameStatusMessage.textContent = `${currentPlayer} gewinnt!`;
-                    scores[currentPlayer]++;
-                    updateScores();
-                    updateEasterEgg(F1_EASTER_EGGS.WIN(currentPlayer));
-                    isGameActive = false;
-                    resetGameBtn.textContent = 'Erneut spielen';
-                    return;
+                if (isBlock) {
+                    updateEasterEgg(F1_EASTER_EGGS.COMPUTER_BLOCK);
+                } else if (bestMove === 4) {
+                    updateEasterEgg(F1_EASTER_EGGS.CENTER_MOVE);
+                } else if ([0, 2, 6, 8].includes(bestMove)) {
+                    updateEasterEgg(F1_EASTER_EGGS.CORNER_MOVE);
+                } else {
+                    updateEasterEgg(F1_EASTER_EGGS.EDGE_MOVE);
                 }
 
-                if (!board.includes('')) {
-                    gameStatusMessage.textContent = 'Unentschieden!';
-                    updateEasterEgg(F1_EASTER_EGGS.DRAW);
-                    isGameActive = false;
-                    resetGameBtn.textContent = 'Erneut spielen';
-                    return;
-                }
+                setTimeout(handleResultValidation, 700); // Small delay for computer move
+            }
+        }
 
-                // If no win or draw, continue game
-                changePlayer();
+        function getBestMove() {
+            // Check for immediate win
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === '') return c;
+                if (board[a] === currentPlayer && board[c] === currentPlayer && board[b] === '') return b;
+                if (board[b] === currentPlayer && board[c] === currentPlayer && board[a] === '') return a;
             }
 
-            function changePlayer() {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                gameStatusMessage.textContent = `Spieler ${currentPlayer} ist am Zug.`;
+            // Block opponent's win
+            const opponent = currentPlayer === 'X' ? 'O' : 'X';
+            for (let i = 0; i < winningConditions.length; i++) {
+                const [a, b, c] = winningConditions[i];
+                if (board[a] === opponent && board[b] === opponent && board[c] === '') return c;
+                if (board[a] === opponent && board[c] === opponent && board[b] === '') return b;
+                if (board[b] === opponent && board[c] === opponent && board[a] === '') return a;
             }
 
-            function playerMove(clickedCell, clickedCellIndex) {
-                if (board[clickedCellIndex] !== '' || !isGameActive) {
-                    return;
-                }
+            // Prefer center
+            if (board[4] === '') return 4;
 
-                board[clickedCellIndex] = currentPlayer;
-                clickedCell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘'; // F1 car and tyre
-                clickedCell.classList.add(currentPlayer.toLowerCase());
-
-                applyEasterEgg(clickedCellIndex);
-
-                handleResultValidation();
+            // Prefer corners
+            const corners = [0, 2, 6, 8];
+            for (let i = 0; i < corners.length; i++) {
+                if (board[corners[i]] === '') return corners[i];
             }
 
-            function applyEasterEgg(index) {
-                let message = '';
-                if (gameStatusMessage.textContent.includes("Wähle einen Spielmodus") || (currentPlayer === 'X' && board.filter(s => s !== '').length === 1)) {
-                    message = F1_EASTER_EGGS.START;
-                } else if (index === 4) { // Center cell
-                    message = F1_EASTER_EGGS.CENTER_MOVE;
-                } else if ([0, 2, 6, 8].includes(index)) { // Corner cells
-                    message = F1_EASTER_EGGS.CORNER_MOVE;
-                } else { // Edge cells
-                    message = F1_EASTER_EGGS.EDGE_MOVE;
-                }
-                updateEasterEgg(message);
+            // Take any available edge
+            const edges = [1, 3, 5, 7];
+            for (let i = 0; i < edges.length; i++) {
+                if (board[edges[i]] === '') return edges[i];
             }
 
-            function computerMove() {
-                if (!isGameActive) return;
-
-                let bestMove = getBestMove(); // Minimax or simple AI
-                
-                if (bestMove !== -1) {
-                    const cell = cells[bestMove];
-                    board[bestMove] = currentPlayer;
-                    cell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘';
-                    cell.classList.add(currentPlayer.toLowerCase());
-                    
-                    // Check if the computer move was a block
-                    let isBlock = false;
-                    const prevPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                    for (let i = 0; i < winningConditions.length; i++) {
-                        const winCondition = winningConditions[i];
-                        let countPrevPlayer = 0;
-                        let emptyCellInWin = -1;
-                        winCondition.forEach(idx => {
-                            if (board[idx] === prevPlayer) {
-                                countPrevPlayer++;
-                            } else if (board[idx] === '') {
-                                emptyCellInWin = idx;
-                            }
-                        });
-                        if (countPrevPlayer === 2 && emptyCellInWin === bestMove) {
-                            isBlock = true;
-                            break;
-                        }
-                    }
-
-                    if (isBlock) {
-                        updateEasterEgg(F1_EASTER_EGGS.COMPUTER_BLOCK);
-                    } else if (bestMove === 4) {
-                        updateEasterEgg(F1_EASTER_EGGS.CENTER_MOVE);
-                    } else if ([0, 2, 6, 8].includes(bestMove)) {
-                        updateEasterEgg(F1_EASTER_EGGS.CORNER_MOVE);
-                    } else {
-                        updateEasterEgg(F1_EASTER_EGGS.EDGE_MOVE);
-                    }
-
-                    setTimeout(handleResultValidation, 500); // Small delay for computer move
-                }
-            }
-
-            function getBestMove() {
-                // Check for immediate win
-                for (let i = 0; i < winningConditions.length; i++) {
-                    const [a, b, c] = winningConditions[i];
-                    if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === '') return c;
-                    if (board[a] === currentPlayer && board[c] === currentPlayer && board[b] === '') return b;
-                    if (board[b] === currentPlayer && board[c] === currentPlayer && board[a] === '') return a;
-                }
-
-                // Block opponent's win
-                const opponent = currentPlayer === 'X' ? 'O' : 'X';
-                for (let i = 0; i < winningConditions.length; i++) {
-                    const [a, b, c] = winningConditions[i];
-                    if (board[a] === opponent && board[b] === opponent && board[c] === '') return c;
-                    if (board[a] === opponent && board[c] === opponent && board[b] === '') return b;
-                    if (board[b] === opponent && board[c] === opponent && board[a] === '') return a;
-                }
-
-                // Prefer center
-                if (board[4] === '') return 4;
-
-                // Prefer corners
-                const corners = [0, 2, 6, 8];
-                for (let i = 0; i < corners.length; i++) {
-                    if (board[corners[i]] === '') return corners[i];
-                }
-
-                // Take any available edge
-                const edges = [1, 3, 5, 7];
-                for (let i = 0; i < edges.length; i++) {
-                    if (board[edges[i]] === '') return edges[i];
-                }
-
-                return -1; // Should not happen in a valid game
-            }
+            return -1; // Should not happen in a valid game
+        }
 
 
-            function handleCellClick(event) {
-                const clickedCell = event.target;
-                const clickedCellIndex = parseInt(clickedCell.dataset.cellIndex);
+        function handleCellClick(event) {
+            const clickedCell = event.target;
+            const clickedCellIndex = parseInt(clickedCell.dataset.cellIndex);
 
-                if (gameMode === 'PvP') {
+            if (gameMode === 'PvP') {
+                playerMove(clickedCell, clickedCellIndex);
+            } else { // Player vs Computer
+                if (currentPlayer === 'X') { // Only allow player X to make a move
                     playerMove(clickedCell, clickedCellIndex);
-                } else { // Player vs Computer
-                    if (currentPlayer === 'X') {
-                        playerMove(clickedCell, clickedCellIndex);
-                        if (isGameActive && currentPlayer === 'O') { // If game is still active and it's computer's turn
-                            setTimeout(computerMove, 700); // Delay computer's turn
-                        }
+                    // After player's move, check if game is still active and it's O's turn (computer)
+                    if (isGameActive && currentPlayer === 'O') {
+                        setTimeout(computerMove, 700); // Delay computer's turn
                     }
                 }
             }
+        }
 
-            function startNewGame() {
-                board = ['', '', '', '', '', '', '', '', ''];
-                cells.forEach(cell => {
-                    cell.textContent = '';
-                    cell.classList.remove('x', 'o');
-                });
-                currentPlayer = 'X';
-                isGameActive = true;
-                gameStatusMessage.textContent = `Spieler X ist am Zug.`;
-                updateEasterEgg(F1_EASTER_EGGS.START); // Initial game start message
-                resetGameBtn.textContent = 'Zurücksetzen';
-            }
-
-
-            // Event Listeners
-            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-            resetGameBtn.addEventListener('click', startNewGame);
-
-            playerVsPlayerBtn.addEventListener('click', function() {
-                gameMode = 'PvP';
-                playerVsPlayerBtn.classList.add('selected');
-                playerVsComputerBtn.classList.remove('selected');
-                startNewGame();
+        function startNewGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            cells.forEach(cell => {
+                cell.textContent = '';
+                cell.classList.remove('x', 'o');
             });
+            currentPlayer = 'X';
+            isGameActive = true;
+            gameStatusMessage.textContent = `Spieler X ist am Zug.`;
+            updateEasterEgg(F1_EASTER_EGGS.START); // Initial game start message
+            resetGameBtn.textContent = 'Zurücksetzen';
+        }
 
-            playerVsComputerBtn.addEventListener('click', function() {
-                gameMode = 'PvC';
-                playerVsComputerBtn.classList.add('selected');
-                playerVsPlayerBtn.classList.remove('selected');
-                startNewGame();
-            });
 
+        // Event Listeners
+        cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+        resetGameBtn.addEventListener('click', startNewGame);
 
-            // Modal handling
-            openGameModalBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                ticTacToeGameModal.style.display = 'flex';
-                initializeGame(); // Reset game state when opening modal
-            });
-
-            closeGameButton.addEventListener('click', function() {
-                ticTacToeGameModal.style.display = 'none';
-                isGameActive = false; // Ensure game is not active when modal is closed
-            });
-
-            // Close modal if clicked outside of it
-            ticTacToeGameModal.addEventListener('click', function(event) {
-                if (event.target === ticTacToeGameModal) {
-                    ticTacToeGameModal.style.display = 'none';
-                    isGameActive = false;
-                }
-            });
-
-            // Initial setup when the page loads
-            initializeGame();
+        playerVsPlayerBtn.addEventListener('click', function() {
+            gameMode = 'PvP';
+            playerVsPlayerBtn.classList.add('selected');
+            playerVsComputerBtn.classList.remove('selected');
+            startNewGame();
         });
-    </script>
+
+        playerVsComputerBtn.addEventListener('click', function() {
+            gameMode = 'PvC';
+            playerVsComputerBtn.classList.add('selected');
+            playerVsPlayerBtn.classList.remove('selected');
+            startNewGame();
+        });
+
+
+        // Modal handling
+        openGameModalBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            ticTacToeGameModal.style.display = 'flex';
+            initializeGame(); // Reset game state and load scores when opening modal
+        });
+
+        closeGameButton.addEventListener('click', function() {
+            ticTacToeGameModal.style.display = 'none';
+            isGameActive = false; // Ensure game is not active when modal is closed
+            saveScores(); // Save scores when closing the modal
+        });
+
+        // Close modal if clicked outside of it
+        ticTacToeGameModal.addEventListener('click', function(event) {
+            if (event.target === ticTacToeGameModal) {
+                ticTacToeGameModal.style.display = 'none';
+                isGameActive = false;
+                saveScores(); // Save scores when closing the modal by clicking outside
+            }
+        });
+
+        // Initial setup when the page loads
+        initializeGame(); // Load scores and set up game on page load
+    });
+</script>
 </body>
 </html>
