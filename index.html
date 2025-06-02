@@ -758,7 +758,7 @@
         }
 
         /* ==================================== */
-        /* F1 Game Modal Styles */
+        /* Game Modal Styles (Shared with previous F1 game, but content will change) */
         /* ==================================== */
         .game-modal {
             display: none; /* Hidden by default */
@@ -782,7 +782,7 @@
             border-radius: var(--border-radius-md);
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             position: relative;
-            max-width: 600px; /* Max width for the game area */
+            max-width: 500px; /* Max width for the game area */
             width: 90%; /* Responsive width */
             text-align: center;
         }
@@ -804,11 +804,18 @@
             text-decoration: none;
         }
 
-        #gameCanvas {
-            background-color: #000; /* Schwarzer Hintergrund für Pixel-Look */
-            border: 2px solid var(--color-primary);
-            display: block; /* Remove extra space below canvas */
-            margin: 20px auto 0 auto; /* Center the canvas */
+        .game-title {
+            font-size: 2.5em;
+            color: var(--color-dark);
+            margin-bottom: 15px;
+        }
+
+        .game-status-message {
+            font-size: 1.2em;
+            color: var(--color-accent);
+            font-weight: bold;
+            margin-bottom: 20px;
+            min-height: 1.5em; /* Prevent layout shift when message changes */
         }
 
         .game-info {
@@ -825,14 +832,88 @@
             margin-bottom: 20px;
         }
 
-        .game-start-message {
-            color: var(--color-accent);
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-top: 10px;
+        /* Tic Tac Toe Board Specific Styles */
+        #ticTacToeBoard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: 300px; /* Fixed width for the board */
+            height: 300px; /* Fixed height for the board */
+            margin: 20px auto;
+            border: 4px solid var(--color-primary);
+            background-color: #eee;
+        }
+
+        .cell {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--color-dark);
+            border: 2px solid var(--color-text-light);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .cell:hover {
+            background-color: #ddd;
+        }
+
+        .cell.x {
+            color: var(--color-primary); /* Blue for Player X (Car) */
+        }
+
+        .cell.o {
+            color: var(--color-accent); /* Green for Player O (Tyre) */
+        }
+
+        /* Game Mode Selection */
+        .game-mode-selection {
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
+        .game-mode-selection button {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .game-mode-selection button:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .game-mode-selection button.selected {
+            background-color: var(--color-accent);
+        }
+
+        #resetGameBtn {
+            background-color: #dc3545; /* Red for reset */
+            color: var(--color-white);
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        #resetGameBtn:hover {
+            background-color: #c82333;
+        }
 
         /* Mobile Anpassungen für das Game Modal */
         @media (max-width: 768px) {
@@ -845,12 +926,26 @@
                 right: 15px;
                 font-size: 24px;
             }
-            .game-info, .game-instructions, .game-start-message {
+            .game-title {
+                font-size: 2em;
+            }
+            .game-status-message, .game-info, .game-instructions {
                 font-size: 0.9em;
             }
-            #gameCanvas {
-                width: 100%; /* Ensure canvas scales on smaller screens */
-                height: auto;
+            #ticTacToeBoard {
+                width: 250px;
+                height: 250px;
+            }
+            .cell {
+                font-size: 2.5em;
+            }
+            .game-mode-selection button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+            #resetGameBtn {
+                padding: 8px 15px;
+                font-size: 0.9em;
             }
         }
 
@@ -1105,18 +1200,32 @@
 
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
-        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1-Rennen!</a></p>
+        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1 Tic Tac Toe!</a></p>
     </footer>
 
-    <div id="f1GameModal" class="game-modal">
+    <div id="ticTacToeGameModal" class="game-modal">
         <div class="game-modal-content">
             <span class="game-close-button">&times;</span>
-            <h2>F1-Pixel-Rennen</h2>
-            <p class="game-instructions">**Leertaste drücken** oder **klicken/tippen**, um die Spur zu wechseln.</p>
-            <p class="game-start-message" id="gameStartMessage">Drücke Leertaste oder klicke, um zu starten!</p>
-            <canvas id="gameCanvas" width="500" height="200"></canvas>
-            <p class="game-info">Punkte: <span id="score">0</span> | Highscore: <span id="highScore">0</span></p>
-        </div>
+            <h2 class="game-title">F1 Tic Tac Toe</h2>
+            <div class="game-mode-selection">
+                <button id="playerVsPlayerBtn" class="selected">Spieler vs. Spieler</button>
+                <button id="playerVsComputerBtn">Spieler vs. Computer</button>
+            </div>
+            <p class="game-status-message" id="gameStatusMessage">Wähle einen Spielmodus, um zu starten!</p>
+            <div id="ticTacToeBoard">
+                <div class="cell" data-cell-index="0"></div>
+                <div class="cell" data-cell-index="1"></div>
+                <div class="cell" data-cell-index="2"></div>
+                <div class="cell" data-cell-index="3"></div>
+                <div class="cell" data-cell-index="4"></div>
+                <div class="cell" data-cell-index="5"></div>
+                <div class="cell" data-cell-index="6"></div>
+                <div class="cell" data-cell-index="7"></div>
+                <div class="cell" data-cell-index="8"></div>
+            </div>
+            <button id="resetGameBtn">Neues Spiel</button>
+            <p class="game-info">Punkte: Spieler X (<i class="fas fa-car-side" style="color: var(--color-primary);"></i>): <span id="scoreX">0</span> | Spieler O (<i class="fas fa-tire" style="color: var(--color-accent);"></i>): <span id="scoreO">0</span></p>
+            <p class="game-info" id="f1EasterEggMessage"></p> </div>
     </div>
 
     <script>
@@ -1135,7 +1244,7 @@
                 });
             });
 
-            // Smooth Scrolling bleibt aktiv und wird durch den Overlay-Stil nicht blockiert
+            // Smooth Scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     if (this.getAttribute('href') !== '#') {
@@ -1148,286 +1257,295 @@
             });
 
             /* ==================================== */
-            /* F1 Game Logic */
+            /* Tic Tac Toe Game Logic */
             /* ==================================== */
-            const canvas = document.getElementById('gameCanvas');
-            const ctx = canvas.getContext('2d');
-            const scoreDisplay = document.getElementById('score');
-            const highScoreDisplay = document.getElementById('highScore');
-            const gameStartMessage = document.getElementById('gameStartMessage');
-            const gameModal = document.getElementById('f1GameModal');
+            const ticTacToeGameModal = document.getElementById('ticTacToeGameModal');
             const openGameModalBtn = document.getElementById('openGameModal');
-            const closeGameButton = document.querySelector('.game-close-button');
+            const closeGameButton = ticTacToeGameModal.querySelector('.game-close-button');
+            const ticTacToeBoard = document.getElementById('ticTacToeBoard');
+            const cells = document.querySelectorAll('.cell');
+            const gameStatusMessage = document.getElementById('gameStatusMessage');
+            const resetGameBtn = document.getElementById('resetGameBtn');
+            const scoreXDisplay = document.getElementById('scoreX');
+            const scoreODisplay = document.getElementById('scoreO');
+            const playerVsPlayerBtn = document.getElementById('playerVsPlayerBtn');
+            const playerVsComputerBtn = document.getElementById('playerVsComputerBtn');
+            const f1EasterEggMessage = document.getElementById('f1EasterEggMessage');
 
-            const LANE_HEIGHT = 50; // Höhe jeder Fahrspur
-            const TOP_LANE_Y = canvas.height - 10 - LANE_HEIGHT * 2; // Obere Spur
-            const BOTTOM_LANE_Y = canvas.height - 10 - LANE_HEIGHT; // Untere Spur
 
-            const player = {
-                x: 50,
-                y: BOTTOM_LANE_Y, // Startet auf der unteren Spur
-                width: 40, // Breite des Autos
-                height: 20, // Höhe des Autos
-                color: '#FF0000', // Rotes F1-Auto
-                currentLane: 'bottom',
-                draw: function() {
-                    ctx.fillStyle = this.color;
-                    // Hauptkarosserie
-                    ctx.fillRect(this.x, this.y, this.width, this.height);
-                    // Flügel hinten (kleiner, angedeutet)
-                    ctx.fillRect(this.x - 5, this.y + 5, 5, 10);
-                    // Flügel vorne (kleiner, angedeutet)
-                    ctx.fillRect(this.x + this.width, this.y + 5, 5, 10);
+            let board = ['', '', '', '', '', '', '', '', ''];
+            let currentPlayer = 'X'; // X for Player 1 (Car), O for Player 2/Computer (Tyre)
+            let isGameActive = false; // Game active only after mode selection
+            let gameMode = 'PvP'; // 'PvP' or 'PvC'
+            let scores = { X: 0, O: 0 };
 
-                    // Räder (angedeutet als kleine Rechtecke)
-                    ctx.fillStyle = '#444444'; // Dunkelgrau für Räder
-                    ctx.fillRect(this.x + 5, this.y + this.height - 5, 8, 5); // Hinterrad
-                    ctx.fillRect(this.x + this.width - 13, this.y + this.height - 5, 8, 5); // Vorderrad
-                },
-                switchLane: function() {
-                    if (this.currentLane === 'bottom') {
-                        this.y = TOP_LANE_Y;
-                        this.currentLane = 'top';
-                    } else {
-                        this.y = BOTTOM_LANE_Y;
-                        this.currentLane = 'bottom';
-                    }
-                }
+            const winningConditions = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6]             // Diagonals
+            ];
+
+            const F1_EASTER_EGGS = {
+                START: "Lights out and away we go!",
+                CENTER_MOVE: "Pole position secured!",
+                CORNER_MOVE: "Taking the racing line!",
+                EDGE_MOVE: "Holding the middle sector.",
+                WIN: (player) => `Chequered flag for ${player}! Victory lap!`,
+                LOSE: "DNF! Better luck next time.",
+                DRAW: "Safety Car deployed. A true battle!",
+                BLOCK_OPPONENT: "DRS activated to overtake!", // Placeholder, needs logic to detect
+                FIRST_PLAYER_FIRST_MOVE: "Starting on pole, let's go!", // Special first move for player X
+                COMPUTER_BLOCK: "Strategic move, but we're prepared!" // When computer blocks player
             };
 
-            let obstacles = [];
-            let score = 0;
-            let gameSpeed = 5; // Initial game speed
-            let gameOver = false;
-            let gameRunning = false; // Zustand, ob das Spiel gerade läuft
-            let frameCount = 0;
-            let gameInterval;
-            const obstacleSpawnRate = 120; // How many frames between new obstacles
+            function updateEasterEgg(message) {
+                f1EasterEggMessage.textContent = message;
+            }
 
-            // Load high score from localStorage
-            let highScore = localStorage.getItem('f1Highscore') || 0;
-            highScoreDisplay.textContent = highScore;
+            function initializeGame() {
+                board = ['', '', '', '', '', '', '', '', ''];
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.classList.remove('x', 'o');
+                });
+                currentPlayer = 'X'; // Always start with X
+                gameStatusMessage.textContent = 'Wähle einen Spielmodus, um zu starten!';
+                isGameActive = false; // Game is not active until mode is chosen and new game is clicked
+                updateScores();
+                updateEasterEgg(""); // Clear Easter egg message
+                resetGameBtn.textContent = 'Neues Spiel';
+            }
 
-            function Obstacle() {
-                this.width = 20 + Math.random() * 20; // Random width
-                this.height = 20 + Math.random() * 20; // Random height
-                this.lane = Math.random() < 0.5 ? 'top' : 'bottom';
-                this.y = this.lane === 'top' ? TOP_LANE_Y : BOTTOM_LANE_Y;
-                this.x = canvas.width;
-                this.color = '#32d74b'; // Green obstacle
+            function updateScores() {
+                scoreXDisplay.textContent = scores.X;
+                scoreODisplay.textContent = scores.O;
+            }
 
-                // Randomize obstacle type for more visual variety (still simple blocks)
-                this.type = Math.floor(Math.random() * 3); // 0: cone, 1: tire, 2: block
+            function handleResultValidation() {
+                let roundWon = false;
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const winCondition = winningConditions[i];
+                    let a = board[winCondition[0]];
+                    let b = board[winCondition[1]];
+                    let c = board[winCondition[2]];
 
-                this.draw = function() {
-                    ctx.fillStyle = this.color;
-                    if (this.type === 0) { // Cone-like
-                        ctx.fillRect(this.x, this.y + this.height / 2, this.width, this.height / 2);
-                        ctx.fillRect(this.x + this.width / 4, this.y, this.width / 2, this.height / 2);
-                    } else if (this.type === 1) { // Tire-like (horizontal bars)
-                        ctx.fillRect(this.x, this.y, this.width, this.height / 3);
-                        ctx.fillRect(this.x, this.y + this.height * 2/3, this.width, this.height / 3);
-                    } else { // Simple block
-                        ctx.fillRect(this.x, this.y, this.width, this.height);
+                    if (a === '' || b === '' || c === '') {
+                        continue;
                     }
-                };
-                this.update = function() {
-                    this.x -= gameSpeed;
-                };
-            }
-
-            function checkCollision(player, obstacle) {
-                // Check if player is on the same lane as obstacle
-                if (player.currentLane !== obstacle.lane) {
-                    return false;
-                }
-                // AABB collision detection (adjusted for visual representation)
-                // We add a small padding to account for the wheels/wings of the pixel car
-                const playerLeft = player.x;
-                const playerRight = player.x + player.width;
-                const playerTop = player.y;
-                const playerBottom = player.y + player.height;
-
-                const obstacleLeft = obstacle.x;
-                const obstacleRight = obstacle.x + obstacle.width;
-                const obstacleTop = obstacle.y;
-                const obstacleBottom = obstacle.y + obstacle.height;
-
-                return playerRight > obstacleLeft &&
-                       playerLeft < obstacleRight &&
-                       playerBottom > obstacleTop &&
-                       playerTop < obstacleBottom;
-            }
-
-            function gameLoop() {
-                if (gameOver || !gameRunning) return; // Wichtig: Auch wenn gameRunning false ist, nicht rendern
-
-                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-
-                // Draw ground (track)
-                ctx.fillStyle = '#222222'; // Dark track
-                ctx.fillRect(0, TOP_LANE_Y - 5, canvas.width, (LANE_HEIGHT * 2) + 15); // Entire track area from slightly above top lane to bottom of wheels
-                ctx.fillStyle = '#555555'; // Grey lane dividers
-                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Middle divider
-                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Bottom divider (edge)
-
-
-                player.draw();
-
-                // Spawn obstacles
-                frameCount++;
-                if (frameCount % obstacleSpawnRate === 0) {
-                    obstacles.push(new Obstacle());
-                    // Slightly increase game speed over time
-                    if (gameSpeed < 10) { // Max speed
-                        gameSpeed += 0.05; // Slower speed increase
+                    if (a === b && b === c) {
+                        roundWon = true;
+                        break;
                     }
                 }
 
-                // Update and draw obstacles
-                for (let i = 0; i < obstacles.length; i++) {
-                    obstacles[i].update();
-                    obstacles[i].draw();
-
-                    // Check for collision
-                    if (checkCollision(player, obstacles[i])) {
-                        endGame();
-                        return; // Exit loop to prevent further processing
-                    }
-
-                    // Remove off-screen obstacles and increase score
-                    if (obstacles[i].x + obstacles[i].width < 0) {
-                        obstacles.splice(i, 1);
-                        score++;
-                        scoreDisplay.textContent = score;
-                        i--; // Adjust index after splice
-                    }
+                if (roundWon) {
+                    gameStatusMessage.textContent = `${currentPlayer} gewinnt!`;
+                    scores[currentPlayer]++;
+                    updateScores();
+                    updateEasterEgg(F1_EASTER_EGGS.WIN(currentPlayer));
+                    isGameActive = false;
+                    resetGameBtn.textContent = 'Erneut spielen';
+                    return;
                 }
+
+                if (!board.includes('')) {
+                    gameStatusMessage.textContent = 'Unentschieden!';
+                    updateEasterEgg(F1_EASTER_EGGS.DRAW);
+                    isGameActive = false;
+                    resetGameBtn.textContent = 'Erneut spielen';
+                    return;
+                }
+
+                // If no win or draw, continue game
+                changePlayer();
             }
 
-            function startGame() {
-                gameRunning = true;
-                gameOver = false;
-                gameStartMessage.style.display = 'none'; // Hide start message
+            function changePlayer() {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                gameStatusMessage.textContent = `Spieler ${currentPlayer} ist am Zug.`;
+            }
 
-                player.y = BOTTOM_LANE_Y; // Reset player position
-                player.currentLane = 'bottom';
-                obstacles = [];
-                score = 0;
-                scoreDisplay.textContent = score;
-                gameSpeed = 5; // Reset speed
-                frameCount = 0;
+            function playerMove(clickedCell, clickedCellIndex) {
+                if (board[clickedCellIndex] !== '' || !isGameActive) {
+                    return;
+                }
+
+                board[clickedCellIndex] = currentPlayer;
+                clickedCell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘'; // F1 car and tyre
+                clickedCell.classList.add(currentPlayer.toLowerCase());
+
+                applyEasterEgg(clickedCellIndex);
+
+                handleResultValidation();
+            }
+
+            function applyEasterEgg(index) {
+                let message = '';
+                if (gameStatusMessage.textContent.includes("Wähle einen Spielmodus") || (currentPlayer === 'X' && board.filter(s => s !== '').length === 1)) {
+                    message = F1_EASTER_EGGS.START;
+                } else if (index === 4) { // Center cell
+                    message = F1_EASTER_EGGS.CENTER_MOVE;
+                } else if ([0, 2, 6, 8].includes(index)) { // Corner cells
+                    message = F1_EASTER_EGGS.CORNER_MOVE;
+                } else { // Edge cells
+                    message = F1_EASTER_EGGS.EDGE_MOVE;
+                }
+                updateEasterEgg(message);
+            }
+
+            function computerMove() {
+                if (!isGameActive) return;
+
+                let bestMove = getBestMove(); // Minimax or simple AI
                 
-                clearInterval(gameInterval); // Clear any existing interval
-                gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS
+                if (bestMove !== -1) {
+                    const cell = cells[bestMove];
+                    board[bestMove] = currentPlayer;
+                    cell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘';
+                    cell.classList.add(currentPlayer.toLowerCase());
+                    
+                    // Check if the computer move was a block
+                    let isBlock = false;
+                    const prevPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    for (let i = 0; i < winningConditions.length; i++) {
+                        const winCondition = winningConditions[i];
+                        let countPrevPlayer = 0;
+                        let emptyCellInWin = -1;
+                        winCondition.forEach(idx => {
+                            if (board[idx] === prevPlayer) {
+                                countPrevPlayer++;
+                            } else if (board[idx] === '') {
+                                emptyCellInWin = idx;
+                            }
+                        });
+                        if (countPrevPlayer === 2 && emptyCellInWin === bestMove) {
+                            isBlock = true;
+                            break;
+                        }
+                    }
+
+                    if (isBlock) {
+                        updateEasterEgg(F1_EASTER_EGGS.COMPUTER_BLOCK);
+                    } else if (bestMove === 4) {
+                        updateEasterEgg(F1_EASTER_EGGS.CENTER_MOVE);
+                    } else if ([0, 2, 6, 8].includes(bestMove)) {
+                        updateEasterEgg(F1_EASTER_EGGS.CORNER_MOVE);
+                    } else {
+                        updateEasterEgg(F1_EASTER_EGGS.EDGE_MOVE);
+                    }
+
+                    setTimeout(handleResultValidation, 500); // Small delay for computer move
+                }
             }
 
-            function endGame() {
-                gameOver = true;
-                gameRunning = false;
-                clearInterval(gameInterval);
-                ctx.fillStyle = 'white';
-                ctx.font = '30px Inter';
-                ctx.textAlign = 'center'; // Zentrieren des Textes
-                ctx.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
-                gameStartMessage.style.display = 'block'; // Show start message again for restart
-                gameStartMessage.textContent = 'Klicke oder drücke Leertaste zum Neustart!';
+            function getBestMove() {
+                // Check for immediate win
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === '') return c;
+                    if (board[a] === currentPlayer && board[c] === currentPlayer && board[b] === '') return b;
+                    if (board[b] === currentPlayer && board[c] === currentPlayer && board[a] === '') return a;
+                }
 
-                if (score > highScore) {
-                    highScore = score;
-                    localStorage.setItem('f1Highscore', highScore);
-                    highScoreDisplay.textContent = highScore;
-                    ctx.font = '20px Inter';
-                    ctx.fillText('Neuer Highscore!', canvas.width / 2, canvas.height / 2 + 30);
+                // Block opponent's win
+                const opponent = currentPlayer === 'X' ? 'O' : 'X';
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    if (board[a] === opponent && board[b] === opponent && board[c] === '') return c;
+                    if (board[a] === opponent && board[c] === opponent && board[b] === '') return b;
+                    if (board[b] === opponent && board[c] === opponent && board[a] === '') return a;
+                }
+
+                // Prefer center
+                if (board[4] === '') return 4;
+
+                // Prefer corners
+                const corners = [0, 2, 6, 8];
+                for (let i = 0; i < corners.length; i++) {
+                    if (board[corners[i]] === '') return corners[i];
+                }
+
+                // Take any available edge
+                const edges = [1, 3, 5, 7];
+                for (let i = 0; i < edges.length; i++) {
+                    if (board[edges[i]] === '') return edges[i];
+                }
+
+                return -1; // Should not happen in a valid game
+            }
+
+
+            function handleCellClick(event) {
+                const clickedCell = event.target;
+                const clickedCellIndex = parseInt(clickedCell.dataset.cellIndex);
+
+                if (gameMode === 'PvP') {
+                    playerMove(clickedCell, clickedCellIndex);
+                } else { // Player vs Computer
+                    if (currentPlayer === 'X') {
+                        playerMove(clickedCell, clickedCellIndex);
+                        if (isGameActive && currentPlayer === 'O') { // If game is still active and it's computer's turn
+                            setTimeout(computerMove, 700); // Delay computer's turn
+                        }
+                    }
                 }
             }
 
-            // Global Keydown Listener to prevent default scroll behavior when modal is open
-            document.addEventListener('keydown', function(event) {
-                if (gameModal.style.display === 'flex' && event.code === 'Space') {
-                    event.preventDefault(); // This is crucial for preventing page scrolling
-                    if (!gameRunning) { // If game is not running (initial state or game over)
-                        startGame();
-                    } else { // If game is running, switch lane
-                        player.switchLane();
-                    }
-                }
+            function startNewGame() {
+                board = ['', '', '', '', '', '', '', '', ''];
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.classList.remove('x', 'o');
+                });
+                currentPlayer = 'X';
+                isGameActive = true;
+                gameStatusMessage.textContent = `Spieler X ist am Zug.`;
+                updateEasterEgg(F1_EASTER_EGGS.START); // Initial game start message
+                resetGameBtn.textContent = 'Zurücksetzen';
+            }
+
+
+            // Event Listeners
+            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+            resetGameBtn.addEventListener('click', startNewGame);
+
+            playerVsPlayerBtn.addEventListener('click', function() {
+                gameMode = 'PvP';
+                playerVsPlayerBtn.classList.add('selected');
+                playerVsComputerBtn.classList.remove('selected');
+                startNewGame();
             });
 
-            // Click/Touch Listener on Canvas for interaction
-            canvas.addEventListener('mousedown', function(event) {
-                if (gameModal.style.display === 'flex') {
-                    if (!gameRunning) {
-                        startGame();
-                    } else {
-                        player.switchLane();
-                    }
-                }
-            });
-            canvas.addEventListener('touchstart', function(event) {
-                if (gameModal.style.display === 'flex') {
-                    event.preventDefault(); // Prevents mobile scrolling/zooming
-                    if (!gameRunning) {
-                        startGame();
-                    } else {
-                        player.switchLane();
-                    }
-                }
+            playerVsComputerBtn.addEventListener('click', function() {
+                gameMode = 'PvC';
+                playerVsComputerBtn.classList.add('selected');
+                playerVsPlayerBtn.classList.remove('selected');
+                startNewGame();
             });
 
 
             // Modal handling
             openGameModalBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                gameModal.style.display = 'flex';
-                initializeGameModal(); // Set initial state and draw
+                ticTacToeGameModal.style.display = 'flex';
+                initializeGame(); // Reset game state when opening modal
             });
 
             closeGameButton.addEventListener('click', function() {
-                gameModal.style.display = 'none';
-                clearInterval(gameInterval); // Stop game when closing modal
-                gameRunning = false;
+                ticTacToeGameModal.style.display = 'none';
+                isGameActive = false; // Ensure game is not active when modal is closed
             });
 
             // Close modal if clicked outside of it
-            gameModal.addEventListener('click', function(event) {
-                // Ensure click is directly on the backdrop, not on the content
-                if (event.target === gameModal) {
-                    gameModal.style.display = 'none';
-                    clearInterval(gameInterval); // Stop game when closing modal
-                    gameRunning = false;
+            ticTacToeGameModal.addEventListener('click', function(event) {
+                if (event.target === ticTacToeGameModal) {
+                    ticTacToeGameModal.style.display = 'none';
+                    isGameActive = false;
                 }
             });
 
-            // Function to set up the modal's initial display (e.g., after opening or game over)
-            function initializeGameModal() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Draw initial track
-                ctx.fillStyle = '#222222';
-                ctx.fillRect(0, TOP_LANE_Y - 5, canvas.width, (LANE_HEIGHT * 2) + 15);
-                ctx.fillStyle = '#555555';
-                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
-                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
-                
-                player.draw(); // Draw player in its starting position
-                player.y = BOTTOM_LANE_Y; // Ensure player is at bottom lane for restart
-                player.currentLane = 'bottom';
-
-
-                scoreDisplay.textContent = '0';
-                highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
-                gameStartMessage.style.display = 'block';
-                gameStartMessage.textContent = 'Drücke Leertaste oder klicke, um zu starten!';
-                
-                gameOver = false; // Game is not over, just waiting to start
-                gameRunning = false; // Game is not actively running
-                clearInterval(gameInterval); // Ensure no old game loop is running
-            }
-
-            // Call initialize when the script loads to set up the game for the first time
-            // (or when the modal is opened for a fresh start)
-            // This is now handled by openGameModalBtn click handler.
+            // Initial setup when the page loads
+            initializeGame();
         });
     </script>
 </body>
