@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSE Systems – Innovative Softwarelösungen für Privat & Business</title>
-    <meta name="description" content="RSE Systems bietet maßgeschneiderte Softwarelösungen für Privatpersonen und Unternehmen. Transparent, modern, effizient. Entdecken Sie Web-Apps, Datenanalyse, Systemintegration und Automatisierung.">
+    <title>RSE Systems – Maßgeschneiderte Software, Webseiten & Apps</title>
+    <meta name="description" content="RSE Systems bietet innovative Softwarelösungen, Webseiten und mobile Apps für Privatpersonen und Unternehmen. Expertise in Bildung, Finanzen, E-Commerce und mehr.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Basis-Styles */
         :root {
-            --color-primary: #0070c9; /* Ein klares, tiefes Blau */
+            --color-primary: #0070c9; /* Klares, tiefes Blau */
             --color-secondary: #004c8c; /* Dunkleres Blau */
             --color-accent: #34c759; /* Apple-ähnliches Grün für Akzente */
             --color-dark: #1c1c1e; /* Sehr dunkles Grau für Text/Hintergründe */
@@ -30,23 +30,23 @@
             padding: 0;
             background-color: var(--color-light);
             color: var(--color-text-dark);
-            -webkit-font-smoothing: antialiased; /* Für glattere Schrift auf macOS */
-            text-rendering: optimizeLegibility; /* Für bessere Lesbarkeit */
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
             overflow-x: hidden;
         }
 
         /* Container für zentrale Ausrichtung und Weißraum */
         .container {
             width: 90%;
-            max-width: 1280px; /* Etwas breiter für modernen Look */
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 60px 20px; /* Großzügigerer vertikaler Abstand */
+            padding: 60px 20px;
         }
 
         /* Header-Bereich (Top-Leiste mit Logo/Titel) */
         header {
-            background-color: rgba(255, 255, 255, 0.95); /* Leicht transparentes Weiß */
-            backdrop-filter: blur(10px); /* Glas-Effekt wie bei Apple */
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             left: 0;
@@ -91,7 +91,7 @@
 
         nav ul li {
             display: inline-block;
-            margin-left: 30px; /* Abstand zwischen Navigationspunkten */
+            margin-left: 30px;
         }
 
         nav ul li a {
@@ -104,7 +104,7 @@
             transition: color 0.3s ease;
         }
 
-        nav ul li a::after { /* Unterstrich-Effekt */
+        nav ul li a::after {
             content: '';
             position: absolute;
             width: 0;
@@ -123,24 +123,49 @@
             width: 100%;
         }
 
-        /* Hero Section (Startseite - Großes Titelbild/Text) */
+        /* Mobile Navigation Button (Hamburger-Menü) */
+        .menu-toggle {
+            display: none; /* Standardmäßig ausgeblendet auf Desktop */
+            font-size: 1.8em;
+            color: var(--color-dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
             color: var(--color-white);
             text-align: center;
-            padding: 120px 20px; /* Sehr viel Platz */
+            padding: 120px 20px;
             border-bottom-left-radius: var(--border-radius);
             border-bottom-right-radius: var(--border-radius);
             margin-bottom: 40px;
-            overflow: hidden; /* Für mögliche Hintergrund-Animationen/Muster */
+            overflow: hidden;
+            position: relative; /* Für mögliche Hintergrund-Animationen */
+        }
+
+        .hero::before { /* Dezenter Hintergrund-Effekt */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100" y2="100" stroke-width="0.5" stroke="%23ffffff" opacity="0.1"/><line x1="100" y1="0" x2="0" y2="100" stroke-width="0.5" stroke="%23ffffff" opacity="0.1"/></svg>') repeat;
+            background-size: 40px;
+            opacity: 0.1;
+            z-index: 0;
         }
 
         .hero h1 {
             font-family: 'Inter', sans-serif;
-            font-size: 4.5em; /* Sehr großer Titel */
+            font-size: 4.5em;
             font-weight: 700;
             margin-bottom: 20px;
-            letter-spacing: -1px; /* Für Apple-Look */
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero p {
@@ -149,6 +174,8 @@
             max-width: 900px;
             margin: 0 auto 40px auto;
             opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         .hero .cta-button {
@@ -161,26 +188,28 @@
             font-size: 1.2em;
             transition: background-color 0.3s ease, transform 0.3s ease;
             box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
+            position: relative;
+            z-index: 1;
         }
 
         .hero .cta-button:hover {
-            background-color: #2da44b; /* Dunkleres Grün */
+            background-color: #2da44b;
             transform: translateY(-3px);
         }
 
         /* Sektionstitel */
         h2 {
             font-family: 'Inter', sans-serif;
-            font-size: 3.2em; /* Große, klare Überschriften */
+            font-size: 3.2em;
             font-weight: 700;
             color: var(--color-dark);
             text-align: center;
-            margin-bottom: 60px; /* Viel Abstand */
+            margin-bottom: 60px;
             position: relative;
             padding-bottom: 20px;
         }
 
-        h2::after { /* Dezenter Unterstrich */
+        h2::after {
             content: '';
             position: absolute;
             width: 80px;
@@ -210,15 +239,15 @@
 
         /* Karten-Stil */
         .card {
-            background-color: var(--color-light); /* Hintergrund für Karten */
+            background-color: var(--color-light);
             border-radius: var(--border-radius);
             padding: 35px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Dezenterer Schatten */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Inhalte gleichmäßig verteilen */
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -227,7 +256,7 @@
         }
 
         .card .icon {
-            font-size: 4em; /* Größere Icons */
+            font-size: 4em;
             color: var(--color-primary);
             margin-bottom: 25px;
         }
@@ -243,7 +272,7 @@
         .card p {
             font-size: 1.05em;
             color: var(--color-text-light);
-            flex-grow: 1; /* Nimmt verfügbaren Platz ein */
+            flex-grow: 1;
         }
 
         .card ul {
@@ -254,7 +283,7 @@
         }
 
         .card ul li {
-            background-color: var(--color-white); /* Weißer Hintergrund für Listenelemente */
+            background-color: var(--color-white);
             padding: 10px 15px;
             border-radius: 8px;
             margin-bottom: 10px;
@@ -262,7 +291,7 @@
             color: var(--color-text-dark);
             display: flex;
             align-items: center;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03); /* Sehr leichter Schatten */
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
         }
 
         .card ul li i {
@@ -290,10 +319,47 @@
             color: var(--color-white);
         }
 
+        /* Sektion 'Anwendungsbereiche' */
+        #applications .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        #applications .application-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #applications .application-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px var(--shadow-medium);
+        }
+
+        #applications .application-item i {
+            font-size: 3em;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        #applications .application-item h3 {
+            font-size: 1.5em;
+            color: var(--color-dark);
+            margin-bottom: 10px;
+        }
+
+        #applications .application-item p {
+            color: var(--color-text-light);
+            font-size: 0.95em;
+        }
+
         /* Über Uns Sektion */
         #about .content {
             display: flex;
-            flex-direction: column; /* Standard auf Spalte */
+            flex-direction: column;
             gap: 40px;
             align-items: flex-start;
         }
@@ -302,8 +368,8 @@
             color: var(--color-text-light);
             max-width: 800px;
             line-height: 1.8;
-            margin: 0 auto; /* Zentriert den Text */
-            text-align: center; /* Zentriert den Text */
+            margin: 0 auto;
+            text-align: center;
         }
 
         #about .text-content h3 {
@@ -311,10 +377,10 @@
             color: var(--color-dark);
             font-weight: 600;
             margin-bottom: 20px;
-            text-align: center; /* Zentriert diesen Untertitel */
+            text-align: center;
         }
 
-        #about .skills-grid {
+        #about .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
@@ -322,30 +388,42 @@
             margin-top: 40px;
         }
 
-        #about .skill-item {
+        #about .value-item {
             background-color: var(--color-white);
             border-radius: var(--border-radius);
             padding: 25px;
             box-shadow: 0 2px 10px var(--shadow-light);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 15px;
             transition: transform 0.2s ease;
         }
 
-        #about .skill-item:hover {
+        #about .value-item:hover {
             transform: translateY(-3px);
         }
 
-        #about .skill-item i {
+        #about .value-item i {
             font-size: 1.8em;
             color: var(--color-primary);
+            flex-shrink: 0; /* Verhindert, dass Icon schrumpft */
         }
 
-        #about .skill-item p {
-            font-weight: 500;
+        #about .value-item .text-group {
+            text-align: left;
+        }
+
+        #about .value-item h4 {
+            margin: 0 0 8px 0;
+            font-weight: 600;
             color: var(--color-dark);
+            font-size: 1.2em;
+        }
+
+        #about .value-item p {
             margin: 0;
+            font-size: 0.95em;
+            color: var(--color-text-light);
         }
 
         /* Kontakt Sektion */
@@ -409,70 +487,159 @@
             margin: 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3.5em;
-            }
-            .hero p {
-                font-size: 1.2em;
-            }
-            h2 {
-                font-size: 2.5em;
-                margin-bottom: 40px;
-            }
-            .card h3 {
-                font-size: 1.6em;
-            }
-            .card .icon {
-                font-size: 3.5em;
-            }
-            #about .text-content {
-                font-size: 1em;
-            }
-        }
+        /* ==================================== */
+        /* Responsives Design (Mobile First Ansatz) */
+        /* ==================================== */
 
+        /* Kleine Bildschirme (Handy Hochformat, < 768px) */
         @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px; /* Reduzierter Container-Padding */
+            }
+
+            /* Header und Mobile Navigation */
             .header-content {
-                flex-direction: column;
-                padding-top: 10px;
+                flex-wrap: wrap; /* Erlaubt Umbruch */
+                justify-content: center; /* Zentriert Logo, wenn Menü ausgeblendet */
+                padding: 0 15px;
             }
-            .logo {
-                margin-bottom: 15px;
+
+            nav {
+                display: none; /* Navigationsleiste auf kleinen Bildschirmen standardmäßig ausblenden */
+                width: 100%;
+                background-color: var(--color-dark); /* Hintergrund für ausklappendes Menü */
+                position: absolute;
+                top: 70px; /* Unter dem Header */
+                left: 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                padding: 20px 0;
+                border-bottom-left-radius: var(--border-radius);
+                border-bottom-right-radius: var(--border-radius);
             }
+
+            nav.active { /* Klasse wird per JavaScript hinzugefügt */
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column; /* Menüpunkte untereinander */
+            }
+
             nav ul li {
-                margin: 0 15px;
+                margin: 15px 0; /* Vertikaler Abstand */
             }
+
             nav ul li a {
-                font-size: 0.95em;
+                display: block; /* Ganzen Bereich klickbar machen */
+                font-size: 1.1em;
+                padding: 10px 0;
+                color: var(--color-white); /* Weiße Schrift im mobilen Menü */
             }
+            nav ul li a::after {
+                background: var(--color-accent); /* Akzentfarbe im mobilen Menü */
+            }
+
+            .menu-toggle {
+                display: block; /* Hamburger-Menü einblenden */
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            /* Hero Section */
             .hero {
                 padding: 80px 15px;
+                border-radius: 0; /* Volle Breite */
             }
             .hero h1 {
                 font-size: 2.8em;
+                line-height: 1.2;
             }
             .hero p {
-                font-size: 1em;
+                font-size: 1.1em;
             }
+            .hero .cta-button {
+                padding: 15px 30px;
+                font-size: 1.05em;
+            }
+
+            /* Sektionstitel */
             h2 {
-                font-size: 2em;
+                font-size: 2.2em;
+                margin-bottom: 30px;
             }
-            .container {
-                width: 95%;
-                padding: 40px 15px;
-            }
+
+            /* Karten-Layout */
             .grid-container {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Eine Spalte auf Handys */
+                gap: 20px;
             }
             .card {
                 padding: 25px;
             }
-            #about .skills-grid {
+            .card .icon {
+                font-size: 3.5em;
+            }
+            .card h3 {
+                font-size: 1.6em;
+            }
+
+            /* Anwendungsbereiche */
+            #applications .application-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Über Uns Sektion */
+            #about .text-content {
+                font-size: 1em;
+            }
+            #about .values-grid {
+                grid-template-columns: 1fr;
+            }
+            #about .value-item {
+                flex-direction: column; /* Icons über Text auf Handy */
+                text-align: center;
+                align-items: center;
+            }
+            #about .value-item i {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            #about .value-item .text-group {
+                text-align: center;
+            }
+
+            /* Kontakt Sektion */
             #contact .contact-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tablets und größere Handys (Querformat, 768px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                width: 90%;
+            }
+            .hero h1 {
+                font-size: 3.8em;
+            }
+            .hero p {
+                font-size: 1.3em;
+            }
+            h2 {
+                font-size: 2.8em;
+            }
+            nav ul li {
+                margin-left: 20px;
+            }
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 oder 3 Spalten */
+            }
+            #about .values-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            #contact .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             }
         }
     </style>
@@ -483,102 +650,150 @@
             <a href="#home" class="logo">
                 <i class="fas fa-cube"></i> RSE Systems
             </a>
-            <nav>
+            <nav id="main-nav">
                 <ul>
                     <li><a href="#home">Start</a></li>
                     <li><a href="#solutions">Lösungen</a></li>
                     <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#applications">Anwendungsbereiche</a></li>
                     <li><a href="#about">Über Uns</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
             </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
     <div class="hero" id="home">
         <h1>Intelligente Softwarelösungen von RSE Systems</h1>
-        <p>Maßgeschneiderte Software, die Ihre Prozesse optimiert und digitale Exzellenz für Privatpersonen und Unternehmen schafft.</p>
+        <p>Wir entwickeln maßgeschneiderte Software, leistungsstarke Webseiten und intuitive mobile Apps, die Ihre Prozesse optimieren und digitale Exzellenz für Privatpersonen und Unternehmen schaffen.</p>
         <a href="#solutions" class="cta-button">Lösungen entdecken <i class="fas fa-arrow-right"></i></a>
     </div>
 
     <section id="solutions" class="container">
-        <h2>Unsere Softwarelösungen</h2>
+        <h2>Unsere Kernkompetenzen</h2>
         <div class="grid-container">
             <div class="card">
-                <i class="fas fa-desktop icon"></i>
-                <h3>Web- & ERP-Systeme</h3>
-                <p>Wir entwickeln maßgeschneiderte, webbasierte Anwendungen, die Ihre Geschäftsprozesse digitalisieren und optimieren – von CRM bis zur kompletten Unternehmensressourcenplanung.</p>
+                <i class="fas fa-code icon"></i>
+                <h3>Softwareentwicklung</h3>
+                <p>Von komplexen Backend-Systemen bis zu performanten Desktop-Anwendungen – wir entwickeln individuelle Softwarelösungen, die exakt Ihren Anforderungen entsprechen.</p>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Workflow-Automatisierung</li>
-                    <li><i class="fas fa-check-circle"></i> Zentrale Datenverwaltung</li>
-                    <li><i class="fas fa-check-circle"></i> Benutzerfreundliche Dashboards</li>
+                    <li><i class="fas fa-check-circle"></i> Individuelle Anwendungen</li>
+                    <li><i class="fas fa-check-circle"></i> Systemarchitektur</li>
+                    <li><i class="fas fa-check-circle"></i> Performance-Optimierung</li>
                 </ul>
                 <a href="#contact" class="link-button">Mehr erfahren</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-database icon"></i>
-                <h3>Datenanalyse & KI</h3>
-                <p>Verwandeln Sie Ihre Daten in strategische Erkenntnisse. Wir implementieren fortschrittliche Analyse- und KI-Lösungen für datenbasierte Entscheidungen und Prognosen.</p>
+                <i class="fas fa-globe icon"></i>
+                <h3>Webseiten & Web-Apps</h3>
+                <p>Modernste Webseiten, skalierbare E-Commerce-Plattformen und maßgeschneiderte Webanwendungen, die auf allen Geräten ein überzeugendes Nutzererlebnis bieten.</p>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Automatisierte Datenpipelines</li>
-                    <li><i class="fas fa-check-circle"></i> Business Intelligence Tools</li>
-                    <li><i class="fas fa-check-circle"></i> KI-Modelle & Prognosen</li>
+                    <li><i class="fas fa-check-circle"></i> Responsive Webdesign</li>
+                    <li><i class="fas fa-check-circle"></i> E-Commerce-Lösungen</li>
+                    <li><i class="fas fa-check-circle"></i> Kundenportale & ERP-Systeme</li>
                 </ul>
-                <a href="#contact" class="link-button">Beratung anfragen</a>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-puzzle-piece icon"></i>
-                <h3>Systemintegration & APIs</h3>
-                <p>Schaffen Sie eine nahtlose IT-Landschaft durch die Integration bestehender Systeme. Wir entwickeln robuste APIs, die den Informationsfluss zwischen Anwendungen sicherstellen.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Anbindung von Drittsystemen</li>
-                    <li><i class="fas fa-check-circle"></i> Sichere Schnittstellen</li>
-                    <li><i class="fas fa-check-circle"></i> Datenkonsistenz</li>
-                </ul>
-                <a href="#contact" class="link-button">Details besprechen</a>
-            </div>
-
-            <div class="card">
-                <i class="fas fa-robot icon"></i>
-                <h3>Automatisierung & Skripting</h3>
-                <p>Steigern Sie Effizienz und reduzieren Sie manuelle Fehler durch intelligente Automatisierungslösungen. Wir entwickeln Skripte und Bots für wiederkehrende Aufgaben.</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> RPA-Implementierung</li>
-                    <li><i class="fas fa-check-circle"></i> Prozessoptimierung</li>
-                    <li><i class="fas fa-check-circle"></i> Effizienzsteigerung</li>
-                </ul>
-                <a href="#contact" class="link-button">Projekt starten</a>
-            </div>
-            </div>
-    </section>
-
-    <section id="projects" class="container">
-        <h2>Ausgewählte Projekte & Erfolgsgeschichten</h2>
-        <div class="grid-container">
-            <div class="card">
-                <i class="fas fa-chart-area icon"></i>
-                <h3>Datenportal für den Einzelhandel</h3>
-                <p>Entwicklung eines Dashboards zur Echtzeitanalyse von Verkaufsdaten, Lagerbeständen und Kundenverhalten für eine führende Einzelhandelskette.</p>
-                <p class="small-text"><strong>Technologien:</strong> Python, Power BI, SQL Server</p>
-                <a href="#" class="link-button">Fallstudie (folgt)</a>
+                <a href="#contact" class="link-button">Projekt anfragen</a>
             </div>
 
             <div class="card">
                 <i class="fas fa-mobile-alt icon"></i>
-                <h3>Personalisierte Lern-App</h3>
-                <p>Entwicklung einer mobilen Anwendung für Privatnutzer, die personalisierte Lernpfade und interaktive Übungen basierend auf KI bietet.</p>
-                <p class="small-text"><strong>Technologien:</strong> React Native, Firebase, Machine Learning</p>
-                <a href="#" class="link-button">Demo ansehen (folgt)</a>
+                <h3>Mobile App Entwicklung</h3>
+                <p>Intuitive und leistungsstarke Apps für iOS und Android, die Ihr Unternehmen in die Hosentasche Ihrer Kunden bringen oder interne Prozesse mobilisieren.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> iOS & Android Apps</li>
+                    <li><i class="fas fa-check-circle"></i> Native & Hybrid-Entwicklung</li>
+                    <li><i class="fas fa-check-circle"></i> UX/UI Design</li>
+                </ul>
+                <a href="#contact" class="link-button">Beratungstermin</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-industry icon"></i>
-                <h3>IoT-Plattform für die Fertigung</h3>
-                <p>Implementierung einer Cloud-basierten IoT-Plattform zur Überwachung und Optimierung von Produktionsanlagen in Echtzeit.</p>
-                <p class="small-text"><strong>Technologien:</strong> AWS IoT, Node.js, TimescaleDB</p>
-                <a href="#" class="link-button">Projektdetails (folgt)</a>
+                <i class="fas fa-chart-line icon"></i>
+                <h3>Datenanalyse & KI</h3>
+                <p>Nutzen Sie das Potenzial Ihrer Daten. Wir entwickeln Lösungen für Datenextraktion, Business Intelligence und implementieren KI-Modelle für präzise Prognosen und automatisierte Entscheidungen.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> BI-Dashboards</li>
+                    <li><i class="fas fa-check-circle"></i> Machine Learning</li>
+                    <li><i class="fas fa-check-circle"></i> Big Data Verarbeitung</li>
+                </ul>
+                <a href="#contact" class="link-button">Daten-Potenzial nutzen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Ausgewählte Projekte & Anwendungsfälle</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-graduation-cap icon"></i>
+                <h3>Interaktive Lernplattform (Bildung)</h3>
+                <p>Entwicklung einer webbasierten Lernplattform für Schüler mit personalisierten Kursen und interaktiven Übungen. Für Bildungseinrichtungen und Privatnutzer.</p>
+                <p class="small-text"><strong>Technologien:</strong> React, Node.js, MongoDB</p>
+                <a href="#" class="link-button">Details zur Fallstudie</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-hand-holding-usd icon"></i>
+                <h3>Finanz-Management-App (Finanzen)</h3>
+                <p>Mobile App für Privatpersonen und Kleinunternehmen zur Budgetverwaltung, Ausgabenverfolgung und Finanzplanung mit sicherer Datenverschlüsselung.</p>
+                <p class="small-text"><strong>Technologien:</strong> Flutter, Firebase, Verschlüsselungs-APIs</p>
+                <a href="#" class="link-button">Demo ansehen</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-store icon"></i>
+                <h3>E-Commerce System (Handel)</h3>
+                <p>Implementierung eines skalierbaren Online-Shops mit umfassenden Produktmanagement- und Bezahlfunktionen für ein mittelständisches Handelsunternehmen.</p>
+                <p class="small-text"><strong>Technologien:</strong> Shopify API, Python/Django, Stripe</p>
+                <a href="#" class="link-button">Projektdetails</a>
+            </div>
+            <div class="card">
+                <i class="fas fa-hospital icon"></i>
+                <h3>Patientenportal (Gesundheitswesen)</h3>
+                <p>Entwicklung eines sicheren Webportals für Kliniken zur Terminverwaltung, Befundeinsicht und Kommunikation zwischen Arzt und Patient.</p>
+                <p class="small-text"><strong>Technologien:</strong> .NET, Azure, HL7-Integration</p>
+                <a href="#" class="link-button">Mehr Informationen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="applications" class="container">
+        <h2>Anwendungsbereiche & Branchen</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: var(--color-text-light);">Unsere Expertise erstreckt sich über vielfältige Branchen, um maßgeschneiderte Lösungen für Ihre spezifischen Anforderungen zu entwickeln.</p>
+        <div class="application-grid">
+            <div class="application-item">
+                <i class="fas fa-school"></i>
+                <h3>Bildung & E-Learning</h3>
+                <p>Interaktive Lernplattformen, Verwaltungssoftware für Bildungseinrichtungen, digitale Kursmaterialien.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-university"></i>
+                <h3>Finanzdienstleistungen</h3>
+                <p>Sichere Finanz-Apps, Portallösungen für Banken und Versicherungen, Datenanalyse für Finanzmärkte.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>Handel & E-Commerce</h3>
+                <p>Online-Shops, Warenwirtschaftssysteme, Kundenbeziehungsmanagement (CRM).</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Gesundheitswesen</h3>
+                <p>Patientenmanagement-Systeme, Telemedizin-Lösungen, digitale Befundübermittlung.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-industry"></i>
+                <h3>Industrie & Fertigung</h3>
+                <p>Produktionsoptimierung, IoT-Lösungen, Bestandsverwaltungssysteme.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-home"></i>
+                <h3>Privatpersonen & Smart Living</h3>
+                <p>Apps für den Alltag, Smart Home Integration, persönliche Verwaltungstools.</p>
             </div>
             </div>
     </section>
@@ -588,33 +803,51 @@
         <div class="content">
             <div class="text-content">
                 <h3>Innovation, Effizienz und Präzision in jeder Zeile Code</h3>
-                <p>Bei **RSE Systems** verstehen wir die Herausforderungen und Chancen der digitalen Welt. Wir sind ein Unternehmen, das sich auf die Entwicklung und Implementierung hochwertiger, maßgeschneiderter Softwarelösungen spezialisiert hat. Unser Ziel ist es, sowohl Privatpersonen als auch Unternehmen mit Technologien zu stärken, die das Leben vereinfachen und Prozesse optimieren.</p>
-                <p>Unsere Arbeitsweise ist transparent und kundenorientiert. Wir legen Wert auf eine tiefgehende Analyse Ihrer Bedürfnisse, eine agile Entwicklung und eine klare Kommunikation in jeder Projektphase. Vertrauen Sie auf unsere Expertise, um Ihre Visionen in funktionierende, zukunftssichere Software zu verwandeln.</p>
+                <p>Bei **RSE Systems** verstehen wir die Herausforderungen und Chancen der digitalen Welt. Wir sind Ihr vertrauenswürdiger Partner für die Entwicklung und Implementierung hochwertiger, maßgeschneiderter Softwarelösungen. Unser Anspruch ist es, sowohl **Privatpersonen** als auch **Unternehmen** mit modernster Technologie zu stärken, die das Leben vereinfacht, Prozesse optimiert und neue Möglichkeiten eröffnet.</p>
+                <p>Unsere Arbeitsweise ist geprägt von einer tiefgehenden Analyse Ihrer individuellen Bedürfnisse, einer agilen und transparenten Entwicklung sowie einer klaren Kommunikation in jeder Projektphase. Vertrauen Sie auf die Expertise von RSE Systems, um Ihre Visionen in funktionierende, zukunftssichere Software, überzeugende Webseiten und intuitive Apps zu verwandeln.</p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <i class="fas fa-code"></i>
-                    <p>**Professionelle Entwicklung:** Robuster, skalierbarer Code.</p>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-brain"></i>
-                    <p>**Innovative Konzepte:** Kreative Lösungsansätze.</p>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-users-cog"></i>
-                    <p>**Kundenorientierung:** Ihre Bedürfnisse im Fokus.</p>
-                </div>
-                <div class="skill-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>**Sicherheit & Qualität:** Höchste Standards.</p>
-                </div>
-                <div class="skill-item">
+            <div class="values-grid">
+                <div class="value-item">
                     <i class="fas fa-lightbulb"></i>
-                    <p>**Zukunftssichere Technologien:** Bleiben Sie am Puls der Zeit.</p>
+                    <div class="text-group">
+                        <h4>Innovativ</h4>
+                        <p>Wir denken voraus, um zukunftsfähige Lösungen zu schaffen.</p>
+                    </div>
                 </div>
-                <div class="skill-item">
+                <div class="value-item">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="text-group">
+                        <h4>Präzise</h4>
+                        <p>Höchste Qualität und Detailtreue in jedem Projekt.</p>
+                    </div>
+                </div>
+                <div class="value-item">
                     <i class="fas fa-handshake"></i>
-                    <p>**Zuverlässiger Partner:** Langfristige Zusammenarbeit.</p>
+                    <div class="text-group">
+                        <h4>Partnerschaftlich</h4>
+                        <p>Enger Dialog und Zusammenarbeit mit unseren Kunden.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="text-group">
+                        <h4>Sicher</h4>
+                        <p>Datenschutz und Systemsicherheit als höchste Priorität.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-cogs"></i>
+                    <div class="text-group">
+                        <h4>Effizient</h4>
+                        <p>Optimale Prozesse für schnelle und kosteneffektive Ergebnisse.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-users"></i>
+                    <div class="text-group">
+                        <h4>Benutzerzentriert</h4>
+                        <p>Intuitives Design für exzellente Nutzererfahrung.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -650,5 +883,25 @@
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten.</p>
     </footer>
+
+    <script>
+        // JavaScript für das mobile Navigationsmenü (Hamburger-Menü)
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('a'); // Alle Links im Menü
+
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+
+            // Menü schließen, wenn ein Link angeklickt wird
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
