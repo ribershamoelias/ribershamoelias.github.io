@@ -480,7 +480,7 @@
         /* Kontakt Sektion (Wird ausgeblendet, wenn Overlay aktiv) */
         #contact {
             /* Standardmäßig ausgeblendet, wenn der Layer aktiv ist */
-            display: none;
+            /* display: none;  // Diese Regel kann entfernt werden, wenn das Overlay die Interaktion blockiert. */
         }
 
 
@@ -770,13 +770,13 @@
             height: 100%; /* Full height */
             overflow: auto; /* Enable scroll if needed */
             background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
-            display: flex;
             justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
-        .game-modal.active {
+        .game-modal.active { /* Hinzugefügt/Angepasst für die Anzeige mit Transition */
+            display: flex;
             opacity: 1;
         }
 
@@ -1431,6 +1431,7 @@
                 updateScores();
                 updateEasterEgg(""); // Clear Easter egg message
                 resetGameBtn.textContent = 'Neues Spiel';
+                isGameActive = false; // Game is not active until mode is chosen and new game is clicked
             }
 
             function updateScores() {
