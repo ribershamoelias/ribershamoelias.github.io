@@ -1174,15 +1174,15 @@
                     ctx.fillStyle = this.color;
                     // Hauptkarosserie
                     ctx.fillRect(this.x, this.y, this.width, this.height);
-                    // Flügel hinten (kleiner)
+                    // Flügel hinten (kleiner, angedeutet)
                     ctx.fillRect(this.x - 5, this.y + 5, 5, 10);
-                    // Flügel vorne (kleiner)
+                    // Flügel vorne (kleiner, angedeutet)
                     ctx.fillRect(this.x + this.width, this.y + 5, 5, 10);
 
                     // Räder (angedeutet als kleine Rechtecke)
                     ctx.fillStyle = '#444444'; // Dunkelgrau für Räder
-                    ctx.fillRect(this.x + 5, this.y + this.height, 8, 5); // Hinterrad links
-                    ctx.fillRect(this.x + this.width - 13, this.y + this.height, 8, 5); // Vorderrad links
+                    ctx.fillRect(this.x + 5, this.y + this.height - 5, 8, 5); // Hinterrad
+                    ctx.fillRect(this.x + this.width - 13, this.y + this.height - 5, 8, 5); // Vorderrad
                 },
                 switchLane: function() {
                     if (this.currentLane === 'bottom') {
@@ -1199,7 +1199,7 @@
             let score = 0;
             let gameSpeed = 5; // Initial game speed
             let gameOver = false;
-            let gameRunning = false;
+            let gameRunning = false; // Zustand, ob das Spiel gerade läuft
             let frameCount = 0;
             let gameInterval;
             const obstacleSpawnRate = 120; // How many frames between new obstacles
@@ -1241,21 +1241,32 @@
                 if (player.currentLane !== obstacle.lane) {
                     return false;
                 }
-                // AABB collision detection
-                return player.x < obstacle.x + obstacle.width &&
-                       player.x + player.width > obstacle.x &&
-                       player.y < obstacle.y + obstacle.height &&
-                       player.y + player.height > obstacle.y;
+                // AABB collision detection (adjusted for visual representation)
+                // We add a small padding to account for the wheels/wings of the pixel car
+                const playerLeft = player.x;
+                const playerRight = player.x + player.width;
+                const playerTop = player.y;
+                const playerBottom = player.y + player.height;
+
+                const obstacleLeft = obstacle.x;
+                const obstacleRight = obstacle.x + obstacle.width;
+                const obstacleTop = obstacle.y;
+                const obstacleBottom = obstacle.y + obstacle.height;
+
+                return playerRight > obstacleLeft &&
+                       playerLeft < obstacleRight &&
+                       playerBottom > obstacleTop &&
+                       playerTop < obstacleBottom;
             }
 
             function gameLoop() {
-                if (gameOver) return;
+                if (gameOver || !gameRunning) return; // Wichtig: Auch wenn gameRunning false ist, nicht rendern
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
 
                 // Draw ground (track)
                 ctx.fillStyle = '#222222'; // Dark track
-                ctx.fillRect(0, canvas.height - 10 - LANE_HEIGHT * 2 - 5, canvas.width, (LANE_HEIGHT * 2) + 15); // Entire track area
+                ctx.fillRect(0, TOP_LANE_Y - 5, canvas.width, (LANE_HEIGHT * 2) + 15); // Entire track area from slightly above top lane to bottom of wheels
                 ctx.fillStyle = '#555555'; // Grey lane dividers
                 ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Middle divider
                 ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Bottom divider (edge)
@@ -1295,8 +1306,6 @@
             }
 
             function startGame() {
-                if (gameRunning) return; // Prevent multiple starts
-
                 gameRunning = true;
                 gameOver = false;
                 gameStartMessage.style.display = 'none'; // Hide start message
@@ -1319,7 +1328,8 @@
                 clearInterval(gameInterval);
                 ctx.fillStyle = 'white';
                 ctx.font = '30px Inter';
-                ctx.fillText('GAME OVER!', canvas.width / 2 - 80, canvas.height / 2);
+                ctx.textAlign = 'center'; // Zentrieren des Textes
+                ctx.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
                 gameStartMessage.style.display = 'block'; // Show start message again for restart
                 gameStartMessage.textContent = 'Klicke oder drücke Leertaste zum Neustart!';
 
@@ -1328,17 +1338,15 @@
                     localStorage.setItem('f1Highscore', highScore);
                     highScoreDisplay.textContent = highScore;
                     ctx.font = '20px Inter';
-                    ctx.fillText('Neuer Highscore!', canvas.width / 2 - 70, canvas.height / 2 + 30);
+                    ctx.fillText('Neuer Highscore!', canvas.width / 2, canvas.height / 2 + 30);
                 }
             }
 
-            // Event Listeners for player action (lane switch)
+            // Global Keydown Listener to prevent default scroll behavior when modal is open
             document.addEventListener('keydown', function(event) {
-                if (event.code === 'Space' && gameModal.style.display === 'flex') {
-                    event.preventDefault(); // Prevent page scrolling
-                    if (!gameRunning && gameOver) { // If game was over, restart it
-                        startGame();
-                    } else if (!gameRunning && !gameOver) { // If game just opened, start it
+                if (gameModal.style.display === 'flex' && event.code === 'Space') {
+                    event.preventDefault(); // This is crucial for preventing page scrolling
+                    if (!gameRunning) { // If game is not running (initial state or game over)
                         startGame();
                     } else { // If game is running, switch lane
                         player.switchLane();
@@ -1346,11 +1354,10 @@
                 }
             });
 
+            // Click/Touch Listener on Canvas for interaction
             canvas.addEventListener('mousedown', function(event) {
                 if (gameModal.style.display === 'flex') {
-                    if (!gameRunning && gameOver) {
-                        startGame();
-                    } else if (!gameRunning && !gameOver) {
+                    if (!gameRunning) {
                         startGame();
                     } else {
                         player.switchLane();
@@ -1359,10 +1366,8 @@
             });
             canvas.addEventListener('touchstart', function(event) {
                 if (gameModal.style.display === 'flex') {
-                    event.preventDefault(); // Prevent mobile scrolling/zooming
-                    if (!gameRunning && gameOver) {
-                        startGame();
-                    } else if (!gameRunning && !gameOver) {
+                    event.preventDefault(); // Prevents mobile scrolling/zooming
+                    if (!gameRunning) {
                         startGame();
                     } else {
                         player.switchLane();
@@ -1375,23 +1380,7 @@
             openGameModalBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 gameModal.style.display = 'flex';
-                // Reset and prepare game when modal opens
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                // Draw initial state (player and track)
-                ctx.fillStyle = '#222222';
-                ctx.fillRect(0, canvas.height - 10 - LANE_HEIGHT * 2 - 5, canvas.width, (LANE_HEIGHT * 2) + 15);
-                ctx.fillStyle = '#555555';
-                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
-                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
-
-                player.draw(); // Draw player in its starting position
-                scoreDisplay.textContent = '0';
-                highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
-                gameStartMessage.style.display = 'block';
-                gameStartMessage.textContent = 'Drücke Leertaste oder klicke, um zu starten!';
-                gameOver = false; // Important: game is not over, just paused/waiting
-                gameRunning = false;
-                clearInterval(gameInterval); // Stop any running game
+                initializeGameModal(); // Set initial state and draw
             });
 
             closeGameButton.addEventListener('click', function() {
@@ -1402,6 +1391,7 @@
 
             // Close modal if clicked outside of it
             gameModal.addEventListener('click', function(event) {
+                // Ensure click is directly on the backdrop, not on the content
                 if (event.target === gameModal) {
                     gameModal.style.display = 'none';
                     clearInterval(gameInterval); // Stop game when closing modal
@@ -1409,10 +1399,35 @@
                 }
             });
 
-            // Initial drawing of player on canvas when page loads (only for first time display)
-            // This is now handled when the modal opens to ensure a clean state.
-            // player.draw();
-            // highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
+            // Function to set up the modal's initial display (e.g., after opening or game over)
+            function initializeGameModal() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw initial track
+                ctx.fillStyle = '#222222';
+                ctx.fillRect(0, TOP_LANE_Y - 5, canvas.width, (LANE_HEIGHT * 2) + 15);
+                ctx.fillStyle = '#555555';
+                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
+                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
+                
+                player.draw(); // Draw player in its starting position
+                player.y = BOTTOM_LANE_Y; // Ensure player is at bottom lane for restart
+                player.currentLane = 'bottom';
+
+
+                scoreDisplay.textContent = '0';
+                highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
+                gameStartMessage.style.display = 'block';
+                gameStartMessage.textContent = 'Drücke Leertaste oder klicke, um zu starten!';
+                
+                gameOver = false; // Game is not over, just waiting to start
+                gameRunning = false; // Game is not actively running
+                clearInterval(gameInterval); // Ensure no old game loop is running
+            }
+
+            // Call initialize when the script loads to set up the game for the first time
+            // (or when the modal is opened for a fresh start)
+            // This is now handled by openGameModalBtn click handler.
         });
     </script>
 </body>
