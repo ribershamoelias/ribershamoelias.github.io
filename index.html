@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSE Systems – Digitale Exzellenz: Software, Webseiten & Apps (Im Aufbau)</title>
     <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps für Privatpersonen und Unternehmen. Die Webseite befindet sich derzeit im Aufbau.">
-    <link href="https://fonts.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Basis-Styles */
@@ -825,26 +825,14 @@
             margin-bottom: 20px;
         }
 
-        .game-start-button {
-            background-color: var(--color-accent);
-            color: var(--color-white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 15px rgba(52, 215, 75, 0.3);
-            margin-top: 15px;
+        .game-start-message {
+            color: var(--color-accent);
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
-        .game-start-button:hover {
-            background-color: #2eb848;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 215, 75, 0.4);
-        }
 
         /* Mobile Anpassungen für das Game Modal */
         @media (max-width: 768px) {
@@ -857,12 +845,8 @@
                 right: 15px;
                 font-size: 24px;
             }
-            .game-info, .game-instructions {
+            .game-info, .game-instructions, .game-start-message {
                 font-size: 0.9em;
-            }
-            .game-start-button {
-                padding: 10px 25px;
-                font-size: 1em;
             }
             #gameCanvas {
                 width: 100%; /* Ensure canvas scales on smaller screens */
@@ -1121,17 +1105,17 @@
 
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
-        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Spiele F1-Rennen!</a></p>
+        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1-Rennen!</a></p>
     </footer>
 
     <div id="f1GameModal" class="game-modal">
         <div class="game-modal-content">
             <span class="game-close-button">&times;</span>
             <h2>F1-Pixel-Rennen</h2>
-            <p class="game-instructions">Drücke **Leertaste** oder klicke/tippe, um zu springen und Hindernissen auszuweichen!</p>
+            <p class="game-instructions">**Leertaste drücken** oder **klicken/tippen**, um die Spur zu wechseln.</p>
+            <p class="game-start-message" id="gameStartMessage">Drücke Leertaste oder klicke, um zu starten!</p>
             <canvas id="gameCanvas" width="500" height="200"></canvas>
             <p class="game-info">Punkte: <span id="score">0</span> | Highscore: <span id="highScore">0</span></p>
-            <button id="startGameButton" class="game-start-button">Spiel starten</button>
         </div>
     </div>
 
@@ -1170,43 +1154,43 @@
             const ctx = canvas.getContext('2d');
             const scoreDisplay = document.getElementById('score');
             const highScoreDisplay = document.getElementById('highScore');
-            const startGameButton = document.getElementById('startGameButton');
+            const gameStartMessage = document.getElementById('gameStartMessage');
             const gameModal = document.getElementById('f1GameModal');
             const openGameModalBtn = document.getElementById('openGameModal');
             const closeGameButton = document.querySelector('.game-close-button');
 
+            const LANE_HEIGHT = 50; // Höhe jeder Fahrspur
+            const TOP_LANE_Y = canvas.height - 10 - LANE_HEIGHT * 2; // Obere Spur
+            const BOTTOM_LANE_Y = canvas.height - 10 - LANE_HEIGHT; // Untere Spur
+
             const player = {
                 x: 50,
-                y: canvas.height - 30, // Starting position above ground
-                width: 30,
-                height: 20,
-                color: '#FF0000', // Red F1 car
-                velocityY: 0,
-                gravity: 0.6,
-                isJumping: false,
+                y: BOTTOM_LANE_Y, // Startet auf der unteren Spur
+                width: 40, // Breite des Autos
+                height: 20, // Höhe des Autos
+                color: '#FF0000', // Rotes F1-Auto
+                currentLane: 'bottom',
                 draw: function() {
                     ctx.fillStyle = this.color;
+                    // Hauptkarosserie
                     ctx.fillRect(this.x, this.y, this.width, this.height);
-                    // Simple pixel-like car body
-                    ctx.fillRect(this.x + 5, this.y + this.height, 5, 5); // back wheel
-                    ctx.fillRect(this.x + this.width - 10, this.y + this.height, 5, 5); // front wheel
-                    ctx.fillStyle = '#FFFFFF'; // White cockpit
-                    ctx.fillRect(this.x + 10, this.y - 5, 10, 5);
-                },
-                jump: function() {
-                    if (!this.isJumping) {
-                        this.velocityY = -10; // Jump strength
-                        this.isJumping = true;
-                    }
-                },
-                update: function() {
-                    this.velocityY += this.gravity;
-                    this.y += this.velocityY;
+                    // Flügel hinten (kleiner)
+                    ctx.fillRect(this.x - 5, this.y + 5, 5, 10);
+                    // Flügel vorne (kleiner)
+                    ctx.fillRect(this.x + this.width, this.y + 5, 5, 10);
 
-                    if (this.y > canvas.height - this.height) {
-                        this.y = canvas.height - this.height;
-                        this.velocityY = 0;
-                        this.isJumping = false;
+                    // Räder (angedeutet als kleine Rechtecke)
+                    ctx.fillStyle = '#444444'; // Dunkelgrau für Räder
+                    ctx.fillRect(this.x + 5, this.y + this.height, 8, 5); // Hinterrad links
+                    ctx.fillRect(this.x + this.width - 13, this.y + this.height, 8, 5); // Vorderrad links
+                },
+                switchLane: function() {
+                    if (this.currentLane === 'bottom') {
+                        this.y = TOP_LANE_Y;
+                        this.currentLane = 'top';
+                    } else {
+                        this.y = BOTTOM_LANE_Y;
+                        this.currentLane = 'bottom';
                     }
                 }
             };
@@ -1215,6 +1199,7 @@
             let score = 0;
             let gameSpeed = 5; // Initial game speed
             let gameOver = false;
+            let gameRunning = false;
             let frameCount = 0;
             let gameInterval;
             const obstacleSpawnRate = 120; // How many frames between new obstacles
@@ -1224,14 +1209,27 @@
             highScoreDisplay.textContent = highScore;
 
             function Obstacle() {
-                this.x = canvas.width;
-                this.y = canvas.height - 30; // Obstacles on the ground
                 this.width = 20 + Math.random() * 20; // Random width
                 this.height = 20 + Math.random() * 20; // Random height
+                this.lane = Math.random() < 0.5 ? 'top' : 'bottom';
+                this.y = this.lane === 'top' ? TOP_LANE_Y : BOTTOM_LANE_Y;
+                this.x = canvas.width;
                 this.color = '#32d74b'; // Green obstacle
+
+                // Randomize obstacle type for more visual variety (still simple blocks)
+                this.type = Math.floor(Math.random() * 3); // 0: cone, 1: tire, 2: block
+
                 this.draw = function() {
                     ctx.fillStyle = this.color;
-                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                    if (this.type === 0) { // Cone-like
+                        ctx.fillRect(this.x, this.y + this.height / 2, this.width, this.height / 2);
+                        ctx.fillRect(this.x + this.width / 4, this.y, this.width / 2, this.height / 2);
+                    } else if (this.type === 1) { // Tire-like (horizontal bars)
+                        ctx.fillRect(this.x, this.y, this.width, this.height / 3);
+                        ctx.fillRect(this.x, this.y + this.height * 2/3, this.width, this.height / 3);
+                    } else { // Simple block
+                        ctx.fillRect(this.x, this.y, this.width, this.height);
+                    }
                 };
                 this.update = function() {
                     this.x -= gameSpeed;
@@ -1239,6 +1237,11 @@
             }
 
             function checkCollision(player, obstacle) {
+                // Check if player is on the same lane as obstacle
+                if (player.currentLane !== obstacle.lane) {
+                    return false;
+                }
+                // AABB collision detection
                 return player.x < obstacle.x + obstacle.width &&
                        player.x + player.width > obstacle.x &&
                        player.y < obstacle.y + obstacle.height &&
@@ -1250,11 +1253,14 @@
 
                 ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
 
-                // Draw ground
-                ctx.fillStyle = '#333333'; // Dark grey ground
-                ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+                // Draw ground (track)
+                ctx.fillStyle = '#222222'; // Dark track
+                ctx.fillRect(0, canvas.height - 10 - LANE_HEIGHT * 2 - 5, canvas.width, (LANE_HEIGHT * 2) + 15); // Entire track area
+                ctx.fillStyle = '#555555'; // Grey lane dividers
+                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Middle divider
+                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4); // Bottom divider (edge)
 
-                player.update();
+
                 player.draw();
 
                 // Spawn obstacles
@@ -1263,7 +1269,7 @@
                     obstacles.push(new Obstacle());
                     // Slightly increase game speed over time
                     if (gameSpeed < 10) { // Max speed
-                        gameSpeed += 0.1;
+                        gameSpeed += 0.05; // Slower speed increase
                     }
                 }
 
@@ -1274,19 +1280,8 @@
 
                     // Check for collision
                     if (checkCollision(player, obstacles[i])) {
-                        gameOver = true;
-                        clearInterval(gameInterval);
-                        ctx.fillStyle = 'white';
-                        ctx.font = '30px Inter';
-                        ctx.fillText('GAME OVER!', canvas.width / 2 - 80, canvas.height / 2);
-                        startGameButton.style.display = 'block'; // Show start button again
-                        if (score > highScore) {
-                            highScore = score;
-                            localStorage.setItem('f1Highscore', highScore);
-                            highScoreDisplay.textContent = highScore;
-                            ctx.font = '20px Inter';
-                            ctx.fillText('Neuer Highscore!', canvas.width / 2 - 70, canvas.height / 2 + 30);
-                        }
+                        endGame();
+                        return; // Exit loop to prevent further processing
                     }
 
                     // Remove off-screen obstacles and increase score
@@ -1300,36 +1295,78 @@
             }
 
             function startGame() {
-                player.y = canvas.height - player.height; // Reset player position
-                player.velocityY = 0;
-                player.isJumping = false;
+                if (gameRunning) return; // Prevent multiple starts
+
+                gameRunning = true;
+                gameOver = false;
+                gameStartMessage.style.display = 'none'; // Hide start message
+
+                player.y = BOTTOM_LANE_Y; // Reset player position
+                player.currentLane = 'bottom';
                 obstacles = [];
                 score = 0;
                 scoreDisplay.textContent = score;
                 gameSpeed = 5; // Reset speed
-                gameOver = false;
                 frameCount = 0;
-                startGameButton.style.display = 'none'; // Hide start button
                 
                 clearInterval(gameInterval); // Clear any existing interval
                 gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS
             }
 
-            // Event Listeners for player jump
+            function endGame() {
+                gameOver = true;
+                gameRunning = false;
+                clearInterval(gameInterval);
+                ctx.fillStyle = 'white';
+                ctx.font = '30px Inter';
+                ctx.fillText('GAME OVER!', canvas.width / 2 - 80, canvas.height / 2);
+                gameStartMessage.style.display = 'block'; // Show start message again for restart
+                gameStartMessage.textContent = 'Klicke oder drücke Leertaste zum Neustart!';
+
+                if (score > highScore) {
+                    highScore = score;
+                    localStorage.setItem('f1Highscore', highScore);
+                    highScoreDisplay.textContent = highScore;
+                    ctx.font = '20px Inter';
+                    ctx.fillText('Neuer Highscore!', canvas.width / 2 - 70, canvas.height / 2 + 30);
+                }
+            }
+
+            // Event Listeners for player action (lane switch)
             document.addEventListener('keydown', function(event) {
-                if (event.code === 'Space' && !gameOver && gameModal.style.display === 'flex') {
-                    player.jump();
+                if (event.code === 'Space' && gameModal.style.display === 'flex') {
+                    event.preventDefault(); // Prevent page scrolling
+                    if (!gameRunning && gameOver) { // If game was over, restart it
+                        startGame();
+                    } else if (!gameRunning && !gameOver) { // If game just opened, start it
+                        startGame();
+                    } else { // If game is running, switch lane
+                        player.switchLane();
+                    }
                 }
             });
 
             canvas.addEventListener('mousedown', function(event) {
-                if (!gameOver && gameModal.style.display === 'flex') {
-                    player.jump();
+                if (gameModal.style.display === 'flex') {
+                    if (!gameRunning && gameOver) {
+                        startGame();
+                    } else if (!gameRunning && !gameOver) {
+                        startGame();
+                    } else {
+                        player.switchLane();
+                    }
                 }
             });
             canvas.addEventListener('touchstart', function(event) {
-                if (!gameOver && gameModal.style.display === 'flex') {
-                    player.jump();
+                if (gameModal.style.display === 'flex') {
+                    event.preventDefault(); // Prevent mobile scrolling/zooming
+                    if (!gameRunning && gameOver) {
+                        startGame();
+                    } else if (!gameRunning && !gameOver) {
+                        startGame();
+                    } else {
+                        player.switchLane();
+                    }
                 }
             });
 
@@ -1340,17 +1377,27 @@
                 gameModal.style.display = 'flex';
                 // Reset and prepare game when modal opens
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                player.draw();
+                // Draw initial state (player and track)
+                ctx.fillStyle = '#222222';
+                ctx.fillRect(0, canvas.height - 10 - LANE_HEIGHT * 2 - 5, canvas.width, (LANE_HEIGHT * 2) + 15);
+                ctx.fillStyle = '#555555';
+                ctx.fillRect(0, TOP_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
+                ctx.fillRect(0, BOTTOM_LANE_Y + LANE_HEIGHT - 2, canvas.width, 4);
+
+                player.draw(); // Draw player in its starting position
                 scoreDisplay.textContent = '0';
                 highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
-                startGameButton.style.display = 'block'; // Ensure button is visible
-                gameOver = true; // Set game over initially to wait for start button click
+                gameStartMessage.style.display = 'block';
+                gameStartMessage.textContent = 'Drücke Leertaste oder klicke, um zu starten!';
+                gameOver = false; // Important: game is not over, just paused/waiting
+                gameRunning = false;
                 clearInterval(gameInterval); // Stop any running game
             });
 
             closeGameButton.addEventListener('click', function() {
                 gameModal.style.display = 'none';
                 clearInterval(gameInterval); // Stop game when closing modal
+                gameRunning = false;
             });
 
             // Close modal if clicked outside of it
@@ -1358,14 +1405,14 @@
                 if (event.target === gameModal) {
                     gameModal.style.display = 'none';
                     clearInterval(gameInterval); // Stop game when closing modal
+                    gameRunning = false;
                 }
             });
 
-            startGameButton.addEventListener('click', startGame);
-
-            // Initial draw for player on canvas when page loads
-            player.draw();
-            highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
+            // Initial drawing of player on canvas when page loads (only for first time display)
+            // This is now handled when the modal opens to ensure a clean state.
+            // player.draw();
+            // highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
         });
     </script>
 </body>
