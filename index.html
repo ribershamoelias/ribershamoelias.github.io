@@ -3,79 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSE Systems - Innovative Softwarelösungen</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>RSE Systems – Innovative Softwarelösungen für Privat & Business</title>
+    <meta name="description" content="RSE Systems bietet maßgeschneiderte Softwarelösungen für Privatpersonen und Unternehmen. Transparent, modern, effizient. Entdecken Sie Web-Apps, Datenanalyse, Systemintegration und Automatisierung.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Basis-Styles */
         :root {
-            --primary-color: #007bff; /* Helles Blau */
-            --secondary-color: #0056b3; /* Dunkles Blau */
-            --accent-color: #28a745; /* Grün für Highlights */
-            --dark-bg: #343a40; /* Dunkles Grau für Header/Footer */
-            --light-bg: #f8f9fa; /* Sehr helles Grau */
-            --text-color: #333;
-            --light-text: #6c757d;
-            --border-color: #dee2e6;
-            --shadow-light: rgba(0, 0, 0, 0.08);
-            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --color-primary: #0070c9; /* Ein klares, tiefes Blau */
+            --color-secondary: #004c8c; /* Dunkleres Blau */
+            --color-accent: #34c759; /* Apple-ähnliches Grün für Akzente */
+            --color-dark: #1c1c1e; /* Sehr dunkles Grau für Text/Hintergründe */
+            --color-light: #f5f5f7; /* Helles Grau für Hintergründe */
+            --color-white: #ffffff;
+            --color-text-dark: #333333;
+            --color-text-light: #666666;
+            --border-radius: 12px;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-medium: rgba(0, 0, 0, 0.1);
         }
 
         body {
-            font-family: 'Roboto', sans-serif; /* Standard-Schriftart */
-            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: var(--light-bg);
-            color: var(--text-color);
-            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            background-color: var(--color-light);
+            color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased; /* Für glattere Schrift auf macOS */
+            text-rendering: optimizeLegibility; /* Für bessere Lesbarkeit */
+            overflow-x: hidden;
         }
 
-        /* Container für zentrale Ausrichtung */
+        /* Container für zentrale Ausrichtung und Weißraum */
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1280px; /* Etwas breiter für modernen Look */
             margin: 0 auto;
-            padding: 40px 20px; /* Mehr Padding für mehr "Luft" */
+            padding: 60px 20px; /* Großzügigerer vertikaler Abstand */
         }
 
-        /* Header-Bereich */
+        /* Header-Bereich (Top-Leiste mit Logo/Titel) */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            padding: 60px 0; /* Mehr Padding */
-            text-align: center;
-            box-shadow: 0 5px 15px var(--shadow-medium);
-            position: relative;
-            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.95); /* Leicht transparentes Weiß */
+            backdrop-filter: blur(10px); /* Glas-Effekt wie bei Apple */
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px var(--shadow-light);
+            padding: 15px 0;
         }
 
-        header h1 {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            font-size: 3.5em; /* Größerer Titel */
-            letter-spacing: 2px;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8em;
             font-weight: 700;
+            color: var(--color-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
         }
 
-        header p {
-            font-size: 1.3em;
-            opacity: 0.9;
-            margin-top: 15px;
-            font-weight: 300;
+        .logo i {
+            color: var(--color-primary);
+            margin-right: 10px;
+            font-size: 1.2em;
         }
 
         /* Navigationsleiste */
-        nav {
-            background: var(--dark-bg);
-            text-align: center;
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px var(--shadow-light);
-            position: sticky; /* Sticky Navigation */
-            top: 0;
-            z-index: 1000; /* Immer oben */
-        }
-
         nav ul {
             padding: 0;
             list-style: none;
@@ -84,17 +91,17 @@
 
         nav ul li {
             display: inline-block;
-            margin: 0 25px;
+            margin-left: 30px; /* Abstand zwischen Navigationspunkten */
         }
 
         nav ul li a {
-            color: #fff;
+            color: var(--color-text-light);
             text-decoration: none;
-            font-weight: 600; /* Kräftiger */
-            font-size: 1.1em;
-            padding: 10px 0; /* Für größere Klickfläche */
-            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-weight: 500;
+            font-size: 1.05em;
+            padding: 8px 0;
             position: relative;
+            transition: color 0.3s ease;
         }
 
         nav ul li a::after { /* Unterstrich-Effekt */
@@ -102,238 +109,257 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--accent-color);
+            background: var(--color-primary);
             left: 50%;
-            bottom: 0;
+            bottom: -5px;
             transform: translateX(-50%);
             transition: width 0.3s ease-in-out;
         }
 
         nav ul li a:hover {
-            color: var(--accent-color);
+            color: var(--color-primary);
         }
         nav ul li a:hover::after {
             width: 100%;
         }
 
-
-        /* Titel der Sektionen */
-        h2 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--primary-color);
-            font-size: 2.5em;
+        /* Hero Section (Startseite - Großes Titelbild/Text) */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
             text-align: center;
+            padding: 120px 20px; /* Sehr viel Platz */
+            border-bottom-left-radius: var(--border-radius);
+            border-bottom-right-radius: var(--border-radius);
             margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
-            font-weight: 600;
+            overflow: hidden; /* Für mögliche Hintergrund-Animationen/Muster */
         }
 
-        h2::after { /* Unterstrich für Überschriften */
+        .hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 4.5em; /* Sehr großer Titel */
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px; /* Für Apple-Look */
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            font-weight: 300;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+
+        .hero .cta-button {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 20px rgba(52, 199, 89, 0.4);
+        }
+
+        .hero .cta-button:hover {
+            background-color: #2da44b; /* Dunkleres Grün */
+            transform: translateY(-3px);
+        }
+
+        /* Sektionstitel */
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.2em; /* Große, klare Überschriften */
+            font-weight: 700;
+            color: var(--color-dark);
+            text-align: center;
+            margin-bottom: 60px; /* Viel Abstand */
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after { /* Dezenter Unterstrich */
             content: '';
             position: absolute;
             width: 80px;
             height: 4px;
-            background: var(--accent-color);
+            background: var(--color-primary);
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
             border-radius: 2px;
         }
 
-        /* Hero Section (Startseite) */
-        #home {
-            text-align: center;
-            padding: 80px 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px var(--shadow-light);
-        }
-
-        #home h2 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: var(--dark-bg);
-        }
-
-        #home p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-            color: var(--light-text);
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-color);
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: background 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
-        }
-
-        .cta-button:hover {
-            background: #218838; /* Dunkleres Grün */
-            transform: translateY(-3px);
-        }
-
-        /* Sektionen allgemein */
+        /* Allgemeine Sektionen */
         section {
-            padding: 60px 0;
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px var(--shadow-light);
             margin-bottom: 40px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px var(--shadow-light);
         }
 
-        /* Grid für Lösungen/Projekte */
+        /* Grid für Karten (Lösungen, Projekte) */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsives Grid */
-            gap: 30px; /* Abstand zwischen den Karten */
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding-top: 20px;
         }
 
-        /* Karte für Softwarelösungen / Projekte */
+        /* Karten-Stil */
         .card {
-            background: var(--light-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px var(--shadow-light);
+            background-color: var(--color-light); /* Hintergrund für Karten */
+            border-radius: var(--border-radius);
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Dezenterer Schatten */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center; /* Zentriert Icons und Titel */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Inhalte gleichmäßig verteilen */
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 25px var(--shadow-medium);
+            box-shadow: 0 10px 30px var(--shadow-medium);
         }
 
         .card .icon {
-            font-size: 3.5em; /* Größere Icons */
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: 4em; /* Größere Icons */
+            color: var(--color-primary);
+            margin-bottom: 25px;
         }
 
         .card h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--secondary-color);
-            margin-top: 0;
+            font-family: 'Inter', sans-serif;
             font-size: 1.8em;
-            margin-bottom: 15px;
             font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 15px;
         }
 
         .card p {
-            font-size: 1em;
-            color: var(--light-text);
-            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: var(--color-text-light);
+            flex-grow: 1; /* Nimmt verfügbaren Platz ein */
         }
 
         .card ul {
             list-style: none;
             padding: 0;
-            text-align: left;
             margin-top: 20px;
+            text-align: left;
         }
 
         .card ul li {
-            background: #e9ecef; /* Leichter Hintergrund für Listenelemente */
-            margin-bottom: 10px;
+            background-color: var(--color-white); /* Weißer Hintergrund für Listenelemente */
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 8px;
+            margin-bottom: 10px;
             font-size: 0.95em;
-            color: var(--text-color);
+            color: var(--color-text-dark);
             display: flex;
             align-items: center;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03); /* Sehr leichter Schatten */
         }
 
-        .card ul li i { /* Icon für Listenelemente */
-            color: var(--accent-color);
-            margin-right: 10px;
+        .card ul li i {
+            color: var(--color-accent);
+            margin-right: 12px;
+            font-size: 1.1em;
         }
 
-        .card a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: bold;
+        .card .link-button {
             display: inline-block;
-            margin-top: 15px;
-            transition: color 0.3s ease;
+            margin-top: 25px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .card a:hover {
-            color: var(--secondary-color);
+        .card .link-button:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
         }
 
         /* Über Uns Sektion */
         #about .content {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column; /* Standard auf Spalte */
             gap: 40px;
             align-items: flex-start;
-            justify-content: center;
         }
-
         #about .text-content {
-            flex: 2;
-            min-width: 300px; /* Mindestbreite für Text auf kleinen Screens */
+            font-size: 1.1em;
+            color: var(--color-text-light);
+            max-width: 800px;
+            line-height: 1.8;
+            margin: 0 auto; /* Zentriert den Text */
+            text-align: center; /* Zentriert den Text */
         }
 
-        #about .skills-list {
-            flex: 1;
-            min-width: 250px; /* Mindestbreite für Skills auf kleinen Screens */
-            background: var(--light-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px var(--shadow-light);
-        }
-
-        #about .skills-list h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.5em;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+        #about .text-content h3 {
+            font-size: 2em;
+            color: var(--color-dark);
+            font-weight: 600;
             margin-bottom: 20px;
+            text-align: center; /* Zentriert diesen Untertitel */
         }
 
-        #about .skills-list ul {
-            list-style: none;
-            padding: 0;
+        #about .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 40px;
         }
 
-        #about .skills-list ul li {
-            margin-bottom: 10px;
-            font-size: 1.05em;
-            color: var(--dark-bg);
+        #about .skill-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: 0 2px 10px var(--shadow-light);
             display: flex;
             align-items: center;
+            gap: 15px;
+            transition: transform 0.2s ease;
         }
 
-        #about .skills-list ul li i {
-            color: var(--accent-color);
-            margin-right: 10px;
+        #about .skill-item:hover {
+            transform: translateY(-3px);
         }
 
+        #about .skill-item i {
+            font-size: 1.8em;
+            color: var(--color-primary);
+        }
+
+        #about .skill-item p {
+            font-weight: 500;
+            color: var(--color-dark);
+            margin: 0;
+        }
 
         /* Kontakt Sektion */
         #contact .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             text-align: center;
         }
 
         #contact .contact-item {
-            background: var(--light-bg);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
             padding: 30px;
-            border-radius: 8px;
             box-shadow: 0 4px 15px var(--shadow-light);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -344,53 +370,89 @@
         }
 
         #contact .contact-item i {
-            font-size: 3em;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            font-size: 3.5em;
+            color: var(--color-primary);
+            margin-bottom: 20px;
         }
 
         #contact .contact-item h3 {
-            color: var(--secondary-color);
-            font-size: 1.4em;
+            font-family: 'Inter', sans-serif;
+            color: var(--color-dark);
+            font-size: 1.5em;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
         #contact .contact-item p, #contact .contact-item a {
-            color: var(--light-text);
+            color: var(--color-text-light);
             text-decoration: none;
-            font-size: 1.1em;
-            word-wrap: break-word; /* Lange E-Mail-Adressen brechen */
+            font-size: 1.05em;
         }
 
         #contact .contact-item a:hover {
-            color: var(--primary-color);
+            color: var(--color-primary);
             text-decoration: underline;
         }
-
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            background: var(--dark-bg);
-            color: #fff;
-            margin-top: 50px;
+            padding: 40px;
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            margin-top: 60px;
             font-size: 0.9em;
-            box-shadow: 0 -2px 10px var(--shadow-light);
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+        footer p {
+            margin: 0;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5em;
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
             }
-            header p {
+            .hero p {
+                font-size: 1.2em;
+            }
+            h2 {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+            .card h3 {
+                font-size: 1.6em;
+            }
+            .card .icon {
+                font-size: 3.5em;
+            }
+            #about .text-content {
                 font-size: 1em;
             }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                padding-top: 10px;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
             nav ul li {
-                margin: 0 10px;
+                margin: 0 15px;
             }
             nav ul li a {
+                font-size: 0.95em;
+            }
+            .hero {
+                padding: 80px 15px;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
                 font-size: 1em;
             }
             h2 {
@@ -398,26 +460,16 @@
             }
             .container {
                 width: 95%;
-                padding: 30px 15px;
-            }
-            #home h2 {
-                font-size: 2.2em;
-            }
-            #home p {
-                font-size: 1em;
+                padding: 40px 15px;
             }
             .grid-container {
-                grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */
+                grid-template-columns: 1fr;
             }
             .card {
                 padding: 25px;
             }
-            #about .content {
-                flex-direction: column;
-            }
-            #about .text-content, #about .skills-list {
-                min-width: unset; /* Setzt Mindestbreite zurück */
-                width: 100%;
+            #about .skills-grid {
+                grid-template-columns: 1fr;
             }
             #contact .contact-grid {
                 grid-template-columns: 1fr;
@@ -427,97 +479,106 @@
 </head>
 <body>
     <header>
-        <h1>RSE Systems</h1>
-        <p>Innovativ. Effizient. Maßgeschneidert. Ihre Softwarelösungen aus einer Hand.</p>
+        <div class="header-content">
+            <a href="#home" class="logo">
+                <i class="fas fa-cube"></i> RSE Systems
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#solutions">Lösungen</a></li>
+                    <li><a href="#projects">Projekte</a></li>
+                    <li><a href="#about">Über Uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#home">Start</a></li>
-            <li><a href="#solutions">Lösungen</a></li>
-            <li><a href="#projects">Projekte</a></li>
-            <li><a href="#about">Über Uns</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-        </ul>
-    </nav>
-
-    <section id="home" class="container">
-        <h2>Willkommen bei RSE Systems!</h2>
-        <p>Als Ihr Partner für fortschrittliche Softwareentwicklung biete ich Ihnen Expertise in der Konzeption, Realisierung und Implementierung maßgeschneiderter digitaler Lösungen.</p>
-        <p>Entdecken Sie, wie meine innovativen Ansätze Ihr Unternehmen voranbringen können.</p>
-        <a href="#solutions" class="cta-button">Meine Lösungen entdecken <i class="fas fa-arrow-right"></i></a>
-    </section>
+    <div class="hero" id="home">
+        <h1>Intelligente Softwarelösungen von RSE Systems</h1>
+        <p>Maßgeschneiderte Software, die Ihre Prozesse optimiert und digitale Exzellenz für Privatpersonen und Unternehmen schafft.</p>
+        <a href="#solutions" class="cta-button">Lösungen entdecken <i class="fas fa-arrow-right"></i></a>
+    </div>
 
     <section id="solutions" class="container">
-        <h2>Meine Softwarelösungen</h2>
+        <h2>Unsere Softwarelösungen</h2>
         <div class="grid-container">
             <div class="card">
-                <i class="fas fa-globe icon"></i>
+                <i class="fas fa-desktop icon"></i>
                 <h3>Web- & ERP-Systeme</h3>
-                <p>Intuitive, browserbasierte Lösungen zur Optimierung Ihrer Geschäftsabläufe und Ressourcenverwaltung.</p>
+                <p>Wir entwickeln maßgeschneiderte, webbasierte Anwendungen, die Ihre Geschäftsprozesse digitalisieren und optimieren – von CRM bis zur kompletten Unternehmensressourcenplanung.</p>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Automatisierung von Workflows</li>
-                    <li><i class="fas fa-check-circle"></i> Zentralisierte Datenverwaltung</li>
-                    <li><i class="fas fa-check-circle"></i> Reporting & Dashboards</li>
+                    <li><i class="fas fa-check-circle"></i> Workflow-Automatisierung</li>
+                    <li><i class="fas fa-check-circle"></i> Zentrale Datenverwaltung</li>
+                    <li><i class="fas fa-check-circle"></i> Benutzerfreundliche Dashboards</li>
                 </ul>
-                <a href="#contact">Lösung anfragen <i class="fas fa-external-link-alt"></i></a>
+                <a href="#contact" class="link-button">Mehr erfahren</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-chart-line icon"></i>
-                <h3>Datenanalyse & BI</h3>
-                <p>Verwandeln Sie Rohdaten in strategische Erkenntnisse durch intelligente Analyse- und Visualisierungstools.</p>
+                <i class="fas fa-database icon"></i>
+                <h3>Datenanalyse & KI</h3>
+                <p>Verwandeln Sie Ihre Daten in strategische Erkenntnisse. Wir implementieren fortschrittliche Analyse- und KI-Lösungen für datenbasierte Entscheidungen und Prognosen.</p>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Automatisierte Datenextraktion</li>
-                    <li><i class="fas fa-check-circle"></i> Interaktive Business Intelligence</li>
-                    <li><i class="fas fa-check-circle"></i> Predictive Analytics</li>
+                    <li><i class="fas fa-check-circle"></i> Automatisierte Datenpipelines</li>
+                    <li><i class="fas fa-check-circle"></i> Business Intelligence Tools</li>
+                    <li><i class="fas fa-check-circle"></i> KI-Modelle & Prognosen</li>
                 </ul>
-                <a href="#contact">Beratungstermin <i class="fas fa-external-link-alt"></i></a>
+                <a href="#contact" class="link-button">Beratung anfragen</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-link icon"></i>
+                <i class="fas fa-puzzle-piece icon"></i>
                 <h3>Systemintegration & APIs</h3>
-                <p>Nahtlose Vernetzung Ihrer Systeme durch robuste Schnittstellen für effizienten Datenaustausch.</p>
+                <p>Schaffen Sie eine nahtlose IT-Landschaft durch die Integration bestehender Systeme. Wir entwickeln robuste APIs, die den Informationsfluss zwischen Anwendungen sicherstellen.</p>
                 <ul>
                     <li><i class="fas fa-check-circle"></i> Anbindung von Drittsystemen</li>
-                    <li><i class="fas fa-check-circle"></i> Entwicklung RESTful APIs</li>
+                    <li><i class="fas fa-check-circle"></i> Sichere Schnittstellen</li>
                     <li><i class="fas fa-check-circle"></i> Datenkonsistenz</li>
                 </ul>
-                <a href="#contact">Mehr erfahren <i class="fas fa-external-link-alt"></i></a>
+                <a href="#contact" class="link-button">Details besprechen</a>
             </div>
 
             <div class="card">
                 <i class="fas fa-robot icon"></i>
                 <h3>Automatisierung & Skripting</h3>
-                <p>Effizienzsteigerung durch die Automatisierung wiederkehrender Aufgaben und Prozesse.</p>
+                <p>Steigern Sie Effizienz und reduzieren Sie manuelle Fehler durch intelligente Automatisierungslösungen. Wir entwickeln Skripte und Bots für wiederkehrende Aufgaben.</p>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Prozessautomatisierung (RPA)</li>
-                    <li><i class="fas fa-check-circle"></i> Datenverarbeitung & Migration</li>
-                    <li><i class="fas fa-check-circle"></i> Automatisierte Berichte</li>
+                    <li><i class="fas fa-check-circle"></i> RPA-Implementierung</li>
+                    <li><i class="fas fa-check-circle"></i> Prozessoptimierung</li>
+                    <li><i class="fas fa-check-circle"></i> Effizienzsteigerung</li>
                 </ul>
-                <a href="#contact">Projekt starten <i class="fas fa-external-link-alt"></i></a>
+                <a href="#contact" class="link-button">Projekt starten</a>
             </div>
             </div>
     </section>
 
     <section id="projects" class="container">
-        <h2>Ausgewählte Projekte</h2>
+        <h2>Ausgewählte Projekte & Erfolgsgeschichten</h2>
         <div class="grid-container">
             <div class="card">
-                <i class="fas fa-laptop-code icon"></i>
-                <h3>Projekt: Kundenportal für KMU</h3>
-                <p>Entwicklung eines sicheren und benutzerfreundlichen Kundenportals zur effizienten Verwaltung von Aufträgen und Kommunikation.</p>
-                <p><strong>Technologien:</strong> React, Node.js, PostgreSQL</p>
-                <a href="#">Details zur Fallstudie <i class="fas fa-long-arrow-alt-right"></i></a>
+                <i class="fas fa-chart-area icon"></i>
+                <h3>Datenportal für den Einzelhandel</h3>
+                <p>Entwicklung eines Dashboards zur Echtzeitanalyse von Verkaufsdaten, Lagerbeständen und Kundenverhalten für eine führende Einzelhandelskette.</p>
+                <p class="small-text"><strong>Technologien:</strong> Python, Power BI, SQL Server</p>
+                <a href="#" class="link-button">Fallstudie (folgt)</a>
             </div>
 
             <div class="card">
-                <i class="fas fa-cogs icon"></i>
-                <h3>Projekt: Automatisierte Fertigungssteuerung</h3>
-                <p>Software zur intelligenten Steuerung von Fertigungsprozessen und Materialflüssen zur Effizienzoptimierung.</p>
-                <p><strong>Technologien:</strong> Python, SPS-Integration, Cloud-Lösungen</p>
-                <a href="#">Projektdetails <i class="fas fa-long-arrow-alt-right"></i></a>
+                <i class="fas fa-mobile-alt icon"></i>
+                <h3>Personalisierte Lern-App</h3>
+                <p>Entwicklung einer mobilen Anwendung für Privatnutzer, die personalisierte Lernpfade und interaktive Übungen basierend auf KI bietet.</p>
+                <p class="small-text"><strong>Technologien:</strong> React Native, Firebase, Machine Learning</p>
+                <a href="#" class="link-button">Demo ansehen (folgt)</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-industry icon"></i>
+                <h3>IoT-Plattform für die Fertigung</h3>
+                <p>Implementierung einer Cloud-basierten IoT-Plattform zur Überwachung und Optimierung von Produktionsanlagen in Echtzeit.</p>
+                <p class="small-text"><strong>Technologien:</strong> AWS IoT, Node.js, TimescaleDB</p>
+                <a href="#" class="link-button">Projektdetails (folgt)</a>
             </div>
             </div>
     </section>
@@ -526,27 +587,42 @@
         <h2>Über RSE Systems</h2>
         <div class="content">
             <div class="text-content">
-                <p>Ich bin ein hochqualifizierter Softwareentwickler und Systemarchitekt mit einer nachweislichen Erfolgsbilanz in der Konzeption und Implementierung komplexer Softwarelösungen. Meine Leidenschaft ist es, Unternehmen dabei zu unterstützen, ihr volles Potenzial durch innovative Technologie zu entfalten.</p>
-                <p>Mein Ansatz ist geprägt von präziser Analyse, agiler Entwicklung und einem starken Fokus auf Qualität und Skalierbarkeit. Ich arbeite eng mit meinen Kunden zusammen, um maßgeschneiderte Lösungen zu liefern, die nicht nur aktuelle Anforderungen erfüllen, sondern auch zukünftiges Wachstum ermöglichen.</p>
-                <p>Egal, ob Sie eine neue Anwendung benötigen, bestehende Systeme optimieren oder Daten in wertvolle Erkenntnisse verwandeln möchten – RSE Systems ist Ihr verlässlicher Partner.</p>
+                <h3>Innovation, Effizienz und Präzision in jeder Zeile Code</h3>
+                <p>Bei **RSE Systems** verstehen wir die Herausforderungen und Chancen der digitalen Welt. Wir sind ein Unternehmen, das sich auf die Entwicklung und Implementierung hochwertiger, maßgeschneiderter Softwarelösungen spezialisiert hat. Unser Ziel ist es, sowohl Privatpersonen als auch Unternehmen mit Technologien zu stärken, die das Leben vereinfachen und Prozesse optimieren.</p>
+                <p>Unsere Arbeitsweise ist transparent und kundenorientiert. Wir legen Wert auf eine tiefgehende Analyse Ihrer Bedürfnisse, eine agile Entwicklung und eine klare Kommunikation in jeder Projektphase. Vertrauen Sie auf unsere Expertise, um Ihre Visionen in funktionierende, zukunftssichere Software zu verwandeln.</p>
             </div>
-            <div class="skills-list">
-                <h3>Meine Kernkompetenzen</h3>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> **Backend-Entwicklung:** Python (Django, Flask), Node.js, Java</li>
-                    <li><i class="fas fa-check-circle"></i> **Frontend-Entwicklung:** React, Angular, Vue.js, HTML5, CSS3</li>
-                    <li><i class="fas fa-check-circle"></i> **Datenbanken:** PostgreSQL, MongoDB, Redis</li>
-                    <li><i class="fas fa-check-circle"></i> **Cloud-Plattformen:** AWS, Azure, Google Cloud</li>
-                    <li><i class="fas fa-check-circle"></i> **DevOps & CI/CD:** Docker, Kubernetes, Jenkins</li>
-                    <li><i class="fas fa-check-circle"></i> **Projektmanagement:** Agile Methodiken (Scrum, Kanban)</li>
-                </ul>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-code"></i>
+                    <p>**Professionelle Entwicklung:** Robuster, skalierbarer Code.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-brain"></i>
+                    <p>**Innovative Konzepte:** Kreative Lösungsansätze.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-users-cog"></i>
+                    <p>**Kundenorientierung:** Ihre Bedürfnisse im Fokus.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <p>**Sicherheit & Qualität:** Höchste Standards.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>**Zukunftssichere Technologien:** Bleiben Sie am Puls der Zeit.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-handshake"></i>
+                    <p>**Zuverlässiger Partner:** Langfristige Zusammenarbeit.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="container">
         <h2>Kontakt aufnehmen</h2>
-        <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em;">Sie möchten Ihr nächstes Projekt besprechen oder eine unverbindliche Beratung erhalten? Ich freue mich auf Ihre Nachricht!</p>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em; color: var(--color-text-light);">Sind Sie bereit, Ihr nächstes Softwareprojekt zu starten oder haben Sie Fragen? Wir freuen uns darauf, von Ihnen zu hören!</p>
         <div class="contact-grid">
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
@@ -561,12 +637,12 @@
             <div class="contact-item">
                 <i class="fab fa-linkedin"></i>
                 <h3>LinkedIn</h3>
-                <p><a href="https://www.linkedin.com/in/ihrprofil" target="_blank">linkedin.com/in/ihrprofil</a></p>
+                <p><a href="https://www.linkedin.com/company/rse-systems" target="_blank">RSE Systems auf LinkedIn</a></p>
             </div>
             <div class="contact-item">
                 <i class="fab fa-github"></i>
                 <h3>GitHub</h3>
-                <p><a href="https://github.com/ihrgithub" target="_blank">github.com/ihrgithub</a></p>
+                <p><a href="https://github.com/rse-systems-org" target="_blank">RSE Systems auf GitHub</a></p>
             </div>
         </div>
     </section>
