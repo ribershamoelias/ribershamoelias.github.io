@@ -477,53 +477,14 @@
             color: var(--color-text-light);
         }
 
-        /* Kontakt Sektion */
-        #contact .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            text-align: center;
+        /* Kontakt Sektion (Wird ausgeblendet, wenn Overlay aktiv) */
+        #contact {
+            display: block; /* Standardmäßig anzeigen */
+        }
+        body.overlay-active #contact {
+            display: none; /* Ausblenden, wenn Overlay aktiv ist */
         }
 
-        #contact .contact-item {
-            background-color: var(--color-white);
-            border-radius: var(--border-radius-md);
-            padding: 35px;
-            box-shadow: 0 5px 20px var(--shadow-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        #contact .contact-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px var(--shadow-medium);
-        }
-
-        #contact .contact-item i {
-            font-size: 4em;
-            color: var(--color-primary);
-            margin-bottom: 25px;
-        }
-
-        #contact .contact-item h3 {
-            font-family: 'Inter', sans-serif;
-            color: var(--color-dark);
-            font-size: 1.7em;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        #contact .contact-item p, #contact .contact-item a {
-            color: var(--color-text-light);
-            text-decoration: none;
-            font-size: 1.1em;
-            word-wrap: break-word;
-        }
-
-        #contact .contact-item a:hover {
-            color: var(--color-primary);
-            text-decoration: underline;
-        }
 
         /* Footer */
         footer {
@@ -657,14 +618,6 @@
                 font-size: 1.3em;
             }
 
-            /* Kontakt Sektion */
-            #contact .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            #contact .contact-item {
-                padding: 30px;
-            }
-
             /* Overlay Anpassung für Mobile */
             .under-construction-overlay h2 {
                 font-size: 2.5em;
@@ -699,8 +652,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             #applications .application-grid,
-            #about .values-grid,
-            #contact .contact-grid {
+            #about .values-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
         }
@@ -724,7 +676,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            pointer-events: all; /* Wichtig, um Interaktionen zu blockieren */
+            pointer-events: none; /* NICHTS auf der Seite anklickbar machen, außer dem Overlay selbst */
         }
 
         .under-construction-overlay .content {
@@ -735,6 +687,7 @@
             max-width: 700px; /* Begrenzte Breite */
             width: 90%;
             border: 1px solid rgba(0, 0, 0, 0.05);
+            pointer-events: all; /* Macht den Inhalt DES OVERLAYS wieder anklickbar */
         }
 
         .under-construction-overlay i {
@@ -778,20 +731,21 @@
             box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
         }
 
-        /* Um sicherzustellen, dass die eigentliche Seite nicht scrollbar ist, wenn das Overlay aktiv ist */
-        body.overlay-active {
+        /* Um sicherzustellen, dass die eigentliche Seite scrollbar ist, wenn das Overlay aktiv ist */
+        /* Diese Regel ist nicht mehr nötig, da body.overlay-active nicht mehr overflow:hidden setzt */
+        /* body.overlay-active {
             overflow: hidden;
-        }
+        } */
 
     </style>
 </head>
-<body class="overlay-active"> <div class="under-construction-overlay">
+<body> <div class="under-construction-overlay">
         <div class="content">
             <i class="fas fa-tools"></i>
             <h2>Wir bauen an Ihrer Zukunft!</h2>
             <p>Unsere Webseite wird derzeit für Sie überarbeitet und optimiert. In Kürze präsentieren wir Ihnen hier innovative Softwarelösungen und detaillierte Einblicke in unsere Projekte.</p>
-            <p>Bleiben Sie dran! Für dringende Anfragen erreichen Sie uns vorab per E-Mail.</p>
-            <a href="mailto:info@rse-systems.com" class="overlay-cta">Kontaktieren Sie uns</a>
+            <p>Bleiben Sie dran! Für dringende Anfragen erreichen Sie uns vorab per E-Mail:</p>
+            <a href="mailto:info@rse-systems.com" class="overlay-cta">info@rse-systems.com</a>
         </div>
     </div>
 
@@ -1036,11 +990,11 @@
     </footer>
 
     <script>
-        // JavaScript für das mobile Navigationsmenü (Hamburger-Menü)
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
             const navLinks = mainNav.querySelectorAll('a');
+            const contactSection = document.getElementById('contact'); // Den Kontaktbereich holen
 
             menuToggle.addEventListener('click', function() {
                 mainNav.classList.toggle('active');
@@ -1052,32 +1006,27 @@
                 });
             });
 
-            // Smooth Scrolling für Anker-Links
+            // Smooth Scrolling ist jetzt wieder aktiv, da das Overlay keine Klicks blockiert
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    // Prüfen, ob das Overlay aktiv ist
-                    if (document.body.classList.contains('overlay-active')) {
-                        return; // Scrollen verhindern, wenn Overlay aktiv
+                    // Verhindere Standard-Scroll-Verhalten nur, wenn es kein Anker-Link ist,
+                    // der auf das Overlay selbst zeigt (was hier nicht der Fall ist)
+                    if (this.getAttribute('href') !== '#') { // Filtert leere hrefs
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
-
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
                 });
             });
 
-            // WICHTIG: Das Overlay muss entfernt werden, wenn die Seite fertig ist
-            // Sie können dies manuell im HTML entfernen oder mit JavaScript steuern.
-            // Zum Beispiel, um es nach 5 Sekunden auszublenden (NUR ZUM TESTEN!):
-            // setTimeout(() => {
-            //     const overlay = document.querySelector('.under-construction-overlay');
-            //     if (overlay) {
-            //         overlay.style.display = 'none';
-            //         document.body.classList.remove('overlay-active');
-            //     }
-            // }, 5000); // Blendet Overlay nach 5 Sekunden aus. NICHT PRODUKTIV VERWENDEN!
+            // WICHTIG:
+            // Wenn die Seite fertig ist, müssen Sie:
+            // 1. Das gesamte <div class="under-construction-overlay">...</div> aus dem HTML entfernen.
+            // 2. Im CSS die Regel für #contact wieder ändern:
+            //    body.overlay-active #contact { display: none; } MUSS ENTFERNT WERDEN.
+            //    #contact { display: block; }
+            // 3. Optional: Die JavaScript-Anpassungen für das Overlay entfernen.
         });
     </script>
 </body>
