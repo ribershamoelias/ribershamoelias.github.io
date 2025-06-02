@@ -3,179 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
+    <title>RSE Systems - Ihre Projekte</title>
     <style>
+        /* Grundlegende Styles für den Körper und die Schrift */
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
+            line-height: 1.6;
             margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
         }
 
-        #game-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Header-Bereich */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
             text-align: center;
         }
 
-        #board {
-            display: grid;
-            grid-template-columns: repeat(3, 100px);
-            grid-template-rows: repeat(3, 100px);
-            gap: 5px;
-            margin-top: 20px;
+        header h1 {
+            margin: 0;
+        }
+
+        /* Navigationsleiste */
+        nav {
+            background: #444;
+            color: #fff;
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Hauptinhaltsbereich */
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        /* Projekt-Karten */
+        .project-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
             margin-bottom: 20px;
-            border: 2px solid #333;
-            width: 315px; /* 3*100px + 2*5px gap + 2*2px border */
-            height: 315px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cell {
-            width: 100px;
-            height: 100px;
-            background-color: #eee;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3em;
-            cursor: pointer;
-            border: 1px solid #ccc;
-        }
-
-        .cell:hover {
-            background-color: #ddd;
-        }
-
-        #message {
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            border: none;
             border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .project-card h3 {
+            color: #555;
+        }
+
+        /* Footer-Bereich */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <div id="game-container">
-        <h1>Tic Tac Toe</h1>
-        <div id="message">Spieler X ist dran</div>
-        <div id="board">
-            <div class="cell" data-cell-index="0"></div>
-            <div class="cell" data-cell-index="1"></div>
-            <div class="cell" data-cell-index="2"></div>
-            <div class="cell" data-cell-index="3"></div>
-            <div class="cell" data-cell-index="4"></div>
-            <div class="cell" data-cell-index="5"></div>
-            <div class="cell" data-cell-index="6"></div>
-            <div class="cell" data-cell-index="7"></div>
-            <div class="cell" data-cell-index="8"></div>
-        </div>
-        <button id="resetButton">Spiel zurücksetzen</button>
+    <header>
+        <h1>RSE Systems</h1>
+        <p>Ihre Projekte und Expertise</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Startseite</a></li>
+            <li><a href="#projects">Projekte</a></li>
+            <li><a href="#about">Über Uns</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="home">
+        <h2>Willkommen bei RSE Systems!</h2>
+        <p>Hier finden Sie eine Übersicht über meine Projekte, Fähigkeiten und wie ich Ihnen helfen kann.</p>
+        <p>Egal ob Softwareentwicklung, Systemintegration oder technische Beratung – ich biete maßgeschneiderte Lösungen für Ihre Anforderungen.</p>
     </div>
 
-    <script>
-        const board = document.getElementById('board');
-        const cells = document.querySelectorAll('.cell');
-        const message = document.getElementById('message');
-        const resetButton = document.getElementById('resetButton');
+    <div class="container" id="projects">
+        <h2>Meine Projekte</h2>
 
-        let currentPlayer = 'X';
-        let gameState = ['', '', '', '', '', '', '', '', '']; // Represents the board state
-        let gameActive = true;
+        <div class="project-card">
+            <h3>Projekt 1: Webbasierte Verwaltungsoberfläche</h3>
+            <p><strong>Beschreibung:</strong> Entwicklung einer intuitiven Webanwendung zur Verwaltung von Kundendaten und Bestellungen für ein mittelständisches Unternehmen.</p>
+            <p><strong>Technologien:</strong> HTML, CSS, JavaScript, Python/Django, PostgreSQL</p>
+            <p><strong>Status:</strong> Abgeschlossen</p>
+            <p><a href="#" target="_blank">Zum Projekt (falls vorhanden)</a></p>
+        </div>
 
-        const winningConditions = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [0, 4, 8],
-            [2, 4, 6]
-        ];
+        <div class="project-card">
+            <h3>Projekt 2: Automatisierungsskripte für Datenanalyse</h3>
+            <p><strong>Beschreibung:</strong> Erstellung von Skripten zur automatisierten Extraktion, Transformation und Analyse von Daten aus verschiedenen Quellen, um datenbasierte Entscheidungen zu unterstützen.</p>
+            <p><strong>Technologien:</strong> Python, Pandas, NumPy, Jupyter Notebooks</p>
+            <p><strong>Status:</strong> In Bearbeitung</p>
+            <p><a href="#" target="_blank">Zum Projekt (falls vorhanden)</a></p>
+        </div>
 
-        function handleCellClick(event) {
-            const clickedCell = event.target;
-            const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+        <div class="project-card">
+            <h3>Projekt 3: Mobile App zur Aufgabenverwaltung</h3>
+            <p><strong>Beschreibung:</strong> Konzeption und Prototypenentwicklung einer mobilen App, die Benutzern hilft, ihre täglichen Aufgaben effizienter zu organisieren.</p>
+            <p><strong>Technologien:</strong> React Native, Firebase</p>
+            <p><strong>Status:</strong> Konzeptphase</p>
+            <p><a href="#" target="_blank">Zum Projekt (falls vorhanden)</a></p>
+        </div>
+        </div>
 
-            if (gameState[clickedCellIndex] !== '' || !gameActive) {
-                return;
-            }
+    <div class="container" id="about">
+        <h2>Über Uns</h2>
+        <p>Ich bin ein erfahrener Systementwickler mit einer Leidenschaft für innovative und effiziente Lösungen. Mein Fokus liegt auf der Entwicklung robuster und skalierbarer Systeme, die den Anforderungen moderner Unternehmen gerecht werden.</p>
+        <p>Zu meinen Kernkompetenzen gehören:</p>
+        <ul>
+            <li>Full-Stack-Webentwicklung</li>
+            <li>Datenbankdesign und -management</li>
+            <li>Automatisierung und Skripting</li>
+            <li>Systemintegration</li>
+            <li>Cloud-Technologien</li>
+        </ul>
+        <p>Ich bin immer auf der Suche nach neuen Herausforderungen und Möglichkeiten, mein Wissen und meine Fähigkeiten einzusetzen.</p>
+    </div>
 
-            gameState[clickedCellIndex] = currentPlayer;
-            clickedCell.textContent = currentPlayer;
-            checkResult();
-        }
+    <div class="container" id="contact">
+        <h2>Kontakt</h2>
+        <p>Sie möchten mehr erfahren oder über ein Projekt sprechen? Kontaktieren Sie mich gerne:</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:info@rse-systems.com">info@rse-systems.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="#" target="_blank">Mein LinkedIn-Profil (Platzhalter)</a></p>
+        <p><strong>GitHub:</strong> <a href="#" target="_blank">Mein GitHub-Profil (Platzhalter)</a></p>
+        </div>
 
-        function checkResult() {
-            let roundWon = false;
-            for (let i = 0; i < winningConditions.length; i++) {
-                const winCondition = winningConditions[i];
-                let a = gameState[winCondition[0]];
-                let b = gameState[winCondition[1]];
-                let c = gameState[winCondition[2]];
-
-                if (a === '' || b === '' || c === '') {
-                    continue;
-                }
-                if (a === b && b === c) {
-                    roundWon = true;
-                    break;
-                }
-            }
-
-            if (roundWon) {
-                message.textContent = `Spieler ${currentPlayer} hat gewonnen!`;
-                gameActive = false;
-                return;
-            }
-
-            let roundDraw = !gameState.includes('');
-            if (roundDraw) {
-                message.textContent = 'Unentschieden!';
-                gameActive = false;
-                return;
-            }
-
-            changePlayer();
-        }
-
-        function changePlayer() {
-            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            message.textContent = `Spieler ${currentPlayer} ist dran`;
-        }
-
-        function resetGame() {
-            currentPlayer = 'X';
-            gameState = ['', '', '', '', '', '', '', '', ''];
-            gameActive = true;
-            message.textContent = 'Spieler X ist dran';
-            cells.forEach(cell => {
-                cell.textContent = '';
-            });
-        }
-
-        cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-        resetButton.addEventListener('click', resetGame);
-    </script>
+    <footer>
+        <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten.</p>
+    </footer>
 </body>
 </html>
