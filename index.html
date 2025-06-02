@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSE Systems – Digitale Exzellenz: Software, Webseiten & Apps (Im Aufbau)</title>
     <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps für Privatpersonen und Unternehmen. Die Webseite befindet sich derzeit im Aufbau.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         /* Basis-Styles */
@@ -494,6 +494,8 @@
             font-size: 0.95em;
             border-top-left-radius: var(--border-radius-lg);
             border-top-right-radius: var(--border-radius-lg);
+            position: relative; /* Für den Game Link im Footer */
+            z-index: 1; /* Sicherstellen, dass der Footer über dem Overlay ist */
         }
         footer p {
             margin: 0;
@@ -617,11 +619,21 @@
             }
 
             /* Overlay Anpassung für Mobile */
+            .under-construction-overlay .overlay-content {
+                padding: 25px 20px; /* Reduziertes Padding für kleine Bildschirme */
+                max-width: 90%; /* Passt sich besser an die Breite an */
+            }
             .under-construction-overlay .overlay-content h2 {
-                font-size: 2.2em;
+                font-size: 2em; /* Kleinere Überschrift auf Mobil */
+                margin-bottom: 12px;
             }
             .under-construction-overlay .overlay-content p {
-                font-size: 1em;
+                font-size: 0.95em; /* Kleinerer Text auf Mobil */
+                margin-bottom: 20px;
+            }
+            .under-construction-overlay .overlay-cta {
+                padding: 10px 20px; /* Kleinerer Button auf Mobil */
+                font-size: 0.9em;
             }
         }
 
@@ -665,8 +677,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.05); /* Sehr transparentes Weiß */
-            /* backdrop-filter: blur(0px); */ /* KEIN Unschärfe-Effekt */
+            background-color: rgba(255, 255, 255, 0.05); /* SEHR transparenter Hintergrund */
             z-index: 9999; /* Ganz nach oben */
             display: flex;
             flex-direction: column;
@@ -674,7 +685,7 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            pointer-events: none; /* Wichtig: Lässt Klicks durch, ABER... */
+            pointer-events: none; /* WICHTIG: Lässt Klicks durch den Haupt-Overlay-Container hindurch! */
         }
 
         .under-construction-overlay::before {
@@ -684,7 +695,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: transparent; /* Startet transparent */
+            background-color: transparent; /* Das ist der unsichtbare Klick-Blocker */
             z-index: -1; /* Liegt unter dem Text-Content, aber über der Hauptseite */
             pointer-events: all; /* Dieser Layer fängt ALLE Klicks ab! */
         }
@@ -746,12 +757,125 @@
             box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);
         }
 
+        /* ==================================== */
+        /* F1 Game Modal Styles */
+        /* ==================================== */
+        .game-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 10000; /* Sit on top of everything */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-width: 600px; /* Max width for the game area */
+            width: 90%; /* Responsive width */
+            text-align: center;
+        }
+
+        .game-close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .game-close-button:hover,
+        .game-close-button:focus {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        #gameCanvas {
+            background-color: #000; /* Schwarzer Hintergrund für Pixel-Look */
+            border: 2px solid var(--color-primary);
+            display: block; /* Remove extra space below canvas */
+            margin: 20px auto 0 auto; /* Center the canvas */
+        }
+
+        .game-info {
+            font-size: 1.1em;
+            color: var(--color-text-dark);
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .game-instructions {
+            font-size: 0.95em;
+            color: var(--color-text-light);
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .game-start-button {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 215, 75, 0.3);
+            margin-top: 15px;
+        }
+
+        .game-start-button:hover {
+            background-color: #2eb848;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 215, 75, 0.4);
+        }
+
+        /* Mobile Anpassungen für das Game Modal */
+        @media (max-width: 768px) {
+            .game-modal-content {
+                padding: 20px;
+                max-width: 95%;
+            }
+            .game-close-button {
+                top: 10px;
+                right: 15px;
+                font-size: 24px;
+            }
+            .game-info, .game-instructions {
+                font-size: 0.9em;
+            }
+            .game-start-button {
+                padding: 10px 25px;
+                font-size: 1em;
+            }
+            #gameCanvas {
+                width: 100%; /* Ensure canvas scales on smaller screens */
+                height: auto;
+            }
+        }
+
     </style>
 </head>
 <body>
     <div class="under-construction-overlay">
         <div class="overlay-content">
-            <i class="fas fa-tools"></i> <h2>Wir bauen an Ihrer Zukunft!</h2>
+            <h2>Wir bauen an Ihrer Zukunft!</h2>
             <p>Unsere Webseite wird derzeit für Sie überarbeitet und mit spannenden neuen Inhalten und Projekten erweitert.</p>
             <p>In Kürze präsentieren wir Ihnen hier innovative Softwarelösungen.</p>
             <p>Für dringende Anfragen erreichen Sie uns in der Zwischenzeit direkt per E-Mail:</p>
@@ -867,7 +991,6 @@
                 <i class="fas fa-industry"></i>
                 <h3>Fertigung & Logistik</h3>
                 <p>Produktionsplanung, IoT-Anwendungen, Supply-Chain-Optimierung.</p>
-            </small>
             </div>
             <div class="application-item">
                 <i class="fas fa-home"></i>
@@ -998,7 +1121,19 @@
 
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
+        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Spiele F1-Rennen!</a></p>
     </footer>
+
+    <div id="f1GameModal" class="game-modal">
+        <div class="game-modal-content">
+            <span class="game-close-button">&times;</span>
+            <h2>F1-Pixel-Rennen</h2>
+            <p class="game-instructions">Drücke **Leertaste** oder klicke/tippe, um zu springen und Hindernissen auszuweichen!</p>
+            <canvas id="gameCanvas" width="500" height="200"></canvas>
+            <p class="game-info">Punkte: <span id="score">0</span> | Highscore: <span id="highScore">0</span></p>
+            <button id="startGameButton" class="game-start-button">Spiel starten</button>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1028,11 +1163,209 @@
                 });
             });
 
-            // WICHTIG:
-            // Wenn die Seite fertig ist, müssen Sie:
-            // 1. Das gesamte <div class="under-construction-overlay">...</div> KOMPLETT aus dem HTML entfernen.
-            // 2. Im CSS die Regel für #contact wieder ändern:
-            //    #contact { display: block; }  (oder die display-Regel für #contact komplett entfernen)
+            /* ==================================== */
+            /* F1 Game Logic */
+            /* ==================================== */
+            const canvas = document.getElementById('gameCanvas');
+            const ctx = canvas.getContext('2d');
+            const scoreDisplay = document.getElementById('score');
+            const highScoreDisplay = document.getElementById('highScore');
+            const startGameButton = document.getElementById('startGameButton');
+            const gameModal = document.getElementById('f1GameModal');
+            const openGameModalBtn = document.getElementById('openGameModal');
+            const closeGameButton = document.querySelector('.game-close-button');
+
+            const player = {
+                x: 50,
+                y: canvas.height - 30, // Starting position above ground
+                width: 30,
+                height: 20,
+                color: '#FF0000', // Red F1 car
+                velocityY: 0,
+                gravity: 0.6,
+                isJumping: false,
+                draw: function() {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                    // Simple pixel-like car body
+                    ctx.fillRect(this.x + 5, this.y + this.height, 5, 5); // back wheel
+                    ctx.fillRect(this.x + this.width - 10, this.y + this.height, 5, 5); // front wheel
+                    ctx.fillStyle = '#FFFFFF'; // White cockpit
+                    ctx.fillRect(this.x + 10, this.y - 5, 10, 5);
+                },
+                jump: function() {
+                    if (!this.isJumping) {
+                        this.velocityY = -10; // Jump strength
+                        this.isJumping = true;
+                    }
+                },
+                update: function() {
+                    this.velocityY += this.gravity;
+                    this.y += this.velocityY;
+
+                    if (this.y > canvas.height - this.height) {
+                        this.y = canvas.height - this.height;
+                        this.velocityY = 0;
+                        this.isJumping = false;
+                    }
+                }
+            };
+
+            let obstacles = [];
+            let score = 0;
+            let gameSpeed = 5; // Initial game speed
+            let gameOver = false;
+            let frameCount = 0;
+            let gameInterval;
+            const obstacleSpawnRate = 120; // How many frames between new obstacles
+
+            // Load high score from localStorage
+            let highScore = localStorage.getItem('f1Highscore') || 0;
+            highScoreDisplay.textContent = highScore;
+
+            function Obstacle() {
+                this.x = canvas.width;
+                this.y = canvas.height - 30; // Obstacles on the ground
+                this.width = 20 + Math.random() * 20; // Random width
+                this.height = 20 + Math.random() * 20; // Random height
+                this.color = '#32d74b'; // Green obstacle
+                this.draw = function() {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                };
+                this.update = function() {
+                    this.x -= gameSpeed;
+                };
+            }
+
+            function checkCollision(player, obstacle) {
+                return player.x < obstacle.x + obstacle.width &&
+                       player.x + player.width > obstacle.x &&
+                       player.y < obstacle.y + obstacle.height &&
+                       player.y + player.height > obstacle.y;
+            }
+
+            function gameLoop() {
+                if (gameOver) return;
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+                // Draw ground
+                ctx.fillStyle = '#333333'; // Dark grey ground
+                ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+
+                player.update();
+                player.draw();
+
+                // Spawn obstacles
+                frameCount++;
+                if (frameCount % obstacleSpawnRate === 0) {
+                    obstacles.push(new Obstacle());
+                    // Slightly increase game speed over time
+                    if (gameSpeed < 10) { // Max speed
+                        gameSpeed += 0.1;
+                    }
+                }
+
+                // Update and draw obstacles
+                for (let i = 0; i < obstacles.length; i++) {
+                    obstacles[i].update();
+                    obstacles[i].draw();
+
+                    // Check for collision
+                    if (checkCollision(player, obstacles[i])) {
+                        gameOver = true;
+                        clearInterval(gameInterval);
+                        ctx.fillStyle = 'white';
+                        ctx.font = '30px Inter';
+                        ctx.fillText('GAME OVER!', canvas.width / 2 - 80, canvas.height / 2);
+                        startGameButton.style.display = 'block'; // Show start button again
+                        if (score > highScore) {
+                            highScore = score;
+                            localStorage.setItem('f1Highscore', highScore);
+                            highScoreDisplay.textContent = highScore;
+                            ctx.font = '20px Inter';
+                            ctx.fillText('Neuer Highscore!', canvas.width / 2 - 70, canvas.height / 2 + 30);
+                        }
+                    }
+
+                    // Remove off-screen obstacles and increase score
+                    if (obstacles[i].x + obstacles[i].width < 0) {
+                        obstacles.splice(i, 1);
+                        score++;
+                        scoreDisplay.textContent = score;
+                        i--; // Adjust index after splice
+                    }
+                }
+            }
+
+            function startGame() {
+                player.y = canvas.height - player.height; // Reset player position
+                player.velocityY = 0;
+                player.isJumping = false;
+                obstacles = [];
+                score = 0;
+                scoreDisplay.textContent = score;
+                gameSpeed = 5; // Reset speed
+                gameOver = false;
+                frameCount = 0;
+                startGameButton.style.display = 'none'; // Hide start button
+                
+                clearInterval(gameInterval); // Clear any existing interval
+                gameInterval = setInterval(gameLoop, 1000 / 60); // 60 FPS
+            }
+
+            // Event Listeners for player jump
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space' && !gameOver && gameModal.style.display === 'flex') {
+                    player.jump();
+                }
+            });
+
+            canvas.addEventListener('mousedown', function(event) {
+                if (!gameOver && gameModal.style.display === 'flex') {
+                    player.jump();
+                }
+            });
+            canvas.addEventListener('touchstart', function(event) {
+                if (!gameOver && gameModal.style.display === 'flex') {
+                    player.jump();
+                }
+            });
+
+
+            // Modal handling
+            openGameModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                gameModal.style.display = 'flex';
+                // Reset and prepare game when modal opens
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                player.draw();
+                scoreDisplay.textContent = '0';
+                highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
+                startGameButton.style.display = 'block'; // Ensure button is visible
+                gameOver = true; // Set game over initially to wait for start button click
+                clearInterval(gameInterval); // Stop any running game
+            });
+
+            closeGameButton.addEventListener('click', function() {
+                gameModal.style.display = 'none';
+                clearInterval(gameInterval); // Stop game when closing modal
+            });
+
+            // Close modal if clicked outside of it
+            gameModal.addEventListener('click', function(event) {
+                if (event.target === gameModal) {
+                    gameModal.style.display = 'none';
+                    clearInterval(gameInterval); // Stop game when closing modal
+                }
+            });
+
+            startGameButton.addEventListener('click', startGame);
+
+            // Initial draw for player on canvas when page loads
+            player.draw();
+            highScoreDisplay.textContent = localStorage.getItem('f1Highscore') || '0';
         });
     </script>
 </body>
