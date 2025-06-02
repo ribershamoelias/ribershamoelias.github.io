@@ -479,10 +479,8 @@
 
         /* Kontakt Sektion (Wird ausgeblendet, wenn Overlay aktiv) */
         #contact {
-            display: block; /* Standardmäßig anzeigen */
-        }
-        body.overlay-active #contact {
-            display: none; /* Ausblenden, wenn Overlay aktiv ist */
+            /* Standardmäßig ausgeblendet, wenn der Layer aktiv ist */
+            display: none;
         }
 
 
@@ -619,11 +617,11 @@
             }
 
             /* Overlay Anpassung für Mobile */
-            .under-construction-overlay h2 {
-                font-size: 2.5em;
+            .under-construction-overlay .overlay-content h2 {
+                font-size: 2.2em;
             }
-            .under-construction-overlay p {
-                font-size: 1.1em;
+            .under-construction-overlay .overlay-content p {
+                font-size: 1em;
             }
         }
 
@@ -659,7 +657,7 @@
 
 
         /* ==================================== */
-        /* Under Construction Overlay Styles */
+        /* Under Construction Overlay Styles (Dezent und interaktionsblockierend) */
         /* ==================================== */
         .under-construction-overlay {
             position: fixed; /* Fixiert über allem */
@@ -667,8 +665,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.85); /* Halbdurchsichtiger weißer Hintergrund */
-            backdrop-filter: blur(8px); /* Leichter Unschärfe-Effekt */
+            background-color: rgba(255, 255, 255, 0.05); /* Sehr transparentes Weiß */
+            /* backdrop-filter: blur(0px); */ /* KEIN Unschärfe-Effekt */
             z-index: 9999; /* Ganz nach oben */
             display: flex;
             flex-direction: column;
@@ -676,75 +674,87 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            pointer-events: none; /* NICHTS auf der Seite anklickbar machen, außer dem Overlay selbst */
+            pointer-events: none; /* Wichtig: Lässt Klicks durch, ABER... */
         }
 
-        .under-construction-overlay .content {
+        .under-construction-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent; /* Startet transparent */
+            z-index: -1; /* Liegt unter dem Text-Content, aber über der Hauptseite */
+            pointer-events: all; /* Dieser Layer fängt ALLE Klicks ab! */
+        }
+
+        .under-construction-overlay .overlay-content {
+            /* Der eigentliche Inhalt des Overlays, der die Nachricht enthält */
             background-color: rgba(255, 255, 255, 0.95); /* Helleres Feld in der Mitte */
-            border-radius: var(--border-radius-lg);
-            padding: 50px 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            max-width: 700px; /* Begrenzte Breite */
+            border-radius: var(--border-radius-md); /* Etwas weniger abgerundet */
+            padding: 30px 40px; /* Weniger Padding */
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); /* Weniger starker Schatten */
+            max-width: 550px; /* Etwas schmaler */
             width: 90%;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.08); /* Leichter Rand */
             pointer-events: all; /* Macht den Inhalt DES OVERLAYS wieder anklickbar */
+            opacity: 0.98; /* Fast voll sichtbar, aber nicht ganz 1 */
         }
 
-        .under-construction-overlay i {
-            font-size: 6em; /* Großes Icon */
-            color: var(--color-primary);
-            margin-bottom: 30px;
+        /* Verstecke das Icon, wenn es nicht gewünscht ist */
+        .under-construction-overlay .overlay-content i {
+            display: none; /* Icon im Overlay ausblenden für dezenteren Look */
         }
 
-        .under-construction-overlay h2 {
+        .under-construction-overlay .overlay-content h2 {
             font-family: 'Inter', sans-serif;
-            font-size: 3.5em; /* Großer Titel */
+            font-size: 2.8em; /* Etwas kleinerer Titel */
             font-weight: 700;
             color: var(--color-dark);
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -1px;
+            margin-bottom: 15px; /* Weniger Abstand */
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            padding-bottom: 0; /* Keine Linie mehr unter dem Titel hier */
+        }
+        .under-construction-overlay .overlay-content h2::after {
+            display: none; /* Linie unter dem Titel hier entfernen */
         }
 
-        .under-construction-overlay p {
-            font-size: 1.3em; /* Größerer Text */
+        .under-construction-overlay .overlay-content p {
+            font-size: 1.1em; /* Etwas kleinerer Text */
             color: var(--color-text-light);
-            margin-bottom: 30px;
+            margin-bottom: 25px; /* Weniger Abstand */
         }
 
         .under-construction-overlay .overlay-cta {
             background-color: var(--color-primary);
             color: var(--color-white);
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 12px 25px; /* Kleinerer Button */
+            border-radius: 40px; /* Etwas kleinerer Radius */
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 1em; /* Kleinere Schriftgröße */
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-            display: inline-block; /* Für padding und transform */
+            box-shadow: 0 3px 10px rgba(0, 122, 255, 0.25); /* Weniger Schatten */
+            display: inline-block;
         }
 
         .under-construction-overlay .overlay-cta:hover {
             background-color: var(--color-secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+            transform: translateY(-2px); /* Weniger starker Hover-Effekt */
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);
         }
-
-        /* Um sicherzustellen, dass die eigentliche Seite scrollbar ist, wenn das Overlay aktiv ist */
-        /* Diese Regel ist nicht mehr nötig, da body.overlay-active nicht mehr overflow:hidden setzt */
-        /* body.overlay-active {
-            overflow: hidden;
-        } */
 
     </style>
 </head>
-<body> <div class="under-construction-overlay">
-        <div class="content">
-            <i class="fas fa-tools"></i>
-            <h2>Wir bauen an Ihrer Zukunft!</h2>
-            <p>Unsere Webseite wird derzeit für Sie überarbeitet und optimiert. In Kürze präsentieren wir Ihnen hier innovative Softwarelösungen und detaillierte Einblicke in unsere Projekte.</p>
-            <p>Bleiben Sie dran! Für dringende Anfragen erreichen Sie uns vorab per E-Mail:</p>
+<body>
+    <div class="under-construction-overlay">
+        <div class="overlay-content">
+            <i class="fas fa-tools"></i> <h2>Wir bauen an Ihrer Zukunft!</h2>
+            <p>Unsere Webseite wird derzeit für Sie überarbeitet und mit spannenden neuen Inhalten und Projekten erweitert.</p>
+            <p>In Kürze präsentieren wir Ihnen hier innovative Softwarelösungen.</p>
+            <p>Für dringende Anfragen erreichen Sie uns in der Zwischenzeit direkt per E-Mail:</p>
             <a href="mailto:info@rse-systems.com" class="overlay-cta">info@rse-systems.com</a>
         </div>
     </div>
@@ -857,6 +867,7 @@
                 <i class="fas fa-industry"></i>
                 <h3>Fertigung & Logistik</h3>
                 <p>Produktionsplanung, IoT-Anwendungen, Supply-Chain-Optimierung.</p>
+            </small>
             </div>
             <div class="application-item">
                 <i class="fas fa-home"></i>
@@ -994,7 +1005,6 @@
             const menuToggle = document.getElementById('menu-toggle');
             const mainNav = document.getElementById('main-nav');
             const navLinks = mainNav.querySelectorAll('a');
-            const contactSection = document.getElementById('contact'); // Den Kontaktbereich holen
 
             menuToggle.addEventListener('click', function() {
                 mainNav.classList.toggle('active');
@@ -1006,12 +1016,10 @@
                 });
             });
 
-            // Smooth Scrolling ist jetzt wieder aktiv, da das Overlay keine Klicks blockiert
+            // Smooth Scrolling bleibt aktiv und wird durch den Overlay-Stil nicht blockiert
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    // Verhindere Standard-Scroll-Verhalten nur, wenn es kein Anker-Link ist,
-                    // der auf das Overlay selbst zeigt (was hier nicht der Fall ist)
-                    if (this.getAttribute('href') !== '#') { // Filtert leere hrefs
+                    if (this.getAttribute('href') !== '#') {
                         e.preventDefault();
                         document.querySelector(this.getAttribute('href')).scrollIntoView({
                             behavior: 'smooth'
@@ -1022,11 +1030,9 @@
 
             // WICHTIG:
             // Wenn die Seite fertig ist, müssen Sie:
-            // 1. Das gesamte <div class="under-construction-overlay">...</div> aus dem HTML entfernen.
+            // 1. Das gesamte <div class="under-construction-overlay">...</div> KOMPLETT aus dem HTML entfernen.
             // 2. Im CSS die Regel für #contact wieder ändern:
-            //    body.overlay-active #contact { display: none; } MUSS ENTFERNT WERDEN.
-            //    #contact { display: block; }
-            // 3. Optional: Die JavaScript-Anpassungen für das Overlay entfernen.
+            //    #contact { display: block; }  (oder die display-Regel für #contact komplett entfernen)
         });
     </script>
 </body>
