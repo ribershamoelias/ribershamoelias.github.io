@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSE Systems – Digitale Exzellenz: Software, Webseiten & Apps</title>
-    <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps für Privatpersonen und Unternehmen. Entdecken Sie unsere Expertise in Webentwicklung, App-Entwicklung und IT-Beratung.">
+    <title>RSE Systems – Digitale Exzellenz: Software, Webseiten & Apps (Im Aufbau)</title>
+    <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps für Privatpersonen und Unternehmen. Die Webseite befindet sich derzeit im Aufbau.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
         /* Basis-Styles */
         :root {
@@ -481,9 +479,8 @@
 
         /* Kontakt Sektion (Wird ausgeblendet, wenn Overlay aktiv) */
         #contact {
-             /* Standardmäßig ausgeblendet, wenn der Layer aktiv ist */
-             /* Wird durch JS gesteuert, damit der Overlay zuerst erscheint */
-            display: block; /* Diesen Teil werde ich aktivieren, da der Overlay ausgeblendet wird */
+            /* Standardmäßig ausgeblendet, wenn der Layer aktiv ist */
+            /* display: none;  // Diese Regel kann entfernt werden, wenn das Overlay die Interaktion blockiert. */
         }
 
 
@@ -535,10 +532,10 @@
             .logo i {
                 font-size: 1.1em;
             }
-            /* nav {
+            nav {
                 top: 75px;
                 padding: 25px 0;
-            } */ /* Diese Regeln sind für eine ausklappbare Nav, die aktuell noch fehlt */
+            }
             nav ul li {
                 margin: 18px 0;
             }
@@ -674,26 +671,21 @@
         /* ==================================== */
         /* Under Construction Overlay Styles (Dezent und interaktionsblockierend) */
         /* ==================================== */
-        /* Das Overlay wird standardmäßig NICHT mehr angezeigt, sondern kann bei Bedarf per JS aktiviert werden */
         .under-construction-overlay {
-            display: none; /* WICHTIG: Overlay standardmäßig ausblenden */
-            position: fixed;
+            position: fixed; /* Fixiert über allem */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.05);
-            z-index: 9999;
+            background-color: rgba(255, 255, 255, 0.05); /* SEHR transparenter Hintergrund */
+            z-index: 9999; /* Ganz nach oben */
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 20px;
-            pointer-events: none;
-        }
-
-        .under-construction-overlay.active {
-            display: flex; /* Aktiviert das Overlay bei Bedarf */
+            pointer-events: none; /* WICHTIG: Lässt Klicks durch den Haupt-Overlay-Container hindurch! */
         }
 
         .under-construction-overlay::before {
@@ -703,68 +695,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: transparent;
-            z-index: -1;
-            pointer-events: all;
+            background-color: transparent; /* Das ist der unsichtbare Klick-Blocker */
+            z-index: -1; /* Liegt unter dem Text-Content, aber über der Hauptseite */
+            pointer-events: all; /* Dieser Layer fängt ALLE Klicks ab! */
         }
 
         .under-construction-overlay .overlay-content {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: var(--border-radius-md);
-            padding: 30px 40px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            max-width: 550px;
+            /* Der eigentliche Inhalt des Overlays, der die Nachricht enthält */
+            background-color: rgba(255, 255, 255, 0.95); /* Helleres Feld in der Mitte */
+            border-radius: var(--border-radius-md); /* Etwas weniger abgerundet */
+            padding: 30px 40px; /* Weniger Padding */
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); /* Weniger starker Schatten */
+            max-width: 550px; /* Etwas schmaler */
             width: 90%;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            pointer-events: all;
-            opacity: 0.98;
+            border: 1px solid rgba(0, 0, 0, 0.08); /* Leichter Rand */
+            pointer-events: all; /* Macht den Inhalt DES OVERLAYS wieder anklickbar */
+            opacity: 0.98; /* Fast voll sichtbar, aber nicht ganz 1 */
         }
 
+        /* Verstecke das Icon, wenn es nicht gewünscht ist */
         .under-construction-overlay .overlay-content i {
-            display: none;
+            display: none; /* Icon im Overlay ausblenden für dezenteren Look */
         }
 
         .under-construction-overlay .overlay-content h2 {
             font-family: 'Inter', sans-serif;
-            font-size: 2.8em;
+            font-size: 2.8em; /* Etwas kleinerer Titel */
             font-weight: 700;
             color: var(--color-dark);
-            margin-bottom: 15px;
+            margin-bottom: 15px; /* Weniger Abstand */
             line-height: 1.2;
             letter-spacing: -0.5px;
-            padding-bottom: 0;
+            padding-bottom: 0; /* Keine Linie mehr unter dem Titel hier */
         }
         .under-construction-overlay .overlay-content h2::after {
-            display: none;
+            display: none; /* Linie unter dem Titel hier entfernen */
         }
 
         .under-construction-overlay .overlay-content p {
-            font-size: 1.1em;
+            font-size: 1.1em; /* Etwas kleinerer Text */
             color: var(--color-text-light);
-            margin-bottom: 25px;
+            margin-bottom: 25px; /* Weniger Abstand */
         }
 
         .under-construction-overlay .overlay-cta {
             background-color: var(--color-primary);
             color: var(--color-white);
-            padding: 12px 25px;
-            border-radius: 40px;
+            padding: 12px 25px; /* Kleinerer Button */
+            border-radius: 40px; /* Etwas kleinerer Radius */
             text-decoration: none;
             font-weight: 600;
-            font-size: 1em;
+            font-size: 1em; /* Kleinere Schriftgröße */
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 122, 255, 0.25);
+            box-shadow: 0 3px 10px rgba(0, 122, 255, 0.25); /* Weniger Schatten */
             display: inline-block;
         }
 
         .under-construction-overlay .overlay-cta:hover {
             background-color: var(--color-secondary);
-            transform: translateY(-2px);
+            transform: translateY(-2px); /* Weniger starker Hover-Effekt */
             box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);
         }
 
         /* ==================================== */
-        /* Game Modal Styles (Shared with previous F1 game, but content will change) */
+        /* Game Modal Styles (Tic Tac Toe Specific) */
         /* ==================================== */
         .game-modal {
             display: none; /* Hidden by default */
@@ -778,24 +772,39 @@
             background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .game-modal.active { /* Hinzugefügt/Angepasst für die Anzeige mit Transition */
+            display: flex;
+            opacity: 1;
         }
 
+
         .game-modal-content {
-            background-color: #fefefe;
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-light-gray) 100%);
             margin: auto;
-            padding: 30px;
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            padding: 35px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
             position: relative;
             max-width: 500px; /* Max width for the game area */
             width: 90%; /* Responsive width */
             text-align: center;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .game-modal.active .game-modal-content {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .game-close-button {
-            color: #aaa;
+            color: var(--color-text-light);
             position: absolute;
-            top: 15px;
+            top: 20px;
             right: 25px;
             font-size: 28px;
             font-weight: bold;
@@ -810,43 +819,72 @@
         }
 
         .game-title {
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: var(--color-dark);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
+        .game-mode-selection {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .game-mode-selection button {
+            background-color: var(--color-light-gray);
+            color: var(--color-text-dark);
+            border: 2px solid var(--color-text-light);
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .game-mode-selection button:hover {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.2);
+        }
+
+        .game-mode-selection button.selected {
+            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-white);
+            border-color: var(--color-primary);
+            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .game-mode-selection button.selected:hover {
+            background: linear-gradient(45deg, var(--color-secondary), var(--color-primary)); /* subtle hover for selected */
+        }
+
+
         .game-status-message {
-            font-size: 1.2em;
-            color: var(--color-accent);
-            font-weight: bold;
-            margin-bottom: 20px;
+            font-size: 1.3em;
+            color: var(--color-dark);
+            font-weight: 600;
+            margin-bottom: 15px;
             min-height: 1.5em; /* Prevent layout shift when message changes */
         }
 
-        .game-info {
-            font-size: 1.1em;
-            color: var(--color-text-dark);
-            margin-top: 15px;
-            font-weight: 500;
-        }
-
-        .game-instructions {
-            font-size: 0.95em;
-            color: var(--color-text-light);
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* Tic Tac Toe Board Specific Styles */
         #ticTacToeBoard {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(3, 1fr);
             width: 300px; /* Fixed width for the board */
             height: 300px; /* Fixed height for the board */
-            margin: 20px auto;
-            border: 4px solid var(--color-primary);
-            background-color: #eee;
+            margin: 25px auto;
+            border: 5px solid var(--color-primary);
+            background-color: var(--color-white);
+            border-radius: var(--border-radius-md);
+            overflow: hidden; /* Ensures rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .cell {
@@ -855,234 +893,151 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3em;
+            font-size: 3.5em; /* Larger emojis */
             font-weight: 700;
-            color: var(--color-dark);
-            border: 2px solid var(--color-text-light);
+            color: var(--color-dark); /* Default color, overwritten by .x/.o */
+            border: 1px solid var(--color-light-gray); /* Subtle cell borders */
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            user-select: none; /* Prevent text selection */
         }
 
+        .cell:nth-child(3n) { border-right: none; } /* Remove right border for last column */
+        .cell:nth-child(n+7) { border-bottom: none; } /* Remove bottom border for last row */
+
         .cell:hover {
-            background-color: #ddd;
+            background-color: var(--color-light-gray);
+            transform: scale(1.02); /* Slight scale on hover */
         }
 
         .cell.x {
             color: var(--color-primary); /* Blue for Player X (Car) */
+            background-color: rgba(0, 122, 255, 0.05); /* Very light blue background */
         }
 
         .cell.o {
             color: var(--color-accent); /* Green for Player O (Tyre) */
+            background-color: rgba(50, 215, 75, 0.05); /* Very light green background */
         }
 
-        /* Game Mode Selection */
-        .game-mode-selection {
-            margin-top: 20px;
-            margin-bottom: 20px;
+        /* Styles for the F1 Emojis in the board cells */
+        .cell:not(.x):not(.o) {
+            /* Ensures no default color is applied before a move */
+            color: transparent;
         }
 
-        .game-mode-selection button {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            border-radius: var(--border-radius-md);
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .game-mode-selection button:hover {
-            background-color: var(--color-secondary);
-            transform: translateY(-2px);
-        }
-
-        .game-mode-selection button.selected {
-            background-color: var(--color-accent);
-        }
 
         #resetGameBtn {
-            background-color: #dc3545; /* Red for reset */
-            color: var(--color-white);
-            border: none;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: var(--border-radius-md);
+            background-color: #f0f0f0; /* Light gray for reset */
+            color: var(--color-text-dark);
+            border: 2px solid var(--color-text-light);
+            padding: 12px 25px;
+            margin-top: 25px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.05em;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         #resetGameBtn:hover {
-            background-color: #c82333;
+            background-color: #dc3545; /* Red for reset on hover */
+            color: var(--color-white);
+            border-color: #dc3545;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.2);
         }
+
+        .game-info {
+            font-size: 1.1em;
+            color: var(--color-text-dark);
+            margin-top: 25px;
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px; /* Space between player scores */
+        }
+        .game-info span {
+            font-weight: 700;
+            color: var(--color-dark);
+            font-size: 1.2em; /* Larger score numbers */
+        }
+        /* Style for the F1 car and tire emojis in the score text */
+        .game-info .player-icon {
+            font-size: 1.3em;
+            margin-right: 5px;
+        }
+        .game-info .player-x-icon {
+            color: var(--color-primary);
+        }
+        .game-info .player-o-icon {
+            color: var(--color-accent);
+        }
+
+
+        #f1EasterEggMessage {
+            font-size: 1em;
+            color: var(--color-text-light);
+            margin-top: 15px;
+            min-height: 1.2em; /* Ensure consistent spacing */
+            font-style: italic;
+        }
+
 
         /* Mobile Anpassungen für das Game Modal */
         @media (max-width: 768px) {
             .game-modal-content {
-                padding: 20px;
+                padding: 25px;
                 max-width: 95%;
             }
             .game-close-button {
-                top: 10px;
-                right: 15px;
-                font-size: 24px;
+                top: 15px;
+                right: 20px;
+                font-size: 26px;
             }
             .game-title {
-                font-size: 2em;
+                font-size: 2.2em;
             }
-            .game-status-message, .game-info, .game-instructions {
-                font-size: 0.9em;
-            }
-            #ticTacToeBoard {
-                width: 250px;
-                height: 250px;
-            }
-            .cell {
-                font-size: 2.5em;
+            .game-mode-selection {
+                flex-direction: column; /* Stack buttons on small screens */
+                gap: 10px;
             }
             .game-mode-selection button {
-                padding: 8px 15px;
-                font-size: 0.9em;
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .game-status-message {
+                font-size: 1.1em;
+            }
+            #ticTacToeBoard {
+                width: 260px; /* Slightly smaller board */
+                height: 260px;
+                margin: 20px auto;
+            }
+            .cell {
+                font-size: 3em; /* Slightly smaller emojis */
             }
             #resetGameBtn {
-                padding: 8px 15px;
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            .game-info {
+                font-size: 1em;
+                gap: 10px;
+            }
+            .game-info span {
+                font-size: 1.1em;
+            }
+            #f1EasterEggMessage {
                 font-size: 0.9em;
             }
         }
 
-        /* ==================================== */
-        /* EIGENES OVERLAY STYLES (overlay.css Inhalt hierher verschoben für Einfachheit) */
-        /* ==================================== */
-        .overlay {
-            display: none; /* Standardmäßig versteckt */
-            position: fixed; /* Über allem fixiert */
-            z-index: 10001; /* Höher als andere Elemente, auch das game-modal */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dunkler, halbtransparenter Hintergrund */
-            display: flex; /* Flexbox für Zentrierung */
-            justify-content: center;
-            align-items: center;
-            opacity: 0; /* Für den Fade-Effekt */
-            visibility: hidden; /* Für die Performance */
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .overlay-content {
-            background-color: var(--color-white); /* Heller Hintergrund für den Inhalt */
-            padding: 40px;
-            border-radius: var(--border-radius-lg); /* Abgerundete Ecken */
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Dezenter Schatten */
-            max-width: 600px; /* Maximale Breite */
-            width: 90%; /* Responsive Breite */
-            text-align: center;
-            position: relative; /* Für den Schließen-Button */
-            transform: translateY(-20px); /* Für den Slide-In Effekt */
-            transition: transform 0.3s ease;
-        }
-
-        .overlay.active .overlay-content {
-            transform: translateY(0); /* Zurück auf die normale Position */
-        }
-
-        .overlay-content .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            color: #aaa;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .overlay-content .close-btn:hover,
-        .overlay-content .close-btn:focus {
-            color: var(--color-primary);
-        }
-
-        .overlay-content h2 {
-            font-size: 2.5em; /* Größere Überschrift */
-            color: var(--color-dark);
-            margin-bottom: 20px;
-            letter-spacing: -0.5px;
-            padding-bottom: 0; /* Überschreibt das ::after Element der allgemeinen h2 */
-        }
-        .overlay-content h2::after { /* Entfernt den Unterstrich von der allgemeinen h2 */
-            display: none;
-        }
-
-
-        .overlay-content p {
-            font-size: 1.1em;
-            color: var(--color-text-dark);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .overlay-content .buttons {
-            margin-top: 20px;
-        }
-
-        .overlay-content .action-btn {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            margin: 0 10px;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 122, 255, 0.2);
-        }
-
-        .overlay-content .action-btn:hover {
-            background-color: var(--color-secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
-        }
-
-        /* Responsivität für das Overlay */
-        @media (max-width: 768px) {
-            .overlay-content {
-                padding: 30px 20px;
-                width: 95%;
-            }
-            .overlay-content h2 {
-                font-size: 2em;
-            }
-            .overlay-content p {
-                font-size: 1em;
-                margin-bottom: 20px;
-            }
-            .overlay-content .action-btn {
-                padding: 12px 25px;
-                font-size: 1em;
-                margin: 0 5px;
-            }
-            .overlay-content .close-btn {
-                font-size: 24px;
-                top: 15px;
-                right: 15px;
-            }
-        }
     </style>
-    </head>
+</head>
 <body>
-    <div class="under-construction-overlay" id="under-construction-overlay">
+    <div class="under-construction-overlay">
         <div class="overlay-content">
             <h2>Wir bauen an Ihrer Zukunft!</h2>
             <p>Unsere Webseite wird derzeit für Sie überarbeitet und mit spannenden neuen Inhalten und Projekten erweitert.</p>
@@ -1115,442 +1070,613 @@
 
     <div class="hero" id="home">
         <h1>Digitale Exzellenz: Ihre Vision, unsere Software.</h1>
-        <p>RSE Systems ist Ihr Partner für maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps. Wir transformieren Ihre Ideen in digitale Realität.</p>
-        <a href="#contact" class="cta-button">Jetzt anfragen</a>
-        </div>
-
-    <div class="container">
-        <section id="solutions">
-            <h2>Unsere Lösungen</h2>
-            <button onclick="window.openOverlay()" class="link-button" style="margin-bottom: 40px;">Overlay öffnen</button>
-
-            <div class="grid-container">
-                <div class="card">
-                    <div class="icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Kundenspezifische Software</h3>
-                    <p>Entwicklung maßgeschneiderter Softwarelösungen, die exakt auf Ihre Geschäftsprozesse und Anforderungen zugeschnitten sind.</p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Individuelle Entwicklung</li>
-                        <li><i class="fas fa-check-circle"></i> Skalierbare Architekturen</li>
-                        <li><i class="fas fa-check-circle"></i> Effizienzsteigerung</li>
-                    </ul>
-                    <a href="#" class="link-button">Mehr erfahren</a>
-                </div>
-                <div class="card">
-                    <div class="icon"><i class="fas fa-globe"></i></div>
-                    <h3>Webentwicklung</h3>
-                    <p>Von responsiven Unternehmenswebsites bis hin zu komplexen Webanwendungen – wir realisieren Ihre Online-Präsenz mit modernsten Technologien.</p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> Professionelle Websites</li>
-                        <li><i class="fas fa-check-circle"></i> E-Commerce Lösungen</li>
-                        <li><i class="fas class="fas fa-check-circle"></i> CMS-Integration</li>
-                    </ul>
-                    <a href="#" class="link-button">Mehr erfahren</a>
-                </div>
-                <div class="card">
-                    <div class="icon"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>App-Entwicklung</h3>
-                    <p>Native oder Cross-Plattform Apps für iOS und Android, die Ihre Nutzer begeistern und Mehrwert schaffen.</p>
-                    <ul>
-                        <li><i class="fas fa-check-circle"></i> iOS & Android Apps</li>
-                        <li><i class="fas fa-check-circle"></i> Intuitive Benutzeroberflächen</li>
-                        <li><i class="fas fa-check-circle"></i> Performance Optimierung</li>
-                    </ul>
-                    <a href="#" class="link-button">Mehr erfahren</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="applications">
-            <h2>Branchen & Anwendungsbereiche</h2>
-            <div class="application-grid">
-                <div class="application-item">
-                    <i class="fas fa-briefcase"></i>
-                    <h3>KMU & Startups</h3>
-                    <p>Effiziente Lösungen für kleine und mittlere Unternehmen sowie innovative Startups.</p>
-                </div>
-                <div class="application-item">
-                    <i class="fas fa-users"></i>
-                    <h3>Privatpersonen</h3>
-                    <p>Maßgeschneiderte Tools und Plattformen für individuelle Bedürfnisse.</p>
-                </div>
-                <div class="application-item">
-                    <i class="fas fa-hospital"></i>
-                    <h3>Gesundheitswesen</h3>
-                    <p>Sichere und datenschutzkonforme Software für Praxen und Kliniken.</p>
-                </div>
-                <div class="application-item">
-                    <i class="fas fa-industry"></i>
-                    <h3>Industrie & Fertigung</h3>
-                    <p>Optimierung von Produktionsabläufen und digitaler Transformation.</p>
-                </div>
-                <div class="application-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Bildung & Forschung</h3>
-                    <p>Digitale Lernplattformen und Forschungstools.</p>
-                </div>
-                <div class="application-item">
-                    <i class="fas fa-truck"></i>
-                    <h3>Logistik & Transport</h3>
-                    <p>Routenoptimierung und Flottenmanagement-Software.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Aktuelle Projekte</h2>
-            <div class="grid-container">
-                <div class="card">
-                    <div class="icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Intuitives Dashboard für KMU</h3>
-                    <p>Ein benutzerfreundliches Dashboard zur Visualisierung von Geschäftsdaten und KPIs.</p>
-                    <ul>
-                        <li><i class="fas fa-cogs"></i> Datenintegration</li>
-                        <li><i class="fas fa-chart-pie"></i> Echtzeit-Analysen</li>
-                        <li><i class="fas fa-shield-alt"></i> Sichere Datenverwaltung</li>
-                    </ul>
-                    <a href="#" class="link-button">Projekt ansehen</a>
-                </div>
-                <div class="card">
-                    <div class="icon"><i class="fas fa-shopping-cart"></i></div>
-                    <h3>E-Commerce-Plattform für Modeboutique</h3>
-                    <p>Entwicklung einer modernen und responsiven Online-Shop-Plattform mit Fokus auf Nutzererfahrung.</p>
-                    <ul>
-                        <li><i class="fas fa-palette"></i> Individuelles Design</li>
-                        <li><i class="fas fa-credit-card"></i> Sichere Zahlungsoptionen</li>
-                        <li><i class="fas fa-sync-alt"></i> Inventarverwaltung</li>
-                    </ul>
-                    <a href="#" class="link-button">Projekt ansehen</a>
-                </div>
-                <div class="card">
-                    <div class="icon"><i class="fas fa-book-medical"></i></div>
-                    <h3>Patientenportal für Arztpraxis</h3>
-                    <p>Eine sichere Webanwendung, die Patienten Terminbuchungen, Medikamentenverwaltung und Befundabrufe ermöglicht.</p>
-                    <ul>
-                        <li><i class="fas fa-user-md"></i> Patienten-Dashboard</li>
-                        <li><i class="fas fa-calendar-alt"></i> Online-Termine</li>
-                        <li><i class="fas fa-lock"></i> DSGVO-konform</li>
-                    </ul>
-                    <a href="#" class="link-button">Projekt ansehen</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about">
-            <h2>Über Uns</h2>
-            <div class="content">
-                <div class="text-content">
-                    <h3>Ihre Vision. Unsere Exzellenz.</h3>
-                    <p>Bei RSE Systems verbinden wir Kreativität mit technischer Präzision, um digitale Lösungen zu entwickeln, die nicht nur funktionieren, sondern begeistern. Unser engagiertes Team aus erfahrenen Entwicklern, Designern und Beratern arbeitet Hand in Hand, um innovative Software, intuitive Webseiten und leistungsstarke mobile Apps zu schaffen, die Ihre individuellen Anforderungen übertreffen.</p>
-                    <p>Wir glauben an transparente Kommunikation, agiles Vorgehen und eine partnerschaftliche Zusammenarbeit, um Projekte pünktlich und im Rahmen des Budgets abzuschließen. Ihre Zufriedenheit ist unser Antrieb.</p>
-                </div>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <h4>Innovation</h4>
-                        <p>Wir denken zukunftsorientiert und setzen auf die neuesten Technologien.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-handshake"></i>
-                        <h4>Partnerschaft</h4>
-                        <p>Ihre Ziele sind unsere Ziele – wir arbeiten Hand in Hand.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-cogs"></i>
-                        <h4>Präzision</h4>
-                        <p>Wir legen Wert auf Details und liefern pixelgenaue Lösungen.</p>
-                    </div>
-                    <div class="value-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <h4>Performance</h4>
-                        <p>Schnelle und effiziente Software für optimale Ergebnisse.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Kontakt</h2>
-            <p style="text-align: center; font-size: 1.2em; color: var(--color-text-dark); margin-bottom: 40px;">Haben Sie Fragen oder möchten Sie ein Projekt besprechen? Kontaktieren Sie uns gerne!</p>
-            <div style="text-align: center; margin-top: 20px;">
-                <p style="font-size: 1.1em;"><i class="fas fa-envelope" style="margin-right: 10px; color: var(--color-primary);"></i> E-Mail: <a href="mailto:info@rse-systems.com" style="color: var(--color-primary); text-decoration: none;">info@rse-systems.com</a></p>
-                </div>
-        </section>
+        <p>RSE Systems ist Ihr Partner für maßgeschneiderte Softwarelösungen, intuitive Webseiten und leistungsstarke mobile Apps. Wir gestalten die digitale Zukunft – für Privatpersonen und Unternehmen.</p>
+        <a href="#solutions" class="cta-button">Lösungen entdecken <i class="fas fa-arrow-right"></i></a>
     </div>
+
+    <section id="solutions" class="container">
+        <h2>Unsere Kernkompetenzen im Detail</h2>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-desktop icon"></i>
+                <h3>Individuelle Softwarelösungen</h3>
+                <p>Von komplexen Backend-Systemen bis zu benutzerfreundlichen Desktop-Anwendungen – wir entwickeln Software, die präzise auf Ihre Bedürfnisse zugeschnitten ist und Prozesse optimiert.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Anforderungsanalyse & Konzeption</li>
+                    <li><i class="fas fa-check-circle"></i> Robuste Architektur & Skalierbarkeit</li>
+                    <li><i class="fas fa-check-circle"></i> Wartung & Support</li>
+                </ul>
+                <a href="#contact" class="link-button">Beratung anfragen</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-globe icon"></i>
+                <h3>Moderne Webseiten & Web-Apps</h3>
+                <p>Professionelle Webpräsenzen, skalierbare Online-Shops und intelligente Webanwendungen – wir schaffen digitale Erlebnisse, die Ihre Zielgruppe begeistern und performant sind.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Responsives & UX-Design</li>
+                    <li><i class="fas fa-check-circle"></i> E-Commerce & CMS-Integration</li>
+                    <li><i class="fas fa-check-circle"></i> Cloud-basierte Applikationen</li>
+                </ul>
+                <a href="#contact" class="link-button">Web-Projekt starten</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-mobile-alt icon"></i>
+                <h3>Intuitive Mobile Apps</h3>
+                <p>Native Apps für iOS und Android, die Ihr Unternehmen in die Hosentasche Ihrer Kunden bringen oder interne Prozesse mobilisieren – mit Fokus auf Design und Performance.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Cross-Plattform & Native</li>
+                    <li><i class="fas fa-check-circle"></i> User Interface (UI) Design</li>
+                    <li><i class="fas fa-check-circle"></i> Performance-Optimierung</li>
+                </ul>
+                <a href="#contact" class="link-button">App-Idee besprechen</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-chart-area icon"></i>
+                <h3>Datenanalyse & Künstliche Intelligenz</h3>
+                <p>Verwandeln Sie Daten in entscheidende Vorteile. Wir entwickeln Lösungen für Datenaggregation, Business Intelligence und implementieren KI-Modelle für Automatisierung und intelligente Vorhersagen.</p>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Datenvisualisierung & Dashboards</li>
+                    <li><i class="fas fa-check-circle"></i> Machine Learning Modelle</li>
+                    <li><i class="fas fa-check-circle"></i> Big Data Verarbeitung</li>
+                </ul>
+                <a href="#contact" class="link-button">Daten-Potenzial nutzen</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="applications" class="container">
+        <h2>Branchen & Anwendungsbereiche</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.15em; color: var(--color-text-light);">Unsere Expertise erstreckt sich über vielfältige Sektoren, um maßgeschneiderte Lösungen für Ihre spezifischen Herausforderungen zu entwickeln.</p>
+        <div class="application-grid">
+            <div class="application-item">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Bildung & E-Learning</h3>
+                <p>Digitale Lernplattformen, Schulungssoftware, interaktive Lehrmittel.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-euro-sign"></i>
+                <h3>Finanzdienstleistungen</h3>
+                <p>Sichere Banking-Apps, Finanzmanagement-Tools, Datenanalyse für Märkte.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-store"></i>
+                <h3>Handel & E-Commerce</h3>
+                <p>Online-Shops, Warenwirtschaft, Kundenbindungssysteme (CRM).</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Gesundheitswesen</h3>
+                <p>Patientenportale, Telemedizin, digitale Aktenführung.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-industry"></i>
+                <h3>Fertigung & Logistik</h3>
+                <p>Produktionsplanung, IoT-Anwendungen, Supply-Chain-Optimierung.</p>
+            </div>
+            <div class="application-item">
+                <i class="fas fa-home"></i>
+                <h3>Smart Home & Privat</h3>
+                <p>Intelligente Haussteuerung, persönliche Apps, Lifestyle-Lösungen.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Unsere Projekte & Referenzen</h2>
+        <p style="text-align: center; margin-bottom: 40px; font-size: 1.15em; color: var(--color-text-light);">Erhalten Sie einen Einblick in unsere bisherigen Erfolge. Detaillierte Fallstudien und Demoversionen sind auf Anfrage oder zukünftig auf unserem GitHub-Profil verfügbar.</p>
+        <div class="grid-container">
+            <div class="card">
+                <i class="fas fa-book-reader icon"></i>
+                <h3>Digitale Lernplattform</h3>
+                <p>Entwicklung einer adaptiven Lernumgebung mit Gamification-Elementen für einen führenden Bildungsanbieter.</p>
+                <p class="small-text">**Zielgruppe:** Schüler & Studenten | **Branche:** Bildung</p>
+                <a href="https://github.com/rse-systems-org" target="_blank" class="link-button">GitHub (bald verfügbar)</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-mobile-alt icon"></i>
+                <h3>Personalisierte Finanz-App</h3>
+                <p>Konzeption und Umsetzung einer intuitiven Mobile App zur Finanzplanung und Budgetverwaltung für Privatnutzer.</p>
+                <p class="small-text">**Zielgruppe:** Privatpersonen | **Branche:** Finanzen</p>
+                <a href="https://github.com/rse-systems-org" target="_blank" class="link-button">GitHub (bald verfügbar)</a>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-warehouse icon"></i>
+                <h3>Smartes Lagerverwaltungssystem</h3>
+                <p>Webbasierte Lösung zur Optimierung von Lagerprozessen mit Echtzeit-Bestandsführung und Routenplanung.</p>
+                <p class="small-text">**Zielgruppe:** Unternehmen | **Branche:** Logistik</p>
+                <a href="https://github.com/rse-systems-org" target="_blank" class="link-button">GitHub (bald verfügbar)</a>
+            </div>
+             <div class="card">
+                <i class="fas fa-user-md icon"></i>
+                <h3>Telemedizin-Plattform</h3>
+                <p>Sichere und benutzerfreundliche Plattform für Online-Sprechstunden und den Austausch medizinischer Daten.</p>
+                <p class="small-text">**Zielgruppe:** Praxen & Kliniken | **Branche:** Gesundheitswesen</p>
+                <a href="https://github.com/rse-systems-org" target="_blank" class="link-button">GitHub (bald verfügbar)</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2>Über RSE Systems</h2>
+        <div class="content">
+            <div class="text-content">
+                <h3>Ihre digitale Transformation – unsere Leidenschaft.</h3>
+                <p>Bei **RSE Systems** sind wir mehr als nur Entwickler; wir sind Architekten digitaler Lösungen. Wir verstehen, dass jede Herausforderung einzigartig ist. Deshalb bieten wir maßgeschneiderte Software, Webseiten und Apps, die nicht nur technologisch führend, sondern auch perfekt auf Ihre spezifischen Bedürfnisse zugeschnitten sind. Egal ob Sie ein Startup, ein etabliertes Unternehmen oder eine Privatperson sind – wir begleiten Sie von der ersten Idee bis zur erfolgreichen Implementierung und darüber hinaus.</p>
+                <p>Unsere Stärke liegt in der Kombination aus kreativem Design, technischer Exzellenz und einem tiefen Verständnis für verschiedene Branchen. Wir setzen auf agile Methoden und transparente Kommunikation, um sicherzustellen, dass Ihr Projekt termingerecht, budgetgerecht und mit der höchstmöglichen Qualität abgeschlossen wird. **Vertrauen Sie auf RSE Systems, um Ihre digitale Zukunft zu gestalten.**</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <div class="text-group">
+                        <h4>Innovation</h4>
+                        <p>Wir entwickeln zukunftsweisende Technologien.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-medal"></i>
+                    <div class="text-group">
+                        <h4>Qualität</h4>
+                        <p>Höchste Standards in Code und Design.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-people-arrows"></i>
+                    <div class="text-group">
+                        <h4>Partnerschaft</h4>
+                        <p>Ihr Erfolg ist unser Ziel.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-lock"></i>
+                    <div class="text-group">
+                        <h4>Sicherheit</h4>
+                        <p>Datenintegrität und Schutz priorisiert.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-stopwatch"></i>
+                    <div class="text-group">
+                        <h4>Effizienz</h4>
+                        <p>Optimale Prozesse für schnelle Ergebnisse.</p>
+                    </div>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-grin-hearts"></i>
+                    <div class="text-group">
+                        <h4>Benutzererfahrung</h4>
+                        <p>Intuitive und ansprechende Designs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2>Sprechen Sie mit uns.</h2>
+        <p style="text-align: center; margin-bottom: 45px; font-size: 1.15em; color: var(--color-text-light);">Bereit, Ihr digitales Potenzial zu entfalten? Kontaktieren Sie RSE Systems für ein unverbindliches Gespräch.</p>
+        <div class="contact-grid">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>E-Mail</h3>
+                <p><a href="mailto:info@rse-systems.com">info@rse-systems.com</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <h3>Telefon</h3>
+                <p><a href="tel:+49123456789">+49 123 456789</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/company/rse-systems" target="_blank">RSE Systems auf LinkedIn</a></p>
+            </div>
+            <div class="contact-item">
+                <i class="fab fa-github"></i>
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/rse-systems-org" target="_blank">RSE Systems auf GitHub</a></p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten.</p>
-        <a href="#" onclick="openGameModal(); return false;" style="color: var(--color-light-gray); text-decoration: none; margin-top: 10px; display: inline-block;">Versuche dein Glück!</a>
+        <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
+        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1 Tic Tac Toe!</a></p>
     </footer>
 
-    <div id="myOverlay" class="overlay">
-        <div class="overlay-content">
-            <span class="close-btn">&times;</span>
-
-            <h2>Anmelde- oder Informations-Overlay</h2>
-            <p>Hier könnte ein wichtiger Hinweis stehen, eine Anmeldung oder ein spezielles Angebot.</p>
-
-            <div class="buttons">
-                <button class="action-btn">Weiter</button>
-                <button class="action-btn" onclick="window.closeOverlay()">Abbrechen</button>
-            </div>
-
-            <p style="margin-top: 15px;"><a href="#" style="color: #007bff; text-decoration: none;">Mehr erfahren</a></p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-
-    <div id="gameModal" class="game-modal">
+    <div id="ticTacToeGameModal" class="game-modal">
         <div class="game-modal-content">
-            <span class="game-close-button" onclick="closeGameModal()">&times;</span>
-            <h2 class="game-title">Tic Tac Toe: Rennfahrer Edition</h2>
+            <span class="game-close-button">&times;</span>
+            <h2 class="game-title">F1 Tic Tac Toe</h2>
             <div class="game-mode-selection">
                 <button id="playerVsPlayerBtn" class="selected">Spieler vs. Spieler</button>
-                <button id="playerVsCompBtn">Spieler vs. Computer</button>
+                <button id="playerVsComputerBtn">Spieler vs. Computer</button>
             </div>
-            <div id="ticTacToeBoard"></div>
-            <p id="gameStatusMessage" class="game-status-message">Spieler X (Rennwagen) ist am Zug.</p>
-            <p id="gameInfo" class="game-info">X = 🚗 | O = 轮胎</p>
-            <p class="game-instructions">Klicke auf ein Feld, um deinen Zug zu machen.</p>
+            <p class="game-status-message" id="gameStatusMessage">Wähle einen Spielmodus, um zu starten!</p>
+            <div id="ticTacToeBoard">
+                <div class="cell" data-cell-index="0"></div>
+                <div class="cell" data-cell-index="1"></div>
+                <div class="cell" data-cell-index="2"></div>
+                <div class="cell" data-cell-index="3"></div>
+                <div class="cell" data-cell-index="4"></div>
+                <div class="cell" data-cell-index="5"></div>
+                <div class="cell" data-cell-index="6"></div>
+                <div class="cell" data-cell-index="7"></div>
+                <div class="cell" data-cell-index="8"></div>
+            </div>
             <button id="resetGameBtn">Neues Spiel</button>
-        </div>
+            <p class="game-info">
+                Punkte:
+                <span class="player-icon player-x-icon">🏎️</span>: <span id="scoreX">0</span>
+                <span class="player-icon player-o-icon">🔘</span>: <span id="scoreO">0</span>
+            </p>
+            <p class="game-info" id="f1EasterEggMessage"></p> </div>
     </div>
 
     <script>
-        // Dein bestehender JavaScript-Code für den Game Modal
-        const gameModal = document.getElementById('gameModal');
-        const ticTacToeBoard = document.getElementById('ticTacToeBoard');
-        const gameStatusMessage = document.getElementById('gameStatusMessage');
-        const playerVsPlayerBtn = document.getElementById('playerVsPlayerBtn');
-        const playerVsCompBtn = document.getElementById('playerVsCompBtn');
-        const resetGameBtn = document.getElementById('resetGameBtn');
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('a');
 
-        let board = ['', '', '', '', '', '', '', '', ''];
-        let currentPlayer = 'x'; // 'x' for car, 'o' for tyre
-        let gameActive = true;
-        let isPlayerVsComputer = false;
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
 
-        const winningConditions = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-            [0, 4, 8], [2, 4, 6] // Diagonals
-        ];
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
 
-        const playerXIcon = '🚗';
-        const playerOIcon = '轮胎'; // Reifen-Emoji
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
-        function initializeGame() {
-            ticTacToeBoard.innerHTML = '';
-            board = ['', '', '', '', '', '', '', '', ''];
-            currentPlayer = 'x';
-            gameActive = true;
-            gameStatusMessage.textContent = `Spieler X (${playerXIcon}) ist am Zug.`;
+            /* ==================================== */
+            /* Tic Tac Toe Game Logic */
+            /* ==================================== */
+            const ticTacToeGameModal = document.getElementById('ticTacToeGameModal');
+            const openGameModalBtn = document.getElementById('openGameModal');
+            const closeGameButton = ticTacToeGameModal.querySelector('.game-close-button');
+            const ticTacToeBoard = document.getElementById('ticTacToeBoard');
+            const cells = document.querySelectorAll('.cell');
+            const gameStatusMessage = document.getElementById('gameStatusMessage');
+            const resetGameBtn = document.getElementById('resetGameBtn');
+            const scoreXDisplay = document.getElementById('scoreX');
+            const scoreODisplay = document.getElementById('scoreO');
+            const playerVsPlayerBtn = document.getElementById('playerVsPlayerBtn');
+            const playerVsComputerBtn = document.getElementById('playerVsComputerBtn');
+            const f1EasterEggMessage = document.getElementById('f1EasterEggMessage');
 
-            for (let i = 0; i < 9; i++) {
-                const cell = document.createElement('div');
-                cell.classList.add('cell');
-                cell.dataset.index = i;
-                cell.addEventListener('click', handleCellClick);
-                ticTacToeBoard.appendChild(cell);
-            }
-            if (isPlayerVsComputer && currentPlayer === 'o') {
-                setTimeout(computerMove, 500);
-            }
-        }
 
-        function handleCellClick(event) {
-            const clickedCell = event.target;
-            const clickedCellIndex = parseInt(clickedCell.dataset.index);
+            let board = ['', '', '', '', '', '', '', '', ''];
+            let currentPlayer = 'X'; // X for Player 1 (Car), O for Player 2/Computer (Tyre)
+            let isGameActive = false; // Game active only after mode selection
+            let gameMode = 'PvP'; // 'PvP' or 'PvC'
+            let scores = { X: 0, O: 0 }; // Scores are now loaded from LocalStorage
 
-            if (board[clickedCellIndex] !== '' || !gameActive) {
-                return;
-            }
+            const winningConditions = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+                [0, 4, 8], [2, 4, 6]             // Diagonals
+            ];
 
-            makeMove(clickedCell, clickedCellIndex);
-        }
+            const F1_EASTER_EGGS = {
+                START: "Lights out and away we go!",
+                CENTER_MOVE: "Pole position secured!",
+                CORNER_MOVE: "Taking the racing line!",
+                EDGE_MOVE: "Holding the middle sector.",
+                WIN: (player) => {
+                    const playerEmoji = player === 'X' ? '🏎️' : '🔘';
+                    return `Chequered flag for ${playerEmoji}! Victory lap!`;
+                },
+                LOSE: "DNF! Better luck next time.",
+                DRAW: "Safety Car deployed. A true battle!",
+                BLOCK_OPPONENT: "DRS activated to overtake!", // Placeholder, needs logic to detect
+                FIRST_PLAYER_FIRST_MOVE: "Starting on pole, let's go!", // Special first move for player X
+                COMPUTER_BLOCK: "Strategic move, but we're prepared!" // When computer blocks player
+            };
 
-        function makeMove(cell, index) {
-            board[index] = currentPlayer;
-            cell.textContent = currentPlayer === 'x' ? playerXIcon : playerOIcon;
-            cell.classList.add(currentPlayer);
-
-            checkResult();
-            if (gameActive) {
-                currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
-                gameStatusMessage.textContent = `Spieler ${currentPlayer === 'x' ? 'X (' + playerXIcon + ')' : 'O (' + playerOIcon + ')'} ist am Zug.`;
-                if (isPlayerVsComputer && currentPlayer === 'o' && gameActive) {
-                    setTimeout(computerMove, 500);
+            // --- LocalStorage Functions ---
+            function saveScores() {
+                try {
+                    localStorage.setItem('f1TicTacToeScores', JSON.stringify(scores));
+                } catch (e) {
+                    console.error("Error saving scores to LocalStorage:", e);
                 }
             }
-        }
 
-        function computerMove() {
-            if (!gameActive) return;
-
-            let availableCells = [];
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === '') {
-                    availableCells.push(i);
+            function loadScores() {
+                try {
+                    const savedScores = localStorage.getItem('f1TicTacToeScores');
+                    if (savedScores) {
+                        scores = JSON.parse(savedScores);
+                    } else {
+                        scores = { X: 0, O: 0 }; // Reset if no saved scores
+                    }
+                } catch (e) {
+                    console.error("Error loading scores from LocalStorage:", e);
+                    scores = { X: 0, O: 0 }; // Fallback to default if loading fails
                 }
             }
+            // --- End LocalStorage Functions ---
 
-            if (availableCells.length > 0) {
-                // Simple AI: Try to win, block opponent, or pick random
-                let bestMove = -1;
 
-                // 1. Try to win
-                for (let i = 0; i < availableCells.length; i++) {
-                    const tempBoard = [...board];
-                    tempBoard[availableCells[i]] = 'o';
-                    if (checkWin(tempBoard, 'o')) {
-                        bestMove = availableCells[i];
+            function updateEasterEgg(message) {
+                f1EasterEggMessage.textContent = message;
+            }
+
+            function initializeGame() {
+                board = ['', '', '', '', '', '', '', '', ''];
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.classList.remove('x', 'o');
+                });
+                currentPlayer = 'X'; // Always start with X
+                gameStatusMessage.textContent = 'Wähle einen Spielmodus, um zu starten!';
+                loadScores(); // Load scores when initializing the game
+                updateScores();
+                updateEasterEgg(""); // Clear Easter egg message
+                resetGameBtn.textContent = 'Neues Spiel';
+                isGameActive = false; // Game is not active until mode is chosen and new game is clicked
+            }
+
+            function updateScores() {
+                scoreXDisplay.textContent = scores.X;
+                scoreODisplay.textContent = scores.O;
+            }
+
+            function handleResultValidation() {
+                let roundWon = false;
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const winCondition = winningConditions[i];
+                    let a = board[winCondition[0]];
+                    let b = board[winCondition[1]];
+                    let c = board[winCondition[2]];
+
+                    if (a === '' || b === '' || c === '') {
+                        continue;
+                    }
+                    if (a === b && b === c) {
+                        roundWon = true;
                         break;
                     }
                 }
 
-                // 2. Block opponent
-                if (bestMove === -1) {
-                    for (let i = 0; i < availableCells.length; i++) {
-                        const tempBoard = [...board];
-                        tempBoard[availableCells[i]] = 'x';
-                        if (checkWin(tempBoard, 'x')) {
-                            bestMove = availableCells[i];
+                if (roundWon) {
+                    const winnerEmoji = currentPlayer === 'X' ? '🏎️' : '🔘';
+                    gameStatusMessage.textContent = `${winnerEmoji} gewinnt!`;
+                    scores[currentPlayer]++;
+                    saveScores(); // Save scores after a win
+                    updateScores();
+                    updateEasterEgg(F1_EASTER_EGGS.WIN(currentPlayer));
+                    isGameActive = false;
+                    resetGameBtn.textContent = 'Erneut spielen';
+                    return;
+                }
+
+                if (!board.includes('')) {
+                    gameStatusMessage.textContent = 'Unentschieden!';
+                    updateEasterEgg(F1_EASTER_EGGS.DRAW);
+                    isGameActive = false;
+                    resetGameBtn.textContent = 'Erneut spielen';
+                    return;
+                }
+
+                // If no win or draw, continue game
+                changePlayer();
+            }
+
+            function changePlayer() {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                const currentPlayerEmoji = currentPlayer === 'X' ? '🏎️' : '🔘';
+                gameStatusMessage.textContent = `Spieler ${currentPlayerEmoji} ist am Zug.`;
+            }
+
+            function playerMove(clickedCell, clickedCellIndex) {
+                if (board[clickedCellIndex] !== '' || !isGameActive) {
+                    return;
+                }
+
+                board[clickedCellIndex] = currentPlayer;
+                clickedCell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘'; // F1 car and tyre
+                clickedCell.classList.add(currentPlayer.toLowerCase());
+
+                applyEasterEgg(clickedCellIndex);
+
+                handleResultValidation();
+            }
+
+            function applyEasterEgg(index) {
+                let message = '';
+                // Only show initial Easter egg if the game is just starting (first move in the current game)
+                if (board.filter(s => s !== '').length === 1 && isGameActive) {
+                    message = F1_EASTER_EGGS.START;
+                } else if (index === 4) { // Center cell
+                    message = F1_EASTER_EGGS.CENTER_MOVE;
+                } else if ([0, 2, 6, 8].includes(index)) { // Corner cells
+                    message = F1_EASTER_EGGS.CORNER_MOVE;
+                } else { // Edge cells
+                    message = F1_EASTER_EGGS.EDGE_MOVE;
+                }
+                updateEasterEgg(message);
+            }
+
+            function computerMove() {
+                if (!isGameActive) return;
+
+                let bestMove = getBestMove();
+
+                if (bestMove !== -1) {
+                    const cell = cells[bestMove];
+                    board[bestMove] = currentPlayer;
+                    cell.textContent = currentPlayer === 'X' ? '🏎️' : '🔘';
+                    cell.classList.add(currentPlayer.toLowerCase());
+
+                    // Check if the computer move was a block
+                    let isBlock = false;
+                    const prevPlayer = currentPlayer === 'X' ? 'O' : 'X'; // The player the AI is blocking
+                    for (let i = 0; i < winningConditions.length; i++) {
+                        const winCondition = winningConditions[i];
+                        let countPrevPlayer = 0;
+                        let emptyCellInWin = -1;
+                        winCondition.forEach(idx => {
+                            if (board[idx] === prevPlayer) {
+                                countPrevPlayer++;
+                            } else if (board[idx] === '') {
+                                emptyCellInWin = idx;
+                            }
+                        });
+                        if (countPrevPlayer === 2 && emptyCellInWin === bestMove) { // If opponent has 2 in a row and this move blocks it
+                            isBlock = true;
                             break;
                         }
                     }
+
+                    if (isBlock) {
+                        updateEasterEgg(F1_EASTER_EGGS.COMPUTER_BLOCK);
+                    } else if (bestMove === 4) {
+                        updateEasterEgg(F1_EASTER_EGGS.CENTER_MOVE);
+                    } else if ([0, 2, 6, 8].includes(bestMove)) {
+                        updateEasterEgg(F1_EASTER_EGGS.CORNER_MOVE);
+                    } else {
+                        updateEasterEgg(F1_EASTER_EGGS.EDGE_MOVE);
+                    }
+
+                    setTimeout(handleResultValidation, 700); // Small delay for computer move
+                }
+            }
+
+            function getBestMove() {
+                // Check for immediate win
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    if (board[a] === currentPlayer && board[b] === currentPlayer && board[c] === '') return c;
+                    if (board[a] === currentPlayer && board[c] === currentPlayer && board[b] === '') return b;
+                    if (board[b] === currentPlayer && board[c] === currentPlayer && board[a] === '') return a;
                 }
 
-                // 3. Take center if available
-                if (bestMove === -1 && board[4] === '') {
-                    bestMove = 4;
+                // Block opponent's win
+                const opponent = currentPlayer === 'X' ? 'O' : 'X';
+                for (let i = 0; i < winningConditions.length; i++) {
+                    const [a, b, c] = winningConditions[i];
+                    if (board[a] === opponent && board[b] === opponent && board[c] === '') return c;
+                    if (board[a] === opponent && board[c] === opponent && board[b] === '') return b;
+                    if (board[b] === opponent && board[c] === opponent && board[a] === '') return a;
                 }
 
-                // 4. Take a corner if available
-                if (bestMove === -1) {
-                    const corners = [0, 2, 6, 8].filter(index => board[index] === '');
-                    if (corners.length > 0) {
-                        bestMove = corners[Math.floor(Math.random() * corners.length)];
+                // Prefer center
+                if (board[4] === '') return 4;
+
+                // Prefer corners
+                const corners = [0, 2, 6, 8];
+                for (let i = 0; i < corners.length; i++) {
+                    if (board[corners[i]] === '') return corners[i];
+                }
+
+                // Take any available edge
+                const edges = [1, 3, 5, 7];
+                for (let i = 0; i < edges.length; i++) {
+                    if (board[edges[i]] === '') return edges[i];
+                }
+
+                return -1; // Should not happen in a valid game
+            }
+
+
+            function handleCellClick(event) {
+                const clickedCell = event.target;
+                const clickedCellIndex = parseInt(clickedCell.dataset.cellIndex);
+
+                if (gameMode === 'PvP') {
+                    playerMove(clickedCell, clickedCellIndex);
+                } else { // Player vs Computer
+                    if (currentPlayer === 'X') { // Only allow player X to make a move
+                        playerMove(clickedCell, clickedCellIndex);
+                        // After player's move, check if game is still active and it's O's turn (computer)
+                        if (isGameActive && currentPlayer === 'O') {
+                            setTimeout(computerMove, 700); // Delay computer's turn
+                        }
                     }
                 }
+            }
 
-                // 5. Pick a random available cell if no strategic move
-                if (bestMove === -1) {
-                    const randomIndex = Math.floor(Math.random() * availableCells.length);
-                    bestMove = availableCells[randomIndex];
+            function startNewGame() {
+                board = ['', '', '', '', '', '', '', '', ''];
+                cells.forEach(cell => {
+                    cell.textContent = '';
+                    cell.classList.remove('x', 'o');
+                });
+                currentPlayer = 'X';
+                isGameActive = true;
+                const currentPlayerEmoji = currentPlayer === 'X' ? '🏎️' : '🔘';
+                gameStatusMessage.textContent = `Spieler ${currentPlayerEmoji} ist am Zug.`;
+                updateEasterEgg(F1_EASTER_EGGS.START); // Initial game start message
+                resetGameBtn.textContent = 'Zurücksetzen';
+            }
+
+
+            // Event Listeners
+            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+            resetGameBtn.addEventListener('click', startNewGame);
+
+            playerVsPlayerBtn.addEventListener('click', function() {
+                gameMode = 'PvP';
+                playerVsPlayerBtn.classList.add('selected');
+                playerVsComputerBtn.classList.remove('selected');
+                startNewGame();
+            });
+
+            playerVsComputerBtn.addEventListener('click', function() {
+                gameMode = 'PvC';
+                playerVsComputerBtn.classList.add('selected');
+                playerVsPlayerBtn.classList.remove('selected');
+                startNewGame();
+            });
+
+
+            // Modal handling
+            openGameModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                ticTacToeGameModal.style.display = 'flex';
+                // Add class for transition
+                setTimeout(() => ticTacToeGameModal.classList.add('active'), 10); // Small delay to allow display change before transition
+                initializeGame(); // Reset game state and load scores when opening modal
+            });
+
+            closeGameButton.addEventListener('click', function() {
+                ticTacToeGameModal.classList.remove('active');
+                setTimeout(() => ticTacToeGameModal.style.display = 'none', 300); // Wait for transition
+                isGameActive = false; // Ensure game is not active when modal is closed
+                saveScores(); // Save scores when closing the modal
+            });
+
+            // Close modal if clicked outside of it
+            ticTacToeGameModal.addEventListener('click', function(event) {
+                if (event.target === ticTacToeGameModal) {
+                    ticTacToeGameModal.classList.remove('active');
+                    setTimeout(() => ticTacToeGameModal.style.display = 'none', 300); // Wait for transition
+                    isGameActive = false;
+                    saveScores(); // Save scores when closing the modal by clicking outside
                 }
+            });
 
-                const cellToPlay = document.querySelector(`.cell[data-index="${bestMove}"]`);
-                makeMove(cellToPlay, bestMove);
-            }
-        }
-
-        function checkWin(currentBoard, player) {
-            for (let i = 0; i < winningConditions.length; i++) {
-                const [a, b, c] = winningConditions[i];
-                if (currentBoard[a] === player &&
-                    currentBoard[b] === player &&
-                    currentBoard[c] === player) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        function checkResult() {
-            let roundWon = false;
-            for (let i = 0; i < winningConditions.length; i++) {
-                const [a, b, c] = winningConditions[i];
-                if (board[a] === '' || board[b] === '' || board[c] === '') {
-                    continue;
-                }
-                if (board[a] === board[b] && board[b] === board[c]) {
-                    roundWon = true;
-                    break;
-                }
-            }
-
-            if (roundWon) {
-                gameStatusMessage.textContent = `Spieler ${currentPlayer === 'x' ? 'X (' + playerXIcon + ')' : 'O (' + playerOIcon + ')'} hat gewonnen!`;
-                gameActive = false;
-                return;
-            }
-
-            let roundDraw = !board.includes('');
-            if (roundDraw) {
-                gameStatusMessage.textContent = 'Unentschieden!';
-                gameActive = false;
-                return;
-            }
-        }
-
-        function openGameModal() {
-            gameModal.style.display = 'flex';
-            initializeGame();
-        }
-
-        function closeGameModal() {
-            gameModal.style.display = 'none';
-        }
-
-        playerVsPlayerBtn.addEventListener('click', () => {
-            isPlayerVsComputer = false;
-            playerVsPlayerBtn.classList.add('selected');
-            playerVsCompBtn.classList.remove('selected');
-            initializeGame();
+            // Initial setup when the page loads
+            initializeGame(); // Load scores and set up game on page load
         });
-
-        playerVsCompBtn.addEventListener('click', () => {
-            isPlayerVsComputer = true;
-            playerVsCompBtn.classList.add('selected');
-            playerVsPlayerBtn.classList.remove('selected');
-            initializeGame();
-        });
-
-        resetGameBtn.addEventListener('click', initializeGame);
-
-        // JavaScript zum Öffnen/Schließen des OVERLAYS
-        const myOverlay = document.getElementById('myOverlay');
-        const closeButton = myOverlay.querySelector('.close-btn');
-
-        window.openOverlay = function() {
-            myOverlay.classList.add('active');
-        };
-
-        window.closeOverlay = function() {
-            myOverlay.classList.remove('active');
-        };
-
-        // Schließen des Overlays durch Klicken außerhalb des Inhalts
-        myOverlay.addEventListener('click', function(event) {
-            if (event.target === myOverlay) {
-                window.closeOverlay();
-            }
-        });
-
-        // Schließen durch Klick auf das 'X'
-        closeButton.addEventListener('click', window.closeOverlay);
-
-        // Du hast bereits ein "under-construction-overlay" in deinem HTML.
-        // Wenn dieses am Anfang geladen und dann entfernt werden soll,
-        // müsstest du hier zusätzlichen JavaScript-Code hinzufügen, z.B.:
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const underConstructionOverlay = document.getElementById('under-construction-overlay');
-        //     if (underConstructionOverlay) {
-        //         // Annahme: Es soll direkt am Anfang angezeigt werden
-        //         underConstructionOverlay.classList.add('active');
-        //
-        //         // Nach X Sekunden ausblenden oder durch Interaktion
-        //         // setTimeout(() => {
-        //         //     underConstructionOverlay.classList.remove('active');
-        //         // }, 5000); // Blendet es nach 5 Sekunden aus
-        //     }
-        // });
-        // Beachte, dass dein CSS das "under-construction-overlay" standardmäßig auf 'display: none;' gesetzt hat.
-        // Um es standardmäßig sichtbar zu machen, wenn die Seite lädt, und es dann z.B. per Klick zu schließen,
-        // müsstest du den CSS-Teil `display: none;` entfernen und per JS die Klasse 'active' hinzufügen/entfernen.
-        // Ich habe es so gelassen, wie es in deinem Code war (initially hidden by display: none).
-
     </script>
 </body>
 </html>
