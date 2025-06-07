@@ -953,16 +953,14 @@
 </head>
 <body>
     <div class="under-construction-overlay">
-  <div class="overlay-content">
-    <h2>Diese Seite ist im Aufbau</h2>
-    <p>Unsere Plattform wird derzeit überarbeitet und mit spannenden Inhalten gefüllt.</p>
-    <p>Für Anfragen erreichen Sie uns jederzeit unter:</p>
-    <p><a href="mailto:info@rse-systems.com">info@rse-systems.com</a></p>
-    <p><strong>Oder nutzen Sie die Zeit für ein kleines Spiel?</strong></p>
-    <a href="#" class="overlay-cta" id="startGameCTA">Mir ist langweilig – Spiel starten 🎮</a>
-  </div>
-</div>
-
+        <div class="overlay-content">
+            <h2>Wir bauen an Ihrer Zukunft!</h2>
+            <p>Unsere Webseite wird derzeit für Sie überarbeitet und mit spannenden neuen Inhalten und Projekten erweitert.</p>
+            <p>In Kürze präsentieren wir Ihnen hier innovative Softwarelösungen.</p>
+            <p>Für dringende Anfragen erreichen Sie uns in der Zwischenzeit direkt per E-Mail:</p>
+            <a href="mailto:info@rse-systems.com" class="overlay-cta">info@rse-systems.com</a>
+        </div>
+    </div>
 
     <header>
         <div class="header-content">
@@ -1202,6 +1200,7 @@
 
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
+        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1 Tic Tac Toe!</a></p>
     </footer>
 
     <div id="ticTacToeGameModal" class="game-modal">
@@ -1525,23 +1524,12 @@
             });
 
 
-            
-
-            // Overlay-Button zum Starten des Spiels
-const startGameCTA = document.getElementById('startGameCTA');
-
-if (startGameCTA) {
-    startGameCTA.addEventListener('click', function(e) {
-        e.preventDefault();
-        // Overlay ausblenden
-        document.querySelector('.under-construction-overlay').style.display = 'none';
-        // Spielmodal anzeigen
-        ticTacToeGameModal.style.display = 'flex';
-        // Spiel vorbereiten
-        initializeGame();
-    });
-}
-
+            // Modal handling
+            openGameModalBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                ticTacToeGameModal.style.display = 'flex';
+                initializeGame(); // Reset game state when opening modal
+            });
 
             closeGameButton.addEventListener('click', function() {
                 ticTacToeGameModal.style.display = 'none';
