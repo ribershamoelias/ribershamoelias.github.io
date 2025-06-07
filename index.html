@@ -1202,7 +1202,6 @@
 
     <footer>
         <p>&copy; 2025 RSE Systems. Alle Rechte vorbehalten. | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Impressum</a> | <a href="#" style="color: var(--color-light-gray); text-decoration: none;">Datenschutz</a></p>
-        <p style="margin-top: 15px;"><a href="#" id="openGameModal">Langeweile? Spiele F1 Tic Tac Toe!</a></p>
     </footer>
 
     <div id="ticTacToeGameModal" class="game-modal">
@@ -1526,12 +1525,7 @@
             });
 
 
-            // Modal handling
-            openGameModalBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                ticTacToeGameModal.style.display = 'flex';
-                initializeGame(); // Reset game state when opening modal
-            });
+            
 
             // Overlay-Button zum Starten des Spiels
 const startGameCTA = document.getElementById('startGameCTA');
