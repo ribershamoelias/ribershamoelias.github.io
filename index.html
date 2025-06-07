@@ -3,112 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSE Systems – Digitale Exzellenz (Im Aufbau)</title>
-    <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen. Die Webseite befindet sich derzeit im Aufbau.">
+    <title>RSE Systems – Digitale Exzellenz: Software, Webseiten & Apps</title>
+    <meta name="description" content="RSE Systems entwickelt maßgeschneiderte Softwarelösungen. Die Webseite befindet sich derzeit im Aufbau, ist aber sichtbar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        /* Komplette CSS der ursprünglichen Webseite + Hinweis-Modal + Spiel */
+        
         /* Basis-Styles */
         :root {
             --color-primary: #007aff;
             --color-secondary: #0056b3;
+            --color-accent: #32d74b;
             --color-dark: #1a1a1c;
             --color-light-gray: #f2f2f7;
             --color-white: #ffffff;
             --color-text-dark: #2c2c2e;
             --color-text-light: #8e8e93;
+            --border-radius-lg: 20px;
             --border-radius-md: 12px;
+            --shadow-light: rgba(0, 0, 0, 0.04);
+            --shadow-medium: rgba(0, 0, 0, 0.08);
         }
 
         body {
             font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--color-light-gray);
             color: var(--color-text-dark);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
-        
-        /* ==================================== */
-        /* Under Construction Overlay Styles    */
-        /* ==================================== */
-        .under-construction-overlay {
-            position: fixed;
+
+        .container {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 80px 25px;
+        }
+
+        /* Header-Bereich */
+        header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            position: sticky;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(242, 242, 247, 0.9); /* Heller, leicht transparenter Hintergrund */
-            backdrop-filter: blur(10px);
-            z-index: 9999;
+            z-index: 1000;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .header-content {
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--color-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--color-primary);
+            margin-right: 12px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: var(--color-white);
+            text-align: center;
+            padding: 120px 30px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* ----- "Im Aufbau" Hinweis-Modal ----- */
+        .notice-modal {
+            display: none; /* Wird per JS angezeigt */
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 20px;
         }
 
-        .overlay-content {
+        .notice-modal-content {
             background-color: var(--color-white);
+            padding: 40px;
             border-radius: var(--border-radius-md);
-            padding: 40px 50px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-            max-width: 600px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 550px;
             width: 90%;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
         }
 
-        .overlay-content h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 2.5em;
-            font-weight: 700;
+        .notice-modal-content h2 {
+            font-size: 2em;
             color: var(--color-dark);
             margin-bottom: 15px;
         }
 
-        .overlay-content p {
+        .notice-modal-content p {
             font-size: 1.1em;
             color: var(--color-text-light);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 30px;
         }
-
-        .overlay-cta {
+        
+        #playGameBtn {
+            font-family: 'Inter', sans-serif;
             background-color: var(--color-primary);
             color: var(--color-white);
-            padding: 12px 25px;
-            border-radius: 40px;
-            text-decoration: none;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
             font-weight: 600;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
+            transition: all 0.3s ease;
         }
 
-        .overlay-cta:hover {
+        #playGameBtn:hover {
             background-color: var(--color-secondary);
             transform: translateY(-2px);
         }
 
-        /* NEUER BUTTON FÜR DAS SPIEL */
-        .play-game-link {
-            font-family: 'Inter', sans-serif;
-            background: none;
-            border: none;
-            color: var(--color-primary);
+        .close-notice-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            padding: 10px;
-            margin-top: 30px;
-            display: inline-block;
-            text-decoration: underline;
         }
-        
-        .play-game-link:hover {
-            color: var(--color-secondary);
+
+        .close-notice-btn:hover {
+            color: var(--color-dark);
         }
 
 
@@ -118,12 +172,12 @@
         .game-modal {
             display: none; /* Standardmäßig versteckt */
             position: fixed;
-            z-index: 10000; /* Muss höher sein als der Overlay */
+            z-index: 10000; /* Höher als das Hinweis-Modal */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -147,30 +201,12 @@
             top: 5px;
             right: 15px;
             font-size: 32px;
-            font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
         }
-
-        .game-close-button:hover,
-        .game-close-button:focus {
-            color: #ff4757;
-        }
-
-        .game-title {
-            font-size: 2em;
-            color: #54a0ff;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px #000;
-        }
-
-        #gameStatus {
-            font-size: 1.2em;
-            color: #fff;
-            margin-bottom: 25px;
-            height: 40px;
-            line-height: 1.4;
-        }
+        
+        .game-close-button:hover { color: #ff4757; }
+        .game-title { font-size: 2em; color: #54a0ff; margin-bottom: 20px; text-shadow: 2px 2px #000; }
+        #gameStatus { font-size: 1.2em; color: #fff; margin-bottom: 25px; height: 40px; line-height: 1.4; }
 
         #ticTacToeBoard {
             display: grid;
@@ -196,17 +232,10 @@
             user-select: none;
         }
 
-        .cell:hover {
-            background-color: #444;
-        }
-
+        .cell:hover { background-color: #444; }
         .cell.x { color: #48dbfb; }
         .cell.o { color: #ff6b81; }
-
-        .winning-cell {
-            background-color: #feca57 !important;
-            color: #2c2c2c;
-        }
+        .winning-cell { background-color: #feca57 !important; color: #2c2c2c; }
 
         .game-controls button {
             font-family: 'Press Start 2P', cursive;
@@ -217,223 +246,226 @@
             padding: 10px 15px;
             margin: 5px;
             cursor: pointer;
-            transition: all 0.15s ease;
             font-size: 0.8em;
         }
-
-        .game-controls button:hover { background-color: #2e86de; }
-        .game-controls button:active { transform: translateY(2px); box-shadow: none; }
         .game-controls button#resetGameBtn { background-color: #ff4757; }
-        .game-controls button#resetGameBtn:hover { background-color: #eb4d4b; }
         
-        #gameModeSelection { margin-bottom: 20px; }
-
-        @media (max-width: 480px) {
-            .overlay-content { padding: 30px 25px; }
-            .game-modal-content { padding: 20px; }
-            #ticTacToeBoard { width: 240px; height: 240px; }
-            .cell { font-size: 2.8em; }
-            .game-title { font-size: 1.5em; }
-            #gameStatus { font-size: 1em; }
+        @media (max-width: 768px) {
+             .hero h1 { font-size: 2.5em; }
+             #ticTacToeBoard { width: 240px; height: 240px; }
+             .cell { font-size: 2.8em; }
+             .game-title { font-size: 1.5em; }
+             #gameStatus { font-size: 1em; }
         }
 
     </style>
 </head>
 <body>
-    
-    <div class="under-construction-overlay">
-        <div class="overlay-content">
-            <h2>Wir bauen an Ihrer Zukunft!</h2>
-            <p>Unsere Webseite wird derzeit für Sie überarbeitet. Für Anfragen erreichen Sie uns direkt per E-Mail:</p>
-            <a href="mailto:info@rse-systems.com" class="overlay-cta">info@rse-systems.com</a>
-            <br>
-            <button id="playGameFromOverlayBtn" class="play-game-link">Keine Lust zu warten? Ein Spielchen wagen!</button>
+
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i> RSE Systems
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero" id="home">
+            <h1>Digitale Exzellenz: Ihre Vision, unsere Software.</h1>
+            <p>Wir entwickeln maßgeschneiderte Lösungen, die begeistern.</p>
+        </div>
+        </main>
+
+
+    <div id="noticeModal" class="notice-modal">
+        <div class="notice-modal-content">
+            <span id="closeNoticeBtn" class="close-notice-btn">&times;</span>
+            <h2>Webseite im Aufbau</h2>
+            <p>Diese Seite wird derzeit überarbeitet. Einige Funktionen sind möglicherweise noch nicht verfügbar. <br>Wird Ihnen langweilig?</p>
+            <button id="playGameBtn">Starten Sie ein Spiel!</button>
         </div>
     </div>
+
 
     <div id="gameModal" class="game-modal">
         <div class="game-modal-content">
             <span class="game-close-button">&times;</span>
             <h2 class="game-title">Tic-Tac-Toe</h2>
-            
             <div id="gameStatus">Wähle einen Spielmodus!</div>
-
             <div id="gameModeSelection" class="game-controls">
                 <button id="vsPlayerBtn">Spieler vs. Spieler</button>
                 <button id="vsAiBtn">Spieler vs. Computer</button>
             </div>
-            
             <div id="ticTacToeBoard" style="display: none;">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
+                <div class="cell" data-index="0"></div><div class="cell" data-index="1"></div><div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div><div class="cell" data-index="4"></div><div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div><div class="cell" data-index="7"></div><div class="cell" data-index="8"></div>
             </div>
-
             <div class="game-controls">
                 <button id="resetGameBtn" style="display: none;">Neustart</button>
             </div>
         </div>
     </div>
 
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Modal Elemente
-            const gameModal = document.getElementById('gameModal');
-            // NEUER BUTTON zum Öffnen des Spiels aus dem Overlay
-            const openModalBtn = document.getElementById('playGameFromOverlayBtn');
-            const closeModalBtn = document.querySelector('.game-close-button');
+    document.addEventListener('DOMContentLoaded', () => {
+        // ----- Elemente für die Modals -----
+        const noticeModal = document.getElementById('noticeModal');
+        const closeNoticeBtn = document.getElementById('closeNoticeBtn');
+        const playGameBtn = document.getElementById('playGameBtn'); // Button im Hinweis-Modal
+        const gameModal = document.getElementById('gameModal');
+        const closeGameBtn = document.querySelector('.game-close-button');
 
-            // Spiel Elemente
-            const statusDisplay = document.getElementById('gameStatus');
-            const boardElement = document.getElementById('ticTacToeBoard');
-            const cells = document.querySelectorAll('.cell');
-            const resetBtn = document.getElementById('resetGameBtn');
-            const modeSelectionDiv = document.getElementById('gameModeSelection');
-            const vsPlayerBtn = document.getElementById('vsPlayerBtn');
-            const vsAiBtn = document.getElementById('vsAiBtn');
+        // ----- Spiel-Elemente -----
+        const statusDisplay = document.getElementById('gameStatus');
+        const boardElement = document.getElementById('ticTacToeBoard');
+        const cells = document.querySelectorAll('.cell');
+        const resetBtn = document.getElementById('resetGameBtn');
+        const modeSelectionDiv = document.getElementById('gameModeSelection');
+        const vsPlayerBtn = document.getElementById('vsPlayerBtn');
+        const vsAiBtn = document.getElementById('vsAiBtn');
 
-            // Spiel-Zustand
-            let board = ['', '', '', '', '', '', '', '', ''];
-            let currentPlayer = 'X';
-            let isGameActive = false;
-            let gameMode = '';
+        // ----- Logik für das Hinweis-Modal -----
+        // Zeige das Hinweis-Modal beim Laden der Seite an
+        noticeModal.style.display = 'flex';
 
-            const winningConditions = [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8],
-                [0, 3, 6], [1, 4, 7], [2, 5, 8],
-                [0, 4, 8], [2, 4, 6]
-            ];
-            
-            const winningMessage = (player) => `Spieler ${player} hat gewonnen!`;
-            const drawMessage = () => `Das Spiel ist unentschieden!`;
-            const currentPlayerTurn = (player) => `Spieler ${player} ist am Zug`;
+        // Schließe das Hinweis-Modal
+        closeNoticeBtn.onclick = () => {
+            noticeModal.style.display = 'none';
+        };
 
-            // ----- Modal-Steuerung -----
-            openModalBtn.onclick = () => {
-                gameModal.style.display = 'flex';
-                resetGame();
-            };
-            closeModalBtn.onclick = () => gameModal.style.display = 'none';
-            // Schließt das Modal, wenn außerhalb geklickt wird
-            window.onclick = (event) => {
-                if (event.target == gameModal) {
-                    gameModal.style.display = 'none';
-                }
-            };
+        // Klick auf "Spiel starten" öffnet das Spiel-Modal
+        playGameBtn.onclick = () => {
+            gameModal.style.display = 'flex';
+            resetGame(); // Spiel zurücksetzen, wenn es geöffnet wird
+        };
+        
+        // ----- Logik für das Spiel-Modal -----
+        // Schließe das Spiel-Modal
+        closeGameBtn.onclick = () => {
+            gameModal.style.display = 'none';
+        };
 
-            // ----- Spielmodus-Auswahl -----
-            vsPlayerBtn.onclick = () => startGame('vsPlayer');
-            vsAiBtn.onclick = () => startGame('vsAI');
-
-            function startGame(mode) {
-                gameMode = mode;
-                isGameActive = true;
-                modeSelectionDiv.style.display = 'none';
-                boardElement.style.display = 'grid';
-                resetBtn.style.display = 'inline-block';
-                statusDisplay.innerHTML = currentPlayerTurn(currentPlayer);
+        // Schließe bei Klick außerhalb des Inhalts
+        window.onclick = (event) => {
+            if (event.target == gameModal) {
+                gameModal.style.display = 'none';
             }
-            
-            // ----- Spiellogik -----
-            function handleCellPlayed(clickedCell, clickedCellIndex) {
-                board[clickedCellIndex] = currentPlayer;
-                clickedCell.innerHTML = currentPlayer;
-                clickedCell.classList.add(currentPlayer.toLowerCase());
-            }
+            // Das Hinweis-Modal wird nicht durch Klick außerhalb geschlossen
+        };
 
-            function changePlayer() {
-                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-                statusDisplay.innerHTML = currentPlayerTurn(currentPlayer);
-            }
+        // ===================================
+        // Ab hier die komplette Tic-Tac-Toe Logik (unverändert)
+        // ===================================
 
-            function checkResult() {
-                let roundWon = false;
-                let winningCombo = [];
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X';
+        let isGameActive = false;
+        let gameMode = '';
 
-                for (let i = 0; i < winningConditions.length; i++) {
-                    const winCondition = winningConditions[i];
-                    const [a, b, c] = [board[winCondition[0]], board[winCondition[1]], board[winCondition[2]]];
-                    if (a === '' || b === '' || c === '') continue;
-                    if (a === b && b === c) {
-                        roundWon = true;
-                        winningCombo = winCondition;
-                        break;
-                    }
-                }
+        const winningConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+        ];
+        
+        const winningMessage = (player) => `Spieler ${player} gewinnt!`;
+        const drawMessage = () => `Unentschieden!`;
+        const currentPlayerTurn = (player) => `Spieler ${player} ist dran`;
 
-                if (roundWon) {
-                    statusDisplay.innerHTML = winningMessage(currentPlayer);
-                    isGameActive = false;
-                    winningCombo.forEach(index => cells[index].classList.add('winning-cell'));
-                    return;
-                }
+        vsPlayerBtn.onclick = () => startGame('vsPlayer');
+        vsAiBtn.onclick = () => startGame('vsAI');
 
-                if (!board.includes('')) {
-                    statusDisplay.innerHTML = drawMessage();
-                    isGameActive = false;
-                    return;
-                }
-                changePlayer();
-            }
+        function startGame(mode) {
+            gameMode = mode;
+            isGameActive = true;
+            modeSelectionDiv.style.display = 'none';
+            boardElement.style.display = 'grid';
+            resetBtn.style.display = 'inline-block';
+            statusDisplay.innerHTML = currentPlayerTurn(currentPlayer);
+        }
+        
+        function handleCellPlayed(cell, index) {
+            board[index] = currentPlayer;
+            cell.innerHTML = currentPlayer;
+            cell.classList.add(currentPlayer.toLowerCase());
+        }
 
-            function aiMove() {
-                if (!isGameActive) return;
-                boardElement.style.pointerEvents = 'none';
+        function changePlayer() {
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            statusDisplay.innerHTML = currentPlayerTurn(currentPlayer);
+        }
 
-                setTimeout(() => {
-                    let availableCells = board.map((cell, index) => cell === '' ? index : null).filter(val => val !== null);
-                    const randomIndex = Math.floor(Math.random() * availableCells.length);
-                    const cellIndex = availableCells[randomIndex];
-                    const cell = cells[cellIndex];
-                    
-                    handleCellPlayed(cell, cellIndex);
-                    checkResult();
-                    
-                    if(isGameActive) boardElement.style.pointerEvents = 'auto';
-                }, 700);
-            }
-
-            function handleCellClick(event) {
-                const clickedCell = event.target;
-                const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
-
-                if (board[clickedCellIndex] !== '' || !isGameActive) return;
-
-                handleCellPlayed(clickedCell, clickedCellIndex);
-                checkResult();
-
-                if (gameMode === 'vsAI' && isGameActive) {
-                    aiMove();
+        function checkResult() {
+            let roundWon = false;
+            let winningCombo = [];
+            for (let i = 0; i < winningConditions.length; i++) {
+                const winCondition = winningConditions[i];
+                const [a, b, c] = [board[winCondition[0]], board[winCondition[1]], board[winCondition[2]]];
+                if (a === '' || b === '' || c === '') continue;
+                if (a === b && b === c) {
+                    roundWon = true;
+                    winningCombo = winCondition;
+                    break;
                 }
             }
 
-            function resetGame() {
-                board = ['', '', '', '', '', '', '', '', ''];
+            if (roundWon) {
+                statusDisplay.innerHTML = winningMessage(currentPlayer);
                 isGameActive = false;
-                currentPlayer = 'X';
-                
-                statusDisplay.innerHTML = 'Wähle einen Spielmodus!';
-                modeSelectionDiv.style.display = 'block';
-                boardElement.style.display = 'none';
-                boardElement.style.pointerEvents = 'auto';
-                resetBtn.style.display = 'none';
-
-                cells.forEach(cell => {
-                    cell.innerHTML = '';
-                    cell.classList.remove('x', 'o', 'winning-cell');
-                });
+                winningCombo.forEach(index => cells[index].classList.add('winning-cell'));
+                return;
             }
 
-            // ----- Event Listeners -----
-            cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-            resetBtn.addEventListener('click', resetGame);
-        });
+            if (!board.includes('')) {
+                statusDisplay.innerHTML = drawMessage();
+                isGameActive = false;
+                return;
+            }
+            changePlayer();
+        }
+
+        function aiMove() {
+            if (!isGameActive) return;
+            boardElement.style.pointerEvents = 'none';
+            setTimeout(() => {
+                let availableCells = board.map((cell, index) => cell === '' ? index : null).filter(val => val !== null);
+                const cellIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
+                handleCellPlayed(cells[cellIndex], cellIndex);
+                checkResult();
+                if (isGameActive) boardElement.style.pointerEvents = 'auto';
+            }, 700);
+        }
+
+        function handleCellClick(event) {
+            const clickedCell = event.target;
+            const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+            if (board[clickedCellIndex] !== '' || !isGameActive) return;
+            handleCellPlayed(clickedCell, clickedCellIndex);
+            checkResult();
+            if (gameMode === 'vsAI' && isGameActive) {
+                aiMove();
+            }
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            isGameActive = false;
+            currentPlayer = 'X';
+            statusDisplay.innerHTML = 'Wähle einen Spielmodus!';
+            modeSelectionDiv.style.display = 'block';
+            boardElement.style.display = 'none';
+            boardElement.style.pointerEvents = 'auto';
+            resetBtn.style.display = 'none';
+            cells.forEach(cell => {
+                cell.innerHTML = '';
+                cell.classList.remove('x', 'o', 'winning-cell');
+            });
+        }
+
+        cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+        resetBtn.addEventListener('click', resetGame);
+    });
     </script>
 </body>
 </html>
