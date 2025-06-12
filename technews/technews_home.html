@@ -1,48 +1,184 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <title>TechNews by RSE Systems</title>
-    <link rel="stylesheet" href="style.css"> </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechNews – RSE Systems</title>
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #38bdf8;
+      --bg-dark: #0f172a;
+      --bg-light: #1e293b;
+      --text-light: #f1f5f9;
+      --accent: #22d3ee;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--bg-light);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+
+    header img {
+      height: 45px;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+      background-color: var(--bg-light);
+    }
+
+    .hero article {
+      background-color: rgba(255,255,255,0.02);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 0 10px rgba(56,189,248,0.05);
+    }
+
+    .hero article h1 {
+      color: var(--main-color);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero article p {
+      color: #cbd5e1;
+    }
+
+    .sidebar article {
+      margin-bottom: 1.5rem;
+      background-color: rgba(255,255,255,0.03);
+      padding: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .sidebar article h3 {
+      font-size: 1.1rem;
+      color: var(--main-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: var(--bg-light);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--main-color);
+    }
+
+    .card p {
+      color: #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background-color: #1e293b;
+      text-align: center;
+      padding: 2rem;
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
 <body>
-    <div class="stars" id="stars"></div>
+  <header>
+    <img src="RSESystems_Logo.png" alt="RSE Logo">
+    <nav>
+      <a href="#">Start</a>
+      <a href="#">Kategorien</a>
+      <a href="#">Top Themen</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </header>
 
-    <header class="main-header">
-        <nav>
-            <a href="/" class="logo-link">
-                <img src="RSESystems_Logo.png" alt="Logo" class="nav-logo">
-                <span>TechNews</span>
-            </a>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/kategorie/reviews">Reviews</a></li>
-                <li><a href="/kategorie/news">News</a></li>
-                <li><a href="/ueber-uns">Über uns</a></li>
-            </ul>
-        </nav>
-    </header>
+  <section class="hero">
+    <article>
+      <h1>💥 KI verändert alles: So sieht die Zukunft aus</h1>
+      <p>Von GPT-5 über Edge AI bis zu autonomen Unternehmen – wir analysieren die größten Disruptionen der nächsten 24 Monate.</p>
+    </article>
+    <div class="sidebar">
+      <article>
+        <h3>🚨 Apple: Neues Headset enthüllt</h3>
+        <p>AR trifft AI – der nächste Big Step in Mixed Reality?</p>
+      </article>
+      <article>
+        <h3>🔐 EU-Regeln 2025</h3>
+        <p>Datenschutzpflichten für deutsche IT-Unternehmen verschärft.</p>
+      </article>
+    </div>
+  </section>
 
-    <main>
-        <div class="article-grid">
-            <a href="/artikel/mein-erster-artikel" class="article-card">
-                <h3>Titel des ersten Artikels</h3>
-                <p>Eine kurze Zusammenfassung des Artikels, um den Leser neugierig zu machen...</p>
-                <span class="read-more">Weiterlesen &rarr;</span>
-            </a>
-            <a href="/artikel/mein-zweiter-artikel" class="article-card">
-                <h3>Ein weiterer spannender Beitrag</h3>
-                <p>Auch hier steht eine kurze, knackige Einleitung in das Thema.</p>
-                <span class="read-more">Weiterlesen &rarr;</span>
-            </a>
-            </div>
-    </main>
+  <section class="content">
+    <div class="card">
+      <h2>🛰️ SpaceX will KI-Satelliten starten</h2>
+      <p>Machine Learning im Orbit: Mehr Power fürs globale Netz?</p>
+    </div>
+    <div class="card">
+      <h2>🧠 GPT-5: Erste Leaks aufgetaucht</h2>
+      <p>Was steckt wirklich hinter dem neuen Sprachmodell?</p>
+    </div>
+    <div class="card">
+      <h2>📱 Android 16 Beta veröffentlicht</h2>
+      <p>Neuer Fokus auf Performance, AI & Barrierefreiheit.</p>
+    </div>
+    <div class="card">
+      <h2>💾 SSD vs. Cloud</h2>
+      <p>Was lohnt sich 2025 für Mittelstand & Industrie?</p>
+    </div>
+  </section>
 
-    <footer class="main-footer">
-        <p>&copy; 2025 RSE Systems</p>
-        <p>
-            <a href="/impressum">Impressum</a> | <a href="/datenschutz">Datenschutz</a>
-        </p>
-    </footer>
-
-    <script src="script.js"></script>
+  <footer>
+    &copy; 2025 RSE Systems – TechNews Portal | Affiliate-Links möglich | Impressum & Datenschutz
+  </footer>
 </body>
 </html>
