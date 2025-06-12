@@ -1,63 +1,107 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RSE Systems – Maintenance</title>
-  <!-- Favicon im Tab -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
+      background: radial-gradient(circle at 50% 20%, #0f172a, #1e293b);
       color: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars div {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      width: 2px;
+      height: 2px;
+      animation: twinkle 3s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.7; }
     }
 
     .container {
-      background-color: #1e293b;
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
-      max-width: 700px;
-      width: 90%;
+      z-index: 1;
       position: relative;
-      animation: fadeIn 1s ease-in-out;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 60px rgba(0, 255, 255, 0.1);
+      max-width: 720px;
+      margin: 6% auto;
+      padding: 3rem 2rem;
+      text-align: center;
+      animation: fadeInUp 1.4s ease-out;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    .logo-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(15,23,42,0.9), transparent 70%);
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 0;
     }
 
     img.logo {
-      width: 160px;
-      margin-bottom: 1rem;
+      position: relative;
+      width: 180px;
+      z-index: 1;
+      animation: float 5s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px #38bdf8);
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.4rem;
       color: #38bdf8;
       margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       margin-bottom: 1.5rem;
+      color: #cbd5e1;
     }
 
     ul {
-      text-align: left;
-      max-width: 500px;
-      margin: 0 auto 2rem auto;
       list-style: none;
-      padding-left: 0;
+      padding: 0;
+      text-align: left;
+      margin: 0 auto 2rem auto;
+      max-width: 500px;
     }
 
     ul li::before {
@@ -66,53 +110,86 @@
       margin-right: 10px;
     }
 
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
     .pulse {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
+      width: 18px;
+      height: 18px;
       background-color: #22d3ee;
       border-radius: 50%;
       animation: pulse 1.5s infinite;
-      margin-top: 1rem;
+      margin: 0 auto;
     }
 
     .lang-buttons {
       position: absolute;
-      top: 15px;
-      right: 20px;
+      top: 20px;
+      right: 30px;
+      z-index: 2;
     }
 
     .lang-buttons button {
       background: #334155;
       color: #fff;
       border: none;
-      padding: 0.4rem 0.7rem;
-      margin-left: 0.3rem;
+      padding: 0.5rem 0.9rem;
+      margin-left: 0.4rem;
       border-radius: 5px;
       cursor: pointer;
       font-size: 0.9rem;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+
+    .lang-buttons button:hover {
+      transform: scale(1.08);
+      background-color: #475569;
+    }
+
+    .easter-egg {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      font-size: 0.7rem;
+      opacity: 0.05;
+      cursor: pointer;
+    }
+
+    .easter-egg:hover {
+      opacity: 0.6;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes pulse {
       0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.5); opacity: 0.6; }
+      50% { transform: scale(1.5); opacity: 0.5; }
       100% { transform: scale(1); opacity: 1; }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
   </style>
 </head>
 <body>
+  <div class="lang-buttons">
+    <button onclick="setLanguage('de')">DE</button>
+    <button onclick="setLanguage('en')">EN</button>
+    <button onclick="setLanguage('fr')">FR</button>
+  </div>
+
+  <div class="stars" id="stars"></div>
+
   <div class="container">
-    <div class="lang-buttons">
-      <button onclick="setLanguage('de')">DE</button>
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('fr')">FR</button>
+    <div class="logo-wrapper">
+      <img src="RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
-    <img src="RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     <h1 id="title">RSE Systems – Webseite in Überarbeitung</h1>
     <p id="desc">
       Unsere Webseite wird derzeit überarbeitet, um Ihnen künftig einen besseren Service zu bieten.
@@ -126,6 +203,8 @@
     <p id="thanks">Wir sind bald wieder online – danke für Ihr Verständnis!</p>
     <div class="pulse" title="Seite lädt..."></div>
   </div>
+
+  <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
 
   <script>
     const content = {
@@ -176,6 +255,16 @@
         reasonsList.appendChild(li);
       });
       document.getElementById('thanks').innerText = c.thanks;
+    }
+
+    // Generate stars
+    const stars = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.animationDelay = (Math.random() * 3) + 's';
+      stars.appendChild(star);
     }
   </script>
 </body>
