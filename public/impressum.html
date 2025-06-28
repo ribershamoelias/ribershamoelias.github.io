@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressum – RSE Systems</title>
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="icon" href="/favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="icon" href="../public/favicon-32x32.png" type="image/png">
 </head>
 <body>
   <div class="stars" id="stars"></div>
 
   <div class="container">
     <div class="logo-wrapper">
-      <img src="/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+      <img src="./RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
     <h1>Impressum</h1>
 
@@ -38,6 +38,12 @@
     54290 Trier</p>
   </div>
 
-  <script src="/scripts/main.js" defer></script>
+  <script src="../scripts/main.js" defer></script>
+  <div id="footer"></div>
+<script>
+  fetch("../components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
 </body>
 </html>

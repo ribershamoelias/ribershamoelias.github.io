@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – RSE Systems</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="icon" href="../public/favicon-32x32.png" type="image/png">
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <div class="logo-wrapper">
+      <img src="../public/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+    </div>
+    <h1>Kontakt</h1>
+    <p>Sie haben Fragen oder ein Projekt im Kopf? Schreiben Sie uns:</p>
+
+    <form action="mailto:info@rse-systems.com" method="post" enctype="text/plain" style="max-width: 500px; margin: 0 auto; text-align: left;">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required style="width: 100%; margin-bottom: 1rem;"><br>
+
+      <label for="email">E-Mail:</label><br>
+      <input type="email" id="email" name="email" required style="width: 100%; margin-bottom: 1rem;"><br>
+
+      <label for="message">Nachricht:</label><br>
+      <textarea id="message" name="message" rows="5" required style="width: 100%; margin-bottom: 1rem;"></textarea><br>
+
+      <button type="submit" style="background-color: #38bdf8; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer; color: black;">Senden</button>
+    </form>
+
+    <footer style="margin-top: 2rem; font-size: 0.85rem; color: #94a3b8;">
+      <a href="../public/impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
+      <a href="../public/datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
+    </footer>
+  </div>
+
+  <script src="../scripts/main.js" defer></script>
+<div id="footer"></div>
+<script>
+  fetch("../components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+</body>
+</html>
