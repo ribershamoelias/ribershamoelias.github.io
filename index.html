@@ -10,7 +10,8 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://rse-systems.com/">
 
-  <link rel="icon" href="/favicon-32x32.png" type="image/png">
+  <link rel="icon" href="favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="styles/main.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Google Analytics -->
@@ -18,15 +19,11 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
+    if (localStorage.getItem("cookiesAccepted")) {
+      gtag('js', new Date());
+      gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
+    }
   </script>
-
-  <!-- Cookie Consent CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="./styles/main.css" />
 </head>
 <body>
   <div class="lang-buttons">
@@ -39,7 +36,7 @@
 
   <div class="container">
     <div class="logo-wrapper">
-      <img src="./public/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+      <img src="RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
     <h1 id="title">RSE Systems – Webseite in Überarbeitung</h1>
     <p id="desc">
@@ -53,14 +50,31 @@
     </ul>
     <p id="thanks">Wir sind bald wieder online – danke für Ihr Verständnis!</p>
     <div class="pulse" title="Seite lädt..."></div>
+
+    <footer style="margin-top: 2rem; font-size: 0.85rem; color: #94a3b8;">
+      <a href="impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
+      <a href="datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
+    </footer>
   </div>
 
-  <div class="easter-egg" onclick="alert('🮐 Du hast den versteckten Stern gefunden!')">.</div>
+  <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 1rem; text-align: center; z-index: 9999; display: none;">
+    Diese Website verwendet Cookies für Google Analytics. <a href="datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
+    <button onclick="acceptCookies()" style="margin-left: 1rem; background: #38bdf8; color: #000; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">OK</button>
+  </div>
 
-  <!-- Cookie Consent JS -->
-  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" defer></script>
+  <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
 
-  <!-- Main JavaScript -->
-  <script src="./scripts/main.js" defer></script>
+  <script src="scripts/main.js" defer></script>
+  <script>
+    function acceptCookies() {
+      localStorage.setItem("cookiesAccepted", "true");
+      document.getElementById("cookie-banner").style.display = "none";
+      location.reload(); // Analytics wird beim Reload aktiv
+    }
+
+    if (!localStorage.getItem("cookiesAccepted")) {
+      document.getElementById("cookie-banner").style.display = "block";
+    }
+  </script>
 </body>
 </html>
