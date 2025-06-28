@@ -10,8 +10,8 @@
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://rse-systems.com/">
 
-  <link rel="icon" href="favicon-32x32.png" type="image/png">
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
+  <link rel="stylesheet" href="./styles/main.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Google Analytics -->
@@ -36,7 +36,7 @@
 
   <div class="container">
     <div class="logo-wrapper">
-      <img src="RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+      <img src="./public/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
     <h1 id="title">RSE Systems – Webseite in Überarbeitung</h1>
     <p id="desc">
@@ -52,19 +52,19 @@
     <div class="pulse" title="Seite lädt..."></div>
 
     <footer style="margin-top: 2rem; font-size: 0.85rem; color: #94a3b8;">
-      <a href="impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
-      <a href="datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
+      <a href="../public/impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
+      <a href="../public/datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
     </footer>
   </div>
 
   <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 1rem; text-align: center; z-index: 9999; display: none;">
-    Diese Website verwendet Cookies für Google Analytics. <a href="datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
+    Diese Website verwendet Cookies für Google Analytics. <a href="../public/datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
     <button onclick="acceptCookies()" style="margin-left: 1rem; background: #38bdf8; color: #000; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">OK</button>
   </div>
 
   <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
 
-  <script src="scripts/main.js" defer></script>
+  <script src="./scripts/main.js" defer></script>
   <script>
     function acceptCookies() {
       localStorage.setItem("cookiesAccepted", "true");
