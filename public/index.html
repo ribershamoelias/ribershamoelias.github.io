@@ -2,39 +2,32 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSE Systems – Digitale Exzellenz</title>
-  <meta name="description" content="RSE Systems entwickelt moderne Softwarelösungen für Unternehmen, Startups und kreative Projekte.">
-  <meta name="keywords" content="Softwareentwicklung, Webdesign, App, Trier, RSE Systems">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RSE Systems – Webseite in Überarbeitung</title>
+  <meta name="description" content="RSE Systems entwickelt moderne Softwarelösungen für Unternehmen, Startups und digitale Zukunftsprojekte.">
+  <meta name="keywords" content="Softwareentwicklung, Webdesign, App, IT, RSE Systems, Trier">
   <meta name="author" content="RSE Systems">
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="canonical" href="https://rse-systems.com/" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rse-systems.com/">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="RSE Systems – Digitale Exzellenz">
-  <meta property="og:description" content="Moderne Softwarelösungen für echte Ergebnisse.">
-  <meta property="og:image" content="/RSESystems_Logo.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rse-systems.com">
-
-  <!-- Favicons & Manifest -->
-  <link rel="icon" href="/favicon-32x32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- Cookie Consent -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" defer></script>
-
-  <!-- Google Analytics (wird durch Consent aktiviert) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
-
-  <!-- Styles -->
+  <link rel="icon" href="/favicon-32x32.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/main.css">
-  <script src="/scripts/main.js" defer></script>
-</head>
 
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
+  </script>
+
+  <!-- Cookie Consent CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
 <body>
   <div class="lang-buttons">
     <button onclick="setLanguage('de')">DE</button>
@@ -44,9 +37,9 @@
 
   <div class="stars" id="stars"></div>
 
-  <main class="container">
+  <div class="container">
     <div class="logo-wrapper">
-      <img src="/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" loading="lazy" />
+      <img src="/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
     <h1 id="title">RSE Systems – Webseite in Überarbeitung</h1>
     <p id="desc">
@@ -60,41 +53,14 @@
     </ul>
     <p id="thanks">Wir sind bald wieder online – danke für Ihr Verständnis!</p>
     <div class="pulse" title="Seite lädt..."></div>
-  </main>
+  </div>
 
-  <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
+  <div class="easter-egg" onclick="alert('🮐 Du hast den versteckten Stern gefunden!')">.</div>
 
-  <!-- Cookie Consent Init -->
-  <script>
-    window.addEventListener("load", function(){
-      window.cookieconsent.initialise({
-        palette: {
-          popup: { background: "#0f172a" },
-          button: { background: "#22c55e" }
-        },
-        theme: "classic",
-        position: "bottom-right",
-        type: "opt-in",
-        content: {
-          message: "Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern.",
-          dismiss: "Ablehnen",
-          allow: "Zustimmen",
-          link: "Mehr erfahren",
-          href: "/datenschutz.html"
-        },
-        onInitialise: function (status) {
-          if (status === 'allow') {
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-          }
-        }
-      });
-    });
+  <!-- Cookie Consent JS -->
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" defer></script>
 
-    // Google Analytics Konfiguration
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <!-- Main JavaScript -->
+  <script src="/scripts/main.js" defer></script>
 </body>
 </html>
