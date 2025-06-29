@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seite nicht gefunden – RSE Systems</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 – Seite nicht gefunden | RSE Systems</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../styles/main.css" />
   <link rel="icon" href="../public/favicon-32x32.png" type="image/png">
 </head>
 <body>
+  <div id="header"></div>
   <div class="stars" id="stars"></div>
 
-  <div class="container">
+  <main class="container">
     <div class="logo-wrapper">
-      <img src="../public/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+      <img src="../assets/img/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
     <h1>404 – Seite nicht gefunden</h1>
     <p>Die angeforderte Seite existiert nicht oder wurde verschoben.</p>
-    <a href="../index.html" style="color: #38bdf8; text-decoration: underline;">Zur Startseite</a>
+    <a href="/" class="btn">Zur Startseite</a>
+  </main>
 
-    <footer style="margin-top: 2rem; font-size: 0.85rem; color: #94a3b8;">
-      <a href="../public/impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
-      <a href="../public/datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
-    </footer>
-  </div>
-
-  <script src="../scripts/main.js" defer></script>
   <div id="footer"></div>
-<script>
-  fetch("../components/footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-</script>
+
+  <script>
+    fetch("../components/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data)
+      .catch(console.error);
+
+    fetch("../components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data)
+      .catch(console.error);
+  </script>
 </body>
 </html>

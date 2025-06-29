@@ -2,54 +2,44 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unsere Leistungen – RSE Systems</title>
-  <meta name="description" content="RSE Systems bietet moderne Softwareentwicklung, Webdesign und IT-Beratung für Unternehmen, Startups und Behörden.">
-  <meta name="keywords" content="Softwareentwicklung, Webentwicklung, IT-Beratung, App-Entwicklung, Trier">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leistungen – RSE Systems</title>
+  <meta name="description" content="RSE Systems bietet individuelle Softwareentwicklung, Webdesign, IT-Beratung und moderne App-Lösungen für Unternehmen und Startups.">
+  <meta name="keywords" content="Softwareentwicklung, Webdesign, App-Entwicklung, IT-Beratung, RSE Systems, Trier, Leistungen">
+  <meta name="author" content="RSE Systems">
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
   <link rel="stylesheet" href="./styles/main.css" />
-  <link rel="icon" href="./public/favicon-32x32.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Übersetzungen -->
+  <script src="./scripts/translations.js"></script>
+  <script src="./scripts/main.js"></script>
+  
 </head>
 <body>
-
   <div id="header"></div>
-  <div class="stars" id="stars"></div>
 
   <main class="container">
     <h1>Unsere Leistungen</h1>
-    <p>Wir begleiten Sie von der Idee bis zur fertigen Softwarelösung – ganzheitlich, effizient und zukunftssicher.</p>
+    <p>RSE Systems entwickelt maßgeschneiderte digitale Lösungen für moderne Unternehmen. Unsere Leistungen umfassen:</p>
 
-    <section>
-      <h2>💻 Individuelle Softwareentwicklung</h2>
-      <p>Ob Web-App, Desktop-Anwendung oder Cloud-Lösung – wir entwickeln passgenaue Software mit modernsten Technologien.</p>
-    </section>
+    <ul>
+      <li><strong>Webentwicklung:</strong> Responsive Webseiten mit Fokus auf Performance, Design und Usability.</li>
+      <li><strong>App-Entwicklung:</strong> Native und plattformübergreifende Apps für Android und iOS.</li>
+      <li><strong>Softwarelösungen:</strong> Individuelle Softwareprodukte, angepasst an Ihre Workflows.</li>
+      <li><strong>IT-Beratung:</strong> Strategische Planung, technische Audits und Prozessoptimierung.</li>
+      <li><strong>Support & Wartung:</strong> Nachhaltige Betreuung, Monitoring und Updates für Ihre Anwendungen.</li>
+    </ul>
 
-    <section>
-      <h2>🌐 Webdesign & Websites</h2>
-      <p>Responsives Design, SEO-optimiert und schnell – wir gestalten digitale Auftritte, die beeindrucken.</p>
-    </section>
-
-    <section>
-      <h2>📱 App-Entwicklung</h2>
-      <p>Native & hybride Apps für iOS, Android und PWA – performant, nutzerfreundlich und DSGVO-konform.</p>
-    </section>
-
-    <section>
-      <h2>🔐 IT-Security & Beratung</h2>
-      <p>Beratung, Analyse und Absicherung Ihrer Systeme. Wir stärken Ihre digitale Infrastruktur nachhaltig.</p>
-    </section>
+    <p>Sie möchten mehr erfahren oder ein Projekt starten? <a href="./kontakt.html" style="color:#38bdf8;">Kontaktieren Sie uns!</a></p>
   </main>
 
   <div id="footer"></div>
 
   <script src="./scripts/main.js" defer></script>
   <script>
-    fetch("./components/header.html").then(res => res.text()).then(data => {
-      document.getElementById("header").innerHTML = data;
-    });
-    fetch("./components/footer.html").then(res => res.text()).then(data => {
-      document.getElementById("footer").innerHTML = data;
-    });
+    fetch("./components/header.html").then(res => res.text()).then(data => document.getElementById("header").innerHTML = data);
+    fetch("./components/footer.html").then(res => res.text()).then(data => document.getElementById("footer").innerHTML = data);
   </script>
-
 </body>
 </html>
