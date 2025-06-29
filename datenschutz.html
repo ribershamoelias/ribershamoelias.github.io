@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – RSE Systems</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+    <div class="logo-wrapper">
+      <img src="./public/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+    </div>
+    <h1>Datenschutzerklärung</h1>
+
+    <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten innerhalb unseres Onlineangebotes auf.</p>
+
+    <h2>Verantwortlicher</h2>
+    <p>RSE Systems<br>
+    Riber Shamo Elias<br>
+    Musterstraße 12<br>
+    54290 Trier<br>
+    info@rse-systems.com</p>
+
+    <h2>Erhebung und Speicherung personenbezogener Daten</h2>
+    <p>Beim Besuch dieser Website werden durch den Browser automatisch Informationen an den Server gesendet. Diese Informationen beinhalten z.B. IP-Adresse, Datum und Uhrzeit.</p>
+
+    <h2>Cookies</h2>
+    <p>Diese Website verwendet Cookies. Durch den Einsatz von Cookies kann der Nutzungskomfort erhöht werden.</p>
+
+    <h2>Google Analytics</h2>
+    <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. Die Nutzung erfolgt auf Grundlage des Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>
+
+    <h2>Ihre Rechte</h2>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit.</p>
+  </div>
+
+  <script src="./scripts/main.js" defer></script>
+  <div id="footer"></div>
+<script>
+  fetch("./components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+</body>
+</html>
