@@ -1,20 +1,19 @@
-/* main.css */
-
+/* Grundlegendes Layout */
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
   background: radial-gradient(circle at 50% 20%, #0f172a, #1e293b);
   color: #f1f5f9;
-  overflow: hidden;
-  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
+/* Sterneffekt */
 .stars {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: transparent;
   pointer-events: none;
   z-index: 0;
 }
@@ -33,6 +32,7 @@ html, body {
   50% { opacity: 0.7; }
 }
 
+/* Hauptcontainer */
 .container {
   z-index: 1;
   position: relative;
@@ -68,7 +68,7 @@ html, body {
   z-index: 0;
 }
 
-.logo {
+img.logo {
   position: relative;
   width: 180px;
   z-index: 1;
@@ -76,6 +76,7 @@ html, body {
   filter: drop-shadow(0 0 10px #38bdf8);
 }
 
+/* Typografie */
 h1 {
   font-size: 2.4rem;
   color: #38bdf8;
@@ -106,16 +107,10 @@ ul li {
   margin-bottom: 0.5rem;
 }
 
-.pulse {
-  width: 18px;
-  height: 18px;
-  background-color: #22d3ee;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
-  margin: 0 auto;
-}
-
+/* Sprachbuttons */
 .lang-buttons {
+  display: flex;
+  gap: 0.5rem;
   position: absolute;
   top: 20px;
   right: 30px;
@@ -127,7 +122,6 @@ ul li {
   color: #fff;
   border: none;
   padding: 0.5rem 0.9rem;
-  margin-left: 0.4rem;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -139,6 +133,60 @@ ul li {
   background-color: #475569;
 }
 
+/* Pulsanimation */
+.pulse {
+  width: 18px;
+  height: 18px;
+  background-color: #22d3ee;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  margin: 0 auto;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: #38bdf8;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+.site-footer a:hover {
+  color: #22d3ee;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav a {
+  margin-right: 1.2rem;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #22d3ee;
+}
+
+/* Easter Egg */
 .easter-egg {
   position: absolute;
   bottom: 12px;
@@ -152,6 +200,7 @@ ul li {
   opacity: 0.6;
 }
 
+/* Animationen */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -166,4 +215,33 @@ ul li {
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
+}
+
+/* Responsives Design */
+@media (max-width: 768px) {
+  .container {
+    margin: 10% 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .site-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .lang-buttons {
+    position: static;
+    justify-content: center;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav a {
+    margin: 0.5rem;
+  }
 }

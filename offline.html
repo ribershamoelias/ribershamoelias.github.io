@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline – RSE Systems</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <main class="container" style="text-align: center; margin-top: 4rem;">
+    <h1>📴 Sie sind offline</h1>
+    <p>Leider besteht aktuell keine Internetverbindung.<br>
+    Bitte versuchen Sie es später erneut oder überprüfen Sie Ihre Verbindung.</p>
+    <a href="/" style="color: #38bdf8; text-decoration: underline;">Zur Startseite</a>
+    <p style="margin-top: 2rem; color: #94a3b8; font-size: 0.85rem;">
+      <a href="/public/impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
+      <a href="/public/datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
+  </main>
+</body>
+</html>
+<script>
+  // Fallback for offline mode
+  if (!navigator.onLine) {
+    document.body.innerHTML = `
+      <main class="container" style="text-align: center; margin-top: 4rem;">
+        <h1>📴 Sie sind offline</h1>
+        <p>Leider besteht aktuell keine Internetverbindung.<br>
+        Bitte versuchen Sie es später erneut oder überprüfen Sie Ihre Verbindung.</p>
+        <a href="/" style="color: #38bdf8; text-decoration: underline;">Zur Startseite</a>
+      </main>`;
+  }
+</script>
+<script src="/scripts/main.js" defer></script>
+<script>
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("header").innerHTML = data;
+    })
+    .catch(err => console.error("Header could not be loaded:", err));
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      })
+      .catch(err => console.error("Footer could not be loaded:", err));
+</script>
+<div id="header"></div>
+<div id="footer"></div>
+<script>
+  // Load header and footer components
+  fetch("/components/header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("header").innerHTML = data;
+    })
+    .catch(err => console.error("Header could not be loaded:", err));
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("footer").innerHTML = data;
+    })
+    .catch(err => console.error("Footer could not be loaded:", err));
+</script>
