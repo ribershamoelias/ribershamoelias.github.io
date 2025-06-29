@@ -2,36 +2,22 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>RSE Systems – Webseite in Überarbeitung</title>
   <meta name="description" content="RSE Systems entwickelt moderne Softwarelösungen für Unternehmen, Startups und digitale Zukunftsprojekte.">
   <meta name="keywords" content="Softwareentwicklung, Webdesign, App, IT, RSE Systems, Trier">
   <meta name="author" content="RSE Systems">
   <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="4tqwG3HBI-52O37ojQk1ZzH6N0o3xikJEWl0QcK2B6I" />
   <link rel="canonical" href="https://rse-systems.com/">
 
-  <!-- manifest -->
-  <link rel="manifest" href="./public/manifest.json" />
-  <meta name="theme-color" content="#38bdf8" />
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
 
+  <!-- Übersetzungen -->
+  <script src="./scripts/translations.js"></script>
+  <script src="./scripts/main.js"></script>
 
-  <!-- OpenGraph für Social Sharing -->
-  <meta property="og:title" content="RSE Systems – Webseite in Überarbeitung" />
-  <meta property="og:description" content="Moderne Softwarelösungen für Unternehmen und Startups. Aktuell im Wartungsmodus." />
-  <meta property="og:image" content="https://rse-systems.com/assets/img/RSESystems_Logo.png" />
-  <meta property="og:url" content="https://rse-systems.com/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RSE Systems – Webseite in Überarbeitung" />
-  <meta name="twitter:description" content="Moderne Softwarelösungen für Unternehmen und Startups. Aktuell im Wartungsmodus." />
-  <meta name="twitter:image" content="https://rse-systems.com/assets/img/RSESystems_Logo.png" />
-
-  <link rel="icon" href="./public/favicon-32x32.png" type="image/png" />
   <link rel="stylesheet" href="./styles/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
@@ -44,22 +30,10 @@
     }
   </script>
 </head>
-
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <nav class="nav">
-      <a href="./index.html">Startseite</a>
-      <a href="./impressum.html">Impressum</a>
-      <a href="./datenschutz.html">Datenschutz</a>
-    </nav>
-    <div class="lang-buttons">
-      <button onclick="setLanguage('de')">DE</button>
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('fr')">FR</button>
-    </div>
-  </header>
+  <!-- Header (dynamisch geladen) -->
+  <div id="header"></div>
 
   <!-- Sternenhimmel -->
   <div class="stars" id="stars"></div>
@@ -81,21 +55,16 @@
     <div class="pulse" title="Seite lädt..."></div>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p style="font-size: 0.85rem; color: #94a3b8; text-align: center;">
-      <a href="./impressum.html" style="color: #38bdf8; margin-right: 1rem;">Impressum</a>
-      <a href="./datenschutz.html" style="color: #38bdf8;">Datenschutz</a>
-    </p>
-  </footer>
+  <!-- Footer (dynamisch geladen) -->
+  <div id="footer"></div>
 
   <!-- Cookie-Banner -->
   <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 1rem; text-align: center; z-index: 9999; display: none;">
-    Diese Website verwendet Cookies für Google Analytics. <a href="./datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
+    Diese Website verwendet Cookies für Google Analytics. <a href="datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
     <button onclick="acceptCookies()" style="margin-left: 1rem; background: #38bdf8; color: #000; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">OK</button>
   </div>
 
-  <!-- Easter-Egg -->
+  <!-- Easter Egg -->
   <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
 
   <!-- SCRIPTS -->
@@ -110,17 +79,21 @@
     if (!localStorage.getItem("cookiesAccepted")) {
       document.getElementById("cookie-banner").style.display = "block";
     }
+
+    // Header & Footer laden
+    fetch("./components/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      })
+      .catch(err => console.error("Header konnte nicht geladen werden:", err));
+
+    fetch("./components/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      })
+      .catch(err => console.error("Footer konnte nicht geladen werden:", err));
   </script>
-
-<!-- Service Worker für PWA -->
- 
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(() => console.log('✅ Service Worker registriert'))
-      .catch(err => console.error('❌ Registrierung fehlgeschlagen:', err));
-  }
-</script>
-
 </body>
 </html>
