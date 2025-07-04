@@ -1,207 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt – RSE Systems: Software, Beratung & Workshops</title>
-  <meta name="description" content="Nehmen Sie Kontakt zu RSE Systems auf – für individuelle Softwareentwicklung, IT-Beratung, Workshops oder Kooperationen. Persönlich. Verlässlich. Digital.">
-  <meta name="keywords" content="Kontakt, RSE Systems, IT-Beratung, Softwareentwicklung, Schulungen, Workshops, Trier, Alsdorf, Digitalagentur, Support">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="RSE Systems eG">
-  <link rel="canonical" href="https://rse-systems.com/kontakt.html">
-  <meta http-equiv="content-language" content="de">
-
-  <!-- Open Graph für Social Media -->
-  <meta property="og:title" content="Kontakt – RSE Systems">
-  <meta property="og:description" content="Nehmen Sie Kontakt auf: Wir helfen bei IT-Projekten, individueller Software & Digitalisierungsvorhaben.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rse-systems.com/kontakt.html">
-  <meta property="og:image" content="https://rse-systems.com/assets/images/RSESystems_Logo.png">
-
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Kontakt – RSE Systems",
-    "url": "https://rse-systems.com/kontakt.html",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://rse-systems.com/kontakt.html"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "RSE Systems eG",
-      "url": "https://rse-systems.com",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://rse-systems.com/assets/images/RSESystems_Logo.png"
-      }
-    },
-    "contactOption": [
-      {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "telephone": "+49-2404-123456",
-        "email": "info@rse-systems.com",
-        "areaServed": "DE",
-        "availableLanguage": "de"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Google Analytics DSGVO-konform -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    if (localStorage.getItem("cookiesAccepted")) {
-      gtag('js', new Date());
-      gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
-    }
-  </script>
-
-  <!-- Ressourcen -->
-  <link rel="manifest" href="./assets/manifest.json">
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <title>Kontakt – RSE Systems</title>
+  <meta name="description" content="Nehmen Sie Kontakt mit uns auf für Ihre individuellen Softwarelösungen und Projekte.">
+  <link rel="canonical" href="https://rse-systems.com/de/kontakt.html" />
+  <link rel="alternate" hreflang="de" href="https://rse-systems.com/de/kontakt.html" />
+  <link rel="alternate" hreflang="en" href="https://rse-systems.com/en/contact.html" />
+  <link rel="alternate" hreflang="fr" href="https://rse-systems.com/fr/contact.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
 </head>
 
 <body>
+  <div id="header"></div>
+  <div class="stars" id="stars"></div>
 
-    <nav class="nav glass">
-    <div class="logo-area">
-      <img src="./assets/images/RSESystems_Logo.png" alt="RSE Logo" class="logo" />
-    </div>
-    <ul>
-      <li><a href="./index.html#welcome">Start</a></li>
+  <main class="container">
+    <h1 id="contactHeadline">Kontaktieren Sie uns</h1>
+    <p id="contactIntro">
+      Schreiben Sie uns bei Fragen, Ideen oder Projektanfragen. Wir melden uns schnellstmöglich zurück.
+    </p>
+    <form action="../de/danke.html" method="POST">
+      <label for="name" id="contactLabelName">Ihr Name:</label>
+      <input type="text" name="name" id="name" required>
 
-      <li><a href="./index.html#leistungen">Leistungen</a></li>
+      <label for="email" id="contactLabelEmail">Ihre E-Mail-Adresse:</label>
+      <input type="email" name="email" id="email" required>
 
-      <li><a href="./index.html#warum">Warum wir</a></li>
+      <label for="message" id="contactLabelMessage">Nachricht:</label>
+      <textarea name="message" id="message" rows="6" required></textarea>
 
-      <li><a href="./index.html#faq">FAQ</a></li>
+      <button type="submit" id="contactButton">Absenden</button>
+    </form>
+  </main>
 
-      <li><a href="./ueberuns.html">Über uns</a></li>
+  <div id="footer"></div>
+  <div id="cookie-banner"></div>
 
-      <li><a href="./workshops.html">Schulungen & Workshops</a></li>
-
-      <li><a href="./blog.html">Blog</a></li>
-
-      <li><a href="./kontakt.html">Kontakt</a></li>
-    </ul>
-
-  </nav>
-
-    <main>
-        <section id="welcome" class="hero-section about-hero-background">
-            <div class="container hero-content text-center">
-                <h1>Kontaktieren Sie uns</h1>
-                <p>
-                    Haben Sie Fragen, Projektideen oder möchten Sie mehr über unsere Dienstleistungen erfahren? Wir sind nur eine Nachricht oder einen Anruf entfernt.
-                </p>
-                <a href="#kontakt-formular" class="cta-button">Nachricht senden</a>
-            </div>
-        </section>
-
-        <section id="kontakt-section" class="section">
-            <div class="container contact-details-form-grid">
-                <div class="contact-info card">
-                    <h2 class="section-title-small">Unsere Kontaktdaten</h2>
-                    <p class="contact-description">Wir sind gerne für Sie da und beantworten Ihre Anliegen schnellstmöglich.</p>
-                    <ul class="contact-list">
-                        <li><i class="bi bi-geo-alt-fill"></i>Adresse: Königsberger Str. 3, 54411 Hermeskeil, Deutschland</li>
-                        <li><i class="bi bi-phone-fill"></i>Telefon: <a href="tel:+492404123456">+49 162 9383549</a></li>
-                        <li><i class="bi bi-envelope-fill"></i>E-Mail: <a href="mailto:info@rse-systems.com">info@rse-systems.com</a></li>
-                        <li><i class="bi bi-clock-fill"></i>Bürozeiten: Mo-Fr: 9:00 - 17:00 Uhr</li>
-                    </ul>
-
-                    <div class="social-icons margin-top-2rem">
-                        <!-- <a href="https://facebook.com/rse-systems" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a> -->
-                    <!-- <a href="https://twitter.com/rse-systems" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
-                    <a href="https://linkedin.com/company/rse-systems" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <!-- <a href="https://instagram.com/rse-systems" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a> -->
-                    </div>
-                </div>
-
-                <div id="kontakt-formular" class="contact-form card">
-                    <h2 class="section-title-small">Senden Sie uns eine Nachricht</h2>
-                    <p class="contact-description">Füllen Sie das Formular aus und wir melden uns umgehend bei Ihnen.</p>
-                    <form action="#" method="POST" class="liquid-glass-form">
-                        <div class="form-group">
-                            <label for="name">Ihr Name:</label>
-                            <input type="text" id="name" name="name" required placeholder="Max Mustermann">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Ihre E-Mail-Adresse:</label>
-                            <email type="email" id="email" name="email" required placeholder="max.mustermann@example.com"></email>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefonnummer (optional):</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+49 123 456789">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Betreff:</label>
-                            <input type="text" id="subject" name="subject" required placeholder="Anfrage zu Softwareentwicklung">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Ihre Nachricht:</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Beschreiben Sie hier Ihr Anliegen..."></textarea>
-                        </div>
-                        <button type="submit" class="button primary">Nachricht absenden</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <div class="container footer-top">
-            <div class="footer-brand">
-                <img src="./assets/images/RSESystems_Logo.png" alt="RSE Systems Logo" class="footer-logo">
-                <p>Digitale Lösungen für Unternehmen mit Weitblick.</p>
-            </div>
-
-            <div class="footer-links">
-                <div>
-                    <h4>Unternehmen</h4>
-                    <a href="./ueber-uns.html">Über uns</a>
-                    <a href="./kontakt.html">Kontakt</a> <a href="./impressum.html">Impressum</a>
-                    <a href="./datenschutz.html">Datenschutz</a>
-                </div>
-                <div>
-                    <h4>Dienste</h4>
-                    <a href="./index.html#leistungen">Softwareentwicklung</a>
-                    <a href="./index.html#leistungen">IT-Beratung</a>
-                    <a href="./workshops.html">Workshops (BETA)</a>
-                </div>
-                <div>
-                    <h4>Ressourcen</h4>
-                    <a href="./index.html#faq">FAQ</a>
-                    <a href="./blog.html">Blog & Artikel</a>
-                    <a href="./whitepapers.html">Whitepapers</a>
-                </div>
-            </div>
-
-            <div class="footer-social">
-                <h4>Folgen Sie uns</h4>
-                <div class="social-icons">
-                    <!-- <a href="https://facebook.com/rse-systems" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a> -->
-                    <!-- <a href="https://twitter.com/rse-systems" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
-                    <a href="https://linkedin.com/company/rse-systems" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <!-- <a href="https://instagram.com/rse-systems" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 RSE Systems GmbH – Alle Rechte vorbehalten.</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="../scripts/main.js" type="module"></script>
 </body>
 </html>

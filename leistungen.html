@@ -2,44 +2,39 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Leistungen – RSE Systems</title>
-  <meta name="description" content="RSE Systems bietet individuelle Softwareentwicklung, Webdesign, IT-Beratung und moderne App-Lösungen für Unternehmen und Startups.">
-  <meta name="keywords" content="Softwareentwicklung, Webdesign, App-Entwicklung, IT-Beratung, RSE Systems, Trier, Leistungen">
-  <meta name="author" content="RSE Systems">
-  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Übersetzungen -->
-  <script src="./data/translations.js"></script>
-  <script src="./scripts/main.js"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsere Leistungen – RSE Systems</title>
+  <meta name="description" content="Erfahren Sie mehr über unsere maßgeschneiderten Softwarelösungen, Webentwicklung und IT-Dienstleistungen für Unternehmen und Startups.">
+  <meta name="keywords" content="Leistungen, Softwareentwicklung, Webdesign, IT-Dienstleistungen, RSE Systems">
+  <link rel="canonical" href="https://rse-systems.com/de/leistungen.html" />
+  <link rel="alternate" hreflang="de" href="https://rse-systems.com/de/leistungen.html" />
+  <link rel="alternate" hreflang="en" href="https://rse-systems.com/en/services.html" />
+  <link rel="alternate" hreflang="fr" href="https://rse-systems.com/fr/prestations.html" />
 </head>
 <body>
   <div id="header"></div>
+  <div class="stars" id="stars"></div>
 
   <main class="container">
-    <h1>Unsere Leistungen</h1>
-    <p>RSE Systems entwickelt maßgeschneiderte digitale Lösungen für moderne Unternehmen. Unsere Leistungen umfassen:</p>
-
+    <h1 id="servicesHeadline">Unsere Leistungen</h1>
+    <p id="servicesIntro">
+      Wir bieten maßgeschneiderte Softwarelösungen für Unternehmen, Startups und öffentliche Einrichtungen.
+    </p>
     <ul>
-      <li><strong>Webentwicklung:</strong> Responsive Webseiten mit Fokus auf Performance, Design und Usability.</li>
-      <li><strong>App-Entwicklung:</strong> Native und plattformübergreifende Apps für Android und iOS.</li>
-      <li><strong>Softwarelösungen:</strong> Individuelle Softwareprodukte, angepasst an Ihre Workflows.</li>
-      <li><strong>IT-Beratung:</strong> Strategische Planung, technische Audits und Prozessoptimierung.</li>
-      <li><strong>Support & Wartung:</strong> Nachhaltige Betreuung, Monitoring und Updates für Ihre Anwendungen.</li>
+      <li id="service1">🔧 Individuelle Softwareentwicklung</li>
+      <li id="service2">🌐 Modernes Webdesign & UI/UX</li>
+      <li id="service3">📱 Mobile App Entwicklung (iOS, Android)</li>
+      <li id="service4">☁️ Cloudbasierte Systeme & APIs</li>
+      <li id="service5">🔒 IT-Sicherheit & DSGVO-Beratung</li>
     </ul>
-
-    <p>Sie möchten mehr erfahren oder ein Projekt starten? <a href="./kontakt.html" style="color:#38bdf8;">Kontaktieren Sie uns!</a></p>
+    <p id="servicesOutro">
+      Sie haben ein konkretes Projekt? <a href="/kontakt.html" style="color:#38bdf8;">Kontaktieren Sie uns</a>.
+    </p>
   </main>
 
   <div id="footer"></div>
+  <div id="cookie-banner"></div>
 
-  <script src="./scripts/main.js" defer></script>
-  <script>
-    fetch("./components/header.html").then(res => res.text()).then(data => document.getElementById("header").innerHTML = data);
-    fetch("./components/footer.html").then(res => res.text()).then(data => document.getElementById("footer").innerHTML = data);
-  </script>
+  <script src="/scripts/main.js" type="module"></script>
 </body>
 </html>
