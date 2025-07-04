@@ -1,0 +1,1534 @@
+/* styles.css */
+
+/* --- Farbvariablen (dunkles Liquid Glass Schema) --- */
+:root {
+  --primary-color: #38bdf8; /* Akzentfarbe (hellblau) */
+  --secondary-color: #0ea5e9; /* Dunklerer Akzent bei Hover */
+  --bg-color: #0f172a; /* Dunkler Hintergrund für den Body */
+  --text-color: #f1f5f9; /* Heller Text für allgemeine Lesbarkeit */
+  --light-text-color: #cbd5e1; /* Noch hellere Textfarbe für Paragraphen, die gut lesbar sein sollen */
+
+  /* Liquid Glass Basiseinstellungen */
+  --liquid-glass-bg-base: 15, 23, 42; /* RGB-Werte von --bg-color für rgba() */
+  --liquid-glass-alpha: 0.4; /* Transparenz für Glass-Effekt */
+  --liquid-glass-blur: 20px;
+  --liquid-glass-saturate: 180%;
+  --liquid-glass-contrast: 120%;
+  --liquid-glass-brightness: 110%;
+  --liquid-glass-border-color: rgba(56, 189, 248, 0.2); /* Akzent-Randfarbe */
+  --liquid-glass-shadow-color: rgba(0, 0, 0, 0.2);
+  --liquid-glass-inner-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.05); /* Leichter innerer Schatten */
+  --liquid-glass-radius: 16px;
+
+  --shadow-color-dark: rgba(0, 0, 0, 0.2);
+  --shadow-color-hover-dark: rgba(0, 0, 0, 0.45);
+
+  --transition-speed: 0.3s;
+}
+
+/* --- Allgemeine Reset- und Basiseinstellungen --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color); /* Standard-Textfarbe */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0; /* Standard-Padding für Sektionen */
+  overflow: hidden; /* Verhindert ungewolltes Scrollen */
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: var(--primary-color); /* Akzentfarbe für Titel */
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* --- Hilfsklassen --- */
+.text-center { text-align: center; }
+.max-width-800 { max-width: 800px; }
+.margin-auto { margin-left: auto; margin-right: auto; }
+.margin-top-1rem { margin-top: 1rem; }
+.margin-top-2rem { margin-top: 2rem; }
+.margin-top-3rem { margin-top: 3rem; }
+.margin-top-4rem { margin-top: 4rem; }
+.margin-bottom-2rem { margin-bottom: 2rem; }
+
+.section-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--light-text-color); /* Hellerer Text für Beschreibungen */
+}
+
+/* --- Navigationsstile (Liquid Glass) --- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(var(--liquid-glass-bg-base), 0.8); /* Etwas weniger transparent als Karten */
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 4px 15px var(--shadow-color-dark);
+}
+
+.nav .logo-area img {
+  height: 55px;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.8rem;
+}
+
+.nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.nav ul li a:hover,
+.nav ul li a.active { /* Aktiver Link-Stil */
+  background: rgba(var(--liquid-glass-bg-base), 0.2); /* Leichter Hintergrund bei Hover/Active */
+  color: var(--primary-color);
+}
+
+/* --- Hero Sektion (allgemein) --- */
+.hero-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 0;
+  z-index: 1;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(var(--liquid-glass-bg-base), 0.7); /* Dunkles Overlay */
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  padding: 2.5rem 2rem;
+  background: rgba(var(--liquid-glass-bg-base), 0.4); /* Dunkleres Glas */
+  backdrop-filter: blur(20px) saturate(180%) contrast(120%) brightness(110%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%) contrast(120%) brightness(110%);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 20px var(--shadow-color-dark);
+  border-radius: 16px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  color: #fff; /* Weiße Schrift für den Titel */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  color: var(--light-text-color); /* Helle, gut lesbare Schriftfarbe für den Paragraphen */
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.cta-button, .button.primary { /* Gemeinsamer Stil für CTA-Buttons */
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--bg-color); /* Textfarbe auf dunklem Hintergrund */
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.15rem;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+  border: none; /* Wichtig für Button-Elemente */
+  cursor: pointer;
+}
+
+.cta-button:hover, .button.primary:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(56, 189, 248, 0.5);
+}
+
+/* --- Spezifische Hero-Sektion für Über uns --- */
+.about-hero-background {
+    background: url('../images/RSE_bigTeam.png') no-repeat center center/cover; /* Bild für Über uns Hero */
+    background-attachment: fixed; /* Parallax-Effekt */
+}
+/* Overlay ist bereits im allgemeinen .hero-section::before definiert */
+
+/* --- Allgemeine Karten-Stile (Liquid Glass) --- */
+.card, .item-card {
+  background: rgba(var(--liquid-glass-bg-base), var(--liquid-glass-alpha));
+  backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) contrast(var(--liquid-glass-contrast)) brightness(var(--liquid-glass-brightness));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur)) saturate(var(--liquid-glass-saturate)) contrast(var(--liquid-glass-contrast)) brightness(var(--liquid-glass-brightness));
+  border: 1px solid var(--liquid-glass-border-color);
+  box-shadow: 0 8px 20px var(--shadow-color-dark);
+  border-radius: var(--liquid-glass-radius);
+  padding: 2.5rem;
+  transition: all var(--transition-speed) ease;
+  color: var(--text-color); /* Standardtextfarbe in Karten */
+}
+
+.card:hover, .item-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px var(--shadow-color-hover-dark);
+  border-color: rgba(var(--liquid-glass-bg-base), 0.4);
+  background: rgba(var(--liquid-glass-bg-base), var(--liquid-glass-alpha) + 0.1); /* Leicht dunkler bei Hover */
+}
+
+.card h3, .item-card h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color); /* Akzentfarbe für Titel in Karten */
+  margin-bottom: 0.8rem;
+}
+
+.card p, .item-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--light-text-color); /* Deutlich hellere Farbe für Fließtext in Karten */
+}
+
+/* --- Leistungen Sektion --- */
+.leistungen-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .leistungen-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .leistungen-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* --- Warum RSE Systems Sektion (Verwendet .item-card) --- */
+.why-section .grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .why-section .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .why-section .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* --- Über uns: 3-Spalten-Grid für Mission/Werte --- */
+.cards-grid-3-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .cards-grid-3-columns {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- Zitat-Styling --- */
+.quote-section {
+    padding: 2rem 0; /* Kann auch mit section padding kombiniert werden */
+}
+
+.quote-text {
+    font-size: 1.6rem;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: var(--primary-color); /* Akzentuiert das Zitat */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.quote-author {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+/* --- Team Spotlight / CEO Bild --- */
+.team-spotlight {
+    padding-top: 5rem; /* Stellt sicher, dass genügend Platz ist */
+}
+
+.team-member-focus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ceo-image {
+    width: 250px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border: 3px solid var(--primary-color); /* Akzentuierter Rahmen */
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.ceo-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.team-member-title {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--text-color);
+}
+
+.team-member-role {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--light-text-color);
+    display: block;
+    margin-top: 0.2rem;
+}
+
+
+/* --- FAQ Sektion (Akkordeon) --- */
+.accordion {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.accordion details {
+  background: rgba(var(--liquid-glass-bg-base), 0.3); /* Leichter Glass-Effekt für Akkordeon */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+}
+
+.accordion details[open] {
+  box-shadow: 0 6px 15px var(--shadow-color-dark);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.accordion summary {
+  padding: 1.5rem 2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color); /* Heller Text für die Zusammenfassung */
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.accordion summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  transition: transform var(--transition-speed) ease;
+}
+
+.accordion details[open] summary::after {
+  content: '-';
+  transform: rotate(0deg);
+}
+
+.accordion details p {
+  padding: 0 2rem 1.5rem 2rem;
+  font-size: 1rem;
+  color: var(--light-text-color); /* Heller Text für den Antworttext */
+  line-height: 1.6;
+}
+
+/* --- Kontakt Sektion --- */
+.contact-section {
+  background: linear-gradient(135deg, #0f172a 0%, #0a0f1a 100%); /* Verlauf für den Kontaktbereich */
+  padding: 6rem 0;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  /* KEIN background: #fff; HIER MEHR! Liquid Glass */
+  background: rgba(var(--liquid-glass-bg-base), 0.4); /* Liquid Glass Effekt */
+  backdrop-filter: blur(var(--liquid-glass-blur));
+  -webkit-backdrop-filter: blur(var(--liquid-glass-blur));
+  border: 1px solid var(--liquid-glass-border-color);
+  box-shadow: 0 12px 24px var(--shadow-color-dark);
+  border-radius: var(--liquid-glass-radius);
+  padding: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .contact-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.contact-content {
+  flex: 1;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .contact-content {
+    text-align: left;
+  }
+}
+
+.contact-content h2 {
+  font-size: 2.5rem;
+  color: var(--text-color); /* Heller Text für den Titel im Kontaktbereich */
+  margin-bottom: 1rem;
+}
+
+.contact-content p {
+  font-size: 1.15rem;
+  color: var(--light-text-color); /* Helle, gut lesbare Farbe für den Text im Kontaktbereich */
+  margin-bottom: 2rem;
+}
+
+.contact-image {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Footer Stile --- */
+.footer {
+  background-color: #0a0f1a; /* Dunkler als Body-Hintergrund */
+  padding: 3rem 0;
+  color: #aaa; /* Hellerer Text für den Footer */
+  font-size: 0.95rem;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand {
+  flex: 1 1 250px;
+}
+
+.footer-brand .footer-logo {
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  flex: 2 1 400px;
+  justify-content: space-around;
+}
+
+.footer-links div {
+  min-width: 120px;
+}
+
+.footer-links h4 {
+  color: var(--primary-color); /* Akzentfarbe für Überschriften im Footer */
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  display: block;
+  color: #aaa; /* Hellerer Link-Text */
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color var(--transition-speed) ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-color); /* Heller bei Hover */
+}
+
+.footer-social {
+  flex: 1 1 150px;
+  text-align: right;
+}
+
+.footer-social .social-icons a {
+  color: #aaa;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  transition: color var(--transition-speed) ease;
+}
+
+.footer-social .social-icons a:hover {
+  color: var(--primary-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* --- Responsive Anpassungen --- */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+  .why-section .grid, .cards-grid-3-columns { /* Auch hier anwenden */
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .nav ul {
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contact-content {
+    text-align: center;
+  }
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-social {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .footer-social .social-icons a {
+    margin: 0 0.5rem;
+  }
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .footer-links div {
+    text-align: center;
+  }
+  .quote-text {
+      font-size: 1.2rem;
+  }
+  .ceo-image {
+      width: 180px;
+  }
+  .team-member-title {
+      font-size: 1.2rem;
+  }
+  .team-member-role {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav .logo-area img {
+    height: 45px;
+  }
+  .nav ul {
+    gap: 0.5rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .card, .item-card {
+    padding: 1.5rem;
+  }
+  .card h3, .item-card h3 {
+    font-size: 1.2rem;
+  }
+  .card p, .item-card p {
+    font-size: 0.9rem;
+  }
+  .cta-button, .button.primary {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+/* --- Team Spotlight / Team Member Cards --- */
+.team-spotlight {
+    padding-top: 5rem; /* Stellt sicher, dass genügend Platz ist */
+}
+
+.team-member-card {
+    text-align: center; /* Zentriert Inhalte innerhalb der Team-Karten */
+    /* Zusätzliche Flexbox-Eigenschaften für bessere Zentrierung und vertikale Ausrichtung */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Inhalte oben ausrichten */
+}
+
+.team-member-image {
+    width: 180px; /* Feste Breite für die Bilder */
+    height: 180px; /* Feste Höhe für die Bilder */
+    border-radius: 50%; /* Macht die Bilder rund */
+    object-fit: cover; /* Schneidet das Bild zu, um den Bereich auszufüllen, ohne es zu verzerren */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    border: 3px solid var(--primary-color); /* Akzentuierter Rahmen */
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.team-member-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.team-member-name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: var(--primary-color); /* Titel des Teammitglieds */
+    margin-bottom: 0.5rem;
+}
+
+.team-member-role {
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--light-text-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.team-member-description {
+    font-size: 0.95rem;
+    color: var(--light-text-color);
+    line-height: 1.6;
+    flex-grow: 1; /* Lässt die Beschreibung den restlichen Platz einnehmen */
+}
+
+/* Responsive Anpassung für Team-Bilder auf kleinen Screens */
+@media (max-width: 768px) {
+  .team-member-image {
+      width: 150px;
+      height: 150px;
+  }
+  .team-member-name {
+      font-size: 1.2rem;
+  }
+  .team-member-role {
+      font-size: 0.9rem;
+  }
+}
+
+
+
+/* Add this to your styles.css */
+
+/* --- Kontakt Page Specific Styles --- */
+
+/* Hero Section for Contact Page */
+.kontakt-hero-background {
+    background: url('../images/contact-hero.jpg') no-repeat center center/cover; /* Replace with your actual contact image */
+    background-attachment: fixed;
+}
+
+/* Grid for Contact Info and Form */
+.contact-details-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: flex-start; /* Aligns items to the top within their grid cells */
+}
+
+@media (min-width: 768px) {
+    .contact-details-form-grid {
+        grid-template-columns: 1fr 2fr; /* Info on left, Form on right for wider screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-details-form-grid {
+        grid-template-columns: 1fr 1.5fr; /* Adjust ratio if form needs more space */
+    }
+}
+
+
+/* Styling for the small section title in info/form cards */
+.section-title-small {
+    font-size: 2rem; /* Slightly smaller than main section titles */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: left; /* Align to left within the card */
+    font-weight: 600;
+}
+
+/* Specific styles for Contact Info card */
+.contact-info {
+    text-align: left;
+}
+
+.contact-info .contact-description {
+    font-size: 1.05rem;
+    color: var(--light-text-color);
+    margin-bottom: 2rem;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--light-text-color);
+}
+
+.contact-list li i.bi {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+    width: 25px; /* Fixed width for consistent alignment */
+    text-align: center;
+}
+
+.contact-list li a {
+    color: var(--light-text-color);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+.contact-list li a:hover {
+    color: var(--primary-color);
+}
+
+/* Styling for Social Icons in Contact Info (reusing existing styles) */
+.contact-info .social-icons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: flex-start; /* Align to the left */
+}
+.contact-info .social-icons a {
+    font-size: 2rem;
+    color: var(--light-text-color);
+    transition: color var(--transition-speed);
+}
+.contact-info .social-icons a:hover {
+    color: var(--primary-color);
+}
+
+
+/* Styling for the Contact Form (using Liquid Glass style) */
+.contact-form {
+    text-align: left; /* Align text within form card to left */
+}
+
+.liquid-glass-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.liquid-glass-form label {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.liquid-glass-form input[type="text"],
+.liquid-glass-form input[type="email"],
+.liquid-glass-form input[type="tel"],
+.liquid-glass-form textarea {
+    width: 100%;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid rgba(56, 189, 248, 0.2); /* Liquid Glass Border */
+    border-radius: 8px;
+    background: rgba(var(--liquid-glass-bg-base), 0.3); /* Lighter Glass Background */
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.1); /* Subtle inner shadow */
+}
+
+.liquid-glass-form input:focus,
+.liquid-glass-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3); /* Focus ring */
+    background: rgba(var(--liquid-glass-bg-base), 0.4); /* Slightly darker on focus */
+}
+
+.liquid-glass-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px;
+}
+
+.liquid-glass-form input::placeholder,
+.liquid-glass-form textarea::placeholder {
+    color: var(--light-text-color); /* Lighter placeholder text */
+    opacity: 0.7;
+}
+
+.liquid-glass-form button[type="submit"] {
+    width: auto; /* Button should not take full width */
+    margin-top: 1rem;
+}
+
+
+/* Map Section */
+.map-section .section-title {
+    margin-bottom: 3rem; /* More space above map */
+}
+
+.map-container {
+    padding: 1.5rem; /* Padding inside the map card */
+    max-width: 900px; /* Constrain map width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.map-container iframe {
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    overflow: hidden; /* Ensures border-radius applies */
+}
+
+.map-caption {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* Responsive adjustments for contact page */
+@media (max-width: 768px) {
+    .contact-info, .contact-form {
+        padding: 2rem; /* Reduce padding on smaller screens */
+    }
+    .section-title-small {
+        font-size: 1.8rem;
+        text-align: center; /* Center titles in cards on small screens */
+    }
+    .contact-info .contact-description {
+        text-align: center;
+    }
+    .contact-info .social-icons {
+        justify-content: center; /* Center social icons */
+    }
+    .contact-list li {
+        justify-content: center; /* Center list items */
+        text-align: center;
+        flex-wrap: wrap; /* Allow wrapping for long text */
+    }
+    .contact-list li i.bi {
+        margin-right: 0.5rem; /* Adjust icon margin */
+    }
+}
+
+@media (max-width: 480px) {
+    .liquid-glass-form input[type="text"],
+    .liquid-glass-form input[type="email"],
+    .liquid-glass-form input[type="tel"],
+    .liquid-glass-form textarea {
+        padding: 0.7rem 1rem; /* Smaller padding for inputs */
+    }
+}
+
+/* Add this to your styles.css */
+
+/* --- Blog Overview Page Specific Styles --- */
+
+/* Hero Section for Blog Page */
+.blog-hero-background {
+    background: url('../images/blog-hero.jpg') no-repeat center center/cover; /* Replace with your actual blog hero image */
+    background-attachment: fixed;
+}
+
+/* Blog Grid for listing articles */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for blog cards */
+    gap: 2rem;
+}
+
+/* Individual Blog Card */
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none; /* Remove underline from link */
+    color: var(--text-color); /* Ensure text color is inherited */
+    overflow: hidden; /* Important for image border-radius */
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px var(--shadow-color-hover-dark);
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(var(--liquid-glass-bg-base), var(--liquid-glass-alpha) + 0.1);
+}
+
+.blog-card-image {
+    width: 100%;
+    height: 200px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: var(--liquid-glass-radius) var(--liquid-glass-radius) 0 0; /* Rounded top corners only */
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.blog-card:hover .blog-card-image {
+    transform: scale(1.03); /* Subtle zoom on hover */
+}
+
+.blog-card-content {
+    padding: 0 2.5rem 2.5rem; /* Padding only for content below image */
+    flex-grow: 1; /* Makes content expand to fill space, keeping card heights even */
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card-content h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.blog-meta i.bi {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.blog-excerpt {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1; /* Ensures excerpt takes up available space */
+}
+
+.read-more {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed);
+}
+
+.read-more i.bi {
+    transition: transform var(--transition-speed);
+}
+
+.blog-card:hover .read-more {
+    color: var(--secondary-color);
+}
+
+.blog-card:hover .read-more i.bi {
+    transform: translateX(5px);
+}
+
+
+/* --- Article Detail Page Specific Styles --- */
+
+.article-hero-section {
+    padding-top: 5rem; /* Adjust padding for a simpler hero */
+    padding-bottom: 3rem;
+}
+
+.article-header {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.article-title {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.article-meta, .article-author {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 0.5rem;
+}
+
+.article-meta i.bi {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.article-main-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Max height for the main image */
+    object-fit: cover;
+    border-radius: var(--liquid-glass-radius);
+    margin-top: 2.5rem;
+    box-shadow: 0 8px 20px var(--shadow-color-dark);
+}
+
+.article-content-section {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
+
+.article-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem; /* More padding for readability */
+    text-align: left; /* Align text normally within the article body */
+}
+
+.article-body h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.article-body h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.article-body p {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.article-conclusion {
+    font-style: italic;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.article-conclusion i.bi {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for blog pages */
+@media (max-width: 1024px) {
+    .blog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .article-title {
+        font-size: 2.5rem;
+    }
+    .article-body {
+        padding: 2.5rem;
+    }
+    .article-body h2 {
+        font-size: 2rem;
+    }
+    .article-body p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    .blog-card-image {
+        height: 180px;
+    }
+    .blog-card-content {
+        padding: 0 1.5rem 1.5rem;
+    }
+    .blog-card-content h3 {
+        font-size: 1.4rem;
+    }
+    .blog-excerpt {
+        font-size: 0.95rem;
+    }
+    .article-hero-section {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+    }
+    .article-title {
+        font-size: 2rem;
+    }
+    .article-main-image {
+        max-height: 300px;
+    }
+    .article-body {
+        padding: 2rem;
+    }
+    .article-body h2 {
+        font-size: 1.8rem;
+    }
+    .article-body p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Add this to your styles.css */
+
+/* --- Blog Overview Page Specific Styles (Nachrichtenseite-Look) --- */
+
+/* Hero Section for Blog Page */
+.blog-hero-background {
+    background: url('../images/blog-hero.jpg') no-repeat center center/cover; /* Replace with your actual blog hero image */
+    background-attachment: fixed;
+}
+
+/* Featured Blog Article (Top-Meldung) */
+.featured-blog-card {
+    display: flex;
+    flex-direction: column; /* Default for mobile */
+    align-items: center; /* Center items on mobile */
+    text-decoration: none;
+    color: var(--text-color);
+    overflow: hidden;
+    padding: 2.5rem; /* Padding for the entire featured card */
+    margin-bottom: 4rem; /* Space below featured card */
+    box-shadow: 0 12px 25px var(--shadow-color-hover-dark); /* Stronger shadow for featured */
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(var(--liquid-glass-bg-base), var(--liquid-glass-alpha) + 0.1);
+}
+
+@media (min-width: 768px) {
+    .featured-blog-card {
+        flex-direction: row; /* Row for wider screens */
+        text-align: left; /* Align content to left */
+    }
+}
+
+.featured-blog-link {
+    display: flex; /* Make the entire link behave like a flex container */
+    flex-direction: column; /* Default for mobile */
+    text-decoration: none;
+    color: inherit;
+    width: 100%; /* Ensure link takes full width of card */
+}
+
+@media (min-width: 768px) {
+    .featured-blog-link {
+        flex-direction: row;
+    }
+}
+
+.featured-blog-image {
+    width: 100%;
+    height: 300px; /* Fixed height for consistent image size */
+    object-fit: cover;
+    border-radius: var(--liquid-glass-radius); /* Full rounded corners */
+    margin-bottom: 2rem; /* Space below image on mobile */
+    transition: transform var(--transition-speed);
+}
+
+@media (min-width: 768px) {
+    .featured-blog-image {
+        width: 40%; /* Image takes 40% width on wider screens */
+        margin-right: 2.5rem; /* Space to content */
+        margin-bottom: 0; /* No bottom margin in row layout */
+    }
+}
+
+.featured-blog-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-blog-content h3 {
+    font-size: 2.2rem; /* Larger title for featured article */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.featured-blog-content .blog-meta {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.featured-blog-content .blog-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* Blog Grid for listing articles */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for blog cards */
+    gap: 2rem;
+}
+
+/* Individual Blog Card (already styled from previous iteration, ensure consistency) */
+.blog-card {
+    /* Existing styles from previous CSS block */
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-color);
+    overflow: hidden;
+    border-radius: var(--liquid-glass-radius); /* Ensure cards are fully rounded */
+}
+
+.blog-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--liquid-glass-radius) var(--liquid-glass-radius) 0 0;
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.blog-card-content {
+    padding: 0 2.5rem 2.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card-content h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+.blog-meta {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.blog-meta i.bi {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.blog-excerpt {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.read-more {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all var(--transition-speed);
+}
+
+.read-more i.bi {
+    transition: transform var(--transition-speed);
+}
+
+.blog-card:hover .read-more {
+    color: var(--secondary-color);
+}
+
+.blog-card:hover .read-more i.bi {
+    transform: translateX(5px);
+}
+
+/* --- Article Detail Page Specific Styles (with Affiliate Integration) --- */
+
+/* Affiliate Box */
+.affiliate-box {
+    margin: 3rem 0; /* Space above/below affiliate box */
+    padding: 2rem;
+    border: 1px solid var(--primary-color); /* Stronger border for emphasis */
+    background: rgba(var(--liquid-glass-bg-base), 0.2); /* Lighter glass background */
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2); /* Accent shadow */
+    border-radius: var(--liquid-glass-radius);
+    display: flex;
+    flex-direction: column; /* Default for mobile */
+    align-items: center;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .affiliate-box {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+}
+
+.affiliate-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .affiliate-header {
+        align-items: flex-start;
+    }
+}
+
+.affiliate-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.affiliate-header h4 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.affiliate-notice {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.affiliate-product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem; /* Space between header and product details on mobile */
+}
+
+@media (min-width: 768px) {
+    .affiliate-product-details {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-top: 0; /* No top margin in row layout */
+    }
+}
+
+.affiliate-product-image {
+    width: 180px; /* Fixed width for product image */
+    height: 180px;
+    object-fit: contain; /* Contain the entire image */
+    background-color: var(--bg-color); /* Background for product image area */
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin-bottom: 1.5rem; /* Space below image on mobile */
+}
+
+@media (min-width: 768px) {
+    .affiliate-product-image {
+        margin-right: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+.affiliate-product-info {
+    flex-grow: 1;
+    text-align: center; /* Center info on mobile */
+}
+
+@media (min-width: 768px) {
+    .affiliate-product-info {
+        text-align: left;
+    }
+}
+
+.affiliate-product-info h5 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+}
+
+.affiliate-product-info p {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.affiliate-product-info ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
+
+.affiliate-product-info ul li {
+    font-size: 0.95rem;
+    color: var(--light-text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center list items on mobile */
+}
+
+@media (min-width: 768px) {
+    .affiliate-product-info ul li {
+        justify-content: flex-start; /* Align list items left on wider screens */
+    }
+}
+
+.affiliate-product-info ul li i.bi {
+    color: #4ade80; /* Green checkmark */
+    margin-right: 0.8rem;
+}
+
+/* Small button for affiliate links */
+.button.small-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 30px;
+}
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e293b;
+  color: #fff;
+  padding: 1rem;
+  z-index: 9999;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.cookie-options {
+  margin-top: 0.5rem;
+}
+
+.cookie-options .btn {
+  margin: 0 0.25rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cookie-options .btn.primary {
+  background: #4f46e5;
+  color: #fff;
+}
+
+.cookie-options .btn.danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.cookie-options .link {
+  margin-left: 1rem;
+  color: #38bdf8;
+}
