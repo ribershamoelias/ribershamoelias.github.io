@@ -1,3 +1,4 @@
 User-agent: *
-Allow: /
+Disallow:
+
 Sitemap: https://rse-systems.com/sitemap.xml

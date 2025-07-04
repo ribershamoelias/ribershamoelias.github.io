@@ -1,190 +1,54 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datenschutz – RSE Systems eG</title>
-  <meta name="description" content="Datenschutzerklärung der RSE Systems eG – Informationen zur Verarbeitung personenbezogener Daten, Betroffenenrechte, Cookies und IT-Sicherheit." />
-  <meta name="keywords" content="Datenschutz, DSGVO, RSE Systems, Datenverarbeitung, personenbezogene Daten, Rechte, Cookies, IT-Sicherheit" />
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="RSE Systems eG">
-  <meta http-equiv="content-language" content="de">
-  <link rel="canonical" href="https://rse-systems.com/datenschutz.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datenschutzerklärung – RSE Systems</title>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Datenschutz – RSE Systems eG">
-  <meta property="og:description" content="Informationen zum Datenschutz bei der RSE Systems eG – Ihre Rechte und unsere Maßnahmen zum Schutz Ihrer Daten.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rse-systems.com/datenschutz.html">
-  <meta property="og:image" content="https://rse-systems.com/assets/images/RSESystems_Logo.png">
+  <!-- Übersetzungen -->
+  <script src="./data/translations.js"></script>
+  <script src="./scripts/main.js"></script>
 
-  <!-- JSON-LD Schema.org Daten -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "RSE Systems eG",
-    "url": "https://rse-systems.com",
-    "logo": "https://rse-systems.com/assets/images/RSESystems_Logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Musterstraße 1",
-      "addressLocality": "Musterstadt",
-      "postalCode": "12345",
-      "addressCountry": "DE"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+49-123-4567890",
-      "contactType": "Datenschutz",
-      "email": "datenschutz@rse-systems.com",
-      "availableLanguage": "de"
-    }
-  }
-  </script>
-
-  <!-- Google Analytics DSGVO-konform -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    if (localStorage.getItem("cookiesAccepted")) {
-      gtag('js', new Date());
-      gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
-    }
-  </script>
-
-  <link rel="manifest" href="./assets/manifest.json">
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-
-  <link rel="stylesheet" href="./assets/css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
 </head>
-<body>
-<!-- Der restliche Body bleibt unverändert -->
+<body> 
+  <div class="stars" id="stars"></div>
 
-<body>
-
-  <!-- Navigation -->
-  <nav class="nav glass">
-    <div class="logo-area">
-      <img src="./assets/images/RSESystems_Logo.png" alt="RSE Logo" class="logo" />
+  <div class="container">
+    <div class="logo-wrapper">
+      <img src="./assets/img/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
     </div>
-    <ul>
-      <li><a href="./index.html#welcome">Start</a></li>
+    <h1>Datenschutzerklärung</h1>
 
-      <li><a href="./index.html#leistungen">Leistungen</a></li>
+    <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten innerhalb unseres Onlineangebotes auf.</p>
 
-      <li><a href="./index.html#warum">Warum wir</a></li>
+    <h2>Verantwortlicher</h2>
+    <p>RSE Systems<br>
+    Riber Shamo Elias<br>
+    Musterstraße 12<br>
+    54290 Trier<br>
+    info@rse-systems.com</p>
 
-      <li><a href="./index.html#faq">FAQ</a></li>
+    <h2>Erhebung und Speicherung personenbezogener Daten</h2>
+    <p>Beim Besuch dieser Website werden durch den Browser automatisch Informationen an den Server gesendet. Diese Informationen beinhalten z.B. IP-Adresse, Datum und Uhrzeit.</p>
 
-      <li><a href="./ueberuns.html">Über uns</a></li>
+    <h2>Cookies</h2>
+    <p>Diese Website verwendet Cookies. Durch den Einsatz von Cookies kann der Nutzungskomfort erhöht werden.</p>
 
-      <li><a href="./workshops.html">Schulungen & Workshops</a></li>
+    <h2>Google Analytics</h2>
+    <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. Die Nutzung erfolgt auf Grundlage des Art. 6 Abs. 1 S. 1 lit. f DSGVO.</p>
 
-      <li><a href="./blog.html">Blog</a></li>
-
-      <li><a href="./kontakt.html">Kontakt</a></li>
-    </ul>
-
-  </nav>
-
-  <!-- Datenschutz Inhalt -->
-  <section id="datenschutz" class="section">
-    <div class="container">
-      <h1 class="section-title">Datenschutzerklärung</h1>
-      <p><strong>1. Verantwortlicher</strong></p>
-      <p>RSE Systems eG<br>
-      Liberté, 41
-      1931 Luxembourg
-      Grand Duchy of Luxembourg<br>
-      E-Mail: kontakt@rse-systems.com</p>
-
-      <p><strong>2. Datenschutzbeauftragter</strong></p>
-      <p>Alfred Rothschild<br>
-      E-Mail: datenschutz@rse-systems.com</p>
-
-      <p><strong>3. Allgemeines zur Datenverarbeitung</strong></p>
-      <p>Wir verarbeiten personenbezogene Daten nur, wenn dies gesetzlich erlaubt ist oder Sie eingewilligt haben. Dies geschieht etwa bei Kontaktformularen, Hosting, Cookies oder Analyse.</p>
-
-      <p><strong>4. Rechte der betroffenen Personen</strong></p>
-      <ul>
-        <li>Auskunft (Art. 15 DSGVO)</li>
-        <li>Berichtigung (Art. 16 DSGVO)</li>
-        <li>Löschung (Art. 17 DSGVO)</li>
-        <li>Einschränkung (Art. 18 DSGVO)</li>
-        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-        <li>Widerspruch (Art. 21 DSGVO)</li>
-        <li>Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
-        <li>Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
-      </ul>
-
-      <p><strong>5. Kontaktaufnahme</strong></p>
-      <p>Bei der Kontaktaufnahme (per Kontaktformular oder E-Mail) werden Ihre Angaben zwecks Bearbeitung der Anfrage gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
-
-      <p><strong>6. Server-Logfiles</strong></p>
-      <p>Unser Hoster verarbeitet IP-Adresse, Zeitpunkt, aufgerufene Seite, Browsertyp – zur technischen Sicherheit. Nach 7 Tagen erfolgt Löschung.</p>
-
-      <p><strong>7. Cookies</strong></p>
-      <p>Diese Website verwendet technisch notwendige Cookies. Optional einwilligungspflichtige Cookies werden nur mit Zustimmung eingesetzt. Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO.</p>
-
-      <p><strong>8. Sicherheit</strong></p>
-      <p>Unsere Website nutzt SSL-Verschlüsselung zum Schutz Ihrer Daten. Unsere Server befinden sich in Deutschland.</p>
-
-      <p><strong>9. Änderungen</strong></p>
-      <p>Diese Datenschutzerklärung kann aktualisiert werden. Bitte informieren Sie sich regelmäßig über Änderungen.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-  <div class="container footer-top">
-    <div class="footer-brand">
-      <img src="./assets/images/RSESystems_Logo.png" alt="RSE Logo" class="footer-logo">
-      <p>Digitale Lösungen für Unternehmen mit Weitblick.</p>
-    </div>
-
-    <div class="footer-links">
-      <div>
-        <h4>Unternehmen</h4>
-        <a href="./ueberuns.html">Über uns</a>
-        <a href="./kontakt.html">Kontakt</a>
-        <a href="./impressum.html">Impressum</a>
-        <a href="./datenschutz.html">Datenschutz</a>
-      </div>
-      <div>
-        <h4>Dienste</h4>
-        <a href="#">Softwareentwicklung</a>
-        <a href="#">IT-Beratung</a>
-        <a href="./workshops.html">Workshops (BETA)</a>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <a href="#">FAQ</a>
-        <a href="#">Wartung</a>
-        <a href="#">Servicevertrag</a>
-      </div>
-    </div>
-
-    <div class="footer-social">
-      <h4>Folgen Sie uns</h4>
-      <div class="social-icons">
-        <!-- <a href="https://facebook.com/rse-systems" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a> -->
-                    <!-- <a href="https://twitter.com/rse-systems" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
-                    <a href="https://linkedin.com/company/rse-systems" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <!-- <a href="https://instagram.com/rse-systems" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a> -->
-      </div>
-    </div>
+    <h2>Ihre Rechte</h2>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten sowie das Recht auf Datenübertragbarkeit.</p>
   </div>
 
-  <div class="footer-bottom">
-    <p>&copy; 2025 RSE Systems eG – Alle Rechte vorbehalten.</p>
-  </div>
-</footer>
-
+  <script src="./scripts/main.js" defer></script>
+  <div id="footer"></div>
+<script>
+  fetch("./components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
 </body>
 </html>
