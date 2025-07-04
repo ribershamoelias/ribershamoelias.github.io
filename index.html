@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RSE Systems – Webseite in Überarbeitung</title>
-  <meta name="description" content="RSE Systems entwickelt moderne Softwarelösungen für Unternehmen, Startups und digitale Zukunftsprojekte.">
-  <meta name="keywords" content="Softwareentwicklung, Webdesign, App, IT, RSE Systems, Trier">
-  <meta name="author" content="RSE Systems">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSE Systems – Individuelle Softwarelösungen & IT-Beratung</title>
+  <meta name="description" content="Skalierbare Software, praxisnahe Beratung & moderne Technologien: RSE Systems ist Ihr Partner für digitale Lösungen, die echten Mehrwert schaffen." />
+  <meta name="keywords" content="Softwareentwicklung, IT-Beratung, individuelle Software, digitale Transformation, Webanwendungen, App Entwicklung, RSE Systems, Trier, Deutschland">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://rse-systems.com/">
+  <meta name="author" content="RSE Systems eG">
+  <meta http-equiv="content-language" content="de">
+  <link rel="canonical" href="https://rse-systems.com/" />
 
-  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
+  <!-- Cookie Banner -->
+  <script src="./assets/js/cookies.js" defer></script>
 
-  <!-- Übersetzungen -->
-  <script src="./scripts/translations.js"></script>
-  <script src="./scripts/main.js"></script>
 
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Open Graph für Social Media -->
+  <meta property="og:title" content="RSE Systems – Individuelle Softwarelösungen & Beratung">
+  <meta property="og:description" content="Ihr Partner für digitale Transformation – von Workshops bis zur Softwareentwicklung." />
+  <meta property="og:url" content="https://rse-systems.com/">
+  <meta property="og:image" content="https://rse-systems.com/assets/images/RSESystems_Logo.png">
+  <meta property="og:type" content="website">
 
-  <!-- Google Analytics -->
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RSE Systems eG",
+    "url": "https://rse-systems.com",
+    "logo": "https://rse-systems.com/assets/images/RSESystems_Logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+49 162 9383549",
+      "contactType": "customer support",
+      "areaServed": "DE",
+      "availableLanguage": "de"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/rse-systems",
+      "https://github.com/rse-systems"
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics DSGVO-konform -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -29,71 +54,535 @@
       gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
     }
   </script>
+
+  <link rel="manifest" href="./assets/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
 
-  <!-- Header (dynamisch geladen) -->
-  <div id="header"></div>
-
-  <!-- Sternenhimmel -->
-  <div class="stars" id="stars"></div>
-
-  <!-- Hauptinhalt -->
-  <main class="container">
-    <div class="logo-wrapper">
-      <img src="./assets/img/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
+  <nav class="nav glass">
+    <div class="logo-area">
+      <img src="./assets/images/RSESystems_Logo.png" href="./index.html" alt="RSE Logo" class="logo" />
     </div>
-    <h1 id="title">RSE Systems – Webseite in Überarbeitung</h1>
-    <p id="desc">Unsere Webseite wird derzeit überarbeitet, um Ihnen künftig einen besseren Service zu bieten.</p>
-    <ul id="reasons">
-      <li>Modernes und benutzerfreundliches Webdesign</li>
-      <li>Lizenzverwaltung & Updates für unsere Kundensoftware</li>
-      <li>Integration neuer Projekte und Softwarelösungen</li>
-      <li>Einführung eines aktuellen News- & Info-Bereichs</li>
+    <ul>
+      <li><a href="#welcome">Start</a></li>
+
+      <li><a href="#leistungen">Leistungen</a></li>
+
+      <li><a href="#warum">Warum wir</a></li>
+
+      <li><a href="#faq">FAQ</a></li>
+
+      <li><a href="./ueberuns.html">Über uns</a></li>
+
+      <li><a href="./workshops.html">Schulungen & Workshops</a></li>
+
+      <li><a href="./blog.html">Blog</a></li>
+
+      <li><a href="./kontakt.html">Kontakt</a></li>
     </ul>
-    <p id="thanks">Wir sind bald wieder online – danke für Ihr Verständnis!</p>
-    <div class="pulse" title="Seite lädt..."></div>
-  </main>
 
-  <!-- Footer (dynamisch geladen) -->
-  <div id="footer"></div>
+  </nav>
 
-  <!-- Cookie-Banner -->
-  <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; right: 0; background: #1e293b; color: #fff; padding: 1rem; text-align: center; z-index: 9999; display: none;">
-    Diese Website verwendet Cookies für Google Analytics. <a href="datenschutz.html" style="color: #38bdf8;">Mehr erfahren</a>.
-    <button onclick="acceptCookies()" style="margin-left: 1rem; background: #38bdf8; color: #000; border: none; padding: 0.5rem 1rem; cursor: pointer; border-radius: 5px;">OK</button>
+
+
+<section id="welcome" class="hero-section about-hero-background">
+
+<div class="hero-content">
+
+<h1>Digitale Lösungen, die Wachstum schaffen</h1>
+
+<p>RSE Systems ist Ihr Partner für skalierbare Softwareentwicklung und strategische IT-Beratung. Gemeinsam verwandeln wir komplexe Herausforderungen in nachhaltige Wettbewerbsvorteile.</p>
+
+<a href="#kontakt" class="cta-button">Jetzt unverbindlich beraten lassen</a>
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="leistungen" class="section leistungen-section" style="margin-top: 6rem;">
+
+<div class="container">
+
+<h2 class="section-title">Unsere Leistungen</h2>
+
+<div class="leistungen-grid">
+
+<div class="card">
+
+<h3>📚 Workshops & Schulung</h3>
+
+<p>Stärken Sie Ihr Team mit praxisnahen Workshops und Weiterbildungen – maßgeschneidert auf Ihre Branche und Anforderungen.</p>
+
+</div>
+
+<div class="card">
+
+<h3>🔐 Datenschutz & IT-Sicherheit</h3>
+
+<p>Datenschutz, Cybersecurity und Compliance von Anfang an – vertrauenswürdig und auf dem neuesten Stand der Technik.</p>
+
+</div>
+
+<div class="card">
+
+<h3>🧩 Individuelle Softwareentwicklung</h3>
+
+<p>Von der Idee bis zur Umsetzung: Wir realisieren leistungsstarke und intuitive Softwarelösungen, die Ihre Ziele Wirklichkeit werden lassen.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<style>
+
+.leistungen-grid {
+
+display: grid;
+
+grid-template-columns: 1fr;
+
+gap: 2rem;
+
+}
+
+
+
+@media (min-width: 600px) {
+
+.leistungen-grid {
+
+grid-template-columns: 1fr 1fr;
+
+}
+
+}
+
+
+
+@media (min-width: 900px) {
+
+.leistungen-grid {
+
+grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+}
+
+
+
+.leistungen-section {
+
+scroll-margin-top: 100px;
+
+padding-top: 4rem;
+
+}
+
+
+
+.section-title {
+
+text-align: center;
+
+margin-bottom: 2rem;
+
+font-size: 2rem;
+
+}
+
+
+
+.card {
+
+background: #ffffff;
+
+padding: 1.75rem;
+
+border-radius: 16px;
+
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+
+
+.card:hover {
+
+transform: translateY(-4px);
+
+box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+
+}
+
+
+
+.card h3 {
+
+font-size: 1.25rem;
+
+margin-bottom: 0.5rem;
+
+}
+
+
+
+.card p {
+
+font-size: 1rem;
+
+line-height: 1.5;
+
+color: #333;
+
+}
+
+</style>
+
+
+
+
+
+
+
+<!-- Swiper Script -->
+
+<script>
+
+const swiper = new Swiper('.swiper-container', {
+
+slidesPerView: 1.2,
+
+spaceBetween: 20,
+
+loop: true,
+
+pagination: { el: '.swiper-pagination', clickable: true },
+
+breakpoints: {
+
+768: { slidesPerView: 2 },
+
+1024: { slidesPerView: 3 },
+
+},
+
+});
+
+</script>
+
+
+
+
+
+<section id="warum" class="section why-section">
+
+<div class="container">
+
+<h2 class="section-title">Warum RSE Systems?</h2>
+
+<div class="grid">
+
+<div class="item-card">
+
+<h3>🚀 Lösungen, die wirken</h3>
+
+<p>Wir liefern nicht nur Code – sondern maßgeschneiderte Lösungen, die messbar zur Effizienz, Skalierung und Wettbewerbsfähigkeit beitragen.</p>
+
+</div>
+
+<div class="item-card">
+
+<h3>🤝 Partner, kein Dienstleister</h3>
+
+<p>Mit uns gewinnen Sie kein externes Team, sondern einen strategischen Technologiepartner mit echtem Interesse an Ihrem Erfolg.</p>
+
+</div>
+
+<div class="item-card">
+
+<h3>🔒 Sicherheit & Vertrauen</h3>
+
+<p>Von Datenschutz bis Compliance: Unsere Lösungen erfüllen höchste Standards – transparent, verlässlich und nachvollziehbar.</p>
+
+</div>
+
+<div class="item-card">
+
+<h3>🧠 Technisches Know-how</h3>
+
+<p>Unsere Entwickler, Architekten und Berater vereinen Praxis­erfahrung mit modernster Technologie – immer am Puls der Zeit.</p>
+
+</div>
+
+<div class="item-card">
+
+<h3>🎯 Klarer Fahrplan</h3>
+
+<p>Wir bringen Struktur ins Projekt: Mit agilen Methoden, definierten Zielen und regelmäßiger Abstimmung behalten Sie jederzeit den Überblick.</p>
+
+</div>
+
+<div class="item-card">
+
+<h3>💬 Kommunikation auf Augenhöhe</h3>
+
+<p>Komplexe Themen verständlich erklärt – wir sprechen nicht nur Tech, sondern auch Business. Für eine Zusammenarbeit, die Freude macht.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<section id="faq" class="section">
+
+<div class="container">
+
+<h2 class="section-title">Häufige Fragen</h2>
+
+<div class="accordion">
+
+<details>
+
+<summary>Wie läuft die Zusammenarbeit ab?</summary>
+
+<p>Sie starten mit einem kostenlosen Erstgespräch. Danach analysieren wir Ihre Anforderungen, definieren Ziele und erstellen ein individuelles Angebot inklusive Zeit- und Budgetplanung.</p>
+
+</details>
+
+<details>
+
+<summary>Entwickelt ihr auch für Einzelpersonen oder nur Unternehmen?</summary>
+
+<p>Wir arbeiten mit Unternehmen aller Größen sowie mit Selbstständigen und Gründern. Auch individuelle App-Ideen oder kleinere Tools realisieren wir zuverlässig.</p>
+
+</details>
+
+<details>
+
+<summary>Welche Arten von Softwarelösungen bietet ihr an?</summary>
+
+<p>Von Webanwendungen über Mobile Apps bis hin zu internen Tools, Portalen, Automatisierungen, APIs und Machine-Learning-Systemen – wir decken ein breites Spektrum ab.</p>
+
+</details>
+
+<details>
+
+<summary>Wie lange dauert ein typisches Projekt?</summary>
+
+<p>Je nach Komplexität wenige Wochen bis mehrere Monate. Wir planen agil und geben Ihnen von Beginn an eine realistische Zeitschätzung mit regelmäßigen Updates.</p>
+
+</details>
+
+<details>
+
+<summary>Was kostet ein Projekt bei euch?</summary>
+
+<p>Unsere Preise richten sich nach Aufwand, Technologie und Projektumfang. Wir legen großen Wert auf transparente, faire Kalkulation – ohne versteckte Kosten.</p>
+
+</details>
+
+<details>
+
+<summary>Welche Technologien nutzt ihr?</summary>
+
+<p>Unsere Kernkompetenzen liegen u.a. in React, Next.js, Python, Node.js, SQL/NoSQL, Docker, Azure, Firebase, KI-Services und DSGVO-konformer Cloud-Architektur.</p>
+
+</details>
+
+<details>
+
+<summary>Ist meine Idee bei euch sicher?</summary>
+
+<p>Selbstverständlich. Auf Wunsch unterzeichnen wir eine NDA (Geheimhaltungsvereinbarung) und behandeln Ihre Projektidee streng vertraulich.</p>
+
+</details>
+
+<details>
+
+<summary>Was passiert nach Projektabschluss?</summary>
+
+<p>Auf Wunsch übernehmen wir Wartung, Support, Weiterentwicklung und Hosting. So bleibt Ihre Software langfristig aktuell und sicher.</p>
+
+</details>
+
+<details>
+
+<summary>Gibt es eine unverbindliche Beratung?</summary>
+
+<p>Ja! Vereinbaren Sie einfach ein kostenloses Erstgespräch – wir nehmen uns Zeit für Ihre Vision und geben erste fachliche Einschätzungen.</p>
+
+</details>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="kontakt" class="section contact-section">
+
+<div class="container contact-wrapper">
+
+<div class="contact-content">
+
+<h2>Kontaktieren Sie uns</h2>
+
+<p>Gemeinsam entwickeln wir die passende digitale Lösung für Ihr Unternehmen. Unser Team freut sich auf Ihre Anfrage.</p>
+
+<a href="./kontakt.html" class="button primary">Jetzt Kontakt aufnehmen</a>
+
+</div>
+
+<div class="contact-image">
+
+<img src="./assets/images/RSE_bigTeam.png" alt="Unser Team bei RSE Systems" />
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<footer class="footer">
+
+<div class="container footer-top">
+
+<div class="footer-brand">
+
+<img src="./assets/images/RSESystems_Logo.png" alt="RSE Logo" class="footer-logo">
+
+<p>Digitale Lösungen für Unternehmen mit Weitblick.</p>
+
+</div>
+
+
+
+<div class="footer-links">
+
+<div>
+
+<h4>Unternehmen</h4>
+
+<a href="./ueberuns.html">Über uns</a>
+
+<a href="./kontakt.html">Kontakt</a>
+
+<a href="./impressum.html">Impressum</a>
+
+<a href="./datenschutz.html">Datenschutz</a>
+
+</div>
+
+<div>
+
+<h4>Dienste</h4>
+
+<a href="#">Softwareentwicklung</a>
+
+<a href="#">IT-Beratung</a>
+
+<a href="./workshops.html">Workshops (BETA)</a>
+
+</div>
+
+<div>
+
+<h4>Support</h4>
+
+<a href="#">FAQ</a>
+
+<a href="#">Wartung</a>
+
+<a href="#">Servicevertrag</a>
+
+</div>
+
+</div>
+
+
+
+<div class="footer-social">
+
+<h4>Folgen Sie uns</h4>
+
+<div class="social-icons">
+  <!-- <a href="https://facebook.com/rse-systems" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a> -->
+  <!-- <a href="https://twitter.com/rse-systems" target="_blank" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a> -->
+  <a href="https://linkedin.com/company/rse-systems" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <!-- <a href="https://instagram.com/rse-systems" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a> -->
+
+</div>
+
+
+
+</div>
+
+</div>
+
+
+
+<div class="footer-bottom">
+<p>&copy; 2025 RSE Systems eG – Alle Rechte vorbehalten.</p>
+
+</div>
+
+</footer>
+
+
+
+</footer>
+
+<div id="cookie-banner" class="cookie-banner">
+  <p>Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern. Sie können selbst entscheiden, welche Kategorien Sie zulassen möchten.</p>
+  <div class="cookie-options">
+    <button id="accept-all" class="btn primary">Alle akzeptieren</button>
+    <button id="accept-only-essential" class="btn">Nur notwendige</button>
+    <button id="decline-all" class="btn danger">Alle ablehnen</button>
+    <a href="./datenschutz.html" class="link">Mehr erfahren</a>
   </div>
+</div>
 
-  <!-- Easter Egg -->
-  <div class="easter-egg" onclick="alert('🪐 Du hast den versteckten Stern gefunden!')">.</div>
 
-  <!-- SCRIPTS -->
-  <script src="./scripts/main.js" defer></script>
-  <script>
-    function acceptCookies() {
-      localStorage.setItem("cookiesAccepted", "true");
-      document.getElementById("cookie-banner").style.display = "none";
-      location.reload();
-    }
 
-    if (!localStorage.getItem("cookiesAccepted")) {
-      document.getElementById("cookie-banner").style.display = "block";
-    }
-
-    // Header & Footer laden
-    fetch("./components/header.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-      })
-      .catch(err => console.error("Header konnte nicht geladen werden:", err));
-
-    fetch("./components/footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer").innerHTML = data;
-      })
-      .catch(err => console.error("Footer konnte nicht geladen werden:", err));
-  </script>
 </body>
+
 </html>
