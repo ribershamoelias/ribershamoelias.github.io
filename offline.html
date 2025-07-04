@@ -2,86 +2,24 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Offline – RSE Systems</title>
-
-  <!-- Meta-Tags -->
-  <meta name="description" content="Sie sind offline. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut.">
-  <meta name="keywords" content="offline, Internetverbindung, RSE Systems">
-  <meta name="author" content="RSE Systems">
-  <meta name="robots" content="noindex, nofollow">
-
-  <!-- OpenGraph / Social -->
-  <meta property="og:title" content="Offline – RSE Systems">
-  <meta property="og:description" content="Sie sind offline. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut.">
-  <meta property="og:image" content="./assets/img/RSESystems_Logo.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rse-systems.com/offline">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Offline – RSE Systems">
-  <meta name="twitter:description" content="Sie sind offline. Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut.">
-  <meta name="twitter:image" content="./assets/img/RSESystems_Logo.png">
-
-  <!-- Icons & PWA -->
-  <link rel="manifest" href="./public/manifest.json">
-  <meta name="theme-color" content="#0f172a">
-  <link rel="icon" href="./public/favicon-32x32.png" type="image/png">
-  <link rel="apple-touch-icon" href="./public/apple-touch-icon.png">
-  <link rel="stylesheet" href="./styles/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-   <!-- Übersetzungen -->
-  <script src="./data/translations.js"></script>
-  <script src="./scripts/main.js"></script>
-
-  <!-- Google Analytics (mit Cookie-Zustimmung) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    if (localStorage.getItem("cookiesAccepted")) {
-      gtag('js', new Date());
-      gtag('config', 'G-WFZJ9JDJBT', { anonymize_ip: true });
-    }
-  </script>
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="icon" href="./assets/images/favicon-32x32.png" type="image/png">
 </head>
 <body>
-
-  <!-- HEADER -->
   <div id="header"></div>
-
-  <!-- STARS (Hintergrund) -->
   <div class="stars" id="stars"></div>
 
-  <!-- INHALT -->
   <main class="container">
-    <div class="logo-wrapper">
-      <img src="./assets/img/RSESystems_Logo.png" alt="RSE Systems Logo" class="logo" />
-    </div>
-    <h1>Sie sind offline</h1>
-    <p>Leider besteht aktuell keine Internetverbindung.<br>
-    Bitte versuchen Sie es später erneut oder überprüfen Sie Ihre Verbindung.</p>
-    <a href="./index.html" class="btn">Zur Startseite</a>
+    <h1 id="offlineHeadline">Sie sind offline</h1>
+    <p id="offlineText">Bitte überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut.</p>
+    <a href="./index.html" style="color:#38bdf8;">Zurück zur Startseite</a>
   </main>
 
-  <!-- FOOTER -->
   <div id="footer"></div>
+  <div id="cookie-banner"></div>
 
-  <!-- Scripts -->
-  <script src="./scripts/main.js" defer></script>
-  <script>
-    // Header + Footer laden
-    fetch("./components/header.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("header").innerHTML = data)
-      .catch(console.error);
-
-    fetch("./components/footer.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("footer").innerHTML = data)
-      .catch(console.error);
-  </script>
+  <script src="./assets/js/ui.js" type="module"></script>
 </body>
 </html>
