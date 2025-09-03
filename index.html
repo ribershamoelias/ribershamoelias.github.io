@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="./cookie-banner.js"></script>
-
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
@@ -824,7 +822,22 @@
     });
   </script>
 <!-- Cookie Banner -->
-<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.9); color: #fff; padding: 20px; border-radius: 12px; z-index: 9999; font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+<div id="cookie-banner" style="
+  position: fixed; 
+  bottom: 20px; 
+  left: 20px; 
+  right: 20px; 
+  background: rgba(0,0,0,0.9); 
+  color: #fff; 
+  padding: 20px; 
+  border-radius: 12px; 
+  z-index: 9999; 
+  font-size: 14px; 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center;
+">
   <p style="flex: 1; margin: 0 10px 10px 0;">
     Wir verwenden Cookies, um unsere Website und unseren Service zu optimieren. 
     <a href="./legal/datenschutz.html" style="color: #4da3ff; text-decoration: underline;">Mehr erfahren</a>
@@ -834,5 +847,43 @@
     <button onclick="declineCookies()" style="background: #666; color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer;">Nur notwendige Cookies</button>
   </div>
 </div>
+
+<script>
+  function acceptCookies() {
+    localStorage.setItem("cookiesAccepted", "true");
+    document.getElementById("cookie-banner").style.display = "none";
+    enableAnalytics();
+  }
+
+  function declineCookies() {
+    localStorage.setItem("cookiesAccepted", "false");
+    document.getElementById("cookie-banner").style.display = "none";
+  }
+
+  function enableAnalytics() {
+    const gaScript = document.createElement("script");
+    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT";
+    gaScript.async = true;
+    document.head.appendChild(gaScript);
+
+    gaScript.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-WFZJ9JDJBT");
+    };
+  }
+
+  window.addEventListener("load", () => {
+    const choice = localStorage.getItem("cookiesAccepted");
+    if (choice === "true") {
+      document.getElementById("cookie-banner").style.display = "none";
+      enableAnalytics();
+    } else if (choice === "false") {
+      document.getElementById("cookie-banner").style.display = "none";
+    }
+  });
+</script>
+
   </body>
 </html>
