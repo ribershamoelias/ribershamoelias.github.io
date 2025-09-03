@@ -1,0 +1,2 @@
+RewriteCond %{HTTP_HOST} ^www\.rse-systems\.com [NC]
+RewriteRule ^(.*)$ https://rse-systems.com/$1 [L,R=301]
