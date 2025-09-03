@@ -779,6 +779,16 @@
       });
     });
   </script>
-
+<!-- Cookie Banner -->
+<div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.9); color: #fff; padding: 20px; border-radius: 12px; z-index: 9999; font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+  <p style="flex: 1; margin: 0 10px 10px 0;">
+    Wir verwenden Cookies, um unsere Website und unseren Service zu optimieren. 
+    <a href="./legal/datenschutz.html" style="color: #4da3ff; text-decoration: underline;">Mehr erfahren</a>
+  </p>
+  <div style="display: flex; gap: 10px;">
+    <button onclick="acceptCookies()" style="background: #4da3ff; color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer;">Akzeptieren</button>
+    <button onclick="declineCookies()" style="background: #666; color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer;">Nur notwendige Cookies</button>
+  </div>
+</div>
   </body>
 </html>
