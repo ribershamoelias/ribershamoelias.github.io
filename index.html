@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <!-- Google Analytics Consent Mode + Tag -->
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  // Standardmäßig alles blockieren (Privacy by default)
+  gtag('consent','default',{
+    'ad_storage':'denied',
+    'analytics_storage':'denied',
+    'ad_user_data':'denied',
+    'ad_personalization':'denied',
+    'functionality_storage':'granted',
+    'security_storage':'granted'
+  });
+</script>
+    <script async
+      src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
+    <script> gtag('js', new Date()); </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titel -->
+    <title>RSE Systems | Softwarelösungen & IT-Services in Trier, Hermeskeil &
+      Eifel</title>
+
+    <!-- Meta Description -->
+    <meta name="description"
+      content="RSE Systems – Softwarelösungen, IT-Services, Webentwicklung & SEO aus Trier. Wir betreuen Kunden in Hermeskeil, der Eifel & ganz Rheinland-Pfalz.">
+
+    <!-- Keywords -->
+    <meta name="keywords"
+      content="Software Trier, IT-Services Hermeskeil, Webentwicklung Eifel, SEO Agentur Rheinland-Pfalz, RSE Systems">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.rse-systems.com/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+      content="RSE Systems – Softwarelösungen & IT-Services aus Trier">
+    <meta property="og:description"
+      content="Individuelle Software, sichere IT-Systeme & moderne Webseiten. Dein Partner in Trier, Hermeskeil & der Eifel.">
+    <meta property="og:image"
+      content="https://www.rse-systems.com/assets/img/og-rse-systems.webp">
+    <meta property="og:url" content="https://www.rse-systems.com/index.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+      content="RSE Systems – Softwarelösungen & IT-Services">
+    <meta name="twitter:description"
+      content="IT, Web & SEO für Trier, Hermeskeil & die Eifel. Digitale Lösungen für Unternehmen & Privatkunden.">
+    <meta name="twitter:image"
+      content="https://www.rse-systems.com/assets/img/og-rse-systems.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/img/rse-logo.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="./assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+      href="./assets/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="./assets/img/apple-icon-180x180.png">
+
+    <!-- Android / Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Styles -->
+    <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0b1d2a 0%, #003366 100%); }
+    .btn-primary { background-color: #0080ff; color: white; transition: all 0.3s ease; }
+    .btn-primary:hover { background-color: #0066cc; transform: translateY(-2px); }
+    .btn-secondary { background-color: #f3f4f6; color: #111827; transition: all 0.3s ease; }
+    .btn-secondary:hover { background-color: #e5e7eb; transform: translateY(-2px); }
+  </style>
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav
+      class="bg-gray-900 text-white px-6 md:px-12 py-4 flex items-center justify-between relative shadow-lg">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <a href="./index.html"
+          class="font-bold text-xl hover:text-blue-400 transition">
+          RSE<span class="text-blue-400">Systems</span>
+        </a>
+      </div>
+
+      <!-- Desktop-Menü -->
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <!-- Home -->
+        <li><a href="./index.html"
+            class="hover:text-blue-400 transition">Home</a></li>
+
+        <!-- Unternehmen -->
+        <li class="group relative">
+          <button
+            class="hover:text-blue-400 transition flex items-center gap-1">
+            Unternehmen ▾
+          </button>
+          <ul
+            class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+            <li><a href="./fachbereiche.html"
+                class="block px-4 py-2 hover:bg-gray-100">Fachbereiche</a></li>
+            <li><a href="./werte-mission-vision.html"
+                class="block px-4 py-2 hover:bg-gray-100">Werte, Mission &
+                Vision</a></li>
+            <li><a href="./jobs.html"
+                class="block px-4 py-2 hover:bg-gray-100">Karriere &
+                Jobs</a></li>
+            <li><a href="./jobs.html"
+                class="block px-4 py-2 hover:bg-gray-100">Stellenangebote</a></li>
+            <li><a href="./code-of-conduct.html"
+                class="block px-4 py-2 hover:bg-gray-100">Code of
+                Conduct</a></li>
+          </ul>
+        </li>
+
+        <!-- Support -->
+        <li><a href="./support.html"
+            class="hover:text-blue-400 transition">Support</a></li>
+
+        <!-- Services -->
+        <li class="group relative">
+          <button
+            class="hover:text-blue-400 transition flex items-center gap-1">
+            Services ▾
+          </button>
+          <ul
+            class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+            <li><a href="./service-grafiken-werbemittel.html"
+                class="block px-4 py-2 hover:bg-gray-100">Grafiken &
+                Werbemittel</a></li>
+            <li><a href="./service-webentwicklung.html"
+                class="block px-4 py-2 hover:bg-gray-100">Webentwicklung</a></li>
+            <li><a href="./service-it.html"
+                class="block px-4 py-2 hover:bg-gray-100">IT</a></li>
+            <li><a href="./service-seo-marketing.html"
+                class="block px-4 py-2 hover:bg-gray-100">SEO &
+                Marketing</a></li>
+            <li><a href="./service-reparaturen.html"
+                class="block px-4 py-2 hover:bg-gray-100">Reparaturen</a></li>
+          </ul>
+        </li>
+
+        <!-- Kontakt -->
+        <li><a href="./kontakt.html"
+            class="hover:text-blue-400 transition">Kontakt</a></li>
+
+        <!-- Blog -->
+        <li><a href="./blog.html"
+            class="hover:text-blue-400 transition">Blog</a></li>
+      </ul>
+
+      <!-- Mobile Button -->
+      <button id="menu-btn"
+        class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menü -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
+      <a href="./index.html" class="block hover:text-blue-400">Home</a>
+
+      <p
+        class="mt-4 text-gray-400 uppercase text-xs font-semibold">Unternehmen</p>
+      <a href="./fachbereiche.html"
+        class="block hover:text-blue-400">Fachbereiche</a>
+      <a href="./werte-mission-vision.html"
+        class="block hover:text-blue-400">Werte, Mission & Vision</a>
+      <a href="./jobs.html" class="block hover:text-blue-400">Karriere &
+        Jobs</a>
+      <a href="./code-of-conduct.html" class="block hover:text-blue-400">Code of
+        Conduct</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Support</p>
+      <a href="./support.html" class="block hover:text-blue-400">Support</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Services</p>
+      <a href="./service-grafiken-werbemittel.html"
+        class="block hover:text-blue-400">Grafiken & Werbemittel</a>
+      <a href="./service-webentwicklung.html"
+        class="block hover:text-blue-400">Webentwicklung</a>
+      <a href="./service-it.html" class="block hover:text-blue-400">IT</a>
+      <a href="./service-seo-marketing.html"
+        class="block hover:text-blue-400">SEO & Marketing</a>
+      <a href="./service-reparaturen.html"
+        class="block hover:text-blue-400">Reparaturen</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Kontakt</p>
+      <a href="./kontakt.html" class="block hover:text-blue-400">Kontakt</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Blog</p>
+      <a href="./blog.html" class="block hover:text-blue-400">Blog</a>
+    </div>
+
+    <!-- Script fürs Öffnen/Schließen -->
+    <script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+    <!-- Hero -->
+    <section class="hero-bg text-white py-20 px-6">
+      <div class="max-w-5xl mx-auto">
+
+        <!-- Mobile Ansicht -->
+        <div class="md:hidden text-center">
+          <h1 class="text-2xl sm:text-3xl font-bold mb-10 leading-snug">
+            Willkommen bei <span class="text-blue-400">RSE Systems</span>
+          </h1>
+          <div class="flex flex-col items-center gap-4">
+            <a href="#produkte"
+              class="btn-primary w-full max-w-xs px-6 py-4 rounded-lg font-semibold text-lg shadow-lg">
+              Über RSE Systems
+            </a>
+            <a href="#unternehmen"
+              class="btn-secondary w-full max-w-xs px-6 py-4 rounded-lg font-semibold text-lg shadow-lg">
+              Jetzt Projekt anfragen
+            </a>
+          </div>
+        </div>
+
+        <!-- Desktop Ansicht -->
+        <div class="hidden md:block">
+          <h1 class="text-3xl lg:text-5xl font-bold mb-6 leading-tight">
+            Willkommen bei <span class="text-blue-400">RSE Systems</span>
+          </h1>
+          <p class="text-base lg:text-lg mb-6 max-w-2xl">
+            RSE Systems entwickelt Softwareprodukte und IT-Services, die
+            Prozesse vereinfachen,
+            Sicherheit gewährleisten und Unternehmen langfristig stärken.
+          </p>
+          <ul
+            class="list-disc list-inside space-y-2 text-base lg:text-lg mb-10">
+            <li>Individuelle Software & moderne IT-Lösungen</li>
+            <li>Maximale Datensicherheit & deutsche Serverstandorte</li>
+            <li>Kompetenter Support – persönlich & zuverlässig</li>
+          </ul>
+          <div class="flex flex-wrap gap-4">
+            <a href="#produkte"
+              class="btn-primary px-6 py-3 rounded-md font-semibold shadow">
+              Über RSE Systems
+            </a>
+            <a href="#unternehmen"
+              class="btn-secondary px-6 py-3 rounded-md font-semibold shadow">
+              Jetzt Projekt anfragen
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Datensicherheit -->
+    <section class="py-20 bg-white">
+      <div
+        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <!-- Text -->
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Ihre Daten sind bei
+            Ihnen in besten Händen.</h2>
+          <p class="text-lg text-gray-600 mb-6">
+            Mit unseren Lösungen bleiben all Ihre Informationen sicher und unter
+            Ihrer alleinigen Kontrolle.
+            Nichts wird außerhalb Ihrer eigenen Infrastruktur verarbeitet oder
+            über externe Clouddienste weitergegeben.
+          </p>
+          <p class="text-lg text-gray-600">
+            Da unsere Server ausschließlich in Deutschland stehen, können wir
+            garantieren, dass Ihre Daten nach den höchsten Standards für
+            Datenschutz und Sicherheit behandelt werden.
+            Sie können sich darauf verlassen, dass wir die strengen deutschen
+            und europäischen Datenschutzbestimmungen heute und in Zukunft
+            einhalten.
+          </p>
+        </div>
+
+        <!-- Bild -->
+        <div class="flex justify-center">
+          <img
+            src="./assets/img/EU_Graffiti.webp"
+            alt="Datensicherheit Illustration"
+            class="max-w-xs md:max-w-sm rounded-lg"
+            width="400" height="400"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            style="aspect-ratio: 1 / 1; background-color: #e5e7eb;" />
+        </div>
+      </section>
+
+      <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Warum Kunden uns
+            vertrauen</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div class="text-center">
+              <img src="./assets/img/HeadsetIcon.webp"
+                alt="Schnell & zuverlässig Icon"
+                class="w-10 h-10 mx-auto mb-4"
+                width="40" height="40"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <h3 class="font-semibold text-gray-900">Schnell & zuverlässig</h3>
+              <p class="text-gray-600 text-sm">Support ohne Warten – direkt und
+                persönlich.</p>
+            </div>
+            <div class="text-center">
+              <img src="./assets/img/StandortIcon.webp"
+                alt="Überall erreichbar Icon"
+                class="w-10 h-10 mx-auto mb-4"
+                width="40" height="40"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <h3 class="font-semibold text-gray-900">Überall erreichbar</h3>
+              <p class="text-gray-600 text-sm">Vor-Ort in Trier & Umgebung oder
+                remote.</p>
+            </div>
+            <div class="text-center">
+              <img src="./assets/img/KreativIcon.webp"
+                alt="Kreative Lösungen Icon"
+                class="w-10 h-10 mx-auto mb-4"
+                width="40" height="40"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <h3 class="font-semibold text-gray-900">Kreative Lösungen</h3>
+              <p class="text-gray-600 text-sm">Individuell statt Standard –
+                effizient & nachhaltig.</p>
+            </div>
+            <div class="text-center">
+              <img src="./assets/img/MailIcon.webp" alt="Persönlich & nah Icon"
+                class="w-10 h-10 mx-auto mb-4"
+                width="40" height="40"
+                loading="lazy" decoding="async" fetchpriority="low" />
+              <h3 class="font-semibold text-gray-900">Persönlich & nah</h3>
+              <p class="text-gray-600 text-sm">Direkter Draht – keine
+                Callcenter, echte Experten.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leistungen -->
+      <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Unsere
+            Leistungen</h2>
+          <p class="text-center text-lg text-gray-600 mb-16">Alles, was Sie für
+            Ihre digitale Zukunft brauchen – aus einer Hand.</p>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">IT-Beratung</h3>
+              <p class="text-gray-600 mb-4">Wir übersetzen komplexe Technik in
+                klare Lösungen und begleiten Ihre Digitalisierung Schritt für
+                Schritt.</p>
+              <a href="./leistungen/it-beratung.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">Softwareentwicklung</h3>
+              <p class="text-gray-600 mb-4">Individuelle Anwendungen, die exakt
+                zu Ihren Prozessen passen und echte Mehrwerte schaffen.</p>
+              <a href="./leistungen/softwareentwicklung.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">Web & SEO</h3>
+              <p class="text-gray-600 mb-4">Moderne Webseiten, die überzeugen –
+                mobilfreundlich und perfekt für Google optimiert.</p>
+              <a href="./leistungen/web-seo.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">App-Entwicklung</h3>
+              <p class="text-gray-600 mb-4">Von der Idee bis zur
+                Veröffentlichung: Apps für iOS und Android, intuitiv und
+                leistungsstark.</p>
+              <a href="./leistungen/app-entwicklung.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">Design & Marketing</h3>
+              <p class="text-gray-600 mb-4">Starkes Branding und kreative
+                Kampagnen, die Ihre Marke sichtbar machen.</p>
+              <a href="./leistungen/design-marketing.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+            <div
+              class="bg-gray-50 p-8 rounded-lg border hover:shadow-lg transition">
+              <h3 class="text-xl font-semibold mb-3">Technischer Support</h3>
+              <p class="text-gray-600 mb-4">Zuverlässige Hilfe bei Problemen mit
+                PC, Laptop oder Server – schnell & unkompliziert.</p>
+              <a href="./leistungen/support.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Produkte -->
+      <section id="produkte" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold mb-12 text-center">Unsere
+            Softwareprodukte</h2>
+
+          <!-- BenchPro -->
+          <div
+            class="bg-white border border-gray-200 rounded-2xl shadow-md p-8 mb-12 flex flex-col lg:flex-row items-center">
+
+            <!-- Icon & App Look -->
+            <div class="flex-shrink-0 mb-6 lg:mb-0 lg:mr-12 text-center">
+              <img src="./assets/img/BenchProIcon.webp"
+                alt="BenchPro Icon"
+                class="mx-auto rounded-2xl shadow-md"
+                width="120" height="120"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                style="aspect-ratio: 1 / 1;" />
+              <span
+                class="mt-3 inline-block bg-green-100 text-green-800 px-3 py-1 text-xs rounded-full font-semibold">Freeware</span>
+              <span
+                class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full font-semibold">In
+                Entwicklung</span>
+            </div>
+
+            <!-- Beschreibung -->
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold mb-3">BenchPro</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Ihre Systeme unterliegen einer gründlichen Belastungsprobe.
+                BenchPro simuliert extrem anspruchsvolle Szenarien, um die
+                Leistung von Workstations, Servern und PCs bis an die Grenzen zu
+                treiben.
+              </p>
+              <div class="flex flex-wrap gap-4">
+                <a href="./produkte/ooops.html"
+                  class="btn-primary px-6 py-3 rounded-md font-semibold shadow">
+                  Mehr erfahren →
+                </a>
+                <span class="text-sm text-gray-500 self-center">System Benchmark
+                  Tool</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weitere Produkte -->
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-8">
+              <span
+                class="bg-blue-100 text-blue-800 px-3 py-1 text-xs rounded-full font-semibold">In
+                Entwicklung</span>
+              <h3 class="text-xl font-bold mt-4 mb-3">DocuVault</h3>
+              <p class="text-gray-600 mb-6">
+                Digitales Dokumenten-Management-System für Unternehmen.
+                Dokumente wie Rechnungen oder Verträge können gescannt,
+                archiviert und jederzeit schnell wiedergefunden werden.
+              </p>
+              <a href="./produkte/docuvault.html"
+                class="text-blue-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-8">
+              <span
+                class="bg-purple-100 text-purple-800 px-3 py-1 text-xs rounded-full font-semibold">In
+                Entwicklung</span>
+              <h3 class="text-xl font-bold mt-4 mb-3">CloudDesk</h3>
+              <p class="text-gray-600 mb-6">
+                Die moderne All-in-One Arbeitsumgebung: Projekte, Dateien und
+                Kommunikation in einer sicheren Cloud. Flexibel, skalierbar und
+                für Teams jeder Größe geeignet.
+              </p>
+              <a href="./produkte/clouddesk.html"
+                class="text-purple-600 font-semibold hover:underline">Mehr
+                erfahren →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog -->
+      <section id="blog" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold mb-6 text-center">Neu im Blog</h2>
+          <p class="text-center text-gray-600 mb-12">Aktuelle Einblicke, Tipps
+            und Hintergrundwissen von unseren Experten.</p>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <!-- Artikel 1 -->
+            <article
+              class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
+              <img src="./Blog/img/warum-eine-Webseite.webp"
+                alt="Belastungstests für zuverlässige Systeme"
+                class="w-full h-40 object-cover rounded-lg mb-4">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <img src="./Blog/img/warum-eine-Webseite.webp" alt="Max Müller"
+                  class="w-6 h-6 rounded-full mr-2">
+                <span>10. September 2025 • 5 Min.</span>
+              </div>
+              <span
+                class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium w-max">DIGITAL
+                INSIGHTS</span>
+              <h3 class="text-lg font-bold mt-3 mb-2">Warum braucht jedes
+                Unternehmen eine Webseite?</h3>
+              <p class="text-gray-600 text-sm flex-grow">
+                Eine Webseite ist heute mehr als nur eine
+                digitale Visitenkarte – sie ist oft der erste
+                Kontaktpunkt mit neuen Kunden.
+              </p>
+              <a href="./Blog/Warum_eine_Webseite.html"
+                class="btn-primary mt-4 text-center py-2 rounded-md font-semibold">Weiterlesen</a>
+            </article>
+
+            <!-- Artikel 2 -->
+            <article
+              class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
+              <img src="./Blog/img/Webseitenbaukasten.webp"
+                alt="Papier war gestern – digitales Archivieren"
+                class="w-full h-40 object-cover rounded-lg mb-4">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <img src="./Blog/img/Webseitenbaukasten.webp" alt="Sarah Weber"
+                  class="w-6 h-6 rounded-full mr-2">
+                <span>12. September 2025 • 7 Min.</span>
+              </div>
+              <span
+                class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium w-max">DIGITAL
+                INSIGHTS</span>
+              <h3 class="text-lg font-bold mt-3 mb-2">Warum Webseiten-Baukästen
+                oft ungeeignet sind</h3>
+              <p class="text-gray-600 text-sm flex-grow">
+                Wix, Jimdo & Co. sind verlockend – doch schnell stößt man an
+                Grenzen. Wir zeigen dir, wann ein individuelles Webdesign die
+                bessere Wahl ist.
+              </p>
+              <a href="./Blog/ooops.html"
+                class="btn-primary mt-4 text-center py-2 rounded-md font-semibold">Weiterlesen</a>
+            </article>
+
+            <!-- Artikel 3 -->
+            <article
+              class="bg-white border border-gray-200 rounded-xl shadow hover:shadow-lg transition p-6 flex flex-col">
+              <img src="./Blog/img/SEO.webp"
+                alt="Effizient arbeiten mit CloudDesk"
+                class="w-full h-40 object-cover rounded-lg mb-4">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <img src="./Blog/img/SEO.webp" alt="Tom Fischer"
+                  class="w-6 h-6 rounded-full mr-2">
+                <span>14. September 2025 • 6 Min.</span>
+              </div>
+              <span
+                class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-medium w-max">DIGITAL
+                INSIGHTS</span>
+              <h3 class="text-lg font-bold mt-3 mb-2">Online-Sichtbarkeit: Dein
+                Schlüssel zum Erfolg</h3>
+              <p class="text-gray-600 text-sm flex-grow">
+                Nur mit einer starken Online-Präsenz erreichst du neue Kunden.
+                Erfahre, wie SEO, Webdesign und Content zusammenwirken.
+              </p>
+              <a href="./Blog/ooops.html"
+                class="btn-primary mt-4 text-center py-2 rounded-md font-semibold">Weiterlesen</a>
+            </article>
+          </div>
+
+          <!-- Alle Artikel Button -->
+          <div class="text-center mt-12">
+            <a href="./blog/index.html"
+              class="btn-secondary px-6 py-3 rounded-md font-semibold shadow">
+              Alle Artikel ansehen
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-12">Häufig gestellte
+            Fragen</h2>
+
+          <div class="space-y-4">
+            <!-- Frage 1 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Arbeiten Sie mit Unternehmen jeder Größe?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Wir betreuen sowohl Privatkunden als auch Unternehmen – vom
+                kleinen Handwerksbetrieb
+                bis hin zu mittelständischen Firmen. Unsere Lösungen passen wir
+                individuell an die jeweiligen
+                Anforderungen an.
+              </p>
+            </details>
+
+            <!-- Frage 2 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Wie läuft ein typisches Softwareprojekt bei Ihnen ab?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Zunächst besprechen wir gemeinsam Ihre Ziele und Anforderungen.
+                Danach entwickeln wir ein
+                passendes Konzept, erstellen einen Prototypen und setzen die
+                Lösung Schritt für Schritt um.
+                Sie sind während des gesamten Prozesses eng eingebunden und
+                erhalten volle Transparenz.
+              </p>
+            </details>
+
+            <!-- Frage 3 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Sind meine Daten bei Ihnen wirklich sicher?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Unsere On-Premises-Lösungen laufen komplett ohne externe
+                Cloud-Dienste.
+                Für Hosting und Support nutzen wir ausschließlich Server in
+                Deutschland und erfüllen
+                höchste Sicherheits- und DSGVO-Standards.
+              </p>
+            </details>
+
+            <!-- Frage 4 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Welche Kosten kommen auf uns zu?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Die Kosten hängen vom Umfang der gewünschten Lösung ab.
+                Kleinere Projekte können wir oft schon zu einem festen
+                Paketpreis umsetzen,
+                während größere Software- oder Webprojekte individuell
+                kalkuliert werden.
+                Vor Projektstart erhalten Sie immer ein transparentes Angebot.
+              </p>
+            </details>
+
+            <!-- Frage 5 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Bieten Sie auch langfristigen Support an?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Absolut. Nach Abschluss eines Projekts lassen wir Sie nicht
+                allein.
+                Wir bieten Wartung, Updates und persönlichen Support – für
+                Privatkunden ebenso
+                wie für Unternehmen mit individuellen Servicevereinbarungen.
+              </p>
+            </details>
+
+            <!-- Frage 6 -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Kann ich Ihre Software vorab testen?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Einige unserer Anwendungen stehen als Freeware oder
+                Testversion bereit.
+                So können Sie sich vorab ein Bild von unseren Produkten machen,
+                bevor Sie sich für eine Vollversion entscheiden.
+              </p>
+            </details>
+            <!-- FAQ Erweiterung -->
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Können Ihre Lösungen in bestehende Systeme integriert werden?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Wir entwickeln Software so, dass sie sich reibungslos in
+                Ihre bestehende IT-Landschaft
+                einfügt. Ob Schnittstellen zu ERP, CRM oder anderen Tools – wir
+                passen unsere Lösungen
+                an Ihre Infrastruktur an.
+              </p>
+            </details>
+
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Wie schnell können Sie Projekte umsetzen?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Das hängt vom Umfang ab: Kleine Websites oder Tools können oft
+                in wenigen Wochen
+                umgesetzt werden, größere Projekte wie Apps oder individuelle
+                Software benötigen
+                mehrere Monate. Wir arbeiten transparent mit klaren Zeitplänen.
+              </p>
+            </details>
+
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Entwickeln Sie auch maßgeschneiderte Software?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Wir setzen keine 08/15-Lösungen ein, sondern entwickeln
+                Software,
+                die exakt auf Ihre Prozesse und Anforderungen zugeschnitten ist
+                – effizient,
+                zukunftssicher und skalierbar.
+              </p>
+            </details>
+
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Bieten Sie auch Vor-Ort-Service an?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Ja. Neben Remote-Support kommen wir bei Bedarf auch direkt zu
+                Ihnen –
+                vor allem in Trier, Hermeskeil und Umgebung. So haben Sie die
+                Wahl zwischen
+                digitaler und persönlicher Betreuung.
+              </p>
+            </details>
+
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Unterstützen Sie auch kleinere Projekte oder Privatkunden?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Natürlich. Auch wenn viele unserer Kunden Unternehmen sind,
+                unterstützen wir
+                Privatkunden genauso – sei es bei PC-Reparaturen, technischer
+                Hilfe oder kleineren Softwarelösungen.
+              </p>
+            </details>
+
+            <details
+              class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm group">
+              <summary
+                class="flex justify-between items-center cursor-pointer font-semibold text-lg text-gray-900">
+                Wie läuft der Support nach Projektabschluss ab?
+                <span
+                  class="text-gray-500 group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p class="mt-3 text-gray-600">
+                Nach Abschluss eines Projekts bieten wir langfristige Betreuung.
+                Sie erhalten Updates, Fehlerbehebungen und Erweiterungen, wenn
+                sich Ihre Anforderungen ändern.
+                Wir bleiben Ihr Ansprechpartner – auch nach dem Go-Live.
+              </p>
+            </details>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-gray-300 pt-8 pb-6">
+        <div class="max-w-6xl mx-auto px-6">
+          <div
+            class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+            <div class="mb-8 md:mb-0">
+              <img src="./assets/img/rse-logo.png" alt="RSE Systems Logo"
+                class="h-8 mb-3">
+              <p class="text-sm text-gray-400">Softwarelösungen & IT-Services
+                aus Trier.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+              <div>
+                <h4
+                  class="font-semibold text-white mb-2 text-sm uppercase">Produkte</h4>
+                <ul class="space-y-1">
+                  <li><a href="./service-webentwicklung.html"
+                      class="hover:text-white">Webentwicklung</a></li>
+                  <li><a href="./service-it.html" class="hover:text-white">IT
+                      Services</a></li>
+                  <li><a href="./service-seo.html" class="hover:text-white">SEO
+                      & Marketing</a></li>
+                  <li><a href="./service-grafikdesign.html"
+                      class="hover:text-white">Grafikdesign</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-white mb-2 text-sm uppercase">Unternehmen</h4>
+                <ul class="space-y-1">
+                  <li><a href="./index.html#highlights"
+                      class="hover:text-white">Über uns</a></li>
+                  <li><a href="./karriere.html"
+                      class="hover:text-white">Karriere</a></li>
+                  <li><a href="./werte-mission-vision.html"
+                      class="hover:text-white">Mission & Vision</a></li>
+                  <li><a href="./kontakt.html"
+                      class="hover:text-white">Kontakt</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-white mb-2 text-sm uppercase">Ressourcen</h4>
+                <ul class="space-y-1">
+                  <li><a href="./support.html"
+                      class="hover:text-white">Support</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4
+                  class="font-semibold text-white mb-2 text-sm uppercase">Folgen
+                  Sie uns</h4>
+                <div class="flex space-x-3">
+                  <a href="https://www.instagram.com/rse_systems"
+                    target="_blank"><img
+                      src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+                      class="h-4 invert"></a>
+                  <a href="https://www.linkedin.com/company/rse-systems"
+                    target="_blank"><img
+                      src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
+                      class="h-4 invert"></a>
+                  <a href="https://www.youtube.com/@rse-systems"
+                    target="_blank"><img
+                      src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg"
+                      class="h-4 invert"></a>
+                  <a href="mailto:info@rse-systems.com"><img
+                      src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg"
+                      class="h-4 invert"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-t border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+            <div class="flex flex-wrap gap-4 mb-3 md:mb-0">
+              <span>© 2025 RSE Systems – Alle Rechte vorbehalten</span>
+              <a href="./legal/datenschutz.html"
+                class="hover:text-white">Datenschutz</a>
+              <a href="./legal/impressum.html"
+                class="hover:text-white">Impressum</a>
+              <a href="./legal/agb.html" class="hover:text-white">AGB</a>
+              <a href="./legal/haftungsausschluss.html"
+                class="hover:text-white">Haftungsausschluss</a>
+              <a href="./legal/widerrufsbelehrung.html"
+                class="hover:text-white">Widerrufsbelehrung</a>
+            </div>
+            <div><span>Made with ❤️ in Trier</span></div>
+          </div>
+        </div>
+      </footer>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "RSE Systems",
+  "url": "https://www.rse-systems.com",
+  "logo": "https://www.rse-systems.com/assets/img/rse-logo.png",
+  "description": "RSE Systems bietet Softwarelösungen, IT-Services, Webentwicklung & SEO aus Trier. Wir betreuen Kunden in Hermeskeil, der Eifel und ganz Rheinland-Pfalz.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Trier",
+    "addressRegion": "Rheinland-Pfalz",
+    "addressCountry": "DE"
+  },
+  "sameAs": [
+    "https://www.instagram.com/rse_systems",
+    "https://www.linkedin.com/company/rse-systems",
+    "https://www.youtube.com/@rse-systems"
+  ]
+}
+</script>
+
+      <!-- Cookie Banner -->
+      <div id="cookie-banner"
+        class="fixed inset-x-0 bottom-4 z-50 mx-auto w-[min(680px,92vw)] cc-slide-up hidden
+            rounded-2xl border border-white/10 bg-[#0b0f14]/95 backdrop-blur p-4">
+        <div class="flex items-start gap-4">
+          <span class="text-lg" aria-hidden="true">🍪</span>
+          <div class="text-sm text-slate-200">
+            Wir verwenden Cookies für <strong>Google Analytics</strong>. Ohne
+            Zustimmung setzen wir nur technisch notwendige Cookies.
+            Details findest du in unserer
+            <a class="underline hover:no-underline text-sky-300"
+              href="/legal/datenschutz.html">Datenschutzerklärung</a>.
+            <div class="mt-3 flex gap-2">
+              <button id="accept"
+                class="btn btn-primary !py-2 !px-3 text-sm">Akzeptieren</button>
+              <button id="decline" class="btn btn-ghost !py-2 !px-3 text-sm">Nur
+                notwendig</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+  (function(){
+    const banner = document.getElementById('cookie-banner');
+    const key = 'rse-consent';
+    const saved = localStorage.getItem(key);
+
+    if(!saved){
+      banner.style.display = 'block';
+      requestAnimationFrame(()=> banner.classList.add('cc-show'));
+    }
+
+    function setConsent(granted){
+      const update = granted ? {
+        'ad_storage':'granted',
+        'analytics_storage':'granted',
+        'ad_user_data':'granted',
+        'ad_personalization':'granted'
+      } : {
+        'ad_storage':'denied',
+        'analytics_storage':'denied',
+        'ad_user_data':'denied',
+        'ad_personalization':'denied'
+      };
+      gtag('consent','update', update);
+
+      if(granted){
+        gtag('config', 'G-WFZJ9JDJBT', { 'anonymize_ip': true });
+      }
+
+      localStorage.setItem(key, granted ? 'yes' : 'no');
+      if(banner) banner.remove();
+    }
+
+    document.getElementById('accept')?.addEventListener('click', ()=> setConsent(true));
+    document.getElementById('decline')?.addEventListener('click', ()=> setConsent(false));
+
+    if(saved === 'yes'){
+      gtag('consent','update',{
+        'ad_storage':'granted','analytics_storage':'granted',
+        'ad_user_data':'granted','ad_personalization':'granted'
+      });
+      gtag('config', 'G-WFZJ9JDJBT', { 'anonymize_ip': true });
+    }
+  })();
+</script>
+
+
+    </body>
+  </html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- Google Analytics Consent Mode + Tag -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  // Standardmäßig alles blockieren (Privacy by default)
+  gtag('consent','default',{
+    'ad_storage':'denied',
+    'analytics_storage':'denied',
+    'ad_user_data':'denied',
+    'ad_personalization':'denied',
+    'functionality_storage':'granted',
+    'security_storage':'granted'
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZJ9JDJBT"></script>
+<script> gtag('js', new Date()); </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online-Sichtbarkeit: Dein Schlüssel zum Erfolg - RSE Systems Blog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Source Sans Pro', sans-serif; }
+    .font-serif { font-family: 'Playfair Display', serif; }
+    .premium-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%); }
+    .news-shadow { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+    .article-dropcap::first-letter {
+      float: left;
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      line-height: 3rem;
+      padding-right: 8px;
+      font-weight: 700;
+      color: #1e3a8a;
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, #0b1d2a 0%, #003366 100%);
+    }
+    .btn-primary {
+      background-color: #0080ff;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0066cc;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background-color: #f3f4f6;
+      color: #111827;
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+<!-- Navigation -->
+<nav class="bg-gray-900 text-white px-6 md:px-12 py-4 flex items-center justify-between relative shadow-lg">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <a href="../index.html" class="font-bold text-xl hover:text-blue-400 transition">
+      RSE<span class="text-blue-400">Systems</span>
+    </a>
+  </div>
+
+  <!-- Desktop-Menü -->
+  <ul class="hidden md:flex space-x-8 font-medium">
+    <!-- Home -->
+    <li><a href="../index.html" class="hover:text-blue-400 transition">Home</a></li>
+
+    <!-- Unternehmen -->
+    <li class="group relative">
+      <button class="hover:text-blue-400 transition flex items-center gap-1">
+        Unternehmen ▾
+      </button>
+      <ul class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+        <li><a href="../fachbereiche.html" class="block px-4 py-2 hover:bg-gray-100">Fachbereiche</a></li>
+        <li><a href="../werte-mission-vision.html" class="block px-4 py-2 hover:bg-gray-100">Werte, Mission & Vision</a></li>
+        <li><a href="../jobs.html" class="block px-4 py-2 hover:bg-gray-100">Karriere & Jobs</a></li>
+        <li><a href="../code-of-conduct.html" class="block px-4 py-2 hover:bg-gray-100">Code of Conduct</a></li>
+      </ul>
+    </li>
+
+    <!-- Support -->
+    <li><a href="../support.html" class="hover:text-blue-400 transition">Support</a></li>
+
+    <!-- Services -->
+    <li class="group relative">
+      <button class="hover:text-blue-400 transition flex items-center gap-1">
+        Services ▾
+      </button>
+      <ul class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+        <li><a href="../service-grafiken-werbemittel.html" class="block px-4 py-2 hover:bg-gray-100">Grafiken & Werbemittel</a></li>
+        <li><a href="../service-webentwicklung.html" class="block px-4 py-2 hover:bg-gray-100">Webentwicklung</a></li>
+        <li><a href="../service-it.html" class="block px-4 py-2 hover:bg-gray-100">IT</a></li>
+        <li><a href="../service-seo-marketing.html" class="block px-4 py-2 hover:bg-gray-100">SEO & Marketing</a></li>
+        <li><a href="../service-reparaturen.html" class="block px-4 py-2 hover:bg-gray-100">Reparaturen</a></li>
+      </ul>
+    </li>
+
+    <!-- Kontakt -->
+    <li><a href="../kontakt.html" class="hover:text-blue-400 transition">Kontakt</a></li>
+
+    <!-- Blog -->
+    <li><a href="../blog.html" class="hover:text-blue-400 transition">Blog</a></li>
+  </ul>
+
+  <!-- Mobile Button -->
+  <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+    <span class="w-6 h-0.5 bg-white"></span>
+    <span class="w-6 h-0.5 bg-white"></span>
+    <span class="w-6 h-0.5 bg-white"></span>
+  </button>
+</nav>
+
+<!-- Mobile Menü -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
+  <a href="../index.html" class="block hover:text-blue-400">Home</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Unternehmen</p>
+  <a href="../fachbereiche.html" class="block hover:text-blue-400">Fachbereiche</a>
+  <a href="../werte-mission-vision.html" class="block hover:text-blue-400">Werte, Mission & Vision</a>
+  <a href="../jobs.html" class="block hover:text-blue-400">Karriere & Jobs</a>
+  <a href="../code-of-conduct.html" class="block hover:text-blue-400">Code of Conduct</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Support</p>
+  <a href="../support.html" class="block hover:text-blue-400">Support</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Services</p>
+  <a href="../service-grafiken-werbemittel.html" class="block hover:text-blue-400">Grafiken & Werbemittel</a>
+  <a href="../service-webentwicklung.html" class="block hover:text-blue-400">Webentwicklung</a>
+  <a href="../service-it.html" class="block hover:text-blue-400">IT</a>
+  <a href="../service-seo-marketing.html" class="block hover:text-blue-400">SEO & Marketing</a>
+  <a href="../service-reparaturen.html" class="block hover:text-blue-400">Reparaturen</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Kontakt</p>
+  <a href="../kontakt.html" class="block hover:text-blue-400">Kontakt</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Blog</p>
+  <a href="../blog.html" class="block hover:text-blue-400">Blog</a>
+</div>
+
+<!-- Script fürs Öffnen/Schließen -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+  <!-- Hero -->
+  <section class="premium-gradient text-white relative overflow-hidden">
+    <div class="relative max-w-5xl mx-auto px-6 py-20 text-center">
+      <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-2 text-sm mb-4">
+        DIGITAL INSIGHTS
+      </div>
+      <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6">
+        Online-Sichtbarkeit:
+        <span class="block text-4xl md:text-5xl font-light text-blue-200 mt-2">
+          Dein Schlüssel zum Erfolg
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+        Wie dein Unternehmen durch SEO, Social Media & Content-Strategien im digitalen Zeitalter sichtbar bleibt.
+      </p>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <div class="max-w-4xl mx-auto px-6 py-16 bg-white news-shadow rounded-2xl -mt-12 relative z-10">
+    <article class="prose prose-lg max-w-none">
+      <p class="text-xl leading-relaxed text-gray-800 font-light article-dropcap mb-12">
+        In einer Welt, in der täglich Millionen Inhalte publiziert werden, ist Sichtbarkeit keine Option mehr – sie ist die Grundlage für langfristigen Erfolg. Doch wie sticht man aus der Masse heraus?
+      </p>
+
+      <h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">1. SEO als Fundament</h2>
+      <p class="text-gray-700 mb-8">
+        Suchmaschinenoptimierung ist nach wie vor die tragende Säule jeder erfolgreichen Online-Präsenz. Wer bei Google & Co. nicht gefunden wird, existiert digital kaum.
+      </p>
+
+      <h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">2. Content is King</h2>
+      <blockquote class="border-l-4 border-yellow-400 pl-4 italic text-gray-700 mb-6">
+        „Guter Content verkauft nicht, er begeistert – und sorgt dafür, dass Kunden freiwillig zurückkommen.“
+      </blockquote>
+      <p class="text-gray-700 mb-8">
+        Storytelling, Blogs und Videos schaffen nicht nur Reichweite, sondern auch Vertrauen. Hochwertiger Content ist eine Investition in nachhaltiges Wachstum.
+      </p>
+
+      <h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">3. Social Media als Verstärker</h2>
+      <p class="text-gray-700 mb-8">
+        Kanäle wie LinkedIn, Instagram und TikTok sind längst mehr als „nur Social“. Sie sind Distributionsmaschinen, um Content strategisch sichtbar zu machen.
+      </p>
+
+      <h2 class="text-3xl font-serif font-bold text-gray-900 mb-4">4. Der Blick in die Zukunft</h2>
+      <p class="text-gray-700">
+        KI-gestützte Content-Strategien, Voice Search und immersive Experiences werden den digitalen Wettbewerb der kommenden Jahre dominieren. Wer jetzt investiert, sichert sich einen Vorsprung.
+      </p>
+    </article>
+  </div>
+
+  <!-- Weitere Artikel -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <h3 class="text-3xl font-serif font-bold text-gray-900">Weitere Artikel</h3>
+      <div class="w-24 h-1 bg-yellow-400 mx-auto mt-3"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <article class="bg-white news-shadow rounded-xl overflow-hidden hover:-translate-y-1 transition transform">
+        <img src="../Blog/img/warum-eine-Webseite.webp" alt="Warum jedes Unternehmen eine Webseite braucht" class="h-40 w-full object-cover">
+        <div class="p-6">
+          <h4 class="font-serif text-xl font-bold mb-2">Warum braucht jedes Unternehmen eine Webseite?</h4>
+          <p class="text-sm text-gray-600 mb-4">Eine digitale Präsenz ist heute mehr als nur eine Visitenkarte – sie ist die Basis für Vertrauen und Wachstum.</p>
+          <a href="../Blog/warum-webseite.html" class="text-blue-600 font-medium hover:underline">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="bg-white news-shadow rounded-xl overflow-hidden hover:-translate-y-1 transition transform">
+        <img src="../Blog/img/Webseitenbaukasten.webp" alt="Warum Webseiten-Baukästen oft ungeeignet sind" class="h-40 w-full object-cover">
+        <div class="p-6">
+          <h4 class="font-serif text-xl font-bold mb-2">Warum Webseiten-Baukästen ungeeignet sind</h4>
+          <p class="text-sm text-gray-600 mb-4">Standardlösungen reichen oft nicht aus – individuelle Entwicklung sorgt für bessere Performance und Sichtbarkeit.</p>
+          <a href="../Blog/baukasten-ungeeignet.html" class="text-blue-600 font-medium hover:underline">Weiterlesen →</a>
+        </div>
+      </article>
+
+      <article class="bg-white news-shadow rounded-xl overflow-hidden hover:-translate-y-1 transition transform">
+        <img src="../Blog/img/SEO.webp" alt="SEO Basics für Unternehmen" class="h-40 w-full object-cover">
+        <div class="p-6">
+          <h4 class="font-serif text-xl font-bold mb-2">SEO Basics für Unternehmen</h4>
+          <p class="text-sm text-gray-600 mb-4">Wie du dein Unternehmen mit gezielten SEO-Maßnahmen online nach vorne bringst.</p>
+          <a href="../Blog/seo-basics.html" class="text-blue-600 font-medium hover:underline">Weiterlesen →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 pt-8 pb-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+        <div class="mb-8 md:mb-0">
+          <img src="../assets/img/rse-logo.png" alt="RSE Systems Logo" class="h-8 mb-3">
+          <p class="text-sm text-gray-400">Softwarelösungen & IT-Services aus Trier.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Produkte</h4>
+            <ul class="space-y-1">
+              <li><a href="../service-webentwicklung.html" class="hover:text-white">Webentwicklung</a></li>
+              <li><a href="../service-it.html" class="hover:text-white">IT Services</a></li>
+              <li><a href="../service-seo-marketing.html" class="hover:text-white">SEO & Marketing</a></li>
+              <li><a href="../service-grafiken-werbemittel.html" class="hover:text-white">Grafikdesign</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Unternehmen</h4>
+            <ul class="space-y-1">
+              <li><a href="../index.html#highlights" class="hover:text-white">Über uns</a></li>
+              <li><a href="../jobs.html" class="hover:text-white">Karriere</a></li>
+              <li><a href="../werte-mission-vision.html" class="hover:text-white">Mission & Vision</a></li>
+              <li><a href="../kontakt.html" class="hover:text-white">Kontakt</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Ressourcen</h4>
+            <ul class="space-y-1">
+              <li><a href="../support.html" class="hover:text-white">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Folgen Sie uns</h4>
+            <div class="flex space-x-3">
+              <a href="https://www.instagram.com/rse_systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="h-4 invert"></a>
+              <a href="https://www.linkedin.com/company/rse-systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" class="h-4 invert"></a>
+              <a href="https://www.youtube.com/@rse-systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="h-4 invert"></a>
+              <a href="mailto:info@rse-systems.com"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" class="h-4 invert"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+        <div class="flex flex-wrap gap-4 mb-3 md:mb-0">
+          <span>© 2025 RSE Systems – Alle Rechte vorbehalten</span>
+          <a href="../legal/datenschutz.html" class="hover:text-white">Datenschutz</a>
+          <a href="../legal/impressum.html" class="hover:text-white">Impressum</a>
+          <a href="../legal/agb.html" class="hover:text-white">AGB</a>
+          <a href="../legal/haftungsausschluss.html" class="hover:text-white">Haftungsausschluss</a>
+          <a href="../legal/widerrufsbelehrung.html" class="hover:text-white">Widerrufsbelehrung</a>
+        </div>
+        <div><span>Made with ❤️ in Trier</span></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

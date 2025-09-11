@@ -1,0 +1,46 @@
+{
+  "name": "RSE Systems",
+  "short_name": "RSE",
+  "description": "Moderne Softwarelösungen und IT-Services für Unternehmen, Startups und Institutionen in Trier, Hermeskeil & der Eifel.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "de",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/public/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/public/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/public/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "url": "/kontakt.html",
+      "icons": [{ "src": "/public/icon-contact.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "url": "/service-it.html",
+      "icons": [{ "src": "/public/icon-services.png", "sizes": "96x96" }]
+    }
+  ]
+}

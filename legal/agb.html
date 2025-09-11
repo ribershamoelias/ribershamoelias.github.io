@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSE Systems</title>
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    /* Allgemeine Styles */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body,html{height:100%;font-family:"Helvetica Neue",Arial,sans-serif;cursor:none;}
+    h1, h2, h3, h4, p { color: #333; }
+    .btn, a { cursor: none; }
+    section { padding: 80px 10%; }
+    .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 50px; }
+
+    /* Hero Section */
+    .hero{
+      background:url("./assets/img/hb.png") no-repeat center center/cover;
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      text-align:center;
+      color:white;
+    }
+    .hero h1{
+      font-size:3rem;
+      margin-bottom:25px;
+      margin-top:580px;
+      text-shadow:0 2px 10px rgba(254, 253, 253, 0.6);
+      color: #fff;
+    }
+    .hero-buttons{
+      display:flex;gap:20px;flex-wrap:wrap;
+    }
+    .hero-buttons a{
+      background:white;color:black;padding:14px 28px;border-radius:30px;
+      text-decoration:none;font-weight:bold;
+      transition:all .3s ease;box-shadow:0 4px 10px rgba(0,0,0,.2);
+      cursor:none;
+    }
+    .hero-buttons a:hover{background:#111;color:white;transform:scale(1.05);}
+
+    .small-hero p{
+      color: #fff;
+    }
+
+    /* Hero für Unterseiten */
+.small-hero {
+  background: url("./assets/img/hb.png") no-repeat center center/cover;
+  height: 50vh;                 /* statt 100vh nur halbe Höhe */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;    /* Text weiter unten */
+  align-items: center;
+  text-align: center;
+  padding-bottom: 47px;
+  color: white;
+}
+
+.small-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+}
+
+.small-hero p {
+  font-size: 15px;
+  max-width: 800px;
+  line-height: 1.6;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+}
+
+
+    /* Navbar Liquid Glass */
+    nav{
+      position:fixed;top:20px;left:50%;transform:translateX(-50%);
+      width:90%;max-width:1200px;
+      background:rgba(255,255,255,0.45);
+      backdrop-filter:blur(20px) saturate(180%);
+      -webkit-backdrop-filter:blur(20px) saturate(180%);
+      border-radius:50px;padding:14px 28px;
+      display:flex;align-items:center;justify-content:space-between;
+      z-index:1001;box-shadow:0 8px 25px rgba(0,0,0,.2);
+    }
+    .logo img{height:60px;}
+    
+    /* Menu */
+    .menu{position:relative;}
+    .menu ul{list-style:none;display:flex;gap:20px;align-items:center;position:relative;}
+    .menu ul li{position:relative;}
+    .menu ul li a{
+      text-decoration:none;color:black;font-weight:600;
+      padding:10px 16px;border-radius:25px;
+      display:flex;align-items:center;gap:6px;
+      position:relative;z-index:2;
+      transition:color .3s ease;
+      cursor:none;
+    }
+
+    /* Hover Indicator */
+    .hover-indicator{
+      position:absolute;top:0;height:100%;
+      background:rgba(255,255,255,.35);
+      backdrop-filter:blur(10px);
+      border-radius:30px;
+      transition:all .4s cubic-bezier(.4,.0,.2,1);
+      z-index:1;pointer-events:none;opacity:0;
+    }
+    .menu ul li:hover a{color:#111;}
+    
+    /* Dropdown */
+    .menu ul li ul{
+      position:absolute;top:120%;left:0;
+      background:rgba(255,255,255,.85);
+      backdrop-filter:blur(15px) saturate(180%);
+      border-radius:16px;
+      box-shadow:0 12px 30px rgba(0,0,0,.2);
+      list-style:none;padding:10px 0;min-width:260px;
+      opacity:0;visibility:hidden;
+      transform:translateY(15px) scale(.95);
+      transition:all .35s cubic-bezier(.4,.0,.2,1);
+      display:flex;flex-direction:column;
+    }
+    .menu ul li:hover > ul,
+    .menu ul li.open > ul{
+      opacity:1;visibility:visible;
+      transform:translateY(0) scale(1);
+    }
+    .menu ul li ul li a{
+      padding:12px 20px;color:black;
+      display:flex;align-items:center;gap:10px;
+      transition:all .3s ease;
+      cursor:none;
+    }
+    .menu ul li ul li a:hover{background:rgba(255,255,255,.5);padding-left:28px;}
+
+    /* Burger */
+    .burger{display:none;flex-direction:column;cursor:pointer;gap:5px;width:30px;height:22px;justify-content:center;z-index:1002;}
+    .burger div{width:100%;height:3px;background:black;border-radius:3px;transition:all .4s ease;}
+    .burger.active div:nth-child(1){transform:rotate(45deg) translate(5px,6px);}
+    .burger.active div:nth-child(2){opacity:0;}
+    .burger.active div:nth-child(3){transform:rotate(-45deg) translate(5px,-6px);}
+    
+    /* Overlay */
+    .overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);
+      opacity:0;visibility:hidden;transition:opacity .3s ease;z-index:1000;}
+    .overlay.active{opacity:1;visibility:visible;}
+
+    /* Custom Cursor */
+.cursor {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(255,255,255,0.95); /* heller Rand */
+  background: transparent;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 
+    width 0.25s ease, 
+    height 0.25s ease, 
+    border-radius 0.25s ease, 
+    border-color 0.25s ease, 
+    box-shadow 0.3s ease;
+  z-index: 2000;
+  /* Sichtbarkeit auf hellen + dunklen Hintergründen */
+  box-shadow: 
+    0 0 6px rgba(0,128,255,0.6),   /* blauer Glow */
+    0 0 2px rgba(0,0,0,0.9),       /* dunkler Schatten */
+    0 0 2px rgba(255,255,255,0.9); /* heller Schatten */
+}
+
+/* Klick-Wellen-Animation */
+@keyframes clickWave {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  40%  { transform: translate(-50%, -50%) scale(1.4); }
+  60%  { transform: translate(-50%, -50%) scale(0.85); }
+  80%  { transform: translate(-50%, -50%) scale(1.15); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+.cursor.click-wave {
+  animation: clickWave 0.5s ease-out;
+}
+
+.cursor::before,
+.cursor::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: rgba(0,128,255,0.8); /* Blau vom Glow */
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.cursor::before {
+  width: 12px;  /* horizontale Linie */
+  height: 1px;
+}
+
+.cursor::after {
+  width: 1px;   /* vertikale Linie */
+  height: 12px;
+}
+
+
+
+
+    /* Responsive */
+    @media(max-width:900px){
+      .menu ul{
+        position:fixed;top:0;right:-100%;
+        height:100vh;width:300px;
+        background:rgba(255,255,255,.95);
+        flex-direction:column;align-items:flex-start;
+        padding:80px 20px;gap:15px;
+        transition:right .4s ease;z-index:1001;
+      }
+      .menu ul.active{right:0;}
+      .burger{display:flex;}
+      .menu ul li ul{
+        position:static;transform:none;opacity:1;visibility:visible;
+        max-height:0;overflow:hidden;transition:max-height .4s ease;
+        box-shadow:none;background:transparent;padding-left:15px;
+      }
+      .menu ul li.open > ul{max-height:500px;}
+      .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 120px;
+        padding-bottom: 60px;
+        justify-content: flex-start;
+      }
+      .hero h1 {
+        margin-top: 0;
+        font-size: 2.5rem;
+      }
+      .footer-cols {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+      .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    
+    /* Highlight Section */
+    .highlights { background: #f9f9f9; }
+    .highlights h2 { font-size: 2.2rem; margin-bottom: 50px; }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .highlight { padding: 25px; text-align: left; }
+    .highlight .icon { font-size: 2.5rem; margin-bottom: 15px; }
+    .highlight h3 { font-size: 2rem; color: #0080ff; margin-bottom: 10px; }
+    .highlight p { font-size: 1rem; line-height: 1.6; color: #333; }
+    
+    /* Glass Card Style */
+    .glass-card {
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(15px) saturate(180%);
+      -webkit-backdrop-filter: blur(15px) saturate(180%);
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    }
+
+    .glass-card-team img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    /* Services Section */
+    .services { background: #fff; }
+    .services-subtitle { font-size: 1.1rem; color: #555; margin-bottom: 60px; text-align: center; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+    .service-card {
+      background: #f9f9f9;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+    .service-card .icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #0080ff; }
+    .service-card p { flex-grow: 1; font-size: 1rem; line-height: 1.6; color: #333; margin-bottom: 20px; }
+    .btn-outline {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid #0080ff;
+      border-radius: 30px;
+      color: #0080ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    a.btn-outline {
+        margin-top: 17px;
+    }
+
+    .btn-outline:hover { background: #0080ff; color: #fff; }
+    
+    /* FAQ Section */
+    .faq { background: #f9f9f9; }
+    .faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+    .faq-item { border-bottom: 1px solid #ddd; }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 18px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .faq-question:hover { background: rgba(0,128,255,0.08); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 18px;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 15px 18px;
+    }
+    .faq-answer p { margin: 0; color: #333; line-height: 1.6; }
+    
+    /* Footer */
+    .footer {
+      background: #f5f5f5;
+      padding: 60px 10% 30px;
+      color: #111;
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .footer-logo img { height: 60px; margin-bottom: 20px; }
+    .footer-cols {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 60px;
+    }
+    .footer-col h4 { font-size: 1.2rem; margin-bottom: 15px; }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li a {
+      color: #111;
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      transition: color 0.3s ease;
+    }
+    .footer-col ul li a:hover { color: #0080ff; }
+    .social-icons a {
+      display: inline-block;
+      margin-right: 12px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #111;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover { color: #0080ff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .footer-links a { margin-left: 20px; color: #555; text-decoration: none; }
+    .footer-links a:hover { color: #111; }
+
+      /* Hero AGB */
+  .small-hero {
+    background: linear-gradient(to right, #111, #222);
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+  }
+
+  .small-hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    text-shadow: none;
+    letter-spacing: 1px;
+  }
+
+  .small-hero p {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* AGB Section */
+  .agb-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    line-height: 1.7;
+    color: #333;
+    font-size: 1rem;
+  }
+
+  .agb-container h2.section-title {
+    font-size: 1.6rem;
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #0080ff;
+    border-left: 4px solid #0080ff;
+    padding-left: 12px;
+  }
+
+  .agb-container p {
+    margin-bottom: 18px;
+  }
+
+  .agb-container ul {
+    margin: 10px 0 20px 25px;
+    padding: 0;
+    list-style: disc;
+  }
+
+  .agb-container li {
+    margin-bottom: 8px;
+  }
+
+  /* Graue Info-Box */
+  .agb-note {
+    background: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 15px 20px;
+    margin: 25px 0;
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  /* Responsive */
+  @media(max-width: 900px){
+    .agb-container {
+      padding: 40px 15px;
+    }
+    .agb-container h2.section-title {
+      font-size: 1.4rem;
+    }
+  }
+  </style>
+  </head>
+  <body>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- Navigation -->
+<nav class="bg-gray-900 text-white px-6 md:px-12 py-4 flex items-center justify-between relative shadow-lg">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <a href="./index.html" class="font-bold text-xl hover:text-blue-400 transition">
+      RSE<span class="text-blue-400">Systems</span>
+    </a>
+  </div>
+
+  <!-- Desktop-Menü -->
+  <ul class="hidden md:flex space-x-8 font-medium">
+    <!-- Home -->
+    <li><a href="./index.html" class="hover:text-blue-400 transition">Home</a></li>
+
+    <!-- Unternehmen -->
+    <li class="group relative">
+      <button class="hover:text-blue-400 transition flex items-center gap-1">
+        Unternehmen ▾
+      </button>
+      <ul class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+        <li><a href="./fachbereiche.html" class="block px-4 py-2 hover:bg-gray-100">Fachbereiche</a></li>
+        <li><a href="./werte-mission-vision.html" class="block px-4 py-2 hover:bg-gray-100">Werte, Mission & Vision</a></li>
+        <li><a href="./jobs.html" class="block px-4 py-2 hover:bg-gray-100">Karriere & Jobs</a></li>
+        <li><a href="./code-of-conduct.html" class="block px-4 py-2 hover:bg-gray-100">Code of Conduct</a></li>
+      </ul>
+    </li>
+
+    <!-- Support -->
+    <li><a href="./support.html" class="hover:text-blue-400 transition">Support</a></li>
+
+    <!-- Services -->
+    <li class="group relative">
+      <button class="hover:text-blue-400 transition flex items-center gap-1">
+        Services ▾
+      </button>
+      <ul class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+        <li><a href="./service-grafiken-werbemittel.html" class="block px-4 py-2 hover:bg-gray-100">Grafiken & Werbemittel</a></li>
+        <li><a href="./service-webentwicklung.html" class="block px-4 py-2 hover:bg-gray-100">Webentwicklung</a></li>
+        <li><a href="./service-it.html" class="block px-4 py-2 hover:bg-gray-100">IT</a></li>
+        <li><a href="./service-seo-marketing.html" class="block px-4 py-2 hover:bg-gray-100">SEO & Marketing</a></li>
+        <li><a href="./service-reparaturen.html" class="block px-4 py-2 hover:bg-gray-100">Reparaturen</a></li>
+      </ul>
+    </li>
+
+    <!-- Kontakt -->
+    <li><a href="./kontakt.html" class="hover:text-blue-400 transition">Kontakt</a></li>
+
+    <!-- Blog -->
+    <li><a href="./blog.html" class="hover:text-blue-400 transition">Blog</a></li>
+  </ul>
+
+  <!-- Mobile Button -->
+  <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+    <span class="w-6 h-0.5 bg-white"></span>
+    <span class="w-6 h-0.5 bg-white"></span>
+    <span class="w-6 h-0.5 bg-white"></span>
+  </button>
+</nav>
+
+<!-- Mobile Menü -->
+<div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
+  <a href="./index.html" class="block hover:text-blue-400">Home</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Unternehmen</p>
+  <a href="./fachbereiche.html" class="block hover:text-blue-400">Fachbereiche</a>
+  <a href="./werte-mission-vision.html" class="block hover:text-blue-400">Werte, Mission & Vision</a>
+  <a href="./jobs.html" class="block hover:text-blue-400">Karriere & Jobs</a>
+  <a href="./code-of-conduct.html" class="block hover:text-blue-400">Code of Conduct</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Support</p>
+  <a href="./support.html" class="block hover:text-blue-400">Support</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Services</p>
+  <a href="./service-grafiken-werbemittel.html" class="block hover:text-blue-400">Grafiken & Werbemittel</a>
+  <a href="./service-webentwicklung.html" class="block hover:text-blue-400">Webentwicklung</a>
+  <a href="./service-it.html" class="block hover:text-blue-400">IT</a>
+  <a href="./service-seo-marketing.html" class="block hover:text-blue-400">SEO & Marketing</a>
+  <a href="./service-reparaturen.html" class="block hover:text-blue-400">Reparaturen</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Kontakt</p>
+  <a href="./kontakt.html" class="block hover:text-blue-400">Kontakt</a>
+
+  <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Blog</p>
+  <a href="./blog.html" class="block hover:text-blue-400">Blog</a>
+</div>
+
+<!-- Script fürs Öffnen/Schließen -->
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero small-hero">
+        <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+        <p>Stand: Januar 2025</p>
+      </section>
+
+      <!-- AGB Inhalt -->
+      <section class="agb-container">
+        <h2 class="section-title">1. Geltungsbereich</h2>
+        <p>
+          Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für sämtliche
+          Geschäftsbeziehungen zwischen der
+          <strong>RSE Systems</strong> (nachfolgend „wir“ oder „RSE Systems“)
+          und unseren Kunden
+          (nachfolgend „Kunde“), unabhängig davon, ob es sich um
+          Privatpersonen, Freiberufler, Unternehmen, öffentliche Einrichtungen
+          oder sonstige Auftraggeber handelt.
+        </p>
+
+        <p>
+          Die AGB gelten für alle Leistungen und Lieferungen, die wir erbringen,
+          insbesondere für:
+        </p>
+        <ul>
+          <li>die Konzeption, Entwicklung, Bereitstellung und Lizenzierung von
+            Softwarelösungen (inkl. Webseiten, Apps und Tools),</li>
+          <li>sämtliche IT-Services, Beratung, Wartung und
+            Supportleistungen,</li>
+          <li>Reparaturen und Serviceleistungen für Hard- und Software sowohl
+            für Privat- als auch Geschäftskunden,</li>
+          <li>Designleistungen (z. B. Logos, Corporate Design, Werbemittel,
+            Präsentationen),</li>
+          <li>SEO- & Marketing-Dienstleistungen sowie Kampagnenbetreuung,</li>
+          <li>sämtliche weiteren kreativen oder digitalen Dienstleistungen, die
+            durch uns angeboten oder individuell vereinbart werden.</li>
+        </ul>
+
+        <p>
+          Unsere AGB gelten gleichermaßen für einmalige Aufträge (z. B.
+          Reparaturen, Einzelprojekte)
+          sowie für fortlaufende Vertragsbeziehungen (z. B. Serviceverträge,
+          Wartungsverträge, Software-Abonnements, Lizenzmodelle).
+        </p>
+
+        <p>
+          Abweichende, entgegenstehende oder ergänzende Allgemeine
+          Geschäftsbedingungen des Kunden
+          werden nur dann Vertragsbestandteil, wenn wir ihrer Geltung
+          ausdrücklich und schriftlich zustimmen.
+          Dies gilt auch dann, wenn wir Leistungen erbringen, ohne zuvor diesen
+          Bedingungen widersprochen zu haben.
+        </p>
+
+        <p>
+          Die jeweils aktuelle Version unserer AGB ist auf unserer Website
+          abrufbar.
+          Änderungen treten – sofern nichts anderes vereinbart – mit
+          Veröffentlichung auf unserer Website in Kraft
+          und gelten auch für bereits bestehende Vertragsverhältnisse, sofern
+          der Kunde der Änderung nicht
+          innerhalb von 14 Tagen nach Mitteilung widerspricht. In diesem Fall
+          behalten wir uns das Recht vor,
+          den Vertrag außerordentlich zu kündigen.
+        </p>
+
+        <p>
+          Sollten neben diesen AGB besondere Vertragsbedingungen (z. B.
+          individuelle Lizenzvereinbarungen,
+          Projektverträge, Rahmenverträge oder Service-Level-Agreements) gelten,
+          so haben diese
+          im Falle von Widersprüchen Vorrang vor den Bestimmungen dieser AGB.
+          Im Übrigen ergänzen sich die Regelungen.
+        </p>
+
+        <p>
+          Mit der Auftragserteilung, spätestens jedoch mit der Inanspruchnahme
+          unserer Leistungen,
+          erkennt der Kunde die Geltung dieser AGB an.
+        </p>
+
+        <h2 class="section-title">2. Vertragsabschluss</h2>
+        <p>
+          (1) Unsere Angebote, Leistungsbeschreibungen und Preisangaben sind
+          grundsätzlich
+          <strong>freibleibend und unverbindlich</strong>, sofern sie nicht
+          ausdrücklich schriftlich
+          als verbindlich gekennzeichnet sind.
+          Dies gilt auch dann, wenn wir dem Kunden technische Unterlagen,
+          Präsentationen,
+          Konzepte, Entwürfe oder sonstige Vorarbeiten zur Verfügung stellen.
+          Ein Rechtsanspruch auf Vertragsschluss besteht für den Kunden nicht.
+        </p>
+
+        <p>
+          (2) Der Vertrag kommt ausschließlich durch unsere schriftliche
+          Auftragsbestätigung
+          (E-Mail genügt) oder spätestens durch die tatsächliche Erbringung der
+          Leistung zustande.
+          Maßgeblich für den Inhalt des Vertrages ist ausschließlich unsere
+          Auftragsbestätigung,
+          nicht jedoch abweichende Angaben des Kunden, telefonische Absprachen
+          oder
+          Daten aus Drittquellen.
+        </p>
+
+        <p>
+          (3) Mündliche Nebenabreden, Ergänzungen oder Änderungen zu einem
+          Vertrag sind
+          <strong>unwirksam</strong>, solange sie nicht durch uns schriftlich
+          bestätigt wurden.
+          Dies gilt auch für Erklärungen unserer Mitarbeiter oder Vertreter,
+          es sei denn, es handelt sich um Mitglieder der Geschäftsleitung.
+        </p>
+
+        <p>
+          (4) Wir behalten uns vor, Aufträge ohne Angabe von Gründen abzulehnen,
+          insbesondere wenn der Kunde unzutreffende Angaben macht, Zweifel an
+          seiner
+          Zahlungsfähigkeit bestehen oder der Auftrag gegen gesetzliche
+          Vorschriften,
+          ethische Grundsätze oder unsere Unternehmenspolitik verstößt.
+        </p>
+
+        <p>
+          (5) Der Kunde ist verpflichtet, sämtliche für die Vertragsdurchführung
+          notwendigen
+          Angaben, Daten und Unterlagen vollständig, korrekt und rechtzeitig
+          bereitzustellen.
+          Verspätungen oder fehlerhafte Angaben gehen <strong>ausschließlich zu
+            Lasten des Kunden</strong>
+          und verlängern vereinbarte Fristen entsprechend.
+          Mehraufwände durch fehlende oder falsche Angaben können gesondert in
+          Rechnung gestellt werden.
+        </p>
+
+        <p>
+          (6) Bei Widersprüchen zwischen unserer Leistungsbeschreibung und den
+          Angaben
+          des Kunden gilt <strong>immer unsere Version</strong>.
+          Dies umfasst auch technische Details, zeitliche Abläufe und
+          Preisangaben.
+        </p>
+
+        <p>
+          (7) Wir sind berechtigt, Teilleistungen zu erbringen, sofern diese dem
+          Kunden
+          zumutbar sind. Jede Teilleistung gilt als eigenständige Leistung und
+          kann gesondert
+          abgerechnet werden.
+        </p>
+
+        <p>
+          (8) Alle von uns übermittelten Angebote, Konzepte, Entwürfe,
+          Zeichnungen,
+          Kalkulationen oder sonstigen Unterlagen bleiben unser geistiges
+          Eigentum
+          und dürfen vom Kunden ohne unsere vorherige schriftliche Zustimmung
+          weder
+          genutzt, vervielfältigt, noch an Dritte weitergegeben werden.
+          Im Falle einer unberechtigten Nutzung behalten wir uns rechtliche
+          Schritte vor.
+        </p>
+
+        <h2 class="section-title">3. Preise und Zahlungsbedingungen</h2>
+
+        <p>
+          (1) Alle Preise verstehen sich in Euro (<strong>€</strong>) zuzüglich
+          der jeweils
+          gesetzlich geltenden Umsatzsteuer, sofern nicht ausdrücklich
+          schriftlich etwas anderes
+          vereinbart wurde. Preisangaben in Angeboten, Präsentationen oder auf
+          unserer Website
+          sind unverbindlich und stellen keine Zusicherung dar.
+        </p>
+
+        <p>
+          (2) Maßgeblich sind ausschließlich die in unserer schriftlichen
+          Auftragsbestätigung
+          (E-Mail genügt) genannten Preise. Sofern dort keine Preise genannt
+          sind, gelten
+          unsere zum Zeitpunkt des Vertragsschlusses gültigen Standardpreise
+          gemäß aktueller
+          Preisliste. Preisänderungen aufgrund gestiegener Personal-, Material-
+          oder
+          Betriebskosten behalten wir uns ausdrücklich vor.
+        </p>
+
+        <p>
+          (3) Unsere Forderungen sind <strong>sofort nach Rechnungsstellung ohne
+            Abzug</strong>
+          zur Zahlung fällig, spätestens jedoch innerhalb von 10 Kalendertagen
+          ab Zugang der Rechnung.
+          Skonto, Nachlässe oder Abzüge sind ausgeschlossen, sofern sie nicht
+          ausdrücklich und
+          schriftlich von uns gewährt wurden.
+        </p>
+
+        <p>
+          (4) Zahlungen gelten erst dann als geleistet, wenn sie endgültig und
+          unwiderruflich
+          auf unserem Bankkonto gutgeschrieben wurden. Wechsel, Schecks oder
+          vergleichbare
+          Zahlungsmittel werden nicht akzeptiert.
+        </p>
+
+        <p>
+          (5) Der Kunde gerät <strong>automatisch</strong> in Zahlungsverzug,
+          ohne dass es einer
+          Mahnung bedarf, wenn die in Absatz (3) genannte Zahlungsfrist
+          überschritten wird.
+          Ab diesem Zeitpunkt sind wir berechtigt, Verzugszinsen in Höhe von
+          <strong>9 Prozentpunkten über dem Basiszinssatz (§ 288 BGB)</strong>
+          sowie eine
+          Verzugspauschale von 40 € zu berechnen.
+          Die Geltendmachung weiterer Schäden, insbesondere Kosten für
+          Rechtsanwälte,
+          Inkasso oder Gericht, bleibt vorbehalten.
+        </p>
+
+        <p>
+          (6) Gerät der Kunde mit einer Zahlung in Verzug oder bestehen
+          begründete Zweifel
+          an seiner Zahlungsfähigkeit, sind wir berechtigt:
+        </p>
+        <ul>
+          <li>sämtliche noch offenen Forderungen sofort fällig zu stellen
+            (sofortige Vorauszahlung),</li>
+          <li>ausstehende Lieferungen oder Leistungen bis zur vollständigen
+            Zahlung zurückzuhalten,</li>
+          <li>Vorauszahlungen oder angemessene Sicherheiten für zukünftige
+            Leistungen zu verlangen,</li>
+          <li>den Vertrag mit sofortiger Wirkung zu kündigen.</li>
+        </ul>
+
+        <p>
+          (7) Der Kunde ist nicht berechtigt, Zahlungen wegen angeblicher
+          Gegenforderungen
+          zurückzuhalten oder mit eigenen Forderungen aufzurechnen, es sei denn,
+          diese sind rechtskräftig festgestellt oder von uns ausdrücklich
+          anerkannt.
+        </p>
+
+        <p>
+          (8) Teilzahlungen können von uns nach eigenem Ermessen verlangt
+          werden, insbesondere
+          bei Projekten mit längerer Laufzeit oder größerem Umfang. Jede
+          Teilleistung
+          kann gesondert in Rechnung gestellt werden und ist unabhängig vom
+          Fortgang des Projekts
+          zahlbar.
+        </p>
+
+        <p>
+          (9) Rabatte, Sonderkonditionen oder individuelle Preisvereinbarungen
+          gelten
+          ausschließlich für den jeweils ausdrücklich vereinbarten Auftrag und
+          begründet keinen Anspruch auf zukünftige Preisnachlässe.
+        </p>
+        <h2 class="section-title">4. Lieferung, Leistungsfristen & Abnahme</h2>
+
+        <p>
+          (1) <strong>Lieferungen und Leistungen</strong> erfolgen
+          ausschließlich zu den von uns angegebenen
+          Fristen und Terminen. Sämtliche Leistungsangaben sind unverbindlich,
+          sofern sie nicht ausdrücklich und schriftlich als „verbindlich“
+          bestätigt wurden.
+          Auch verbindlich zugesagte Termine stehen stets unter dem Vorbehalt
+          rechtzeitiger und vollständiger
+          Selbstbelieferung sowie unter dem Vorbehalt unvorhersehbarer
+          Ereignisse.
+        </p>
+
+        <p>
+          (2) <strong>Höhere Gewalt und unvorhersehbare Ereignisse</strong> wie
+          Streiks, Pandemien,
+          Krankheit, Naturkatastrophen, Lieferengpässe bei Vorlieferanten,
+          technische Ausfälle,
+          staatliche Eingriffe oder vergleichbare Umstände, die außerhalb
+          unseres Einflussbereichs liegen,
+          befreien uns für die Dauer der Störung und im Umfang ihrer
+          Auswirkungen
+          von der Leistungspflicht. Eine Haftung für dadurch entstehende
+          Verzögerungen oder Schäden ist ausgeschlossen.
+        </p>
+
+        <p>
+          (3) <strong>Fristverlängerung:</strong> Leistungsfristen verlängern
+          sich automatisch
+          um die Dauer der Behinderung zzgl. einer angemessenen Anlaufzeit.
+          Dauert die Behinderung
+          länger als drei Monate, sind wir berechtigt, vom Vertrag ganz oder
+          teilweise zurückzutreten.
+          Schadensersatzansprüche des Kunden bestehen in diesem Fall nicht.
+        </p>
+
+        <p>
+          (4) <strong>Teilleistungen:</strong> Wir sind jederzeit berechtigt,
+          Teillieferungen oder
+          Teilleistungen zu erbringen und diese separat abzurechnen, sofern dies
+          für den Kunden zumutbar ist.
+        </p>
+
+        <p>
+          (5) <strong>Mitwirkungspflichten des Kunden:</strong> Der Kunde
+          verpflichtet sich,
+          uns sämtliche für die Durchführung des Projekts erforderlichen
+          Informationen,
+          Unterlagen, Zugänge und Freigaben rechtzeitig zur Verfügung zu
+          stellen.
+          Verzögert sich die Leistungserbringung aufgrund fehlender Mitwirkung
+          oder verspäteter
+          Rückmeldungen des Kunden, verlängern sich unsere Liefer- und
+          Leistungsfristen entsprechend.
+          Zusätzlicher Aufwand wird gesondert in Rechnung gestellt.
+        </p>
+
+        <p>
+          (6) <strong>Abnahme:</strong>
+          Sofern eine Abnahme vorgesehen ist (z. B. bei Software, Webprojekten
+          oder Designleistungen),
+          gilt die Leistung spätestens 7 Kalendertage nach Übergabe oder
+          Bereitstellung zur Nutzung
+          als abgenommen, sofern der Kunde nicht innerhalb dieser Frist
+          schriftlich wesentliche
+          Mängel rügt. Unerhebliche Mängel berechtigen den Kunden nicht zur
+          Verweigerung der Abnahme.
+        </p>
+
+        <p>
+          (7) <strong>Gefahrübergang:</strong> Mit Übergabe der Leistung (z. B.
+          Lieferung von Software,
+          Zugangsdaten, Hardware oder Daten) oder mit Bereitstellung auf unseren
+          Servern/Plattformen
+          geht die Gefahr des zufälligen Untergangs und der Verschlechterung auf
+          den Kunden über.
+          Dies gilt auch, wenn Teilleistungen erbracht oder wir zusätzliche
+          Leistungen übernommen haben
+          (z. B. Installation, Schulung, Support).
+        </p>
+
+        <p>
+          (8) <strong>Verzögerungen durch den Kunden:</strong> Gerät der Kunde
+          mit der Annahme
+          oder Abnahme in Verzug oder verletzt er Mitwirkungspflichten, so sind
+          wir berechtigt,
+          den uns hierdurch entstehenden Schaden einschließlich Mehraufwand und
+          zusätzlicher Lager- oder Bereitstellungskosten ersetzt zu verlangen.
+        </p>
+
+        <p>
+          (9) <strong>Schadensersatz:</strong> Gerät RSE Systems mit einer
+          Lieferung oder Leistung in Verzug,
+          ist die Haftung auf 5 % des jeweiligen Auftragswertes der verzögerten
+          Leistung begrenzt,
+          sofern nicht Vorsatz oder grobe Fahrlässigkeit vorliegt. Weitergehende
+          Ansprüche sind ausgeschlossen.
+        </p>
+        <h2 class="section-title">5. Eigentumsvorbehalt & Rechte an
+          Leistungen</h2>
+
+        <p>
+          (1) <strong>Eigentumsvorbehalt:</strong> Sämtliche von uns gelieferten
+          Waren,
+          erstellten Werke, Softwarelösungen, Designs oder sonstigen Leistungen
+          bleiben bis zur vollständigen
+          Begleichung sämtlicher Forderungen aus der Geschäftsbeziehung unser
+          Eigentum.
+          Dies gilt auch dann, wenn einzelne Leistungen bereits an den Kunden
+          übergeben oder freigegeben wurden.
+        </p>
+
+        <p>
+          (2) <strong>Nutzungsrechte:</strong> Der Kunde erhält an von uns
+          erstellten Leistungen
+          (z. B. Software, Webseiten, Logos, Grafiken, Texte, Konzepte,
+          Marketingstrategien)
+          erst nach vollständiger Zahlung ein einfaches, nicht übertragbares
+          Nutzungsrecht,
+          soweit nicht ausdrücklich etwas anderes vereinbart wurde.
+          Vor vollständiger Bezahlung ist jede Nutzung, Bearbeitung,
+          Vervielfältigung oder Weitergabe untersagt.
+        </p>
+
+        <p>
+          (3) <strong>Software & digitale Produkte:</strong>
+          Soweit nicht ausdrücklich anders vereinbart, verbleiben sämtliche
+          Urheber- und Eigentumsrechte
+          an von uns entwickelten Programmen, Quellcodes, Skripten, Webseiten,
+          Datenbanken und Tools bei uns.
+          Der Kunde erhält lediglich ein im Vertrag definiertes Nutzungsrecht.
+          Eine Weitergabe, Unterlizenzierung, Vervielfältigung oder Nutzung zu
+          anderen als den vereinbarten Zwecken
+          ist untersagt. Zuwiderhandlungen werden zivil- und strafrechtlich
+          verfolgt.
+        </p>
+
+        <p>
+          (4) <strong>Designleistungen:</strong>
+          Bei Projekten wie Logos, Corporate Designs, Layouts oder sonstigen
+          grafischen Arbeiten
+          gehen sämtliche Rechte erst nach vollständiger Bezahlung auf den
+          Kunden über.
+          Wird ein Auftrag storniert oder nicht bezahlt, verbleiben alle
+          erstellten Entwürfe, Zwischenergebnisse
+          und Dateien vollständig im Eigentum von <strong>RSE Systems</strong>.
+          Eine Nutzung – sei es privat oder geschäftlich – ist untersagt und
+          wird rechtlich verfolgt.
+        </p>
+
+        <p>
+          (5) <strong>Rechte Dritter:</strong>
+          Der Kunde ist verpflichtet, uns von sämtlichen Ansprüchen Dritter
+          freizustellen,
+          die durch eine vom Kunden veranlasste rechtswidrige Nutzung der von
+          uns gelieferten Leistungen entstehen.
+          Verletzt der Kunde diesen Vertragspunkt, behalten wir uns
+          Schadensersatzforderungen vor.
+        </p>
+
+        <p>
+          (6) <strong>Zurückbehaltungsrecht:</strong>
+          Bis zur vollständigen Zahlung sind wir berechtigt, die Herausgabe von
+          Daten,
+          Zugangsdaten, Quellcodes, Entwürfen oder sonstigen Arbeitsergebnissen
+          zu verweigern.
+          Der Kunde hat in dieser Zeit keinen Anspruch auf Nutzung oder
+          Weitergabe.
+        </p>
+
+        <p>
+          (7) <strong>Vertragsverletzung:</strong>
+          Gibt der Kunde unsere Leistungen oder Produkte unbefugt an Dritte
+          weiter,
+          nutzt sie über die vertraglich festgelegten Zwecke hinaus oder zahlt
+          nicht,
+          sind wir berechtigt, sämtliche Nutzungsrechte mit sofortiger Wirkung
+          zu widerrufen.
+          In diesem Fall haftet der Kunde für sämtliche daraus entstehenden
+          Schäden.
+        </p>
+        <h2 class="section-title">6. Rechte des Kunden bei Mängeln
+          (Gewährleistung & Support)</h2>
+
+        <p>
+          (1) <strong>Prüfungspflicht:</strong>
+          Der Kunde ist verpflichtet, die von uns gelieferten Waren, Leistungen
+          oder digitalen Produkte
+          unverzüglich nach Erhalt bzw. Bereitstellung sorgfältig zu prüfen.
+          Offensichtliche Mängel müssen innerhalb von <strong>7
+            Kalendertagen</strong> nach Übergabe
+          schriftlich angezeigt werden.
+          Nach Ablauf dieser Frist gelten die Leistungen als ordnungsgemäß und
+          mangelfrei abgenommen.
+          Verdeckte Mängel sind unverzüglich nach ihrer Entdeckung schriftlich
+          anzuzeigen.
+          Unterbleibt die fristgerechte Anzeige, erlöschen sämtliche
+          Gewährleistungsansprüche.
+        </p>
+
+        <p>
+          (2) <strong>Nacherfüllung:</strong>
+          Liegt ein berechtigter, fristgerecht angezeigter Mangel vor,
+          haben wir das Recht, nach unserer Wahl entweder eine Nachbesserung
+          (Reparatur, Fehlerbehebung, Update) oder eine Ersatzlieferung
+          vorzunehmen.
+          Ein Anspruch des Kunden auf eine bestimmte Art der Nacherfüllung
+          besteht nicht.
+          Mehrfache Nachbesserungen sind zulässig, sofern sie dem Kunden
+          zumutbar sind.
+        </p>
+
+        <p>
+          (3) <strong>Rücktritt und Minderung:</strong>
+          Ein Rücktritt vom Vertrag oder eine Minderung des Preises ist erst
+          zulässig,
+          wenn die Nacherfüllung endgültig fehlgeschlagen ist oder von uns
+          verweigert wurde.
+          Ein Fehlschlagen liegt frühestens nach zwei erfolglosen
+          Nachbesserungsversuchen vor.
+          Schadensersatzansprüche bestehen nur im Rahmen von §7 (Haftung).
+        </p>
+
+        <p>
+          (4) <strong>Supportleistungen:</strong>
+          Sofern nicht ausdrücklich anders vereinbart,
+          schulden wir keine kostenlose dauerhafte Betreuung, Wartung oder
+          Supportleistungen
+          über die gesetzliche Gewährleistung hinaus.
+          Serviceleistungen wie technische Unterstützung, Anpassungen,
+          Beratung oder weitergehende Betreuung sind gesondert zu beauftragen
+          und zu vergüten.
+        </p>
+
+        <p>
+          (5) <strong>Ausschlüsse:</strong>
+          Keine Gewährleistung besteht insbesondere bei:
+        </p>
+        <ul>
+          <li>unsachgemäßer Nutzung, Bedienfehlern oder Veränderungen durch den
+            Kunden oder Dritte,</li>
+          <li>Nutzung unserer Software oder Leistungen in einer nicht
+            vorgesehenen Systemumgebung,</li>
+          <li>äußeren Einflüssen wie Stromausfall, Hardwaredefekten,
+            Virenbefall, Netzwerkproblemen oder höherer Gewalt,</li>
+          <li>nachträglichen Änderungen am gelieferten Produkt, die nicht von
+            uns durchgeführt wurden.</li>
+        </ul>
+
+        <p>
+          (6) <strong>Verjährung:</strong>
+          Gewährleistungsansprüche verjähren innerhalb von <strong>12
+            Monaten</strong>
+          ab Übergabe bzw. Bereitstellung der Leistung.
+          Davon unberührt bleiben gesetzliche Ansprüche bei Vorsatz, grober
+          Fahrlässigkeit
+          sowie bei Schäden an Leben, Körper oder Gesundheit.
+        </p>
+        <h2 class="section-title">7. Haftungsbeschränkung</h2>
+
+        <p>
+          (1) <strong>Grundsatz:</strong>
+          Wir haften ausschließlich für Schäden, die auf vorsätzliches oder grob
+          fahrlässiges Verhalten
+          von RSE Systems, unseren gesetzlichen Vertretern oder
+          Erfüllungsgehilfen zurückzuführen sind.
+          Für leichte Fahrlässigkeit haften wir nur bei Verletzung einer
+          wesentlichen Vertragspflicht
+          (Kardinalpflicht). In diesem Fall ist die Haftung jedoch auf den
+          vertragstypischen,
+          vorhersehbaren Schaden begrenzt.
+        </p>
+
+        <p>
+          (2) <strong>Ausschluss bestimmter Schäden:</strong>
+          Eine Haftung für mittelbare Schäden, Mangelfolgeschäden, entgangenen
+          Gewinn,
+          Produktionsausfall, Betriebsunterbrechungen, Verlust von Daten oder
+          Aufwendungen
+          zur Datenwiederherstellung ist ausgeschlossen,
+          es sei denn, wir haben die Ursache vorsätzlich oder grob fahrlässig
+          herbeigeführt.
+        </p>
+
+        <p>
+          (3) <strong>Haftungshöchstgrenze:</strong>
+          Unsere Haftung ist – außer im Falle von Vorsatz, grober Fahrlässigkeit
+          oder bei
+          Schäden an Leben, Körper oder Gesundheit – der Höhe nach auf den
+          jeweiligen Auftragswert
+          bzw. den Betrag beschränkt, den der Kunde für die konkrete Leistung
+          bezahlt hat.
+        </p>
+
+        <p>
+          (4) <strong>Keine Haftung für Fremdleistungen:</strong>
+          Wir haften nicht für Störungen, Ausfälle oder Schäden,
+          die durch Drittanbieter, externe Dienstleister, Netz- oder
+          Hostinganbieter,
+          Software von Dritten oder durch externe Inhalte entstehen,
+          auf die wir keinen direkten Einfluss haben.
+        </p>
+
+        <p>
+          (5) <strong>Datensicherungspflicht des Kunden:</strong>
+          Der Kunde ist verpflichtet, regelmäßige und vollständige
+          Datensicherungen durchzuführen.
+          Wir haften nicht für Datenverluste, soweit deren Eintritt durch
+          angemessene
+          Sicherungsmaßnahmen des Kunden hätte verhindert werden können.
+        </p>
+
+        <p>
+          (6) <strong>Zwingende gesetzliche Haftung:</strong>
+          Die Haftungsbeschränkungen gemäß dieser AGB gelten nicht,
+          soweit nach dem Produkthaftungsgesetz, bei vorsätzlichem Verhalten,
+          bei grober Fahrlässigkeit oder bei Schäden an Leben, Körper oder
+          Gesundheit
+          eine zwingende Haftung besteht.
+        </p>
+        <h2 class="section-title">8. Vertragslaufzeit, Kündigung &
+          Stornierung</h2>
+
+        <p>
+          (1) <strong>Vertragslaufzeit:</strong>
+          Die konkrete Vertragslaufzeit ergibt sich aus dem jeweiligen Angebot,
+          Vertrag oder der Auftragsbestätigung.
+          Sofern nicht anders vereinbart, werden Verträge über Dienstleistungen
+          mit einer Mindestlaufzeit von
+          12 Monaten abgeschlossen. Nach Ablauf der Mindestlaufzeit verlängern
+          sich die Verträge automatisch
+          jeweils um weitere 12 Monate, sofern sie nicht fristgerecht gekündigt
+          werden.
+        </p>
+
+        <p>
+          (2) <strong>Kündigungsfristen:</strong>
+          Die Kündigung muss schriftlich erfolgen.
+          Die Kündigungsfrist beträgt – sofern nicht anders vereinbart –
+          3 Monate zum Ende der jeweiligen Vertragslaufzeit.
+          Geht keine fristgerechte Kündigung ein, verlängert sich der Vertrag
+          automatisch.
+        </p>
+
+        <p>
+          (3) <strong>Außerordentliche Kündigung:</strong>
+          Beide Parteien behalten sich das Recht vor, den Vertrag aus wichtigem
+          Grund außerordentlich zu kündigen.
+          Ein wichtiger Grund liegt insbesondere dann vor, wenn:
+        </p>
+        <ul>
+          <li>eine Partei trotz schriftlicher Mahnung gegen wesentliche
+            Vertragspflichten verstößt,</li>
+          <li>der Kunde mit Zahlungen länger als 30 Tage in Verzug gerät,</li>
+          <li>über das Vermögen einer Partei ein Insolvenzverfahren eröffnet
+            oder beantragt wird.</li>
+        </ul>
+
+        <p>
+          (4) <strong>Stornierungen vor Projektbeginn:</strong>
+          Wird ein Auftrag vom Kunden nach verbindlicher Beauftragung, aber vor
+          Projektbeginn storniert,
+          fällt eine Stornopauschale in Höhe von 20% des vereinbarten
+          Auftragswertes an.
+          Dies dient der Deckung interner Vorbereitungs- und Planungskosten.
+        </p>
+
+        <p>
+          (5) <strong>Stornierungen nach Projektbeginn:</strong>
+          Wird ein Auftrag nach Projektbeginn, jedoch vor Fertigstellung
+          storniert,
+          ist der Kunde verpflichtet, die bis dahin erbrachten Leistungen
+          vollständig zu vergüten.
+          Darüber hinaus fällt – abhängig vom Umfang des Projekts – eine
+          Stornogebühr von bis zu 50%
+          des restlichen Auftragswertes an, um den entstandenen Aufwand und
+          entgangenen Gewinn abzudecken.
+        </p>
+
+        <p>
+          (6) <strong>Nutzungsrechte bei Stornierung:</strong>
+          Alle bis zur Stornierung erstellten Arbeiten, Entwürfe und Ergebnisse
+          bleiben im vollständigen Eigentum von <strong>RSE Systems</strong>.
+          Eine Nutzung, Vervielfältigung oder Weitergabe – sei es privat oder
+          gewerblich –
+          ist ohne unsere ausdrückliche schriftliche Zustimmung untersagt.
+          Zuwiderhandlungen werden zivil- und strafrechtlich verfolgt.
+        </p>
+
+        <p>
+          (7) <strong>Folgen der Kündigung:</strong>
+          Nach wirksamer Vertragsbeendigung sind alle ausstehenden Zahlungen
+          sofort fällig.
+          Laufende Nutzungsrechte an Software, Lizenzen oder Services enden mit
+          Ablauf der Vertragslaufzeit,
+          sofern nichts anderes ausdrücklich vereinbart wurde.
+        </p>
+        <h2 class="section-title">9. Datenschutz & Vertraulichkeit</h2>
+
+        <p>
+          (1) <strong>Datenschutz:</strong>
+          Wir verarbeiten personenbezogene Daten unserer Kunden ausschließlich
+          im Rahmen der geltenden
+          Datenschutzgesetze, insbesondere der DSGVO
+          (Datenschutz-Grundverordnung) sowie des BDSG
+          (Bundesdatenschutzgesetz).
+          Die Verarbeitung erfolgt nur soweit dies zur Vertragserfüllung, zur
+          Erbringung unserer Leistungen
+          oder zur Wahrung berechtigter Interessen erforderlich ist.
+          Weitere Informationen zur Datenverarbeitung sind unserer <a
+            href="./legal/datenschutz.html">Datenschutzerklärung</a> zu
+          entnehmen.
+        </p>
+
+        <p>
+          (2) <strong>Vertraulichkeit der Daten:</strong>
+          Sämtliche Informationen, Daten, Unterlagen und Geschäftsgeheimnisse,
+          die wir im Rahmen der Zusammenarbeit
+          vom Kunden erhalten, werden streng vertraulich behandelt und
+          ausschließlich zur Erfüllung der vertraglichen
+          Leistungen genutzt. Eine Weitergabe an Dritte erfolgt nur, sofern dies
+          zur Vertragserfüllung zwingend erforderlich ist
+          (z. B. an Subunternehmer oder technische Dienstleister) oder eine
+          gesetzliche Verpflichtung besteht.
+        </p>
+
+        <p>
+          (3) <strong>Pflichten des Kunden:</strong>
+          Der Kunde verpflichtet sich ebenfalls, sämtliche im Rahmen der
+          Zusammenarbeit erlangten Informationen,
+          insbesondere unsere Software, Dokumentationen, Konzepte, Quellcodes,
+          Vertragsinhalte sowie vertrauliche
+          Konditionen, geheim zu halten und Dritten nicht ohne unsere
+          ausdrückliche schriftliche Zustimmung zugänglich zu machen.
+        </p>
+
+        <p>
+          (4) <strong>Datensicherheit:</strong>
+          Wir setzen angemessene technische und organisatorische Maßnahmen ein,
+          um Kundendaten vor Verlust,
+          Manipulation, unberechtigtem Zugriff oder Missbrauch zu schützen.
+          Der Kunde ist verpflichtet, eigene Systeme, Passwörter und Zugänge
+          ebenfalls durch geeignete
+          Sicherheitsmaßnahmen zu schützen.
+        </p>
+
+        <p>
+          (5) <strong>Auftragsverarbeitung:</strong>
+          Sofern im Rahmen der Zusammenarbeit eine Verarbeitung
+          personenbezogener Daten im Auftrag des Kunden erfolgt,
+          wird ein separater Auftragsverarbeitungsvertrag (AVV) nach Art. 28
+          DSGVO geschlossen.
+          Ohne einen solchen AVV dürfen wir personenbezogene Daten des Kunden
+          nicht verarbeiten.
+        </p>
+
+        <p>
+          (6) <strong>Dauer der Vertraulichkeit:</strong>
+          Die Vertraulichkeitspflicht besteht über die Beendigung des
+          Vertragsverhältnisses hinaus
+          für einen Zeitraum von mindestens fünf (5) Jahren fort.
+          Geschäftsgeheimnisse bleiben zeitlich unbeschränkt geschützt.
+        </p>
+
+        <p>
+          (7) <strong>Vertragsstrafe:</strong>
+          Bei einem schuldhaften Verstoß gegen die
+          Vertraulichkeitsverpflichtungen behalten wir uns vor,
+          eine angemessene Vertragsstrafe geltend zu machen, deren Höhe nach
+          billigem Ermessen durch uns
+          festgelegt wird und im Streitfall vom zuständigen Gericht überprüft
+          werden kann.
+          Weitergehende Schadensersatzansprüche bleiben unberührt.
+        </p>
+        <h2 class="section-title">10. Gerichtsstand, Anwendbares Recht &
+          Salvatorische Klausel</h2>
+
+        <p>
+          (1) <strong>Anwendbares Recht:</strong>
+          Es gilt ausschließlich das Recht der Bundesrepublik Deutschland unter
+          Ausschluss des UN-Kaufrechts
+          (CISG) sowie des Internationalen Privatrechts (IPR).
+          Zwingende Verbraucherschutzvorschriften nach dem Recht des
+          Wohnsitzstaates von Verbrauchern
+          bleiben hiervon unberührt.
+        </p>
+
+        <p>
+          (2) <strong>Gerichtsstand:</strong>
+          Sofern der Kunde Kaufmann, juristische Person des öffentlichen Rechts
+          oder öffentlich-rechtliches
+          Sondervermögen ist, wird als ausschließlicher Gerichtsstand für
+          sämtliche Streitigkeiten aus
+          und im Zusammenhang mit diesem Vertrag der Sitz von <strong>RSE
+            Systems</strong> vereinbart.
+          Wir sind jedoch berechtigt, den Kunden auch an dessen allgemeinen
+          Gerichtsstand zu verklagen.
+        </p>
+
+        <p>
+          (3) <strong>Erfüllungsort:</strong>
+          Erfüllungsort für sämtliche vertraglichen Leistungen ist der Sitz von
+          <strong>RSE Systems</strong>,
+          sofern nicht ausdrücklich etwas anderes vereinbart wurde.
+        </p>
+
+        <p>
+          (4) <strong>Salvatorische Klausel:</strong>
+          Sollten einzelne Bestimmungen dieses Vertrags oder dieser AGB ganz
+          oder teilweise unwirksam
+          oder undurchführbar sein oder werden, bleibt die Wirksamkeit der
+          übrigen Bestimmungen hiervon unberührt.
+          Anstelle der unwirksamen oder undurchführbaren Bestimmung gilt eine
+          solche wirksame Regelung als vereinbart,
+          die dem wirtschaftlichen Zweck der ursprünglichen Bestimmung am
+          nächsten kommt.
+          Entsprechendes gilt im Falle einer Regelungslücke.
+        </p>
+        <h2 class="section-title">§11 Vertragsmodelle & Software-Nutzung</h2>
+
+        <p>
+          RSE Systems bietet Software, digitale Produkte und IT-Lösungen in
+          unterschiedlichen
+          Vertragsmodellen an. Maßgeblich sind ausschließlich die individuell
+          vereinbarten
+          Vertragsbedingungen sowie diese AGB. Ohne ausdrückliche schriftliche
+          Zustimmung
+          von <strong>RSE Systems</strong> ist keine Abweichung zulässig.
+        </p>
+
+        <h3>1. Abonnement-Modell (Subscription)</h3>
+        <p>
+          (1) Im Abonnement erhält der Kunde ein zeitlich beschränktes,
+          einfaches, nicht
+          übertragbares Nutzungsrecht an der Software oder den bereitgestellten
+          Services
+          für die im Vertrag vereinbarte Laufzeit. Nach Ablauf der
+          Vertragslaufzeit erlischt
+          das Nutzungsrecht automatisch, sofern keine Verlängerung vereinbart
+          wird.
+        </p>
+        <p>
+          (2) Der Kunde ist verpflichtet, nach Ablauf des Abonnements die
+          Software
+          unverzüglich von sämtlichen Endgeräten und Systemen zu deinstallieren
+          und
+          jegliche Nutzung zu unterlassen. Ein Zurückbehaltungsrecht an der
+          Software
+          besteht nicht.
+        </p>
+        <p>
+          (3) Eine vorzeitige Kündigung des Abonnements ist ausgeschlossen,
+          sofern nicht
+          ausdrücklich etwas anderes schriftlich vereinbart wurde. Bei
+          Zahlungsverzug
+          oder Verstoß gegen die Lizenzbedingungen sind wir berechtigt, das
+          Nutzungsrecht
+          sofort zu entziehen und den Zugang zu sperren.
+        </p>
+
+        <h3>2. Lizenzmodell</h3>
+        <p>
+          (1) Im Lizenzmodell räumen wir dem Kunden ein einfaches, nicht
+          exklusives,
+          nicht übertragbares und auf den vertraglich definierten Zweck
+          beschränktes
+          Nutzungsrecht ein.
+        </p>
+        <p>
+          (2) Sämtliche Urheber- und Eigentumsrechte verbleiben bei
+          <strong>RSE Systems</strong>. Der Kunde erhält lediglich ein
+          Nutzungsrecht.
+          Eine Bearbeitung, Vervielfältigung, Unterlizenzierung, Weitergabe oder
+          sonstige
+          Verwertung der Software ohne unsere ausdrückliche schriftliche
+          Zustimmung ist
+          strengstens untersagt.
+        </p>
+        <p>
+          (3) Der Kunde verpflichtet sich, die Software ausschließlich in der
+          vereinbarten
+          Systemumgebung zu nutzen. Eine Nutzung auf nicht vereinbarten
+          Systemen, Servern
+          oder über die im Vertrag festgelegte Anzahl an Lizenzen hinaus ist
+          unzulässig
+          und berechtigt uns zur sofortigen Vertragskündigung sowie zur
+          Geltendmachung von
+          Schadensersatzansprüchen.
+        </p>
+        <p>
+          (4) Wir behalten uns das Recht vor, die Einhaltung der
+          Lizenzbedingungen jederzeit
+          technisch (z. B. durch Lizenzschlüssel, Aktivierungsverfahren oder
+          Zugriffskontrollen)
+          oder organisatorisch zu überprüfen. Der Kunde ist verpflichtet, uns
+          auf Verlangen
+          Auskunft über die Nutzung zu erteilen und entsprechende Nachweise
+          vorzulegen.
+        </p>
+        <p>
+          (5) Wird die Software entgegen den Bestimmungen an Dritte
+          weitergegeben, genutzt
+          oder vervielfältigt, behalten wir uns vor, eine Vertragsstrafe in Höhe
+          des
+          dreifachen Lizenzpreises geltend zu machen. Weitergehende
+          Schadensersatzansprüche
+          bleiben hiervon unberührt.
+        </p>
+
+        <h3>3. Kaufmodell</h3>
+        <p>
+          (1) Beim Direktkauf der Software erhält der Kunde ein dauerhaftes
+          Nutzungsrecht,
+          jedoch ausschließlich für den im Vertrag festgelegten Zweck.
+        </p>
+        <p>
+          (2) Sämtliche Eigentums- und Urheberrechte am Quellcode, an der
+          Struktur, an der
+          Architektur sowie an sämtlichen Entwicklungsbestandteilen verbleiben
+          bei
+          <strong>RSE Systems</strong>, sofern nicht ausdrücklich schriftlich
+          und gesondert
+          etwas anderes vereinbart wurde.
+        </p>
+        <p>
+          (3) Das Kaufmodell berechtigt den Kunden nicht, die Software über den
+          vertraglich
+          festgelegten Zweck hinaus zu nutzen, zu vervielfältigen, zu verändern
+          oder Dritten
+          zugänglich zu machen. Eine Weitergabe oder Veräußerung ist nur mit
+          unserer
+          vorherigen schriftlichen Zustimmung gestattet.
+        </p>
+        <p>
+          (4) Bei einem Verstoß gegen diese Bestimmungen erlischt das
+          Nutzungsrecht
+          automatisch, ohne dass es einer gesonderten Erklärung bedarf.
+          Der Kunde ist in diesem Fall verpflichtet, die Software unverzüglich
+          zu löschen
+          und uns schriftlich den Nachweis der Löschung zu erbringen.
+        </p>
+
+        <h3>4. Allgemeine Bestimmungen zu allen Modellen</h3>
+        <p>
+          (1) Der Kunde ist nicht berechtigt, unsere Software oder Teile davon
+          zu
+          dekompilieren, zu reverse-engineeren, zu disassemblieren oder auf
+          sonstige Weise
+          den Quellcode oder technische Strukturen offenzulegen, es sei denn,
+          dies ist
+          gesetzlich zwingend gestattet.
+        </p>
+        <p>
+          (2) Der Kunde verpflichtet sich, die Software ausschließlich für den
+          im Vertrag
+          festgelegten Zweck zu nutzen. Jede Nutzung darüber hinaus,
+          insbesondere die
+          kommerzielle Nutzung außerhalb des Vertragszwecks, ist unzulässig.
+        </p>
+        <p>
+          (3) Wir behalten uns vor, bei Missbrauch, vertragswidriger Nutzung
+          oder
+          Zahlungsverzug den Zugang zur Software und allen verbundenen Diensten
+          unverzüglich zu sperren.
+        </p>
+        <p>
+          (4) Im Falle eines Verstoßes gegen diese Regelungen sind wir
+          berechtigt,
+          sämtliche Nutzungsrechte mit sofortiger Wirkung zu widerrufen und die
+          Rechtsverletzung zivil- und strafrechtlich zu verfolgen.
+        </p>
+        <p>
+          (5) Der Kunde haftet in vollem Umfang für Schäden, die durch eine
+          vertragswidrige
+          Nutzung entstehen, einschließlich entgangenem Gewinn, Lizenzschäden,
+          Kosten für
+          die Rechtsverfolgung sowie Folgeschäden.
+        </p>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-logo">
+          <img src="../assets/img/rse-logo.png" alt="RSE Systems Logo">
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Produkte</h4>
+            <ul>
+              <li><a
+                  href="../service-webentwicklung.html">Webentwicklung</a></li>
+              <li><a href="../service-it.html">IT Services</a></li>
+              <li><a href="../service-seo.html">SEO & Marketing</a></li>
+              <li><a href="../service-grafikdesign.html">Grafikdesign</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Unternehmen</h4>
+            <ul>
+              <li><a href="../index.html#highlights">Über uns</a></li>
+              <li><a href="../karriere.html">Karriere</a></li>
+              <li><a href="../werte-mission-vision.html">Mission &
+                  Vision</a></li>
+              <li><a href="../kontakt.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Ressourcen</h4>
+            <ul>
+              <li><a href="../blog.html">Blog</a></li>
+              <li><a href="../case-studies.html">Case Studies</a></li>
+              <li><a href="../support.html">Support</a></li>
+              <li><a href="../partner-werden.html">Partner werden</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Folgen Sie uns</h4>
+            <div class="social-icons">
+              <a href="https://www.instagram.com/rse_systems" target="_blank"
+                aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/rse-systems"
+                target="_blank" aria-label="LinkedIn"><i
+                  class="fab fa-linkedin-in"></i></a>
+              <a href="mailto:info@rse-systems.com" aria-label="E-Mail"><i
+                  class="fas fa-envelope"></i></a>
+              <a href="https://www.youtube.com/rse_systems" target="_blank"
+                aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 RSE Systems – Alle Rechte vorbehalten</p>
+        <div class="footer-links">
+          <a href="./legal/datenschutz.html">Datenschutz</a>
+          <a href="./legal/agb.html">AGB</a>
+          <a href="./legal/impressum.html">Impressum</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cursor" id="cursor"></div>
+
+    <script>
+    function toggleMenu(){
+      document.getElementById("nav-links").classList.toggle("active");
+      document.getElementById("burger").classList.toggle("active");
+      document.getElementById("overlay").classList.toggle("active");
+    }
+
+    // Dropdown Klick mobil
+    document.querySelectorAll(".has-submenu > a").forEach(item=>{
+      item.addEventListener("click",e=>{
+        if(window.innerWidth<=900){
+          e.preventDefault();
+          let parent=item.parentElement;
+          parent.classList.toggle("open");
+        }
+      });
+    });
+
+    // Reset bei Resize
+    window.addEventListener("resize",()=>{
+      if(window.innerWidth>900){
+        document.querySelectorAll(".has-submenu").forEach(el=>el.classList.remove("open"));
+        document.getElementById("nav-links").classList.remove("active");
+        document.getElementById("burger").classList.remove("active");
+        document.getElementById("overlay").classList.remove("active");
+      }
+    });
+
+    // Hover Indicator Logic
+    const navLinks=document.querySelectorAll("#nav-links > li > a");
+    const indicator=document.getElementById("hover-indicator");
+    navLinks.forEach(link=>{
+      link.addEventListener("mouseenter",()=>{
+        const rect=link.getBoundingClientRect();
+        const parentRect=link.parentElement.parentElement.getBoundingClientRect();
+        indicator.style.width=rect.width+"px";
+        indicator.style.left=(rect.left-parentRect.left)+"px";
+        indicator.style.opacity=1;
+      });
+    });
+    document.querySelector("nav").addEventListener("mouseleave",()=>{
+      indicator.style.opacity=0;
+    });
+
+    // Custom Cursor Bewegung
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    // Cursor passt sich Links/Buttons an
+    const interactiveEls = document.querySelectorAll(
+      "a, button, .btn-outline, .highlight, .service-card, .faq-item"
+    );
+    interactiveEls.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        const rect = el.getBoundingClientRect();
+        cursor.style.width = rect.width + "px";
+        cursor.style.height = rect.height + "px";
+        cursor.style.borderRadius = getComputedStyle(el).borderRadius || "12px";
+      });
+      el.addEventListener("mouseleave", () => {
+        cursor.style.width = "30px";
+        cursor.style.height = "30px";
+        cursor.style.borderRadius = "50%";
+      });
+    });
+
+    // Klick-Animation
+    document.addEventListener("click", () => {
+      cursor.classList.add("click-wave");
+      cursor.addEventListener("animationend", () => {
+        cursor.classList.remove("click-wave");
+      }, { once: true });
+    });
+
+    // FAQ Toggle
+    document.querySelectorAll(".faq-question").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const allItems = document.querySelectorAll(".faq-item");
+        allItems.forEach(i => {
+          if (i !== item) i.classList.remove("active");
+        });
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+
+  </body>
+</html>

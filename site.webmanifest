@@ -1,0 +1,46 @@
+{
+  "name": "RSE Systems",
+  "short_name": "RSE",
+  "description": "RSE Systems – Moderne IT-Services, Webentwicklung und Softwarelösungen aus Trier & Hermeskeil.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "de",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "url": "/kontakt.html",
+      "icons": [{ "src": "/icon-contact.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "url": "/service-it.html",
+      "icons": [{ "src": "/icon-services.png", "sizes": "96x96" }]
+    }
+  ]
+}

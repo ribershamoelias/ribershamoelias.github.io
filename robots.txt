@@ -1,0 +1,17 @@
+# robots.txt für RSE Systems
+
+User-agent: *
+Allow: /
+
+# Blockiere nur unnötige/veraltete Dateien
+Disallow: /service-worker.js
+Disallow: /manifest.json
+Disallow: /site.webmanifest
+Disallow: /browserconfig.xml
+
+# Fehlerseiten nicht indexieren
+Disallow: /404.html
+Disallow: /offline.html
+
+# Sitemap(s) einbinden
+Sitemap: https://rse-systems.com/sitemap.xml
