@@ -51,13 +51,13 @@
 
   <!-- Desktop-Menü -->
   <ul class="hidden md:flex space-x-8 font-medium">
-    <li><a href="./index.html" class="hover:text-blue-400 transition">Home</a></li>
-    <li><a href="./fachbereiche.html" class="hover:text-blue-400 transition">Fachbereiche</a></li>
-    <li><a href="./werte-mission-vision.html" class="hover:text-blue-400 transition">Mission & Vision</a></li>
-    <li><a href="./jobs.html" class="hover:text-blue-400 transition">Jobs</a></li>
-    <li><a href="./support.html" class="hover:text-blue-400 transition">Support</a></li>
-    <li><a href="./kontakt.html" class="hover:text-blue-400 transition">Kontakt</a></li>
-    <li><a href="./blog.html" class="hover:text-blue-400 transition">Blog</a></li>
+    <li><a href="../index.html" class="hover:text-blue-400 transition">Home</a></li>
+    <li><a href="../fachbereiche.html" class="hover:text-blue-400 transition">Fachbereiche</a></li>
+    <li><a href="../werte-mission-vision.html" class="hover:text-blue-400 transition">Mission & Vision</a></li>
+    <li><a href="../jobs.html" class="hover:text-blue-400 transition">Jobs</a></li>
+    <li><a href="../support.html" class="hover:text-blue-400 transition">Support</a></li>
+    <li><a href="../kontakt.html" class="hover:text-blue-400 transition">Kontakt</a></li>
+    <li><a href="../blog.html" class="hover:text-blue-400 transition">Blog</a></li>
   </ul>
 
   <!-- Mobile Button -->
@@ -70,13 +70,13 @@
 
 <!-- Mobile Menü -->
 <div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
-  <a href="./index.html" class="block hover:text-blue-400">Home</a>
-  <a href="./fachbereiche.html" class="block hover:text-blue-400">Fachbereiche</a>
-  <a href="./werte-mission-vision.html" class="block hover:text-blue-400">Mission & Vision</a>
-  <a href="./jobs.html" class="block hover:text-blue-400">Jobs</a>
-  <a href="./support.html" class="block hover:text-blue-400">Support</a>
-  <a href="./kontakt.html" class="block hover:text-blue-400">Kontakt</a>
-  <a href="./blog.html" class="block hover:text-blue-400">Blog</a>
+  <a href="../index.html" class="block hover:text-blue-400">Home</a>
+  <a href="../fachbereiche.html" class="block hover:text-blue-400">Fachbereiche</a>
+  <a href="../werte-mission-vision.html" class="block hover:text-blue-400">Mission & Vision</a>
+  <a href="../jobs.html" class="block hover:text-blue-400">Jobs</a>
+  <a href="../support.html" class="block hover:text-blue-400">Support</a>
+  <a href="../kontakt.html" class="block hover:text-blue-400">Kontakt</a>
+  <a href="../blog.html" class="block hover:text-blue-400">Blog</a>
 </div>
 
 <script>
@@ -86,106 +86,683 @@
     mobileMenu.classList.toggle("hidden");
   });
 </script>
+<body class="bg-gray-50 text-gray-800 font-sans">
 
-<!-- Hero -->
-<section class="relative bg-gradient-to-r from-gray-900 via-blue-900 to-gray-800 h-64 flex items-center justify-center">
-  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-  <div class="relative text-center text-white px-6">
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Datenschutzerklärung</h1>
-    <p class="text-gray-200">Stand: Januar 2025</p>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-gray-900 via-blue-900 to-gray-800 text-white py-20 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-3">Datenschutzerklärung</h1>
+    <p class="text-gray-300">Stand: Januar 2025</p>
+  </section>
 
-<section class="max-w-4xl mx-auto px-6 py-12">
-  <h1 class="text-4xl font-bold text-gray-900 mb-8">Datenschutzerklärung</h1>
+  <!-- Datenschutzerklärung Accordion -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <div class="space-y-4">
 
-  <!-- Akkordeon-Container -->
-  <div class="space-y-4">
+      <!-- Punkt 1 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          1. Allgemeine Hinweise & Pflichtinformationen
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Der Schutz Ihrer persönlichen Daten ist uns, der <strong>RSE Systems</strong>, ein wichtiges Anliegen. 
+    Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften 
+    sowie dieser Datenschutzerklärung.
+  </p>
 
-    <!-- Punkt 1 -->
-    <div class="border border-gray-200 rounded-lg">
-      <button onclick="toggleAccordion(1)" 
-        class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-100">
-        Datenschutz auf einen Blick
-        <span id="icon-1">+</span>
-      </button>
-      <div id="content-1" class="hidden px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert,
-        wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert
-        werden können.</p>
-        <p>Diese Datenschutzerklärung ist aktuell gültig und wurde zuletzt am <strong>22. Juli 2025</strong> aktualisiert.</p>
+  <p>
+    Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. 
+    Dazu zählen z. B. Name, Adresse, E-Mail-Adresse, Telefonnummer sowie Nutzungsdaten, die beim Besuch unserer Website entstehen.
+  </p>
+
+  <p>
+    Die vorliegende Datenschutzerklärung erläutert:
+  </p>
+
+  <ul class="list-disc pl-6 space-y-1">
+    <li>welche Daten wir auf unserer Website erfassen,</li>
+    <li>wofür wir diese Daten nutzen,</li>
+    <li>welche Rechte Sie in Bezug auf Ihre Daten haben,</li>
+    <li>und wie wir den Schutz Ihrer Daten sicherstellen.</li>
+  </ul>
+
+  <p>
+    Wir weisen darauf hin, dass die Datenübertragung im Internet (z. B. bei der Kommunikation per E-Mail) 
+    Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+  </p>
+
+  <p class="text-sm text-gray-500 italic">
+    Diese Datenschutzerklärung ist aktuell gültig und wurde zuletzt im Januar 2025 aktualisiert. 
+    Änderungen bleiben vorbehalten. Sollte sich die Datenschutzerklärung ändern, so wird sie an dieser Stelle 
+    veröffentlicht und gilt ab dem Datum der Veröffentlichung.
+  </p>
+</div>
       </div>
-    </div>
 
-    <!-- Punkt 2 -->
-    <div class="border border-gray-200 rounded-lg">
-      <button onclick="toggleAccordion(2)" 
-        class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-100">
-        Fragen zur Datenerfassung
-        <span id="icon-2">+</span>
-      </button>
-      <div id="content-2" class="hidden px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-        <h3 class="font-semibold mt-2">Wer ist verantwortlich?</h3>
-        <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem
-        <a href="./legal/impressum.html" class="text-blue-600 underline">Impressum</a> entnehmen.</p>
+      <!-- Punkt 2 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          2. Verantwortlicher
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
+  </p>
 
-        <h3 class="font-semibold mt-2">Wie erfassen wir Ihre Daten?</h3>
-        <p>Ihre Daten werden einerseits dadurch erhoben, dass Sie uns diese mitteilen (z. B. Kontaktformular). Andere Daten
-        werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst (z. B. Browser, Betriebssystem, Uhrzeit).</p>
+  <p>
+    <strong>RSE Systems</strong><br>
+    Königsberger Str. 3<br>
+    54411 Hermeskeil<br>
+    Deutschland
+  </p>
 
-        <h3 class="font-semibold mt-2">Wofür nutzen wir Ihre Daten?</h3>
-        <p>Zur Bereitstellung der Website, zur Analyse des Nutzerverhaltens und ggf. für Marketingzwecke (nur nach Einwilligung).</p>
+  <p>
+    Telefon: <a href="tel:+49651629383549" class="text-blue-600 hover:underline">+49 651 629383549</a><br>
+    E-Mail: <a href="mailto:info@rse-systems.com" class="text-blue-600 hover:underline">info@rse-systems.com</a><br>
+    Website: <a href="https://rse-systems.com" target="_blank" class="text-blue-600 hover:underline">www.rse-systems.com</a>
+  </p>
 
-        <h3 class="font-semibold mt-2">Welche Rechte haben Sie?</h3>
-        <p>Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie Beschwerderecht
-        bei einer Aufsichtsbehörde.</p>
+  <p>
+    Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen 
+    über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
+  </p>
+</div>
       </div>
-    </div>
 
-    <!-- Punkt 3 -->
-    <div class="border border-gray-200 rounded-lg">
-      <button onclick="toggleAccordion(3)" 
-        class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-100">
-        Analyse-Tools und Tools von Drittanbietern
-        <span id="icon-3">+</span>
-      </button>
-      <div id="content-3" class="hidden px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-        <p>Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden – vor allem mit Cookies oder Analyseprogrammen.
-        Die Analyse erfolgt anonymisiert und lässt keine Rückschlüsse auf Sie zu. Sie können dieser Analyse widersprechen oder sie durch die
-        Nichtbenutzung bestimmter Tools verhindern.</p>
+      <!-- Punkt 3 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          3. Datenschutzbeauftragter
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wir haben für unser Unternehmen einen Datenschutzbeauftragten bestellt:
+  </p>
+
+  <p>
+    <strong>Riber Shamo Elias</strong><br>
+    RSE Systems<br>
+    Königsberger Str. 3<br>
+    54411 Hermeskeil<br>
+    Deutschland
+  </p>
+
+  <p>
+    Telefon: <a href="tel:+491629383549" class="text-blue-600 hover:underline">+49 162 9383549</a><br>
+    E-Mail: <a href="mailto:info@rse-systems.com" class="text-blue-600 hover:underline">info@rse-systems.com</a>
+  </p>
+
+  <p>
+    Bei allen Fragen zum Thema Datenschutz oder zur Ausübung Ihrer Rechte (siehe Abschnitt „Ihre Rechte“) 
+    können Sie sich jederzeit direkt an unseren Datenschutzbeauftragten wenden.
+  </p>
+</div>
       </div>
-    </div>
 
-    <!-- Punkt 4 -->
-    <div class="border border-gray-200 rounded-lg">
-      <button onclick="toggleAccordion(4)" 
-        class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-800 hover:bg-gray-100">
-        Allgemeine Hinweise und Pflichtinformationen
-        <span id="icon-4">+</span>
-      </button>
-      <div id="content-4" class="hidden px-4 pb-4 text-gray-600 text-sm leading-relaxed">
-        <p>Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Ihre Daten werden gemäß DSGVO und dieser Datenschutzerklärung verarbeitet.
-        Bitte beachten Sie, dass eine Datenübertragung im Internet (z. B. E-Mail) Sicherheitslücken aufweisen kann.</p>
+      <!-- Punkt 4 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          4. Ihre Rechte
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Sie haben im Rahmen der geltenden Datenschutzgesetze jederzeit folgende Rechte:
+  </p>
+
+  <ul class="list-disc list-inside space-y-2">
+    <li><strong>Recht auf Auskunft</strong> (Art. 15 DSGVO) – Sie können Auskunft über Ihre bei uns gespeicherten personenbezogenen Daten verlangen.</li>
+    <li><strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO) – Sie können die Berichtigung unrichtiger oder die Vervollständigung unvollständiger Daten verlangen.</li>
+    <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO) – Sie können die Löschung Ihrer Daten verlangen, soweit keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</li>
+    <li><strong>Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO) – Sie können verlangen, dass Ihre Daten nur eingeschränkt verarbeitet werden.</li>
+    <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO) – Sie haben das Recht, Ihre Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten.</li>
+    <li><strong>Recht auf Widerspruch</strong> (Art. 21 DSGVO) – Sie können der Verarbeitung Ihrer personenbezogenen Daten jederzeit widersprechen.</li>
+    <li><strong>Beschwerderecht bei der Aufsichtsbehörde</strong> – Sie können sich jederzeit an die zuständige Datenschutzaufsichtsbehörde wenden.</li>
+  </ul>
+
+  <p>
+    Zur Wahrnehmung Ihrer Rechte können Sie sich jederzeit unter den im Abschnitt 
+    <strong>„Verantwortlicher“</strong> oder <strong>„Datenschutzbeauftragter“</strong> angegebenen Kontaktdaten an uns wenden.
+  </p>
+</div>
       </div>
+
+      <!-- Punkt 5 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          5. Hosting & GitHub Pages
+          <span class="ml-2">+</span>
+        </button>
+       <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Unsere Website wird auf den Servern von <strong>GitHub Pages</strong> 
+    (Anbieter: GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA, 
+    eine Tochtergesellschaft von Microsoft) gehostet.
+  </p>
+
+  <p>
+    GitHub erhebt beim Besuch unserer Website automatisch verschiedene Logfiles, 
+    darunter:
+  </p>
+
+  <ul class="list-disc list-inside space-y-2">
+    <li>Browsertyp und -version</li>
+    <li>Verwendetes Betriebssystem</li>
+    <li>Referrer-URL</li>
+    <li>Hostname des zugreifenden Rechners</li>
+    <li>Uhrzeit der Serveranfrage</li>
+    <li>IP-Adresse</li>
+  </ul>
+
+  <p>
+    Diese Daten werden automatisch von GitHub erfasst und verarbeitet, 
+    um die Sicherheit und Stabilität des Angebots zu gewährleisten. 
+    Eine direkte Zusammenführung dieser Daten mit bestimmten Personen 
+    findet durch uns nicht statt.
+  </p>
+
+  <p>
+    Die Nutzung von GitHub Pages erfolgt im Interesse einer sicheren, 
+    schnellen und effizienten Bereitstellung unserer Website. 
+    Rechtsgrundlage ist <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>.
+  </p>
+
+  <p>
+    Weitere Informationen finden Sie in der 
+    <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" 
+       target="_blank" class="text-blue-600 hover:underline">Datenschutzerklärung von GitHub</a>.
+  </p>
+</div>
+      </div>
+
+      <!-- Punkt 6 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          6. Server-Log-Dateien
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Beim Aufruf unserer Website werden durch den Hoster 
+    und ggf. durch technische Dienstleister automatisch Informationen 
+    in sogenannten <strong>Server-Log-Dateien</strong> erhoben und gespeichert. 
+    Diese Daten übermittelt Ihr Browser automatisch.
+  </p>
+
+  <ul class="list-disc list-inside space-y-2">
+    <li>Browsertyp und -version</li>
+    <li>Verwendetes Betriebssystem</li>
+    <li>Referrer-URL (zuvor besuchte Seite)</li>
+    <li>Hostname des zugreifenden Rechners</li>
+    <li>Uhrzeit der Serveranfrage</li>
+    <li>IP-Adresse</li>
+  </ul>
+
+  <p>
+    Eine Zusammenführung dieser Daten mit anderen Datenquellen 
+    wird von uns nicht vorgenommen. 
+    Die Erfassung dieser Daten erfolgt auf Grundlage von 
+    <strong>Art. 6 Abs. 1 lit. f DSGVO</strong>. 
+    Wir haben ein berechtigtes Interesse an der technisch fehlerfreien 
+    Darstellung sowie der Optimierung und Sicherheit unserer Website.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 7 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          7. Cookies
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Unsere Website verwendet <strong>Cookies</strong> und ähnliche Technologien, 
+    um Funktionen bereitzustellen, die Benutzerfreundlichkeit zu verbessern und 
+    anonyme Statistiken über die Nutzung zu erheben. 
+    Cookies sind kleine Textdateien, die auf Ihrem Endgerät gespeichert werden.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Arten von Cookies</h3>
+  <ul class="list-disc list-inside space-y-2">
+    <li><strong>Technisch notwendige Cookies</strong> – Diese Cookies sind erforderlich, damit die Website korrekt funktioniert (z. B. Navigation, Sicherheit, Session-Verwaltung).</li>
+    <li><strong>Analyse-Cookies</strong> – Mit diesen Cookies erfassen wir, wie Besucher unsere Website nutzen, um Inhalte und Funktionen zu optimieren.</li>
+    <li><strong>Marketing-Cookies</strong> – Werden nur gesetzt, wenn Sie dem zugestimmt haben, und dienen dazu, Ihnen personalisierte Inhalte oder Werbung bereitzustellen.</li>
+  </ul>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Eingesetzte Tools</h3>
+
+  <h4 class="text-lg font-semibold text-gray-700">1. Matomo</h4>
+  <p>
+    Wir nutzen <strong>Matomo</strong> (Open-Source-Software) zur anonymisierten Analyse des Nutzerverhaltens. 
+    Dabei werden Daten ausschließlich auf unseren eigenen Servern in Deutschland verarbeitet. 
+    IP-Adressen werden anonymisiert gespeichert. 
+    Cookies können optional gesetzt werden, um wiederkehrende Nutzer zu erkennen.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-700">2. Google Analytics</h4>
+  <p>
+    Zur Analyse des Nutzerverhaltens setzen wir zusätzlich <strong>Google Analytics</strong> 
+    (Anbieter: Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland) ein. 
+    Die Verarbeitung erfolgt nur nach Ihrer Zustimmung im Cookie-Banner. 
+    Ihre IP-Adresse wird anonymisiert, bevor sie gespeichert wird.
+  </p>
+  <p>
+    Weitere Informationen finden Sie in der 
+    <a href="https://policies.google.com/privacy?hl=de" target="_blank" class="text-blue-600 underline">Datenschutzerklärung von Google</a>.
+  </p>
+
+  <h4 class="text-lg font-semibold text-gray-700">3. Brevo (ehem. Sendinblue)</h4>
+  <p>
+    Für den Versand von Newslettern und E-Mail-Kommunikation nutzen wir <strong>Brevo</strong>. 
+    Hierbei können Cookies eingesetzt werden, um die Zustellung, Öffnungs- und Klickraten zu messen. 
+    Die Datenverarbeitung erfolgt nur mit Ihrer Einwilligung.
+  </p>
+  <p>
+    Mehr Informationen finden Sie hier: 
+    <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" class="text-blue-600 underline">Brevo Datenschutzerklärung</a>.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Verwaltung & Widerruf</h3>
+  <p>
+    Sie können Ihre Cookie-Einstellungen jederzeit über unser 
+    <strong>Consent-Banner</strong> anpassen. 
+    Außerdem können Sie in Ihrem Browser Cookies löschen oder blockieren. 
+    Bitte beachten Sie, dass bei Deaktivierung bestimmter Cookies 
+    die Funktionalität der Website eingeschränkt sein kann.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 8 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          8. Analyse-Tools (Matomo, Google Analytics)
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wir setzen auf unserer Website verschiedene Analyse-Tools ein, 
+    um die Nutzung unserer Angebote besser zu verstehen und zu optimieren. 
+    Die Verarbeitung Ihrer Daten erfolgt dabei ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), 
+    die Sie über unser Cookie-Banner erteilen oder ablehnen können.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">1. Matomo</h3>
+  <p>
+    Unsere Website verwendet <strong>Matomo</strong>, eine Open-Source-Software zur 
+    statistischen Auswertung von Besucherzugriffen. 
+    Die Erhebung der Daten erfolgt anonymisiert; IP-Adressen werden gekürzt gespeichert 
+    und lassen keinen Rückschluss auf Ihre Identität zu.
+  </p>
+  <ul class="list-disc list-inside space-y-1">
+    <li>Erfasste Daten: besuchte Seiten, Verweildauer, verwendeter Browser, Herkunftsquelle</li>
+    <li>Speicherung: ausschließlich auf unseren eigenen Servern in Deutschland</li>
+    <li>Keine Weitergabe an Dritte</li>
+  </ul>
+  <p>
+    Sie können der Speicherung und Auswertung durch Matomo jederzeit widersprechen. 
+    In diesem Fall wird ein Opt-Out-Cookie gesetzt, der die zukünftige Erfassung verhindert.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">2. Google Analytics</h3>
+  <p>
+    Diese Website nutzt <strong>Google Analytics</strong>, 
+    einen Webanalysedienst der Google Ireland Ltd., Gordon House, Barrow Street, Dublin 4, Irland.
+  </p>
+  <ul class="list-disc list-inside space-y-1">
+    <li>Erfasste Daten: IP-Adresse (anonymisiert), Nutzungsverhalten, Klickpfade, technische Informationen (Browser, Gerät)</li>
+    <li>Die Daten werden in der Regel an Google-Server in den USA übertragen</li>
+    <li>IP-Anonymisierung ist auf dieser Website aktiviert</li>
+    <li>Speicherung erfolgt für max. 14 Monate (laut Google-Einstellungen)</li>
+  </ul>
+  <p>
+    Sie können die Speicherung der Cookies durch Google Analytics verhindern, 
+    indem Sie das Browser-Plugin herunterladen und installieren: 
+    <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank" class="text-blue-600 underline">
+      Google Opt-Out
+    </a>.
+  </p>
+  <p>
+    Weitere Informationen finden Sie in der 
+    <a href="https://policies.google.com/privacy?hl=de" target="_blank" class="text-blue-600 underline">
+      Datenschutzerklärung von Google
+    </a>.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Rechtsgrundlage</h3>
+  <p>
+    Die Nutzung von Matomo und Google Analytics erfolgt auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). 
+    Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, 
+    indem Sie Ihre Cookie-Einstellungen anpassen.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 9 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          9. Newsletter & E-Mail (Brevo)
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wenn Sie unseren <strong>Newsletter</strong> abonnieren, 
+    verwenden wir Ihre E-Mail-Adresse sowie freiwillig angegebene Daten (z. B. Name), 
+    um Ihnen regelmäßig Informationen über unsere Angebote, Produkte und Neuigkeiten zuzusenden. 
+    Der Versand erfolgt nur mit Ihrer ausdrücklichen Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">1. Versand über Brevo (ehemals Sendinblue)</h3>
+  <p>
+    Der Versand unserer Newsletter erfolgt über den Dienstleister 
+    <strong>Brevo (Sendinblue GmbH, Köpenicker Straße 126, 10179 Berlin)</strong>.
+    Brevo ist ein zertifizierter Anbieter, der nach den Anforderungen der DSGVO arbeitet.
+  </p>
+  <ul class="list-disc list-inside space-y-1">
+    <li>Erfasste Daten: E-Mail-Adresse, ggf. Name</li>
+    <li>Speicherung: auf den Servern von Brevo in der EU</li>
+    <li>Tracking: Brevo analysiert, ob Newsletter geöffnet und welche Links angeklickt werden</li>
+  </ul>
+  <p>
+    Diese Auswertungen nutzen wir, um den Newsletter zu optimieren und 
+    ihn an die Interessen unserer Leser anzupassen.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">2. Double-Opt-In Verfahren</h3>
+  <p>
+    Die Anmeldung zu unserem Newsletter erfolgt im sogenannten <strong>Double-Opt-In</strong>-Verfahren. 
+    Nach der Registrierung erhalten Sie eine E-Mail, in der Sie Ihre Anmeldung bestätigen müssen. 
+    Erst danach wird Ihre E-Mail-Adresse in den Verteiler aufgenommen.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">3. Widerruf & Abmeldung</h3>
+  <p>
+    Sie können den Newsletter jederzeit über den <strong>Abmelde-Link</strong> 
+    am Ende jeder E-Mail abbestellen oder uns eine formlose Mitteilung senden. 
+    Ihre Daten werden nach Widerruf aus der Verteilerliste gelöscht.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Rechtsgrundlage</h3>
+  <p>
+    Die Verarbeitung Ihrer Daten für den Newsletter-Versand erfolgt ausschließlich auf Grundlage 
+    Ihrer Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO. 
+    Sie können diese Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.
+  </p>
+
+  <p>
+    Weitere Informationen finden Sie in der 
+    <a href="https://www.brevo.com/de/legal/privacypolicy/" target="_blank" class="text-blue-600 underline">
+      Datenschutzerklärung von Brevo
+    </a>.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 10 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          10. Kontaktaufnahme
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wenn Sie uns per <strong>Kontaktformular</strong> oder per E-Mail kontaktieren, 
+    werden die von Ihnen angegebenen Daten (z. B. Name, E-Mail-Adresse, Telefonnummer, Nachricht) 
+    ausschließlich zur Bearbeitung Ihrer Anfrage und für den Fall von Anschlussfragen gespeichert. 
+    Eine Weitergabe an Dritte erfolgt nicht ohne Ihre ausdrückliche Einwilligung.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Rechtsgrundlage</h3>
+  <p>
+    Die Verarbeitung Ihrer Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, 
+    sofern Ihre Anfrage mit der Erfüllung eines Vertrags oder zur Durchführung vorvertraglicher Maßnahmen 
+    zusammenhängt. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse 
+    an der effektiven Bearbeitung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung 
+    (Art. 6 Abs. 1 lit. a DSGVO, sofern erteilt).
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Speicherdauer</h3>
+  <p>
+    Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, 
+    bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen 
+    oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihrer Anfrage). 
+    Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 11 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          11. Social Media & Plugins
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wir unterhalten Profile in sozialen Netzwerken, um mit Interessenten, Kunden und Partnern in Kontakt zu treten 
+    und über unsere Leistungen zu informieren. Beim Besuch unserer Social-Media-Seiten können personenbezogene Daten 
+    verarbeitet werden, auf die wir nur eingeschränkt Einfluss haben.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Unsere Social-Media-Auftritte</h3>
+  <ul class="list-disc list-inside space-y-2">
+    <li><a href="https://www.instagram.com/rse_systems" target="_blank" class="text-blue-600 hover:underline">Instagram</a></li>
+    <li><a href="https://www.linkedin.com/company/rse-systems" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a></li>
+    <li><a href="https://www.youtube.com/@rse-systems" target="_blank" class="text-blue-600 hover:underline">YouTube</a></li>
+  </ul>
+
+  <p>
+    Die Datenverarbeitung durch soziale Netzwerke (z. B. Cookies, Analyse des Nutzungsverhaltens, 
+    Profilbildung) erfolgt in eigener Verantwortung der jeweiligen Anbieter. 
+    Weitere Informationen finden Sie in den Datenschutzerklärungen der Anbieter.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Eingebundene Plugins & Tools</h3>
+  <p>
+    Unsere Website verwendet externe Dienste und Plugins, die personenbezogene Daten erfassen können:
+  </p>
+  <ul class="list-disc list-inside space-y-2">
+    <li><strong>Google Fonts:</strong> zur einheitlichen Darstellung von Schriftarten.</li>
+    <li><strong>Google Maps:</strong> zur Darstellung unseres Standorts.</li>
+    <li><strong>YouTube:</strong> zur Einbettung von Videos auf unseren Seiten.</li>
+  </ul>
+  <p>
+    Beim Aufruf dieser Inhalte werden Daten (z. B. IP-Adresse, Browser-Informationen) 
+    an die jeweiligen Anbieter übertragen. Die Verarbeitung erfolgt auf Grundlage von 
+    Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung unserer Angebote).
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 12 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          12. Externe Dienste & Tools (Google Fonts, Maps, YouTube)
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Auf unserer Website setzen wir verschiedene externe Dienste und Tools ein, 
+    um Inhalte ansprechend darzustellen und die Benutzerfreundlichkeit zu erhöhen. 
+    Dabei können personenbezogene Daten wie z. B. Ihre IP-Adresse oder technische Browser-Informationen 
+    an die jeweiligen Anbieter übermittelt werden.
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Google Fonts</h3>
+  <p>
+    Unsere Website nutzt Google Fonts zur einheitlichen Darstellung von Schriftarten. 
+    Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten von Google-Servern. 
+    Hierbei kann Ihre IP-Adresse an Google (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) 
+    übertragen werden. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">Google Maps</h3>
+  <p>
+    Zur Darstellung unseres Standorts verwenden wir Google Maps. 
+    Bei der Nutzung werden Daten (z. B. IP-Adresse, Standortdaten) an Google-Server übermittelt. 
+    Diese Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO 
+    (berechtigtes Interesse an einer benutzerfreundlichen Darstellung unseres Standorts).
+  </p>
+
+  <h3 class="text-xl font-semibold text-gray-800 mt-6">YouTube</h3>
+  <p>
+    Wir binden YouTube-Videos auf unserer Website ein. Betreiber ist Google Ireland Limited, Dublin, Irland. 
+    Wenn Sie ein Video abspielen, werden Daten (z. B. IP-Adresse, Cookies, Nutzungsdaten) an YouTube übertragen. 
+    Falls Sie ein Google-Konto besitzen und eingeloggt sind, können diese Daten Ihrem Profil zugeordnet werden. 
+    Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+  </p>
+
+  <p>
+    Weitere Informationen finden Sie in den <a href="https://policies.google.com/privacy?hl=de" 
+    target="_blank" class="text-blue-600 hover:underline">Datenschutzhinweisen von Google</a>.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 13 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          13. Sicherheit (SSL/TLS)
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Unsere Website nutzt eine SSL-/TLS-Verschlüsselung, um vertrauliche Inhalte sicher zu übertragen. 
+    Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile Ihres Browsers von 
+    <code>http://</code> auf <code>https://</code> wechselt und ein Schloss-Symbol in der Browserzeile erscheint.
+  </p>
+
+  <p>
+    Durch die aktivierte SSL-/TLS-Verschlüsselung können Daten, die Sie an uns übermitteln, 
+    nicht von Dritten mitgelesen werden. Dies betrifft insbesondere Anfragen über Kontaktformulare 
+    oder die Übermittlung sensibler Daten.
+  </p>
+
+  <p>
+    Wir setzen die Verschlüsselung standardmäßig auf allen Seiten ein, um ein Höchstmaß an 
+    Sicherheit für die Verarbeitung Ihrer personenbezogenen Daten zu gewährleisten.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 14 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          14. Widerspruch gegen Werbe-Mails
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von 
+    nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen.
+  </p>
+
+  <p>
+    Wir behalten uns ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von 
+    Werbeinformationen, etwa durch Spam-E-Mails oder Postsendungen, vor.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 15 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          15. Speicherdauer
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Personenbezogene Daten werden von uns nur so lange gespeichert, wie dies für die 
+    Erfüllung der jeweiligen Zwecke erforderlich ist oder wie es gesetzliche 
+    Aufbewahrungsfristen vorschreiben.
+  </p>
+
+  <p>
+    Sobald der jeweilige Zweck entfällt bzw. nach Ablauf gesetzlicher Fristen 
+    (z. B. handels- oder steuerrechtliche Aufbewahrungsfristen von bis zu 10 Jahren), 
+    werden die Daten routinemäßig gelöscht oder gesperrt.
+  </p>
+
+  <p>
+    Daten, die wir auf Grundlage Ihrer Einwilligung verarbeiten, speichern wir nur bis 
+    zum Widerruf dieser Einwilligung, sofern keine anderweitigen gesetzlichen Pflichten 
+    bestehen.
+  </p>
+</div>
+
+      </div>
+
+      <!-- Punkt 16 -->
+      <div class="border border-gray-200 rounded-lg">
+        <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
+          onclick="toggleAccordion(this)">
+          16. Änderungen der Datenschutzerklärung
+          <span class="ml-2">+</span>
+        </button>
+        <div class="hidden p-4 text-gray-600 space-y-4">
+  <p>
+    Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf zu ändern, 
+    um sie an aktuelle rechtliche Anforderungen oder bei Änderungen unserer 
+    Leistungen anzupassen.
+  </p>
+
+  <p>
+    Für Ihren erneuten Besuch gilt dann die jeweils aktuelle Datenschutzerklärung, 
+    die Sie jederzeit auf dieser Seite abrufen können.
+  </p>
+
+  <p>
+    Diese Datenschutzerklärung ist aktuell gültig und wurde zuletzt am 
+    <strong>11. September 2025</strong> aktualisiert.
+  </p>
+</div>
+
+      </div>
+
     </div>
+  </main>
 
-  </div>
-</section>
-
-<script>
-  function toggleAccordion(id) {
-    const content = document.getElementById("content-" + id);
-    const icon = document.getElementById("icon-" + id);
-
-    if (content.classList.contains("hidden")) {
-      content.classList.remove("hidden");
-      icon.textContent = "–";
-    } else {
-      content.classList.add("hidden");
-      icon.textContent = "+";
+  <script>
+    function toggleAccordion(button) {
+      const content = button.nextElementSibling;
+      const isOpen = !content.classList.contains("hidden");
+      document.querySelectorAll("main .border div:nth-child(2)").forEach(div => div.classList.add("hidden"));
+      document.querySelectorAll("main button span").forEach(span => span.textContent = "+");
+      if (!isOpen) {
+        content.classList.remove("hidden");
+        button.querySelector("span").textContent = "−";
+      }
     }
-  }
-</script>
+  </script>
+
 
 
   <!-- Footer -->
@@ -200,25 +777,25 @@
           <div>
             <h4 class="font-semibold text-white mb-2 text-sm uppercase">Produkte</h4>
             <ul class="space-y-1">
-              <li><a href="./service-webentwicklung.html" class="hover:text-white">Webentwicklung</a></li>
-              <li><a href="./service-it.html" class="hover:text-white">IT Services</a></li>
-              <li><a href="./service-seo.html" class="hover:text-white">SEO & Marketing</a></li>
-              <li><a href="./service-grafikdesign.html" class="hover:text-white">Grafikdesign</a></li>
+              <li><a href="../service-webentwicklung.html" class="hover:text-white">Webentwicklung</a></li>
+              <li><a href="../service-it.html" class="hover:text-white">IT Services</a></li>
+              <li><a href="../service-seo.html" class="hover:text-white">SEO & Marketing</a></li>
+              <li><a href="../service-grafikdesign.html" class="hover:text-white">Grafikdesign</a></li>
             </ul>
           </div>
           <div>
             <h4 class="font-semibold text-white mb-2 text-sm uppercase">Unternehmen</h4>
             <ul class="space-y-1">
-              <li><a href="./index.html#highlights" class="hover:text-white">Über uns</a></li>
-              <li><a href="./karriere.html" class="hover:text-white">Karriere</a></li>
-              <li><a href="./werte-mission-vision.html" class="hover:text-white">Mission & Vision</a></li>
-              <li><a href="./kontakt.html" class="hover:text-white">Kontakt</a></li>
+              <li><a href="../index.html#highlights" class="hover:text-white">Über uns</a></li>
+              <li><a href="../karriere.html" class="hover:text-white">Karriere</a></li>
+              <li><a href="../werte-mission-vision.html" class="hover:text-white">Mission & Vision</a></li>
+              <li><a href="../kontakt.html" class="hover:text-white">Kontakt</a></li>
             </ul>
           </div>
           <div>
             <h4 class="font-semibold text-white mb-2 text-sm uppercase">Ressourcen</h4>
             <ul class="space-y-1">
-              <li><a href="./support.html" class="hover:text-white">Support</a></li>
+              <li><a href="../support.html" class="hover:text-white">Support</a></li>
             </ul>
           </div>
           <div>
