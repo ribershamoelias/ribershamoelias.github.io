@@ -1,95 +1,247 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <!-- Google Analytics Consent Mode + Tag -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-
-    // Standardmäßig alles blockieren (Privacy by default)
-    gtag('consent','default',{
-      'ad_storage':'denied',
-      'analytics_storage':'denied',
-      'ad_user_data':'denied',
-      'ad_personalization':'denied',
-      'functionality_storage':'granted',
-      'security_storage':'granted'
-    });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3XJRR15PQL"></script>
-  <script> gtag('js', new Date()); </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSE Systems – Datenschutzerklärung</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/32x32favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/16x16favicon.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-icon-180x180.png">
-  <link rel="manifest" href="../manifest.json">
-  <meta name="theme-color" content="#0f172a">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .section-title {
-      @apply text-2xl font-semibold text-blue-500 border-l-4 border-blue-500 pl-3 mt-10 mb-4;
-    }
-  </style>
-</head>
-<body class="bg-gray-50 text-gray-800">
-
-<!-- Navigation -->
-<nav class="bg-gray-900 text-white px-6 md:px-12 py-4 flex items-center justify-between relative shadow-lg">
-  <!-- Logo -->
-  <div class="flex items-center space-x-2">
-    <a href="../index.html" class="font-bold text-xl hover:text-blue-400 transition">
-      RSE<span class="text-blue-400">Systems</span>
-    </a>
-  </div>
-
-  <!-- Desktop-Menü -->
-  <ul class="hidden md:flex space-x-8 font-medium">
-    <li><a href="../index.html" class="hover:text-blue-400 transition">Home</a></li>
-    <li><a href="../fachbereiche.html" class="hover:text-blue-400 transition">Fachbereiche</a></li>
-    <li><a href="../werte-mission-vision.html" class="hover:text-blue-400 transition">Mission & Vision</a></li>
-    <li><a href="../jobs.html" class="hover:text-blue-400 transition">Jobs</a></li>
-    <li><a href="../support.html" class="hover:text-blue-400 transition">Support</a></li>
-    <li><a href="../kontakt.html" class="hover:text-blue-400 transition">Kontakt</a></li>
-    <li><a href="../blog.html" class="hover:text-blue-400 transition">Blog</a></li>
-  </ul>
-
-  <!-- Mobile Button -->
-  <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
-    <span class="w-6 h-0.5 bg-white"></span>
-    <span class="w-6 h-0.5 bg-white"></span>
-    <span class="w-6 h-0.5 bg-white"></span>
-  </button>
-</nav>
-
-<!-- Mobile Menü -->
-<div id="mobile-menu" class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
-  <a href="../index.html" class="block hover:text-blue-400">Home</a>
-  <a href="../fachbereiche.html" class="block hover:text-blue-400">Fachbereiche</a>
-  <a href="../werte-mission-vision.html" class="block hover:text-blue-400">Mission & Vision</a>
-  <a href="../jobs.html" class="block hover:text-blue-400">Jobs</a>
-  <a href="../support.html" class="block hover:text-blue-400">Support</a>
-  <a href="../kontakt.html" class="block hover:text-blue-400">Kontakt</a>
-  <a href="../blog.html" class="block hover:text-blue-400">Blog</a>
-</div>
-
+  <head>
+        <!-- Google Analytics Consent Mode + Tag -->
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  // Standardmäßig alles blockieren (Privacy by default)
+  gtag('consent','default',{
+    'ad_storage':'denied',
+    'analytics_storage':'denied',
+    'ad_user_data':'denied',
+    'ad_personalization':'denied',
+    'functionality_storage':'granted',
+    'security_storage':'granted'
+  });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3XJRR15PQL"></script>
+<script> gtag('js', new Date()); </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titel -->
+    <title>RSE Systems | AGB</title>
+
+    <!-- Meta Description -->
+    <meta name="description"
+      content="RSE Systems – Softwarelösungen, IT-Services, Webentwicklung & SEO aus Trier. Wir betreuen Kunden in Hermeskeil, der Eifel & ganz Rheinland-Pfalz.">
+
+    <!-- Keywords -->
+    <meta name="keywords"
+      content="Software Trier, IT-Services Hermeskeil, Webentwicklung Eifel, SEO Agentur Rheinland-Pfalz, RSE Systems">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.rse-systems.com/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title"
+      content="RSE Systems – Softwarelösungen & IT-Services aus Trier">
+    <meta property="og:description"
+      content="Individuelle Software, sichere IT-Systeme & moderne Webseiten. Dein Partner in Trier, Hermeskeil & der Eifel.">
+    <meta property="og:image"
+      content="https://www.rse-systems.com/assets/img/og-rse-systems.webp">
+    <meta property="og:url" content="https://www.rse-systems.com/index.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+      content="RSE Systems – Softwarelösungen & IT-Services">
+    <meta name="twitter:description"
+      content="IT, Web & SEO für Trier, Hermeskeil & die Eifel. Digitale Lösungen für Unternehmen & Privatkunden.">
+    <meta name="twitter:image"
+      content="https://www.rse-systems.com/assets/img/og-rse-systems.webp">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/img/rse-logo.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32"
+      href="./assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+      href="./assets/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180"
+      href="./assets/img/apple-icon-180x180.png">
+
+    <!-- Android / Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Styles -->
+    <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0b1d2a 0%, #003366 100%); }
+    .btn-primary { background-color: #0080ff; color: white; transition: all 0.3s ease; }
+    .btn-primary:hover { background-color: #0066cc; transform: translateY(-2px); }
+    .btn-secondary { background-color: #f3f4f6; color: #111827; transition: all 0.3s ease; }
+    .btn-secondary:hover { background-color: #e5e7eb; transform: translateY(-2px); }
+  </style>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setCookieDomain", "*.RSE Systems"]);
+  _paq.push(["setDomains", ["*.RSE Systems"]]);
+  _paq.push(["disableCampaignParameters"]);
+  _paq.push(["setDoNotTrack", true]);
+  _paq.push(["disableCookies"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://rsesystems.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '2']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='https://cdn.matomo.cloud/rsesystems.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="https://rsesystems.matomo.cloud/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Matomo Code -->
+
+
+  </head>
+
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav
+      class="bg-gray-900 text-white px-6 md:px-12 py-4 flex items-center justify-between relative shadow-lg">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <a href="./index.html"
+          class="font-bold text-xl hover:text-blue-400 transition">
+          RSE<span class="text-blue-400">Systems</span>
+        </a>
+      </div>
+
+      <!-- Desktop-Menü -->
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <!-- Home -->
+        <li><a href="./index.html"
+            class="hover:text-blue-400 transition">Home</a></li>
+
+        <!-- Unternehmen -->
+        <li class="group relative">
+          <button
+            class="hover:text-blue-400 transition flex items-center gap-1">
+            Unternehmen ▾
+          </button>
+          <ul
+            class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+            <li><a href="./fachbereiche.html"
+                class="block px-4 py-2 hover:bg-gray-100">Fachbereiche</a></li>
+            <li><a href="./werte-mission-vision.html"
+                class="block px-4 py-2 hover:bg-gray-100">Werte, Mission &
+                Vision</a></li>
+            <li><a href="./jobs.html"
+                class="block px-4 py-2 hover:bg-gray-100">Karriere &
+                Jobs</a></li>
+            <li><a href="./jobs.html"
+                class="block px-4 py-2 hover:bg-gray-100">Stellenangebote</a></li>
+            <li><a href="./code-of-conduct.html"
+                class="block px-4 py-2 hover:bg-gray-100">Code of
+                Conduct</a></li>
+          </ul>
+        </li>
+
+        <!-- Support -->
+        <li><a href="./support.html"
+            class="hover:text-blue-400 transition">Support</a></li>
+
+        <!-- Services -->
+        <li class="group relative">
+          <button
+            class="hover:text-blue-400 transition flex items-center gap-1">
+            Services ▾
+          </button>
+          <ul
+            class="absolute hidden group-hover:block bg-white text-gray-800 mt-2 rounded shadow-lg min-w-[220px] z-50">
+            <li><a href="./service-grafiken-werbemittel.html"
+                class="block px-4 py-2 hover:bg-gray-100">Grafiken &
+                Werbemittel</a></li>
+            <li><a href="./service-webentwicklung.html"
+                class="block px-4 py-2 hover:bg-gray-100">Webentwicklung</a></li>
+            <li><a href="./service-it.html"
+                class="block px-4 py-2 hover:bg-gray-100">IT</a></li>
+            <li><a href="./service-seo-marketing.html"
+                class="block px-4 py-2 hover:bg-gray-100">SEO &
+                Marketing</a></li>
+            <li><a href="./service-reparaturen.html"
+                class="block px-4 py-2 hover:bg-gray-100">Reparaturen</a></li>
+          </ul>
+        </li>
+
+        <!-- Kontakt -->
+        <li><a href="./kontakt.html"
+            class="hover:text-blue-400 transition">Kontakt</a></li>
+
+        <!-- Blog -->
+        <li><a href="./blog.html"
+            class="hover:text-blue-400 transition">Blog</a></li>
+      </ul>
+
+      <!-- Mobile Button -->
+      <button id="menu-btn"
+        class="md:hidden flex flex-col space-y-1.5 focus:outline-none">
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+        <span class="w-6 h-0.5 bg-white"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menü -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-gray-800 text-white px-6 py-6 space-y-4">
+      <a href="./index.html" class="block hover:text-blue-400">Home</a>
+
+      <p
+        class="mt-4 text-gray-400 uppercase text-xs font-semibold">Unternehmen</p>
+      <a href="./fachbereiche.html"
+        class="block hover:text-blue-400">Fachbereiche</a>
+      <a href="./werte-mission-vision.html"
+        class="block hover:text-blue-400">Werte, Mission & Vision</a>
+      <a href="./jobs.html" class="block hover:text-blue-400">Karriere &
+        Jobs</a>
+      <a href="./code-of-conduct.html" class="block hover:text-blue-400">Code of
+        Conduct</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Support</p>
+      <a href="./support.html" class="block hover:text-blue-400">Support</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Services</p>
+      <a href="./service-grafiken-werbemittel.html"
+        class="block hover:text-blue-400">Grafiken & Werbemittel</a>
+      <a href="./service-webentwicklung.html"
+        class="block hover:text-blue-400">Webentwicklung</a>
+      <a href="./service-it.html" class="block hover:text-blue-400">IT</a>
+      <a href="./service-seo-marketing.html"
+        class="block hover:text-blue-400">SEO & Marketing</a>
+      <a href="./service-reparaturen.html"
+        class="block hover:text-blue-400">Reparaturen</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Kontakt</p>
+      <a href="./kontakt.html" class="block hover:text-blue-400">Kontakt</a>
+
+      <p class="mt-4 text-gray-400 uppercase text-xs font-semibold">Blog</p>
+      <a href="./blog.html" class="block hover:text-blue-400">Blog</a>
+    </div>
+
+    <!-- Script fürs Öffnen/Schließen -->
+    <script>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
+
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
 </script>
-<body class="bg-gray-50 text-gray-800 font-sans">
-    
-<main class="max-w-4xl mx-auto px-6 py-12">
-    <div class="space-y-4">
 
         <div class="border border-gray-200 rounded-lg">
             <button class="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-800 hover:bg-gray-100"
