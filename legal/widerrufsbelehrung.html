@@ -158,34 +158,153 @@ Unterschrift (nur bei Mitteilung auf Papier erforderlich)
 
 
 <script>
-  function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const isOpen = !content.classList.contains("hidden");
-    document.querySelectorAll("main .border div:nth-child(2)").forEach(div => div.classList.add("hidden"));
-    document.querySelectorAll("main button span").forEach(span => span.textContent = "+");
-    if (!isOpen) {
-      content.classList.remove("hidden");
-      button.querySelector("span").textContent = "−";
+    function toggleAccordion(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('span');
+
+        if (content.classList.contains('hidden')) {
+            // Alle anderen Akkordeons schließen
+            document.querySelectorAll('.border.border-gray-200.rounded-lg .hidden').forEach(item => {
+                if (item !== content) {
+                    item.classList.add('hidden');
+                    item.previousElementSibling.querySelector('span').textContent = '+';
+                }
+            });
+
+            // Aktuelles Akkordeon öffnen
+            content.classList.remove('hidden');
+            icon.textContent = '-';
+        } else {
+            // Aktuelles Akkordeon schließen
+            content.classList.add('hidden');
+            icon.textContent = '+';
+        }
     }
-  }
 </script>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-gray-300 pt-8 pb-6">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
-      <div class="flex flex-wrap gap-4 mb-3 md:mb-0">
-        <span>© 2025 RSE Systems – Alle Rechte vorbehalten</span>
-        <a href="./datenschutz.html" class="hover:text-white">Datenschutz</a>
-        <a href="./impressum.html" class="hover:text-white">Impressum</a>
-        <a href="./agb.html" class="hover:text-white">AGB</a>
-        <a href="./haftungsausschluss.html" class="hover:text-white">Haftungsausschluss</a>
-        <a href="./widerrufsbelehrung.html" class="hover:text-white">Widerrufsbelehrung</a>
+  <footer class="bg-gray-900 text-gray-300 pt-8 pb-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-8">
+        <div class="mb-8 md:mb-0">
+          <img src="../assets/img/rse-logo.png" alt="RSE Systems Logo" class="h-8 mb-3">
+          <p class="text-sm text-gray-400">Softwarelösungen & IT-Services aus Trier.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Produkte</h4>
+            <ul class="space-y-1">
+              <li><a href="../service-webentwicklung.html" class="hover:text-white">Webentwicklung</a></li>
+              <li><a href="../service-it.html" class="hover:text-white">IT Services</a></li>
+              <li><a href="../service-seo.html" class="hover:text-white">SEO & Marketing</a></li>
+              <li><a href="../service-grafikdesign.html" class="hover:text-white">Grafikdesign</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Unternehmen</h4>
+            <ul class="space-y-1">
+              <li><a href="../index.html#highlights" class="hover:text-white">Über uns</a></li>
+              <li><a href="../karriere.html" class="hover:text-white">Karriere</a></li>
+              <li><a href="../werte-mission-vision.html" class="hover:text-white">Mission & Vision</a></li>
+              <li><a href="../kontakt.html" class="hover:text-white">Kontakt</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Ressourcen</h4>
+            <ul class="space-y-1">
+              <li><a href="../support.html" class="hover:text-white">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-2 text-sm uppercase">Folgen Sie uns</h4>
+            <div class="flex space-x-3">
+              <a href="https://www.instagram.com/rse_systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="h-4 invert"></a>
+              <a href="https://www.linkedin.com/company/rse-systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" class="h-4 invert"></a>
+              <a href="https://www.youtube.com/@rse-systems" target="_blank"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="h-4 invert"></a>
+              <a href="mailto:info@rse-systems.com"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/maildotru.svg" class="h-4 invert"></a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div><span>Made with ❤️ in Trier</span></div>
+      <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+        <div class="flex flex-wrap gap-4 mb-3 md:mb-0">
+          <span>© 2025 RSE Systems – Alle Rechte vorbehalten</span>
+          <a href="/legal/datenschutz.html" class="hover:text-white">Datenschutz</a>
+          <a href="/legal/impressum.html" class="hover:text-white">Impressum</a>
+          <a href="/legal/agb.html" class="hover:text-white">AGB</a>
+          <a href="/legal/haftungsausschluss.html" class="hover:text-white">Haftungsausschluss</a>
+          <a href="/legal/widerrufsbelehrung.html" class="hover:text-white">Widerrufsbelehrung</a>
+        </div>
+        <div><span>Made with ❤️ in Trier</span></div>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
+        <!-- Cookie Banner -->
+      <div id="cookie-banner"
+        class="fixed inset-x-0 bottom-4 z-50 mx-auto w-[min(680px,92vw)] cc-slide-up hidden
+            rounded-2xl border border-white/10 bg-[#0b0f14]/95 backdrop-blur p-4">
+        <div class="flex items-start gap-4">
+          <span class="text-lg" aria-hidden="true">🍪</span>
+          <div class="text-sm text-slate-200">
+            Wir verwenden Cookies für <strong>Google Analytics</strong>. Ohne
+            Zustimmung setzen wir nur technisch notwendige Cookies.
+            Details findest du in unserer
+            <a class="underline hover:no-underline text-sky-300"
+              href="datenschutz.html">Datenschutzerklärung</a>.
+            <div class="mt-3 flex gap-2">
+              <button id="accept"
+                class="btn btn-primary !py-2 !px-3 text-sm">Akzeptieren</button>
+              <button id="decline" class="btn btn-ghost !py-2 !px-3 text-sm">Nur
+                notwendig</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <script>
+  (function(){
+    const banner = document.getElementById('cookie-banner');
+    const key = 'rse-consent';
+    const saved = localStorage.getItem(key);
+
+    if(!saved){
+      banner.style.display = 'block';
+      requestAnimationFrame(()=> banner.classList.add('cc-show'));
+    }
+
+    function setConsent(granted){
+      const update = granted ? {
+        'ad_storage':'granted',
+        'analytics_storage':'granted',
+        'ad_user_data':'granted',
+        'ad_personalization':'granted'
+      } : {
+        'ad_storage':'denied',
+        'analytics_storage':'denied',
+        'ad_user_data':'denied',
+        'ad_personalization':'denied'
+      };
+      gtag('consent','update', update);
+
+      if(granted){
+        gtag('config', 'G-3XJRR15PQL', { 'anonymize_ip': true });
+      }
+
+      localStorage.setItem(key, granted ? 'yes' : 'no');
+      if(banner) banner.remove();
+    }
+
+    document.getElementById('accept')?.addEventListener('click', ()=> setConsent(true));
+    document.getElementById('decline')?.addEventListener('click', ()=> setConsent(false));
+
+    if(saved === 'yes'){
+      gtag('consent','update',{
+        'ad_storage':'granted','analytics_storage':'granted',
+        'ad_user_data':'granted','ad_personalization':'granted'
+      });
+      gtag('config', 'G-3XJRR15PQL', { 'anonymize_ip': true });
+    }
+  })();
+</script>
 </body>
 </html>
