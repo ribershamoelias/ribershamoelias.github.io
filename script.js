@@ -41,7 +41,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// analytics functionality removed
+
 
 // Deprecated tracking functions have been removed.
 
