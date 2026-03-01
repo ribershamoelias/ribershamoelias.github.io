@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f1115 0%, #1a1d24 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 2px solid rgba(100, 126, 234, 0.3);
+      padding-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(39, 174, 96, 0.2);
+      border: 1px solid #27ae60;
+      border-radius: 4px;
+      color: #27ae60;
+      font-size: 0.9em;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #667eea;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background: #764ba2;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(100, 126, 234, 0.4);
+    }
+
+    button.danger {
+      background: #e74c3c;
+    }
+
+    button.danger:hover {
+      background: #c0392b;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: #667eea;
+      background: rgba(100, 126, 234, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .stat-card h3 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #aaa;
+      font-size: 0.85em;
+      margin-bottom: 12px;
+    }
+
+    .stat-value {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+
+    .percentage {
+      color: #aaa;
+      font-size: 0.9em;
+      margin-top: 8px;
+    }
+
+    .total-card {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+      border: 2px solid #667eea;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .total-card h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    .total-value {
+      font-size: 3.5em;
+      font-weight: bold;
+    }
+
+    .details-section {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .details-section h3 {
+      color: #667eea;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      border-bottom: 2px solid #667eea;
+    }
+
+    th {
+      text-align: left;
+      padding: 12px;
+      color: #aaa;
+      font-weight: 600;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #ddd;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background: rgba(100, 126, 234, 0.1);
+    }
+
+    .timestamp {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    .ip-addr {
+      font-family: 'Courier New', monospace;
+      color: #aaa;
+      font-size: 0.85em;
+    }
+
+    .message {
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.error {
+      background: rgba(231, 76, 60, 0.1);
+      border: 1px solid #e74c3c;
+      color: #e74c3c;
+    }
+
+    .message.success {
+      background: rgba(39, 174, 96, 0.1);
+      border: 1px solid #27ae60;
+      color: #27ae60;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+    }
+
+    .loading::after {
+      content: '';
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: #667eea;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+      margin-left: 8px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .refresh-time {
+      text-align: center;
+      color: #aaa;
+      font-size: 0.9em;
+      margin-top: 20px;
+    }
+
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+    }
+
+    footer {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #999;
+      font-size: 0.9em;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>📊 Analytics Dashboard</h1>
+    <p class="subtitle">Real-time link click analytics</p>
+    <span class="status">🔒 Secured</span>
+  </header>
+
+  <div id="message" class="message"></div>
+
+  <div class="controls">
+    <button onclick="loadStats()">🔄 Refresh</button>
+    <button onclick="toggleAutoRefresh()">⏱️ <span id="autoRefreshText">Start Auto-Refresh</span></button>
+    <button class="danger" onclick="resetData()">🗑️ Clear All Data</button>
+  </div>
+
+  <div id="content" class="loading">Loading dashboard...</div>
+
+  <footer>
+    Privacy-first analytics. No cookies. No external tracking.
+  </footer>
+</div>
+
+<script>
+  let autoRefreshInterval = null;
+  const AUTO_REFRESH_INTERVAL = 5000; // 5 seconds
+
+  function showMessage(text, type = 'success') {
+    const msgDiv = document.getElementById('message');
+    msgDiv.className = `message show ${type}`;
+    msgDiv.textContent = text;
+    if (type === 'success') {
+      setTimeout(() => { msgDiv.classList.remove('show'); }, 3000);
+    }
+  }
+
+  async function loadStats() {
+    const contentDiv = document.getElementById('content');
+    
+    try {
+      const response = await fetch('/api/stats');
+      if (!response.ok) throw new Error('Failed to fetch stats');
+      
+      const stats = await response.json();
+      
+      const clicksResponse = await fetch('/api/clicks');
+      const clicks = await clicksResponse.json();
+
+      let html = '';
+
+      if (!stats || stats.length === 0) {
+        html = '<div class="no-data">📭 No click data yet</div>';
+      } else {
+        const totalClicks = stats.reduce((sum, s) => sum + s.count, 0);
+        const maxClicks = Math.max(...stats.map(s => s.count));
+
+        html = `
+          <div class="total-card">
+            <h2>Total Clicks</h2>
+            <div class="total-value">${totalClicks}</div>
+          </div>
+
+          <div class="stats-grid">
+        `;
+
+        stats.forEach(stat => {
+          const pct = ((stat.count / totalClicks) * 100).toFixed(1);
+          const barPct = (stat.count / maxClicks) * 100;
+          
+          html += `
+            <div class="stat-card">
+              <h3>${stat.link}</h3>
+              <div class="stat-value">${stat.count}</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: ${barPct}%"></div>
+              </div>
+              <div class="percentage">${pct}% of total</div>
+            </div>
+          `;
+        });
+
+        html += '</div>';
+      }
+
+      if (clicks && clicks.length > 0) {
+        html += `
+          <div class="details-section">
+            <h3>📋 Recent Clicks</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Link</th>
+                  <th>Timestamp</th>
+                  <th>IP</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        clicks.slice(0, 50).forEach(click => {
+          const date = new Date(click.timestamp).toLocaleString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+          });
+          
+          html += `
+            <tr>
+              <td><strong>${click.link}</strong></td>
+              <td class="timestamp">${date}</td>
+              <td class="ip-addr">${click.ip_anon || 'N/A'}</td>
+            </tr>
+          `;
+        });
+
+        html += `
+              </tbody>
+            </table>
+          </div>
+          <div class="refresh-time">
+            ⏰ Updated: ${new Date().toLocaleTimeString('en-US')}
+          </div>
+        `;
+      }
+
+      contentDiv.innerHTML = html;
+    } catch (error) {
+      showMessage(`❌ Error: ${error.message}`, 'error');
+      contentDiv.innerHTML = `<div class="no-data">⚠️ Failed to load analytics data</div>`;
+    }
+  }
+
+  async function resetData() {
+    if (!confirm('⚠️ Are you sure? This will delete ALL click data permanently.')) return;
+
+    try {
+      const response = await fetch('/api/reset', { method: 'DELETE' });
+      if (!response.ok) throw new Error('Failed to reset data');
+      
+      showMessage('✅ All data cleared', 'success');
+      setTimeout(() => loadStats(), 500);
+    } catch (error) {
+      showMessage(`❌ Error: ${error.message}`, 'error');
+    }
+  }
+
+  function toggleAutoRefresh() {
+    const btn = document.getElementById('autoRefreshText');
+    
+    if (autoRefreshInterval) {
+      clearInterval(autoRefreshInterval);
+      autoRefreshInterval = null;
+      btn.textContent = 'Start Auto-Refresh';
+      showMessage('Auto-refresh stopped', 'success');
+    } else {
+      autoRefreshInterval = setInterval(loadStats, AUTO_REFRESH_INTERVAL);
+      btn.textContent = 'Stop Auto-Refresh';
+      showMessage(`Auto-refresh enabled (every ${AUTO_REFRESH_INTERVAL/1000}s)`, 'success');
+    }
+  }
+
+  // Initial load
+  loadStats();
+</script>
+
+</body>
+</html>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui;
+      background: linear-gradient(135deg, #0f1115 0%, #1a1d24 100%);
+      color: white;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: #aaa;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #667eea;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #764ba2;
+      transform: translateY(-2px);
+    }
+
+    button.danger {
+      background: #e74c3c;
+    }
+
+    button.danger:hover {
+      background: #c0392b;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: #667eea;
+      background: rgba(100, 126, 234, 0.1);
+    }
+
+    .stat-card h3 {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #667eea;
+    }
+
+    .click-count {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 15px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .total-stats {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #667eea;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .total-stats h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+    }
+
+    .total-clicks {
+      font-size: 3em;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .recent-clicks {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .recent-clicks h3 {
+      margin-bottom: 20px;
+      color: #667eea;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: rgba(100, 126, 234, 0.2);
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid #667eea;
+      color: #aaa;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    tr:hover {
+      background: rgba(100, 126, 234, 0.05);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #aaa;
+    }
+
+    .error {
+      background: rgba(231, 76, 60, 0.1);
+      border: 1px solid #e74c3c;
+      border-radius: 8px;
+      padding: 20px;
+      color: #e74c3c;
+      margin-bottom: 20px;
+    }
+
+    .success {
+      background: rgba(39, 174, 96, 0.1);
+      border: 1px solid #27ae60;
+      border-radius: 8px;
+      padding: 20px;
+      color: #27ae60;
+      margin-bottom: 20px;
+    }
+
+    .auto-refresh {
+      text-align: center;
+      color: #aaa;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>📊 Analytics Dashboard</h1>
+    <p class="subtitle">Überwache deine Link-Klicks in Echtzeit</p>
+  </header>
+
+  <div id="message"></div>
+
+  <div class="controls">
+    <button onclick="loadStats()">🔄 Aktualisieren</button>
+    <button onclick="startAutoRefresh()">⏱️ Auto-Refresh starten</button>
+    <button onclick="stopAutoRefresh()">⏹️ Auto-Refresh stoppen</button>
+    <button class="danger" onclick="resetStats()">🗑️ Alle Daten löschen</button>
+  </div>
+
+  <div id="content" class="loading">
+    <p>Lade Daten...</p>
+  </div>
+</div>
+
+<script>
+  async function loadStats() {
+    const contentDiv = document.getElementById("content");
+    const messageDiv = document.getElementById("message");
+    messageDiv.innerHTML = "";
+
+    try {
+      const response = await fetch("http://localhost:3000/api/stats");
+      
+      if (!response.ok) {
+        throw new Error("Server antwortet nicht");
+      }
+
+      const stats = await response.json();
+      
+      if (stats.length === 0) {
+        contentDiv.innerHTML = '<p style="text-align: center; color: #aaa; padding: 40px;">Noch keine Klicks erfasst</p>';
+        return;
+      }
+
+      // Berechne Gesamtklicks
+      const totalClicks = stats.reduce((sum, stat) => sum + stat.click_count, 0);
+      const maxClicks = Math.max(...stats.map(s => s.click_count));
+
+      let html = `
+        <div class="total-stats">
+          <h2>Gesamtklicks</h2>
+          <div class="total-clicks">${totalClicks}</div>
+        </div>
+
+        <div class="stats-container">
+      `;
+
+      stats.forEach(stat => {
+        const percentage = (stat.click_count / maxClicks) * 100;
+        html += `
+          <div class="stat-card">
+            <h3>${stat.link_title}</h3>
+            <div class="click-count">${stat.click_count}</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${percentage}%"></div>
+            </div>
+            <p style="margin-top: 10px; color: #aaa; font-size: 0.9em;">
+              ${((stat.click_count / totalClicks) * 100).toFixed(1)}% aller Klicks
+            </p>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+
+      // Lade auch die letzten Klicks
+      const clicksResponse = await fetch("http://localhost:3000/api/clicks");
+      const clicks = await clicksResponse.json();
+
+      if (clicks.length > 0) {
+        html += `
+          <div class="recent-clicks">
+            <h3>Letzte Klicks</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Link</th>
+                  <th>Zeitstempel</th>
+                </tr>
+              </thead>
+              <tbody>
+        `;
+
+        clicks.slice(0, 20).forEach(click => {
+          const date = new Date(click.timestamp).toLocaleString('de-DE');
+          html += `<tr><td>${click.link_title}</td><td>${date}</td></tr>`;
+        });
+
+        html += `
+              </tbody>
+            </table>
+          </div>
+          <div class="auto-refresh">
+            ⏰ Zuletzt aktualisiert: ${new Date().toLocaleTimeString('de-DE')}
+          </div>
+        `;
+      }
+
+      contentDiv.innerHTML = html;
+    } catch (error) {
+      contentDiv.innerHTML = '';
+      messageDiv.innerHTML = `
+        <div class="error">
+          ❌ Fehler: ${error.message}<br/>
+          Stelle sicher, dass der Analytics-Server läuft: <code>node analytics/server.js</code>
+        </div>
+      `;
+    }
+  }
+
+  async function resetStats() {
+    if (!confirm("⚠️ Alle Analytics-Daten wirklich löschen?")) return;
+
+    try {
+      const response = await fetch("http://localhost:3000/api/reset", {
+        method: "DELETE"
+      });
+      const result = await response.json();
+      
+      const messageDiv = document.getElementById("message");
+      messageDiv.innerHTML = '<div class="success">✅ Alle Daten gelöscht</div>';
+      
+      setTimeout(() => loadStats(), 1000);
+    } catch (error) {
+      const messageDiv = document.getElementById("message");
+      messageDiv.innerHTML = `<div class="error">❌ Fehler beim Löschen: ${error.message}</div>`;
+    }
+  }
+
+  function startAutoRefresh() {
+    if (autoRefreshInterval) return;
+    autoRefreshInterval = setInterval(loadStats, 3000); // Alle 3 Sekunden aktualisieren
+    const messageDiv = document.getElementById("message");
+    messageDiv.innerHTML = '<div class="success">✅ Auto-Refresh aktiv (alle 3 Sekunden)</div>';
+    setTimeout(() => { messageDiv.innerHTML = ""; }, 3000);
+  }
+
+  function stopAutoRefresh() {
+    if (autoRefreshInterval) {
+      clearInterval(autoRefreshInterval);
+      autoRefreshInterval = null;
+      const messageDiv = document.getElementById("message");
+      messageDiv.innerHTML = '<div class="error">⏹️ Auto-Refresh gestoppt</div>';
+      setTimeout(() => { messageDiv.innerHTML = ""; }, 2000);
+    }
+  }
+
+  // Initial load
+  loadStats();
+</script>
+
+</body>
+</html>

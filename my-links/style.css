@@ -1,0 +1,47 @@
+body {
+  margin: 0;
+  font-family: system-ui;
+  background: #0f1115;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 420px;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.avatar {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+.link {
+  display: block;
+  padding: 16px;
+  margin: 12px 0;
+  background: #1a1d24;
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  transition: 0.25s;
+}
+
+.link:hover {
+  transform: scale(1.03);
+  background: #262a34;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 30px;
+  padding: 10px 16px;
+}

@@ -1,0 +1,38 @@
+# .gitignore
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Database
+analytics.db
+analytics.db-*
+*.db-backup*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.vscode/*
+
+# Backups
+backups/
+*.backup
+*.bak
+
+# Temporary
+tmp/
+temp/
+.cache/
+
+# PM2
+ecosystem.config.js
