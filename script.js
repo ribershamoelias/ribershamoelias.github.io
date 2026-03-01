@@ -41,40 +41,9 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Analytics tracking integration (if available)
-function trackEvent(eventName, eventData) {
-  // Send to analytics backend if available
-  const analyticsUrl = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000'
-    : 'https://analytics.example.com';
-  
-  try {
-    fetch(`${analyticsUrl}/api/click`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        link: eventName,
-        data: eventData 
-      })
-    }).catch(() => {
-      // Analytics not available, use fallback
-      console.log('Event tracked locally:', eventName);
-    });
-  } catch (error) {
-    console.log('Analytics unavailable');
-  }
-}
+// (Analytics removed - site no longer tracks clicks)
 
-// Track page visit
-trackEvent('Website Visit', { page: window.location.pathname });
-
-// Track clicks on important buttons
-document.querySelectorAll('.btn, .contact-card').forEach(element => {
-  element.addEventListener('click', () => {
-    const text = element.textContent || element.innerText;
-    trackEvent(`Button Click: ${text.trim().substring(0, 30)}`);
-  });
-});
+// Deprecated tracking functions have been removed.
 
 // Load animation on page load
 document.addEventListener('DOMContentLoaded', () => {

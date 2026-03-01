@@ -8,62 +8,50 @@
 
 Deine persönliche Website gehostet auf GitHub Pages:
 
-- **Frontend**: Portfolio-Website mit dunklem Design
+**Frontend**: Portfolio-Website mit dunklem Design
 - **Links**: Linktree-Alternative für alle sozialen Links
-- **Analytics**: Optional - Privacy-fokussiertes Tracking Backend
 - **Domain**: ribershamoelias.com via GitHub Pages + Custom Domain
 
 ## ✨ Features
 
-- ✅ **Public Link Page**: Beautiful, responsive link page hosted on GitHub Pages
-- ✅ **Private Analytics**: Track clicks without Google Analytics or third-party services
-- ✅ **Hortfolio Website**: Hero Section, About, Projekte, Skills, Kontakt
+- ✅ **Portfolio Website**: Hero Section, About, Projekte, Skills, Kontakt
 - ✅ **Responsive Design**: Perfekt auf Mobile, Tablet & Desktop
 - ✅ **Linktree Alternative**: Alle wichtigen Links an einem Ort (my-links/)
 - ✅ **Dark Theme**: Modernes Design mit Purple-Gradients
-- ✅ **Analytics**: Optional - Track Link-Clicks ohne Google Analytics
 - ✅ **Custom Domain**: ribershamoelias.com via GitHub Pages
 - ✅ **HTTPS**: Automatisch via GitHub Pages
 - ✅ **Keine Abhängigkeiten**: Nur HTML, CSS, Vanilla JavaScript
 
 ```
-GitHub Pages                      Your VPS
-links.example.com          →      analytics.example.com
-   │                              │
-   ├─ index.html                  ├─ Node.js Server (PM2)
-   ├─ style.css                   ├─ SQLite Database
-   ├─ script.js                   ├─ Nginx Reverse Proxy
-   ├─ links.json                  └─ Let's Encrypt SSL
+GitHub Pages
+ribershamoelias.github.io
    │
-   └─ Clicks tracked via HTTPS API
+   ├─ index.html
+   ├─ style.css
+   ├─ script.js
+   ├─ links.json
 ```
 
 ## 🚀 Quick Start
 
-### Option 1: Local Development (5 mins)
+### Lokaler Test
 
 ```bash
-cd my-links/analytics
-npm install
-npm start
-# Server runs on http://localhost:3000
+# einfach eine statische Datei mit einem Webserver anzeigen
+# (oder direkt die index.html im Browser öffnen)
+cd /Users/ribershamoelias/Desktop/ribershamoelias
+open index.html  # macOS öffnet die Datei im Standardbrowser
 ```
 
-Visit dashboard: Open [index.html](./my-links/index.html) and click "Stats anzeigen"
-
-### Option 2: Production Deployment (45 mins)
-
-See [QUICKSTART.md](./QUICKSTART.md) for step-by-step instructions
+Die Seite funktioniert komplett ohne Backend; du kannst direkt deine
+Links in `my-links/links.json` bearbeiten und die Ergebnisse sehen.
 
 ## 📚 Documentation
 
 | Document | Purpose |
 |----------|---------|
-| [QUICKSTART.md](./QUICKSTART.md) | 5-min local setup + 45-min production deployment |
-| [DEPLOYMENT.md](./DEPLOYMENT.md) | Complete production guide with VPS setup |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | System design, database schema, security details |
-| [my-links/analytics/README.md](./my-links/analytics/README.md) | Backend API documentation |
-| [my-links/analytics/NGINX_SETUP.md](./my-links/analytics/NGINX_SETUP.md) | Nginx reverse proxy configuration |
+| [PERSONAL_WEBSITE.md](./PERSONAL_WEBSITE.md) | Anleitung zur Anpassung deiner Website |
+| [WEBSITE_OVERVIEW.md](./WEBSITE_OVERVIEW.md) | Stil- und Strukturübersicht |
 
 ## 🔌 API Overview
 
