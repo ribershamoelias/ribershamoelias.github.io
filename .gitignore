@@ -10,9 +10,7 @@ node_modules/
 package-lock.json
 
 # Database
-analytics.db
-analytics.db-*
-*.db-backup*
+# (no database used)
 
 # Logs
 logs/

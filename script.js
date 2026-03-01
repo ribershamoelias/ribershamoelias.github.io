@@ -1,5 +1,5 @@
 // Riber Shamo Elias - Personal Website
-// Interactive features and analytics integration
+// Interactive features
 
 console.log("🚀 Welcome to Riber's personal website");
 console.log("Structure. Change. Discipline.");
@@ -41,7 +41,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// (Analytics removed - site no longer tracks clicks)
+// analytics functionality removed
 
 // Deprecated tracking functions have been removed.
 
