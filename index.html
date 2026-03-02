@@ -13,7 +13,10 @@
 <nav class="nav">
     <div class="nav-inner">
         <div class="brand">RIBER SHAMO ELIAS</div>
-        <div class="links">
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <div class="links" id="navLinks">
             <a href="#about">About</a>
             <a href="#systems">RSE Systems</a>
             <a href="#today">Today</a>
@@ -24,7 +27,6 @@
 
 <main>
 
-<!-- Hero -->
 <header class="hero">
     <h1>
         Simplicity is<br>
@@ -36,77 +38,29 @@
     </p>
 </header>
 
-<!-- About -->
 <section id="about" class="section narrow">
     <h2>About</h2>
-
     <p class="lead">
-        I am a student of Applied Mathematics.  
-        But more importantly, I am a student of structure.
+        I am a student of Applied Mathematics — and a student of structure.
     </p>
-
     <p>
-        I am drawn to systems — not because they are complex, but because they
-        reveal how the world is organized beneath the surface.
-        Mathematics taught me that elegance is not decoration.
-        It is reduction. It is discipline.
-    </p>
-
-    <p>
-        Over time I realized that most technological complexity is not necessary.
-        It accumulates. It layers. It hides.
-        True engineering does the opposite.
-        It removes until only what must exist remains.
-    </p>
-
-    <p>
-        I build with that philosophy.
-        Whether writing code, designing infrastructure, or structuring ideas,
-        the goal is always the same:
-        clarity over noise. Stability over fashion. Foundations over features.
-    </p>
-
-    <p>
-        My work is guided by a simple belief:
-        technology should be understandable.
-        Systems should be maintainable.
-        And infrastructure should outlive the trends that created it.
-    </p>
-
-    <p>
-        I am not interested in building products for attention.
-        I am interested in building systems that endure.
+        Mathematics taught me that elegance is reduction.
+        True engineering removes until only what must exist remains.
     </p>
 </section>
-<!-- RSE Systems (Past) -->
+
 <section id="systems" class="section alt">
     <div class="narrow">
         <h2>RSE Systems</h2>
-
         <p class="lead">
-            An independent IT practice I founded to understand how systems behave outside theory.
+            An independent IT laboratory.
         </p>
-
         <p>
-            Through RSE Systems I built hosting environments, web infrastructure,
-            and technical solutions for regional organizations. It was never meant
-            to become an agency — it was a laboratory.
-        </p>
-
-        <p>
-            Working directly with production environments revealed a recurring pattern:
-            most complexity was not technical. It came from closed ecosystems,
-            opaque tools, and dependencies that prevented real understanding.
-        </p>
-
-        <p>
-            I chose to step away from that model deliberately — not to leave engineering,
-            but to move closer to foundational technologies and open systems.
+            It was never meant to become an agency — it was an experiment in understanding real infrastructure.
         </p>
     </div>
 </section>
 
-<!-- Today -->
 <section id="today" class="section bento-section">
     <div class="container">
         <h2>Today</h2>
@@ -116,39 +70,25 @@
             <div class="bento-item large">
                 <span class="bento-label">Current Focus</span>
                 <h3>Open Systems</h3>
-                <p>
-                    I focus on technologies that remain understandable over time.
-                    Systems that can be inspected, modified, and rebuilt —
-                    not just used.
-                </p>
+                <p>Infrastructure that remains understandable over decades.</p>
             </div>
 
             <div class="bento-item">
                 <span class="bento-label">Method</span>
                 <h3>Mathematical Thinking</h3>
-                <p>
-                    Reduction. Structure. Proof over assumption.
-                    Complexity is treated as a problem to solve, not a feature to ship.
-                </p>
+                <p>Reduction. Structure. Proof over assumption.</p>
             </div>
 
             <div class="bento-item">
                 <span class="bento-label">Tools</span>
                 <h3>Open Source</h3>
-                <p>
-                    Open ecosystems allow longevity.
-                    They remove dependency on vendors and return control to engineers.
-                </p>
+                <p>Control belongs to engineers — not vendors.</p>
             </div>
 
             <div class="bento-item wide">
-                <span class="bento-label">Long-Term Direction</span>
-                <h3>Infrastructure That Outlives Its Creators</h3>
-                <p>
-                    The goal is not another service company.
-                    It is contributing to an environment where digital infrastructure
-                    in Europe can be transparent, sovereign, and durable.
-                </p>
+                <span class="bento-label">Direction</span>
+                <h3>European Digital Sovereignty</h3>
+                <p>Transparent, durable infrastructure.</p>
             </div>
 
         </div>
@@ -160,6 +100,12 @@
 </footer>
 
 </main>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
 
 <script src="script.js"></script>
 </body>
