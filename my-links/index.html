@@ -1,24 +1,151 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Meine Links</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riber Shamo Elias | Index</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="antialiased">
 
-<body>
-
-<div class="container">
-  <img src="https://via.placeholder.com/100" class="avatar">
-
-  <h1>Riber</h1>
-  <p class="subtitle">Structure. Change. Discipline.</p>
-
-  <div id="links"></div>
-
-
+<div class="bg-layer">
+    <canvas id="logicCanvas"></canvas>
 </div>
 
-<script src="script.js"></script>
+<nav class="nav">
+    <div class="nav-inner">
+        <div class="brand">RIBER SHAMO ELIAS</div>
+        <a href="index.html" class="back">Back to Site</a>
+    </div>
+</nav>
+
+<main>
+    <header class="hero">
+        <div class="profile-initial">R</div>
+        <h1>Connect.</h1>
+    </header>
+
+    <section class="links">
+        <a href="https://rse-systems.com" class="link-card primary">
+            <span class="label">Venture</span>
+            <h2>RSE Systems</h2>
+            <p>IT infrastructure & high-performance web engineering. Completed chapter.</p>
+        </a>
+
+        <a href="https://github.com/ribershamoelias" class="link-card">
+            <span class="label">Source</span>
+            <h2>GitHub</h2>
+            <p>Algorithmic proofs, open source contributions, and long-term tools.</p>
+        </a>
+
+        <a href="https://www.linkedin.com/in/riber-shamo-elias/" class="link-card">
+            <span class="label">Network</span>
+            <h2>LinkedIn</h2>
+            <p>Professional background, academic connections, and relations.</p>
+        </a>
+
+        <div class="link-card insta-composite">
+            <a href="https://www.instagram.com/ribershamoelias/" class="insta-link-overlay">
+                <span class="label">Discipline</span>
+                <h2>Instagram</h2>
+                <p>A log of physical focus, lifestyle optimization, and training.</p>
+            </a>
+            <div class="feed-container">
+                <blockquote class="instagram-media" 
+                    data-instgrm-permalink="https://www.instagram.com/ribershamoelias/" 
+                    data-instgrm-version="14">
+                </blockquote>
+            </div>
+        </div>
+
+        <a href="https://open.spotify.com/user/izbk5un2skydl5zu9yss6e8fr?si=wesf1eZDRMuNGFtM9m7F3A&fbclid=PAZXh0bgNhZW0CMTEAAaeNzrvzCDj29_3mydYRwQ0-e71Kgy1ml2ndktMGbmL1SbOE4CGionpLzbFMIQ_aem_wMKFhMN8rU2wTXWs5Bf4YA&nd=1&dlsi=c028c786425f424d" class="link-card spotify-card">
+            <span class="label">Soundtrack</span>
+            <h2>Spotify</h2>
+            <p>Deep focus curation. Mathematical soundtrack for complex thought.</p>
+        </a>
+    </section>
+
+    <footer>
+    <p>Clarity over noise.</p>
+    <p>Riber Shamo Elias. All rights reserved. © 2026</p>
+
+    <div class="legal-links">
+        <button onclick="openModal('imprint')">Impressum</button>
+        <button onclick="openModal('privacy')">Datenschutz</button>
+    </div>
+</footer>
+</main>
+<!-- IMPRINT MODAL -->
+<div id="imprint" class="modal">
+    <div class="modal-card">
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2>Impressum</h2>
+
+        <p><strong>Angaben gemäß § 5 TMG</strong></p>
+
+        <p>
+        Riber Shamo Elias<br>
+        Königsberger Str. 3, 54411 Hermeskeil<br>
+        Deutschland
+        </p>
+
+        <p>
+        E-Mail: r.s.elias@proton.me
+        </p>
+
+        <p>
+        Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+        Riber Shamo Elias
+        </p>
+
+        <p class="muted">
+        Diese Website dient ausschließlich der persönlichen Darstellung und Information.
+        </p>
+    </div>
+</div>
+
+
+<!-- PRIVACY MODAL -->
+<div id="privacy" class="modal">
+    <div class="modal-card">
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2>Datenschutzerklärung</h2>
+
+        <p>
+        Diese Website verarbeitet keine personenbezogenen Daten auf eigenen Servern.
+        Es werden keine Tracking-Tools, keine Cookies und keine Analyse-Dienste eingesetzt.
+        </p>
+
+        <p>
+        Beim Aufruf der Seite übermittelt Ihr Browser technisch notwendige Daten
+        an den Hosting-Provider (z. B. IP-Adresse, Datum, Uhrzeit).
+        Diese Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO
+        zur Bereitstellung der Website.
+        </p>
+
+        <p>
+        Inhalte von Drittanbietern (z. B. Instagram Embed) können beim Laden
+        eine Verbindung zu deren Servern herstellen. Dabei gelten die
+        Datenschutzbestimmungen des jeweiligen Anbieters.
+        </p>
+
+        <p>
+        Es findet keine Zusammenführung dieser Daten statt.
+        </p>
+
+        <p>
+        Verantwortlich:<br>
+        Riber Shamo Elias<br>
+        r.s.elias@proton.me
+        </p>
+    </div>
+</div>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
+<script src="background.js"></script>
+
 </body>
 </html>
