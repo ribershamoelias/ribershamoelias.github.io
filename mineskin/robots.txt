@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /utils.js
+Disallow: /canvas.js
+Disallow: /preview.js
+Disallow: /app.js
+Disallow: /style.css
+Disallow: /landing.css
+
+Sitemap: https://mineskin.ribershamoelias.com/sitemap.xml

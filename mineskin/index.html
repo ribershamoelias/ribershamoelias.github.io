@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ Primary SEO ═══ -->
+  <title>MineSkin — Free Minecraft Skin Editor | Java &amp; Bedrock</title>
+  <meta name="description" content="MineSkin is a free, browser-based Minecraft skin editor. Draw pixel-perfect skins, preview on a 3D Steve or Alex model, support for 64×64 Java Edition and 128×128 Bedrock Edition. No download, no account required." />
+  <meta name="keywords" content="minecraft skin editor, minecraft skin maker, free minecraft skin editor, java edition skin, bedrock edition skin, pixel art editor, minecraft character creator, skin designer, 64x64 skin, 128x128 skin, online skin editor" />
+  <meta name="author" content="Riber Shamo Elias" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://mineskin.ribershamoelias.com/" />
+
+  <!-- ═══ Open Graph (Facebook, Discord, WhatsApp) ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MineSkin" />
+  <meta property="og:title" content="MineSkin — Free Minecraft Skin Editor" />
+  <meta property="og:description" content="Design pixel-perfect Minecraft skins in your browser. 3D live preview, layers, image overlay, Java &amp; Bedrock support. Free, no install." />
+  <meta property="og:url" content="https://mineskin.ribershamoelias.com/" />
+  <meta property="og:image" content="https://mineskin.ribershamoelias.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="MineSkin Editor — pixel canvas with 3D Steve preview" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- ═══ Twitter / X Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ribershamoelias" />
+  <meta name="twitter:creator" content="@ribershamoelias" />
+  <meta name="twitter:title" content="MineSkin — Free Minecraft Skin Editor" />
+  <meta name="twitter:description" content="Design pixel-perfect Minecraft skins in your browser. 3D preview, layers, Java &amp; Bedrock. Free, no install." />
+  <meta name="twitter:image" content="https://mineskin.ribershamoelias.com/og-image.png" />
+  <meta name="twitter:image:alt" content="MineSkin Editor interface" />
+
+  <!-- ═══ Theme & App ═══ -->
+  <meta name="theme-color" content="#6c63ff" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="application-name" content="MineSkin" />
+
+  <!-- ═══ Performance hints ═══ -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+  <!-- ═══ Structured Data — WebSite + SoftwareApplication ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://mineskin.ribershamoelias.com/#website",
+        "url": "https://mineskin.ribershamoelias.com/",
+        "name": "MineSkin",
+        "description": "Free browser-based Minecraft skin editor supporting Java and Bedrock Edition.",
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://mineskin.ribershamoelias.com/editor.html",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://mineskin.ribershamoelias.com/#app",
+        "name": "MineSkin Editor",
+        "url": "https://mineskin.ribershamoelias.com/editor.html",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web Browser",
+        "browserRequirements": "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "A free, pixel-perfect Minecraft skin editor that runs entirely in the browser. Supports 64x64 Java Edition and 128x128 Bedrock Edition skins, 3D live preview, layers, image overlay, undo/redo, and PNG export.",
+        "featureList": [
+          "64x64 Java Edition skin support",
+          "128x128 Bedrock Edition skin support",
+          "Live 3D preview with Steve and Alex models",
+          "Pixel drawing tools: brush, eraser, fill, eyedropper, rectangle",
+          "Base and Outer layer system",
+          "Image to Skin overlay feature",
+          "Mirror drawing mode",
+          "50-step undo/redo history",
+          "Auto-save to localStorage",
+          "PNG export with custom project name"
+        ],
+        "screenshot": "https://mineskin.ribershamoelias.com/og-image.png",
+        "author": {
+          "@type": "Person",
+          "name": "Riber Shamo Elias",
+          "url": "https://ribershamoelias.com"
+        },
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://mineskin.ribershamoelias.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is MineSkin free?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely free, forever. No account, no paywall, no ads." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to install anything to use MineSkin?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. MineSkin runs entirely in your browser. Just open the editor and start drawing." }
+          },
+          {
+            "@type": "Question",
+            "name": "Will my skin be saved?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Your skin is auto-saved to your browser's localStorage every time you draw." }
+          },
+          {
+            "@type": "Question",
+            "name": "What file format does MineSkin export?",
+            "acceptedAnswer": { "@type": "Answer", "text": "PNG — the only format Minecraft accepts. The file is named yourprojectname_mineskin.png." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I import an existing Minecraft skin?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drag and drop any 64x64 or 128x128 PNG onto the editor, or use the Import button." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does MineSkin support Bedrock Edition skins?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. MineSkin supports both 64x64 Java Edition and 128x128 Bedrock Edition skin formats. You can switch between them with one click." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="landing.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-logo" href="https://mineskin.ribershamoelias.com/">
+        <span class="nav-logo-icon">⛏</span>
+        <span class="nav-logo-text">MineSkin</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="https://ribershamoelias.com" style="opacity:.6;font-size:.85rem">← ribershamoelias.com</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#bento">What's inside</a></li>
+        <li><a href="#editions">Editions</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="nav-cta" href="editor.html">Open Editor →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-badge">Free · No install · Runs in your browser</div>
+    <h1 class="hero-title" id="hero-heading">
+      Design your<br />
+      <span class="hero-gradient">Minecraft skin.</span>
+    </h1>
+    <p class="hero-sub">
+      A pixel-perfect skin editor with 3D preview, layers, image overlay,<br class="br-desk" />
+      64×64 Java &amp; 128×128 Bedrock support — all in one tab.
+    </p>
+    <div class="hero-actions">
+      <a class="btn-hero-primary" href="editor.html">Start Editing — It's Free</a>
+      <a class="btn-hero-ghost" href="#features">See features ↓</a>
+    </div>
+    <div class="hero-preview">
+      <div class="hero-preview-window">
+        <div class="hero-preview-bar">
+          <span></span><span></span><span></span>
+          <span class="hero-preview-url">mineskin · editor</span>
+        </div>
+        <div class="hero-preview-body">
+          <div class="mock-canvas">
+            <div class="mock-grid"></div>
+            <div class="mock-pixel" style="--x:3;--y:2;--c:#6c63ff"></div>
+            <div class="mock-pixel" style="--x:4;--y:2;--c:#6c63ff"></div>
+            <div class="mock-pixel" style="--x:5;--y:2;--c:#6c63ff"></div>
+            <div class="mock-pixel" style="--x:3;--y:3;--c:#a78bfa"></div>
+            <div class="mock-pixel" style="--x:4;--y:3;--c:#a78bfa"></div>
+            <div class="mock-pixel" style="--x:5;--y:3;--c:#a78bfa"></div>
+            <div class="mock-pixel" style="--x:3;--y:4;--c:#7c74ff"></div>
+            <div class="mock-pixel" style="--x:4;--y:4;--c:#7c74ff"></div>
+            <div class="mock-pixel" style="--x:5;--y:4;--c:#7c74ff"></div>
+          </div>
+          <div class="mock-sidebar">
+            <div class="mock-tool active"></div>
+            <div class="mock-tool"></div>
+            <div class="mock-tool"></div>
+            <div class="mock-tool"></div>
+            <div class="mock-divider"></div>
+            <div class="mock-color" style="background:#6c63ff"></div>
+            <div class="mock-color" style="background:#a78bfa"></div>
+            <div class="mock-color" style="background:#ff6b6b"></div>
+            <div class="mock-color" style="background:#ffcc44"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS / TRUST BAR -->
+  <div class="trust-bar">
+    <span>Works on</span>
+    <div class="trust-items">
+      <div class="trust-item">🌐 Chrome</div>
+      <div class="trust-item">🦊 Firefox</div>
+      <div class="trust-item">🧭 Safari</div>
+      <div class="trust-item">🔷 Edge</div>
+      <div class="trust-item">🖥 Desktop</div>
+      <div class="trust-item">📱 Tablet</div>
+    </div>
+  </div>
+
+  <!-- FEATURES STRIP -->
+  <section class="features" id="features" aria-labelledby="features-heading">
+    <div class="section-label">Features</div>
+    <h2 class="section-title" id="features-heading">Everything you need.<br />Nothing you don't.</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Pixel Editor</h3>
+        <p>64×64 canvas with click-and-drag painting, zoom from 2× to 24×, and interpolated brush strokes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧊</div>
+        <h3>Live 3D Preview</h3>
+        <p>Three.js Steve &amp; Alex model updates in real time. Drag to rotate, scroll to zoom, toggle walk animation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖼</div>
+        <h3>Image to Skin</h3>
+        <p>Upload any image, drag it onto the skin, scale and adjust opacity, then bake it in permanently.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📐</div>
+        <h3>Layers</h3>
+        <p>Separate Base and Outer layers with independent visibility — just like the real Minecraft skin format.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🪄</div>
+        <h3>Smart Tools</h3>
+        <p>Brush, Eraser, Eyedropper, Flood Fill, Rectangle — plus Mirror mode for symmetric drawing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h3>Auto-save</h3>
+        <p>Your work is saved to localStorage automatically. Come back later and pick up right where you left off.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO GRID -->
+  <section class="bento-section" id="bento" aria-labelledby="bento-heading">
+    <div class="section-label">What's inside</div>
+    <h2 class="section-title" id="bento-heading">One editor.<br />Infinite skins.</h2>
+    <div class="bento">
+
+      <div class="bento-card bento-large bento-purple">
+        <div class="bento-tag">Core</div>
+        <h3>Pixel-perfect<br />canvas engine</h3>
+        <p>Internal resolution stays at 64×64 or 128×128. CSS zoom handles display scaling — every pixel is exactly one skin pixel.</p>
+        <div class="bento-visual bento-visual-canvas">
+          <div class="bv-row" style="--delay:0s"></div>
+          <div class="bv-row" style="--delay:.05s"></div>
+          <div class="bv-row" style="--delay:.1s"></div>
+          <div class="bv-row" style="--delay:.15s"></div>
+          <div class="bv-row" style="--delay:.2s"></div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-small bento-dark">
+        <div class="bento-tag">Undo / Redo</div>
+        <h3>50-step history</h3>
+        <p>Never lose a stroke. Full undo stack with Ctrl+Z / Ctrl+Y.</p>
+        <div class="bento-visual bento-visual-undo">
+          <span>↩</span>
+          <span>↪</span>
+        </div>
+      </div>
+
+      <div class="bento-card bento-small bento-dark">
+        <div class="bento-tag">Palette</div>
+        <h3>64 Minecraft colors</h3>
+        <p>Curated palette + recent colors for fast access.</p>
+        <div class="bento-visual bento-visual-palette">
+          <div style="background:#6c63ff"></div><div style="background:#ff6b6b"></div>
+          <div style="background:#ffcc44"></div><div style="background:#44cc00"></div>
+          <div style="background:#44aaff"></div><div style="background:#cc44ff"></div>
+          <div style="background:#ff9966"></div><div style="background:#a78bfa"></div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-medium bento-glow">
+        <div class="bento-tag">Editions</div>
+        <h3>Java &amp; Bedrock<br />in one editor</h3>
+        <p>Switch between 64×64 and 128×128 with one click. Scale your artwork up or start fresh.</p>
+        <div class="bento-visual bento-visual-editions">
+          <div class="bve-pill bve-active">64×64<br/><small>Java</small></div>
+          <div class="bve-arrow">⇄</div>
+          <div class="bve-pill">128×128<br/><small>Bedrock</small></div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-medium bento-dark">
+        <div class="bento-tag">Export</div>
+        <h3>Named exports</h3>
+        <p>Give your project a name. Export as <code>yourname_mineskin.png</code> — ready to upload to Minecraft.</p>
+        <div class="bento-visual bento-visual-export">
+          <div class="bve-file">
+            <span>🖼</span>
+            <span>CoolSkin_mineskin.png</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-small bento-dark">
+        <div class="bento-tag">Mirror</div>
+        <h3>Symmetry mode</h3>
+        <p>Draw on one side, mirror on the other automatically.</p>
+        <div class="bento-visual bento-visual-mirror">
+          <div class="bvm-half left"></div>
+          <div class="bvm-line"></div>
+          <div class="bvm-half right"></div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-small bento-dark">
+        <div class="bento-tag">Body Parts</div>
+        <h3>Focused editing</h3>
+        <p>Restrict drawing to Head, Body, Arms or Legs.</p>
+        <div class="bento-visual bento-visual-parts">
+          <div class="bvp-head"></div>
+          <div class="bvp-body"></div>
+          <div class="bvp-legs"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDITIONS -->
+  <section class="editions-section" id="editions" aria-labelledby="editions-heading">
+    <div class="section-label">Editions</div>
+    <h2 class="section-title" id="editions-heading">Pick your resolution.</h2>
+    <div class="editions-grid">
+      <div class="edition-card">
+        <div class="edition-badge java">Java Edition</div>
+        <div class="edition-res">64 × 64</div>
+        <ul class="edition-list">
+          <li>✓ Standard Minecraft skin format</li>
+          <li>✓ Compatible with all Java servers</li>
+          <li>✓ Namemc, Skindex ready</li>
+          <li>✓ Smallest file size</li>
+        </ul>
+      </div>
+      <div class="edition-card edition-featured">
+        <div class="edition-badge bedrock">Bedrock Edition</div>
+        <div class="edition-res">128 × 128</div>
+        <ul class="edition-list">
+          <li>✓ High-resolution detail</li>
+          <li>✓ Bedrock / Marketplace ready</li>
+          <li>✓ Auto-upscale from 64×64</li>
+          <li>✓ 4× more pixels to work with</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-section">
+    <h2 class="cta-title">Ready to build your skin?</h2>
+    <p class="cta-sub">No account. No download. Just open and start drawing.</p>
+    <a class="btn-hero-primary" href="editor.html">Open MineSkin Editor →</a>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title" id="faq-heading">Common questions.</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is MineSkin free?</summary>
+        <p>Yes — completely free, forever. No account, no paywall, no ads.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to install anything?</summary>
+        <p>No. MineSkin runs entirely in your browser. Just open the editor and start drawing.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will my work be saved?</summary>
+        <p>Yes. Your skin is auto-saved to your browser's localStorage every time you draw. It will be there when you come back.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What file format does it export?</summary>
+        <p>PNG — the only format Minecraft accepts. The file is named <code>yourprojectname_mineskin.png</code>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I import an existing skin?</summary>
+        <p>Yes. Drag and drop any 64×64 or 128×128 PNG onto the editor, or use the Import button.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work on mobile?</summary>
+        <p>MineSkin is optimized for desktop and tablet. Smartphones are technically supported but the experience is limited due to screen size.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <span>⛏</span>
+        <span>MineSkin</span>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>⚠️ Independent Fan Project</strong> —
+        MineSkin is an independent, fan-made tool and is <strong>not affiliated with, endorsed by, or associated with Mojang Studios or Microsoft</strong> in any way.
+        Minecraft® is a registered trademark of Mojang AB. All Minecraft-related names, logos, and assets belong to their respective owners.
+      </div>
+      <div class="footer-links">
+        <a href="editor.html">Editor</a>
+        <a href="https://ribershamoelias.com" target="_blank" rel="noopener">ribershamoelias.com</a>
+        <a href="https://github.com/ribershamoelias" target="_blank" rel="noopener">GitHub</a>
+        <button class="footer-legal-btn" id="btn-impressum">Impressum</button>
+        <button class="footer-legal-btn" id="btn-datenschutz">Datenschutz</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- IMPRESSUM MODAL -->
+  <div class="legal-modal" id="impressum-modal" aria-modal="true" role="dialog" aria-labelledby="impressum-title">
+    <div class="legal-backdrop" id="impressum-backdrop"></div>
+    <div class="legal-box">
+      <div class="legal-header">
+        <h2 class="legal-title" id="impressum-title">Impressum</h2>
+        <button class="legal-close" id="impressum-close" aria-label="Schließen">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="legal-body">
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>MineSkin ist ein privates, nicht-kommerzielles Fan-Projekt und wird ohne Gewinnabsicht betrieben.</p>
+
+        <h3>Verantwortlich für den Inhalt</h3>
+        <p>Riber Shamo Elias<br />Kontakt: über GitHub Issues</p>
+
+        <h3>Haftungsausschluss</h3>
+        <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann keine Gewähr übernommen werden.</p>
+
+        <h3>Markenrechtlicher Hinweis</h3>
+        <p>MineSkin ist ein unabhängiges Fan-Projekt und steht in <strong>keiner Verbindung zu Mojang Studios oder Microsoft</strong>. Minecraft® ist eine eingetragene Marke von Mojang AB. Alle Minecraft-bezogenen Namen, Logos und Assets sind Eigentum ihrer jeweiligen Inhaber. Die Nutzung erfolgt ausschließlich zu nicht-kommerziellen, informativen Zwecken im Rahmen des Fair Use.</p>
+
+        <h3>Externe Links</h3>
+        <p>Diese Website enthält Links zu externen Websites Dritter. Auf deren Inhalte haben wir keinen Einfluss und übernehmen daher keine Gewähr.</p>
+
+        <h3>Hosting</h3>
+        <p>Diese Website wird über GitHub Pages (GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA) gehostet. Es gelten die <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzbestimmungen von GitHub</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATENSCHUTZ MODAL -->
+  <div class="legal-modal" id="datenschutz-modal" aria-modal="true" role="dialog" aria-labelledby="datenschutz-title">
+    <div class="legal-backdrop" id="datenschutz-backdrop"></div>
+    <div class="legal-box">
+      <div class="legal-header">
+        <h2 class="legal-title" id="datenschutz-title">Datenschutzerklärung</h2>
+        <button class="legal-close" id="datenschutz-close" aria-label="Schließen">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="legal-body">
+        <h3>1. Datenschutz auf einen Blick</h3>
+        <p>MineSkin erhebt <strong>keine personenbezogenen Daten</strong>. Es gibt keine Nutzerkonten, keine Registrierung, kein Tracking und keine Analyse-Tools.</p>
+
+        <h3>2. Lokale Datenspeicherung</h3>
+        <p>Dein Skin wird ausschließlich im <strong>localStorage deines Browsers</strong> gespeichert. Diese Daten verlassen deinen Computer nicht und werden nicht an Server übertragen. Du kannst sie jederzeit über die Browsereinstellungen löschen.</p>
+
+        <h3>3. Share-Links</h3>
+        <p>Wenn du einen Share-Link erstellst, werden die Skin-Daten als komprimierter String direkt in der URL kodiert. Es wird kein Server kontaktiert. Die URL enthält ausschließlich die Bilddaten deines Skins.</p>
+
+        <h3>4. Hosting durch GitHub Pages</h3>
+        <p>Diese Website wird über GitHub Pages gehostet. GitHub kann dabei technische Zugriffsdaten (z. B. IP-Adresse, Browsertyp, Zeitstempel) in Server-Logs speichern. Weitere Informationen findest du in der <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+
+        <h3>5. Externe Ressourcen</h3>
+        <p>Der Editor lädt folgende externe Bibliotheken:
+          <ul>
+            <li>Three.js über cdnjs.cloudflare.com</li>
+            <li>LZ-String über cdn.jsdelivr.net</li>
+          </ul>
+          Beim Laden dieser Ressourcen kann deine IP-Adresse an die jeweiligen CDN-Anbieter übertragen werden.
+        </p>
+
+        <h3>6. Keine Cookies</h3>
+        <p>MineSkin verwendet <strong>keine Cookies</strong>.</p>
+
+        <h3>7. Deine Rechte</h3>
+        <p>Da keine personenbezogenen Daten erhoben werden, entfallen Auskunfts-, Löschungs- und Widerspruchsrechte nach DSGVO. Bei Fragen wende dich über GitHub Issues an uns.</p>
+
+        <h3>8. Haftungsausschluss Minecraft</h3>
+        <p>MineSkin ist ein unabhängiges Fan-Projekt und steht in keiner Verbindung zu Mojang Studios oder Microsoft. Minecraft® ist eine eingetragene Marke von Mojang AB.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('toggle', () => {
+        document.querySelectorAll('.faq-item').forEach(other => {
+          if (other !== item) other.removeAttribute('open');
+        });
+      });
+    });
+
+    // Legal modals
+    function openLegal(id) {
+      document.getElementById(id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLegal(id) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('btn-impressum').addEventListener('click',   () => openLegal('impressum-modal'));
+    document.getElementById('btn-datenschutz').addEventListener('click', () => openLegal('datenschutz-modal'));
+    document.getElementById('impressum-close').addEventListener('click',   () => closeLegal('impressum-modal'));
+    document.getElementById('datenschutz-close').addEventListener('click', () => closeLegal('datenschutz-modal'));
+    document.getElementById('impressum-backdrop').addEventListener('click',   () => closeLegal('impressum-modal'));
+    document.getElementById('datenschutz-backdrop').addEventListener('click', () => closeLegal('datenschutz-modal'));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLegal('impressum-modal');
+        closeLegal('datenschutz-modal');
+      }
+    });
+  </script>
+</body>
+</html>

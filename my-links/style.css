@@ -1,0 +1,210 @@
+:root {
+    /* Neue Farbdefinitionen für hellen Content auf dunklem Grund */
+    --text-on-bg: #ffffff;
+    --muted-on-bg: #a1a1a6;
+    
+    /* Kachel-Farben (Reinweiß) */
+    --card-bg: #ffffff;
+    --card-text: #1d1d1f;
+    --card-muted: #86868b;
+    
+    --bg: #000000;
+    --glass-nav: rgba(255, 255, 255, 0.72);
+    --accent: #0071e3;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    color: var(--text-on-bg);
+    background: var(--bg); /* Schwarzer Hintergrund */
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* INTERACTIVE BACKGROUND LAYER */
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: #000;
+}
+
+/* NAV (Bleibt hell, schwebend) */
+.nav {
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
+    width: calc(100% - 40px); max-width: 760px; z-index: 1000;
+    backdrop-filter: blur(25px) saturate(180%);
+    background: var(--glass-nav);
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.nav-inner { display: flex; justify-content: space-between; padding: 12px 24px; align-items: center; }
+.brand { font-size: 13px; font-weight: 700; color: #000; letter-spacing: -0.01em; }
+.back { font-size: 13px; color: var(--accent); font-weight: 600; text-decoration: none; }
+.back:hover { text-decoration: underline; }
+
+/* HERO (Weißer Text auf dunklem Grund) */
+.hero { padding-top: 160px; text-align: center; color: var(--text-on-bg); }
+.profile-initial {
+    width: 64px; height: 64px; margin: 0 auto 24px;
+    border-radius: 18px; background: #fff; color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 28px;
+}
+.hero h1 { font-size: clamp(40px, 8vw, 64px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; }
+.hero p { margin-top: 16px; color: var(--muted-on-bg); font-size: 19px; max-width: 450px; margin-inline: auto; }
+
+/* LINKS GRID */
+.links { margin-top: 80px; max-width: 600px; margin-inline: auto; display: flex; flex-direction: column; gap: 16px; padding: 0 20px; }
+
+/* KACHEL-DESIGN: Reinweiß & Starker Schatten */
+.link-card {
+    text-decoration: none;
+    background: var(--card-bg); /* Reinweiß */
+    color: var(--card-text); /* Dunkler Text */
+    padding: 32px;
+    border-radius: 28px;
+    transition: 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    
+    /* Subtiler Basisschatten für Tiefe auf Schwarz */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    border: 1px solid rgba(255,255,255,0.03); /* Minimale Kante */
+}
+
+/* Hover-Effekt: Schweben & Tiefer Schatten */
+.link-card:hover {
+    transform: scale(1.02) translateY(-4px);
+    background: #ffffff;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4); /* Tiefer Schatten für Schwebe-Effekt */
+}
+
+/* Primäre Kachel (RSE Systems) - Diskreter blauer Akzent */
+.link-card.primary {
+    border: 1px solid rgba(0, 113, 227, 0.15);
+}
+
+/* Instagram Composite Card (Weißer Hintergrund, dunkler Text) */
+.insta-composite { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.insta-link-overlay { padding: 32px; text-decoration: none; color: inherit; }
+.feed-container { padding: 0 24px 24px; min-height: 450px; }
+
+/* Spotify Karte (Jetzt auch Weiß) */
+.spotify-card {
+    border: 1px solid rgba(29, 185, 84, 0.15); /* Subtiler Spotify-Grün Akzent */
+}
+
+/* TEXT-STYLING INNERHALB DER WEISSEN KACHELN */
+.label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--card-muted); display: block; margin-bottom: 8px; }
+.link-card h2 { font-size: 24px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em; }
+.link-card p { font-size: 15px; color: var(--card-muted); line-height: 1.4; }
+
+/* FOOTER */
+footer { margin: 120px 0 60px; text-align: center; color: var(--muted-on-bg); font-size: 13px; }
+
+
+
+
+
+
+/* ===== LEGAL LINKS ===== */
+
+.legal-links{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.legal-links button{
+    background:none;
+    border:none;
+    color:#c7c7cc;
+    font-size:13px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.legal-links button:hover{
+    color:#fff;
+}
+
+
+/* ===== MODAL ===== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(18px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    pointer-events:none;
+    transition:.35s cubic-bezier(.2,.8,.2,1);
+
+    z-index:2000;
+}
+
+.modal.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.modal-card{
+    width:min(720px,90%);
+    max-height:80vh;
+    overflow:auto;
+
+    background:#fff;
+    border-radius:28px;
+    padding:42px;
+
+    box-shadow:0 40px 80px rgba(0,0,0,.25);
+
+    transform:translateY(40px) scale(.96);
+    transition:.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.modal.active .modal-card{
+    transform:translateY(0) scale(1);
+}
+
+/* Typography */
+
+.modal-card h2{
+    font-size:32px;
+    margin-bottom:20px;
+    letter-spacing:-.02em;
+}
+
+.modal-card p{
+    color:#6e6e73;
+    line-height:1.6;
+    margin-bottom:16px;
+}
+
+.modal-card .muted{
+    font-size:14px;
+    color:#86868b;
+}
+
+/* Close Button */
+
+.close{
+    position:absolute;
+    top:18px;
+    right:22px;
+    border:none;
+    background:none;
+    font-size:28px;
+    cursor:pointer;
+    color:#86868b;
+}
+
+.close:hover{ color:#000; }

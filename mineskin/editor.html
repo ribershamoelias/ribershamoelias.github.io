@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══ Primary SEO ═══ -->
+  <title>MineSkin Editor — Draw &amp; Export Minecraft Skins Online</title>
+  <meta name="description" content="Open the MineSkin pixel editor. Draw Minecraft skins on a 64×64 or 128×128 canvas, preview on a live 3D model, and export a ready-to-use PNG. Free, no login required." />
+  <meta name="author" content="Riber Shamo Elias" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://mineskin.ribershamoelias.com/editor.html" />
+
+  <!-- ═══ Open Graph ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MineSkin" />
+  <meta property="og:title" content="MineSkin Editor — Draw &amp; Export Minecraft Skins Online" />
+  <meta property="og:description" content="Draw Minecraft skins on a pixel canvas, preview in 3D, and export PNG. Supports Java 64×64 and Bedrock 128×128. Free, no install." />
+  <meta property="og:url" content="https://mineskin.ribershamoelias.com/editor.html" />
+  <meta property="og:image" content="https://mineskin.ribershamoelias.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="MineSkin pixel editor with 3D skin preview" />
+
+  <!-- ═══ Twitter / X Card ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ribershamoelias" />
+  <meta name="twitter:creator" content="@ribershamoelias" />
+  <meta name="twitter:title" content="MineSkin Editor — Free Minecraft Skin Editor" />
+  <meta name="twitter:description" content="Draw Minecraft skins in your browser. 3D preview, layers, Java &amp; Bedrock. Free." />
+  <meta name="twitter:image" content="https://mineskin.ribershamoelias.com/og-image.png" />
+
+  <!-- ═══ Theme & App ═══ -->
+  <meta name="theme-color" content="#6c63ff" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="application-name" content="MineSkin" />
+
+  <!-- ═══ Performance hints ═══ -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
+
+  <!-- ═══ Structured Data — WebApplication ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "MineSkin Editor",
+    "url": "https://mineskin.ribershamoelias.com/editor.html",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web Browser",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Free browser-based Minecraft skin editor. Draw on a pixel canvas, preview on a 3D Steve or Alex model, and export a 64x64 or 128x128 PNG skin.",
+    "isAccessibleForFree": true,
+    "browserRequirements": "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
+    "author": {
+      "@type": "Person",
+      "name": "Riber Shamo Elias",
+      "url": "https://ribershamoelias.com"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Riber Shamo Elias", "item": "https://ribershamoelias.com" },
+        { "@type": "ListItem", "position": 2, "name": "MineSkin", "item": "https://mineskin.ribershamoelias.com/" },
+        { "@type": "ListItem", "position": 3, "name": "Editor", "item": "https://mineskin.ribershamoelias.com/editor.html" }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a class="logo" href="https://mineskin.ribershamoelias.com/" style="text-decoration:none">
+      <span class="logo-icon">⛏</span>
+      <span class="logo-text">MineSkin</span>
+    </a>
+    <input
+      type="text"
+      id="project-name"
+      class="project-name-input"
+      value="Projektname"
+      maxlength="32"
+      spellcheck="false"
+      title="Projektname"
+      aria-label="Projektname"
+    />
+    <div class="header-actions">
+      <button class="btn btn-ghost" id="btn-share" title="Share Skin">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Share
+      </button>
+      <button class="btn btn-ghost" id="btn-import" title="Import Skin">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Import
+      </button>
+      <button class="btn btn-ghost" id="btn-overlay-upload" title="Image to Skin">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Image to Skin
+      </button>
+      <button class="btn btn-primary" id="btn-export" title="Export Skin">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Export
+      </button>
+      <input type="file" id="file-input" accept="image/png" hidden />
+      <input type="file" id="overlay-file-input" accept="image/*" hidden />
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <main class="main">
+    <!-- Left Toolbar -->
+    <aside class="toolbar">
+      <div class="tool-group">
+        <button class="tool-btn active" data-tool="brush" title="Brush (B)">
+          <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="eraser" title="Eraser (E)">
+          <svg viewBox="0 0 24 24"><path d="M20 20H7L3 16l10-10 7 7-3 3 3 4z"/><path d="M6.0001 11L13 18"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="eyedropper" title="Eyedropper (I)">
+          <svg viewBox="0 0 24 24"><path d="M2 22l1-1h3l9-9"/><path d="M3 21v-3l9-9"/><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-3.8-3.8-1.6 1.6"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="fill" title="Fill (F)">
+          <svg viewBox="0 0 24 24"><path d="M19 11l-8-8-8.5 8.5a5.5 5.5 0 0 0 7.78 7.78L19 11z"/><path d="M20 23c0-1.1-.9-2-2-2s-2 .9-2 2 2 4 2 4 2-2.9 2-4z"/><path d="M5.07 11H3"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="rect" title="Rectangle (R)">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="text" title="Text (T)">
+          <svg viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        </button>
+      </div>
+
+      <div class="tool-divider"></div>
+
+      <div class="tool-group">
+        <button class="tool-btn" id="btn-mirror" title="Mirror Drawing (M)" data-active="false">
+          <svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 6l-2 2 2 2"/><path d="M3 8h7"/><path d="M19 6l2 2-2 2"/><path d="M21 8h-7"/></svg>
+        </button>
+        <button class="tool-btn" id="btn-grid" title="Toggle Grid (G)" data-active="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
+
+      <div class="tool-divider"></div>
+
+      <div class="tool-group">
+        <button class="tool-btn" id="btn-undo" title="Undo (Ctrl+Z)">
+          <svg viewBox="0 0 24 24"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+        </button>
+        <button class="tool-btn" id="btn-redo" title="Redo (Ctrl+Y)">
+          <svg viewBox="0 0 24 24"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"/></svg>
+        </button>
+        <button class="tool-btn" id="btn-clear" title="Clear Canvas">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </button>
+      </div>
+
+      <div class="tool-divider"></div>
+
+      <!-- Zoom -->
+      <div class="zoom-control">
+        <button class="tool-btn" id="btn-zoom-out" title="Zoom Out">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </button>
+        <span class="zoom-label" id="zoom-label">8x</span>
+        <button class="tool-btn" id="btn-zoom-in" title="Zoom In">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Canvas Area -->
+    <section class="editor-area" id="editor-area">
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <canvas id="skin-canvas"></canvas>
+      </div>
+
+      <!-- Overlay Panel -->
+      <div class="overlay-panel" id="overlay-panel" hidden>
+        <div class="overlay-panel-row">
+          <span class="overlay-label">🖼 Image Overlay</span>
+          <label class="overlay-toggle-vis" title="Toggle preview">
+            <input type="checkbox" id="overlay-visible" checked /> Show
+          </label>
+        </div>
+        <div class="overlay-panel-row">
+          <label class="overlay-label">Scale</label>
+          <input type="range" id="overlay-scale" min="0.1" max="5" step="0.1" value="1" />
+          <span id="overlay-scale-val">1.0×</span>
+        </div>
+        <div class="overlay-panel-row">
+          <label class="overlay-label">Opacity</label>
+          <input type="range" id="overlay-opacity" min="0" max="100" step="1" value="100" />
+          <span id="overlay-opacity-val">100%</span>
+        </div>
+        <div class="overlay-panel-row">
+          <label class="overlay-label">Snap</label>
+          <label class="overlay-toggle-vis">
+            <input type="checkbox" id="overlay-snap" /> Grid
+          </label>
+        </div>
+        <div class="overlay-panel-row overlay-actions">
+          <button class="btn btn-primary" id="btn-overlay-apply">Apply to Skin</button>
+          <button class="btn btn-ghost" id="btn-overlay-cancel">Cancel</button>
+        </div>
+      </div>
+
+      <!-- Text Panel -->
+      <div class="text-panel" id="text-panel" hidden>
+        <div class="overlay-panel-row">
+          <label class="overlay-label">Text</label>
+          <input type="text" id="text-input" class="text-tool-input" placeholder="RIBER" maxlength="8" />
+        </div>
+        <div class="overlay-panel-row">
+          <label class="overlay-label">Size</label>
+          <input type="range" id="text-size" min="1" max="3" step="1" value="2" />
+          <span id="text-size-val">2×</span>
+        </div>
+        <div class="overlay-panel-row">
+          <label class="overlay-toggle-vis">
+            <input type="checkbox" id="text-outline" /> Outline
+          </label>
+          <button class="btn btn-ghost" id="btn-text-center" style="padding:4px 10px;font-size:11px">Center</button>
+        </div>
+        <div class="overlay-panel-row overlay-actions">
+          <button class="btn btn-primary" id="btn-text-stamp">Stamp</button>
+        </div>
+      </div>
+
+      <!-- Layer tabs -->
+      <div class="layer-tabs">
+        <button class="layer-tab active" data-layer="base">Base Layer</button>
+        <button class="layer-tab" data-layer="outer">Outer Layer</button>
+        <label class="layer-toggle">
+          <input type="checkbox" id="toggle-outer" checked />
+          <span>Show Outer</span>
+        </label>
+        <div class="res-toggle" title="64×64 = Java Edition · 128×128 = Bedrock Edition">
+          <button class="res-btn active" data-res="64">64×64</button>
+          <button class="res-btn" data-res="128">128×128</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Panel -->
+    <aside class="right-panel">
+      <!-- 3D Preview -->
+      <div class="panel-section preview-section">
+        <div class="panel-header">
+          <span>3D Preview</span>
+          <div class="preview-controls">
+            <button class="pill-btn active" id="btn-steve">Steve</button>
+            <button class="pill-btn" id="btn-alex">Alex</button>
+            <button class="pill-btn" id="btn-anim" title="Toggle Animation">▶</button>
+            <button class="pill-btn" id="btn-expand" title="Vollbild-Vorschau">
+              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="preview-container"></div>
+      </div>
+
+      <!-- Color Picker -->
+      <div class="panel-section color-section">
+        <div class="panel-header"><span>Color</span></div>
+        <div class="color-picker-area">
+          <div class="color-gradient-wrap">
+            <canvas id="color-gradient" width="220" height="150"></canvas>
+            <div class="gradient-cursor" id="gradient-cursor"></div>
+          </div>
+          <div class="hue-wrap">
+            <canvas id="hue-slider" width="220" height="16"></canvas>
+            <div class="hue-cursor" id="hue-cursor"></div>
+          </div>
+          <div class="alpha-wrap">
+            <canvas id="alpha-slider" width="220" height="16"></canvas>
+            <div class="alpha-cursor" id="alpha-cursor"></div>
+          </div>
+          <div class="color-inputs">
+            <div class="color-preview-box" id="color-preview"></div>
+            <input type="text" id="hex-input" class="color-input" placeholder="#RRGGBB" maxlength="7" />
+            <input type="number" id="alpha-input" class="color-input alpha-num" min="0" max="255" value="255" title="Alpha" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Palette -->
+      <div class="panel-section palette-section">
+        <div class="panel-header"><span>Palette</span></div>
+        <div class="palette-grid" id="mc-palette"></div>
+        <div class="panel-header" style="margin-top:8px"><span>Recent</span></div>
+        <div class="palette-grid recent-grid" id="recent-palette"></div>
+      </div>
+
+      <!-- Body Part Selector -->
+      <div class="panel-section parts-section">
+        <div class="panel-header"><span>Body Part</span></div>
+        <div class="parts-grid" id="parts-grid">
+          <button class="part-btn active" data-part="all">All</button>
+          <button class="part-btn" data-part="head">Head</button>
+          <button class="part-btn" data-part="body">Body</button>
+          <button class="part-btn" data-part="arm_r">R.Arm</button>
+          <button class="part-btn" data-part="arm_l">L.Arm</button>
+          <button class="part-btn" data-part="leg_r">R.Leg</button>
+          <button class="part-btn" data-part="leg_l">L.Leg</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Drop overlay -->
+  <div class="drop-overlay" id="drop-overlay">
+    <div class="drop-message">
+      <span>🎨</span>
+      <p>Drop your skin PNG here</p>
+    </div>
+  </div>
+
+  <!-- 3D Preview Modal -->
+  <div class="preview-modal" id="preview-modal" aria-modal="true" role="dialog">
+    <div class="preview-modal-backdrop" id="preview-modal-backdrop"></div>
+    <div class="preview-modal-window">
+      <div class="preview-modal-header">
+        <span class="preview-modal-title">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          3D Vorschau
+        </span>
+        <div class="preview-modal-controls">
+          <button class="pill-btn active" id="modal-btn-steve">Steve</button>
+          <button class="pill-btn" id="modal-btn-alex">Alex</button>
+          <button class="pill-btn" id="modal-btn-anim">▶</button>
+          <button class="preview-modal-close" id="preview-modal-close" title="Schließen (Esc)">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="preview-modal-body">
+        <div id="preview-modal-container"></div>
+        <div class="preview-modal-hint">Ziehen zum Drehen · Scrollen zum Zoomen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Validation Error Modal -->
+  <div class="upload-error-modal" id="upload-error-modal" aria-modal="true" role="alertdialog" aria-labelledby="upload-error-title">
+    <div class="upload-error-backdrop" id="upload-error-backdrop"></div>
+    <div class="upload-error-box">
+      <div class="upload-error-icon">⚠️</div>
+      <h2 class="upload-error-title" id="upload-error-title">Invalid Image</h2>
+      <p class="upload-error-msg" id="upload-error-msg"></p>
+      <div class="upload-error-sizes">
+        <div class="upload-error-size">
+          <span class="upload-error-size-badge">64×64</span>
+          <span>Java Edition</span>
+        </div>
+        <div class="upload-error-size">
+          <span class="upload-error-size-badge">128×128</span>
+          <span>Bedrock Edition</span>
+        </div>
+      </div>
+      <button class="btn btn-primary upload-error-ok" id="upload-error-ok">OK</button>
+    </div>
+  </div>
+
+  <!-- Mobile Warning -->
+  <div class="mobile-warning" id="mobile-warning">
+    <div class="mobile-warning-box">
+      <div class="mobile-warning-icon">📱</div>
+      <h2 class="mobile-warning-title">Not optimized for mobile</h2>
+      <p class="mobile-warning-msg">
+        MineSkin Editor is not optimized for smartphones.<br />
+        For the best experience, please use a
+        <strong>tablet / iPad</strong> or ideally a
+        <strong>laptop / PC</strong>.
+      </p>
+      <button class="btn btn-primary" id="mobile-warning-ok">Continue anyway</button>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
+  <div class="share-modal" id="share-modal" aria-modal="true" role="dialog" aria-labelledby="share-modal-title">
+    <div class="share-modal-backdrop" id="share-modal-backdrop"></div>
+    <div class="share-modal-box">
+      <div class="share-modal-header">
+        <h2 class="share-modal-title" id="share-modal-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          Share Skin
+        </h2>
+        <button class="share-modal-close" id="share-modal-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <p class="share-modal-desc">Anyone with this link can open your skin and continue editing it.</p>
+
+      <div class="share-link-row">
+        <input type="text" id="share-link-input" class="share-link-input" readonly aria-label="Share link" />
+        <button class="btn btn-primary" id="btn-copy-link">Copy</button>
+      </div>
+
+      <div class="share-actions">
+        <button class="btn btn-ghost" id="btn-share-newtab">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in new tab
+        </button>
+        <button class="btn btn-ghost" id="btn-share-reset">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset to shared version
+        </button>
+      </div>
+
+      <div class="share-modal-note">🔒 Your skin data is encoded directly in the URL — no server, no account needed.</div>
+    </div>
+  </div>
+
+  <!-- Startup Modal: Load last / New project -->
+  <div class="startup-modal" id="startup-modal" aria-modal="true" role="dialog">
+    <div class="startup-modal-box">
+      <div class="startup-modal-logo">⛏ <span>MineSkin</span></div>
+      <h2 class="startup-modal-title">Welcome back!</h2>
+      <p class="startup-modal-sub">You have a saved project. What would you like to do?</p>
+      <div class="startup-modal-actions">
+        <button class="startup-btn startup-btn-primary" id="startup-load">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Load last project
+        </button>
+        <button class="startup-btn startup-btn-ghost" id="startup-new">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New project
+        </button>
+      </div>
+      <p class="startup-modal-note">A new project starts with a blank Steve skin and a fresh share link.</p>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="utils.js"></script>
+  <script src="canvas.js"></script>
+  <script src="preview.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

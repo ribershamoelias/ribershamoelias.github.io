@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /style.css
+Disallow: /script.js
+
+Sitemap: https://ribershamoelias.com/sitemap.xml
