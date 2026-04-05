@@ -56,7 +56,7 @@ Personal website of **Riber Shamo Elias** — Mathematics & Computer Science stu
 
 | Project | Stack | Repo |
 |---------|-------|------|
-| [MineSkin](https://mineskin.ribershamoelias.com) | TypeScript, Three.js | this repo `/mineskin` |
+| [MineSkin](https://ribershamoelias.com/mineskin/index.html) | TypeScript, Three.js | this repo `/mineskin` |
 | [Lama-S](https://github.com/ribershamoelias/Lama-S) | Swift, SwiftUI | public |
 | [Forge](https://github.com/ribershamoelias/Forge) | TypeScript | public |
 | [FuzzDus](https://github.com/ribershamoelias/FuzzDus) | TypeScript | public |
@@ -90,7 +90,7 @@ Hosted on **GitHub Pages**.
 
 ```
 ribershamoelias.com          CNAME  ribershamoelias.github.io
-mineskin.ribershamoelias.com CNAME  ribershamoelias.github.io
+ribershamoelias.com/mineskin/index.html
 ```
 
 ### Local preview
