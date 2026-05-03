@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NO EXCUSE challenges are coming soon.">
+  <title>NO EXCUSE | Challenges Coming Soon</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #101010;
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f6f4ef;
+      --muted: #a7a39b;
+      --red: #e11919;
+      --red-2: #ff3434;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(225, 25, 25, 0.14), transparent 34rem),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, 64px 64px, 64px 64px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    .site-header {
+      position: fixed;
+      top: 0; width: 100%;
+      z-index: 20;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(18px, 4vw, 42px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--text); font-weight: 900; letter-spacing: 0.08em; }
+    .brand img { width: 36px; height: 36px; background: #fff; border-radius: 4px; }
+    .site-nav a { margin-left: 20px; text-decoration: none; color: var(--muted); font-size: 0.75rem; font-weight: 900; text-transform: uppercase; }
+
+    /* STATUS PAGE CONTENT */
+    .status-page {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 120px 20px 60px;
+    }
+
+    .status-card {
+      position: relative;
+      width: min(820px, 100%);
+      display: grid;
+      justify-items: center;
+      gap: 14px;
+      padding: clamp(32px, 7vw, 64px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background:
+        linear-gradient(145deg, rgba(225, 25, 25, 0.1), rgba(16, 16, 16, 0.95)),
+        var(--panel);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.48);
+      text-align: center;
+      border-radius: 4px; /* Brutalist Look */
+      overflow: hidden;
+    }
+
+    /* Der innere Rahmen Effekt */
+    .status-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    .section-kicker {
+      color: var(--red-2);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 4.2rem);
+      font-weight: 900;
+      line-height: 0.95;
+      margin: 10px 0;
+    }
+
+    p {
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* BUTTONS */
+    .status-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .button {
+      min-height: 54px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 32px;
+      text-decoration: none;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      transition: 180ms var(--ease);
+    }
+
+    .button.primary { background: var(--red); color: #fff; }
+    .button.ghost { border: 1px solid var(--line); color: #fff; background: rgba(255,255,255,0.03); }
+    .button:hover { transform: translateY(-2px); filter: brightness(1.2); }
+
+    @media (max-width: 600px) {
+      .status-actions { flex-direction: column; width: 100%; }
+      .button { width: 100%; justify-content: center; }
+      .brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html" aria-label="NO EXCUSE Home">
+      <img src="../noexcuse_logo_v1.1.png" alt="NO EXCUSE Logo">
+      <span>NO EXCUSE</span>
+    </a>
+    <nav class="site-nav" aria-label="Page navigation">
+      <a href="../index.html">Home</a>
+      <a href="../connect/index.html">Links</a>
+    </nav>
+  </header>
+
+  <main class="status-page">
+    <div class="status-card">
+      <span class="section-kicker">Coming Soon</span>
+      <h1>Challenges are coming.</h1>
+      <p>No active challenge is available right now. The next NO EXCUSE challenge will appear here once it starts.</p>
+      <div class="status-actions">
+        <a class="button primary" href="../index.html#challenges">Back to HOME</a>
+        <a class="button ghost" href="../connect/index.html">Open Connect</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
