@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOEXCUSE Pace Rechner für Lauftraining und Challenges mit Tipps zu Pacing, Fortschritt und Körpergefühl.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Riber Shamo Elias">
+  <meta name="theme-color" content="#030303">
+  <link rel="icon" type="image/png" href="../noexcuse_logo_v1.1.png">
+  <link rel="canonical" href="https://ribershamoelias.com/tools/pace.html">
+  <title>NOEXCUSE | Pace Rechner</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="bg-layer" id="bg-parallax"></div><div class="glow" id="mouse-glow"></div>
+  <nav class="site-nav-shell" aria-label="Hauptnavigation"><a class="logo" href="../">NO <span>EXCUSE</span></a><div class="nav-menu"><a class="nav-link" href="../training/">Training</a><a class="nav-link" href="../nutrition/">Nutrition</a><a class="nav-link" href="../challenges/">Challenges</a><a class="nav-link active" href="../tools/">Tools</a><a class="nav-link" href="../blog/">Blog</a><a class="nav-link" href="../partners/7zoras/">7 ZORAS</a><button class="lang-toggle" onclick="toggleLang()">EN</button></div></nav>
+  <main class="page-shell">
+    <section class="hero compact"><span class="section-kicker">Tool · Running</span><h1>PACE<br>CALCULATOR.</h1><p><span class="lang-de">Berechne deine Pace und nutze sie für klügeres Training, nicht für unnötigen Druck.</span><span class="lang-en">Calculate your pace and use it for smarter training, not unnecessary pressure.</span></p></section>
+    <section class="tool-grid">
+      <article class="tool-card" data-tool="pace"><span class="card-tag"><span class="lang-de">Rechner</span><span class="lang-en">Calculator</span></span><h2><span class="lang-de">Pace Rechner</span><span class="lang-en">Pace Calculator</span></h2><p><span class="lang-de">Gib Distanz und Zeit ein. Du bekommst deine Pace pro Kilometer und die Durchschnittsgeschwindigkeit.</span><span class="lang-en">Enter distance and time. You get your pace per kilometre and average speed.</span></p><div class="tool-form"><div class="tool-row"><div class="tool-field"><label><span class="lang-de">Distanz km</span><span class="lang-en">Distance km</span></label><input id="pace-distance" type="number" min="0.1" max="200" step="0.1" value="7.7"></div><div class="tool-field"><label><span class="lang-de">Zeit Minuten</span><span class="lang-en">Time minutes</span></label><input id="pace-minutes" type="number" min="1" max="600" value="45"></div></div></div><div class="tool-result" id="pace-result" aria-live="polite"></div></article>
+      <aside class="guide-panel"><span class="section-kicker"><span class="lang-de">Training</span><span class="lang-en">Training</span></span><h2><span class="lang-de">Pace sinnvoll nutzen</span><span class="lang-en">Use Pace Wisely</span></h2><ul class="check-list"><li><span class="lang-de">Lockere Läufe dürfen sich wirklich locker anfühlen. Nicht jeder Lauf ist ein Test.</span><span class="lang-en">Easy runs are allowed to feel easy. Not every run is a test.</span></li><li><span class="lang-de">Bei Challenges: die ersten 20% kontrolliert starten, dann steigern.</span><span class="lang-en">For challenges: start the first 20% controlled, then build up.</span></li><li><span class="lang-de">Wind, Hitze, Höhenmeter, Schlaf und Stress verändern Pace stark.</span><span class="lang-en">Wind, heat, elevation, sleep and stress can change pace a lot.</span></li></ul></aside>
+    </section>
+    <section class="guide-section"><div class="guide-panel"><span class="section-kicker"><span class="lang-de">Kopf frei</span><span class="lang-en">Clear Head</span></span><h2><span class="lang-de">Du bist nicht deine Zeit</span><span class="lang-en">You Are Not Your Time</span></h2><p><span class="lang-de">Eine Pace zeigt nur, was an einem bestimmten Tag unter bestimmten Bedingungen passiert ist. Sie sagt nicht, wie diszipliniert, stark oder wertvoll du bist. Fortschritt kann auch bedeuten: besser atmen, weniger Schmerzen, mehr Spaß, stärkerer Kopf.</span><span class="lang-en">A pace only shows what happened on one day under specific conditions. It does not say how disciplined, strong or valuable you are. Progress can also mean better breathing, less pain, more joy and a stronger mind.</span></p></div></section>
+    <div class="actions"><a class="button" href="../tools/"><span class="lang-de">Alle Tools</span><span class="lang-en">All Tools</span></a><a class="button primary" href="../challenges/"><span class="lang-de">Challenges</span><span class="lang-en">Challenges</span></a></div>
+  </main>
+  <footer class="site-footer"><div class="footer-links"><a class="footer-link" href="../impressum.html">Impressum</a><a class="footer-link" href="../datenschutz.html"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></a><a class="footer-link" href="mailto:r.s.elias@proton.me"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a></div><div class="copyright">© 2026 NOEXCUSE PERFORMANCE. ALL RIGHTS RESERVED.</div></footer>
+  <script src="../script.js"></script>
+</body>
+</html>
