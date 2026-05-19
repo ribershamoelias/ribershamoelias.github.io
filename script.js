@@ -226,11 +226,112 @@ document.addEventListener("DOMContentLoaded", () => {
     result("pace-result", `${paceMin}:${paceSec} min/km`, details + recommendationBlock(recText, recLinks));
   };
 
+  const updateMaxReps = () => {
+    if (!document.getElementById("mr-result")) return;
+    const exercise = selectValue("mr-exercise");
+    const maxReps = numberValue("mr-maxreps");
+    const sessions = numberValue("mr-sessions");
+    if (!maxReps || !sessions) return;
+
+    const exerciseNames = {
+      de: { pushup: "Push-Ups", pullup: "Pull-Ups", dips: "Dips", chinup: "Chin-Ups", rows: "Australian Rows", pike: "Pike Push-Ups" },
+      en: { pushup: "Push-Ups", pullup: "Pull-Ups", dips: "Dips", chinup: "Chin-Ups", rows: "Australian Rows", pike: "Pike Push-Ups" }
+    };
+    const lang = isGerman() ? "de" : "en";
+    const exName = exerciseNames[lang][exercise] || exercise;
+
+    const isPull = exercise === "pullup" || exercise === "chinup";
+    const factor = isPull ? 0.68 : 0.65;
+    const workReps = Math.max(1, Math.round(maxReps * factor));
+    const sets = maxReps < 6 ? 5 : maxReps < 15 ? 4 : 3;
+    const weeklyReps = workReps * sets * sessions;
+
+    let progressTip, nextStep, recLinks;
+    if (maxReps < 5) {
+      progressTip = isGerman()
+        ? "Noch unter 5 Reps: Nutze Negatives (langsam runter) und assistierte Varianten um die Grundkraft aufzubauen."
+        : "Under 5 reps: use negatives (slow descent) and assisted variations to build the base strength.";
+      nextStep = isGerman() ? "Starte mit Clean Start." : "Start with Clean Start.";
+      recLinks = [{ href: "../training/calisthenics-beginner.html", label: "Clean Start" }, { href: "max-reps.html", label: isGerman() ? "Nochmal testen" : "Re-test" }];
+    } else if (maxReps < 15) {
+      progressTip = isGerman()
+        ? "Guter Bereich. Steigere jede Woche um 1–2 Reps pro Satz oder füge alle 2 Wochen einen Satz hinzu."
+        : "Good range. Add 1–2 reps per set each week or add one set every 2 weeks.";
+      nextStep = isGerman() ? "Evolution Peak passt gut." : "Evolution Peak fits well.";
+      recLinks = [{ href: "../training/evolution-peak.html", label: "Evolution Peak" }, { href: "calisthenics-level.html", label: "Level Check" }];
+    } else if (maxReps < 30) {
+      progressTip = isGerman()
+        ? "Starke Basis. Führe schwerere Progressionen ein: Archer Push-Ups, gewichtete Pull-Ups oder Typewriter-Varianten."
+        : "Strong base. Introduce harder progressions: Archer Push-Ups, weighted pull-ups or Typewriter variations.";
+      nextStep = isGerman() ? "Skill Engine oder Evolution Peak für mehr Herausforderung." : "Skill Engine or Evolution Peak for more challenge.";
+      recLinks = [{ href: "../training/calisthenics-skill-plan.html", label: "Skill Engine" }, { href: "../training/evolution-peak.html", label: "Evolution Peak" }];
+    } else {
+      progressTip = isGerman()
+        ? "Über 30 Reps: Steigere die Übungsschwierigkeit (One-Arm, gewichtet, Planche-Progressionen) statt nur Reps zu addieren."
+        : "Over 30 reps: increase exercise difficulty (one-arm, weighted, planche progressions) rather than just adding reps.";
+      nextStep = isGerman() ? "Skill Engine und Boxing Plan für athletische Weiterentwicklung." : "Skill Engine and Boxing Plan for athletic development.";
+      recLinks = [{ href: "../training/calisthenics-skill-plan.html", label: "Skill Engine" }, { href: "../training/boxing.html", label: "Boxing Plan" }];
+    }
+
+    const headline = isGerman()
+      ? `${workReps} Reps × ${sets} Sätze`
+      : `${workReps} Reps × ${sets} Sets`;
+    const details = isGerman()
+      ? `${exName} · Wöchentliches Volumen: ~${weeklyReps} Reps (${sessions}× pro Woche) · ${nextStep}`
+      : `${exName} · Weekly volume: ~${weeklyReps} reps (${sessions}× per week) · ${nextStep}`;
+    result("mr-result", headline, details + recommendationBlock(progressTip, recLinks));
+  };
+
+  const updateCaliLevel = () => {
+    if (!document.getElementById("cl-result")) return;
+    const pushups = numberValue("cl-pushups");
+    const pullups = numberValue("cl-pullups");
+    const dips = numberValue("cl-dips");
+    const lsit = numberValue("cl-lsit");
+
+    const puScore = pushups < 6 ? 0 : pushups < 11 ? 1 : pushups < 21 ? 2 : 3;
+    const plScore = pullups === 0 ? 0 : pullups < 5 ? 1 : pullups < 12 ? 2 : 3;
+    const dipScore = dips < 5 ? 0 : dips < 11 ? 1 : dips < 16 ? 2 : 3;
+    const lsitScore = lsit === 0 ? 0 : lsit < 10 ? 1 : lsit < 20 ? 2 : 3;
+    const total = puScore + plScore + dipScore + lsitScore;
+
+    let level, levelEn, planText, planTextEn, recLinks;
+    if (total <= 3) {
+      level = "Beginner"; levelEn = "Beginner";
+      planText = "Du baust gerade die Grundlage. Clean Start ist genau richtig – 3 Einheiten pro Woche, klare Progression, saubere Technik.";
+      planTextEn = "You are building the foundation. Clean Start is exactly right — 3 sessions per week, clear progression, clean technique.";
+      recLinks = [{ href: "../training/calisthenics-beginner.html", label: "Clean Start" }, { href: "max-reps.html", label: isGerman() ? "Volumen berechnen" : "Calculate volume" }];
+    } else if (total <= 7) {
+      level = "Intermediate"; levelEn = "Intermediate";
+      planText = "Solide Basis. Evolution Peak holt das Beste aus deinem Level raus – 4 Einheiten, mehr Volumen, erste Skill-Elemente.";
+      planTextEn = "Solid foundation. Evolution Peak gets the best out of your level — 4 sessions, more volume, first skill elements.";
+      recLinks = [{ href: "../training/evolution-peak.html", label: "Evolution Peak" }, { href: "../training/boxing.html", label: "Boxing Plan" }];
+    } else if (total <= 10) {
+      level = "Advanced"; levelEn = "Advanced";
+      planText = "Starkes Level. Skill Engine für Handstand, L-Sit und Muscle-Up-Progression – oder der Boxing Plan für athletische Kondition.";
+      planTextEn = "Strong level. Skill Engine for handstand, L-sit and muscle-up progression — or the Boxing Plan for athletic conditioning.";
+      recLinks = [{ href: "../training/calisthenics-skill-plan.html", label: "Skill Engine" }, { href: "../training/boxing.html", label: "Boxing Plan" }];
+    } else {
+      level = "Elite"; levelEn = "Elite";
+      planText = "Elite-Level. Kombiniere Skill Engine mit dem Boxing Plan und entwickle dich als kompletter Athlet weiter.";
+      planTextEn = "Elite level. Combine Skill Engine with the Boxing Plan and continue evolving as a complete athlete.";
+      recLinks = [{ href: "../training/calisthenics-skill-plan.html", label: "Skill Engine" }, { href: "../training/boxing.html", label: "Boxing Plan" }];
+    }
+
+    const score = `${total}/12`;
+    const details = isGerman()
+      ? `Push: ${pushups} · Pull-Ups: ${pullups} · Dips: ${dips} · L-Sit: ${lsit}s · Score: ${score} · ${isGerman() ? planText : planTextEn}`
+      : `Push: ${pushups} · Pull-Ups: ${pullups} · Dips: ${dips} · L-Sit: ${lsit}s · Score: ${score} · ${planTextEn}`;
+    result("cl-result", isGerman() ? level : levelEn, details + recommendationBlock(isGerman() ? planText : planTextEn, recLinks));
+  };
+
   const updateTools = () => {
     updateCalories();
     updateBmi();
     updateProtein();
     updatePace();
+    updateMaxReps();
+    updateCaliLevel();
   };
 
   document.querySelectorAll(".tool-card input, .tool-card select").forEach((field) => {

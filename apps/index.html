@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NOEXCUSE Apps in Entwicklung: Preview fuer NOEXCUSE UvsU und NOEXCUSE INTIME, digitale Tools fuer Challenges, Training und Fokus.">
+  <meta name="description" content="NOEXCUSE Apps in aktiver Entwicklung: UvsU Challenge App (Rankings, Streaks, 1-vs-1) und INTIME Focus App (Routinen, Timing). iOS und Android – kein Bloat.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Riber Shamo Elias">
   <meta name="theme-color" content="#030303">
@@ -13,15 +13,199 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="NOEXCUSE">
   <meta property="og:title" content="NOEXCUSE Apps | In Entwicklung">
-  <meta property="og:description" content="Preview fuer kommende NOEXCUSE Apps: UvsU und INTIME.">
+  <meta property="og:description" content="NOEXCUSE Apps: UvsU Challenge App und INTIME Focus App in aktiver Entwicklung. iOS & Android. Kein Bloat, kein Bullshit.">
   <meta property="og:url" content="https://ribershamoelias.com/apps/">
   <meta property="og:image" content="https://ribershamoelias.com/noexcuse_logo_v1.1.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NOEXCUSE Apps | In Entwicklung">
-  <meta name="twitter:description" content="Preview fuer NOEXCUSE UvsU und NOEXCUSE INTIME.">
+  <meta name="twitter:description" content="NOEXCUSE UvsU und INTIME – zwei Apps in aktiver Entwicklung. iOS & Android.">
   <meta name="twitter:image" content="https://ribershamoelias.com/noexcuse_logo_v1.1.png">
   <title>NOEXCUSE Apps | In Entwicklung</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .dev-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 31, 31, 0.4);
+      background: rgba(255, 31, 31, 0.1);
+      color: var(--red);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .dev-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+      animation: pulse-dot 1.4s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 720px) {
+      .app-grid { grid-template-columns: 1fr; }
+    }
+    .app-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .app-card:hover {
+      border-color: rgba(255, 31, 31, 0.35);
+      transform: translateY(-4px);
+    }
+    .app-card-header {
+      padding: 32px 32px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .app-name {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1;
+      margin: 8px 0 12px;
+    }
+    .app-name span { color: var(--red); }
+    .app-desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+    .app-card-body {
+      padding: 24px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .app-progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 4px;
+    }
+    .app-progress-label span:last-child { color: var(--red); }
+    .progress-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--red-dark), var(--red));
+    }
+    .app-feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .app-feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .app-feature-list li::before {
+      content: "";
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .app-card-footer {
+      padding: 20px 32px 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+    .status-tile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 24px;
+    }
+    .status-tile .label {
+      font-size: 0.65rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .status-tile .value {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 1.5rem;
+      color: var(--text);
+      line-height: 1;
+    }
+    .status-tile .sub {
+      color: var(--faint);
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "NOEXCUSE Apps",
+  "url": "https://ribershamoelias.com/apps/",
+  "description": "Zwei Apps in aktiver Entwicklung: NOEXCUSE UvsU Challenge App und NOEXCUSE INTIME Focus App.",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "NOEXCUSE UvsU",
+      "url": "https://ribershamoelias.com/apps/uvsu.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "NOEXCUSE INTIME",
+      "url": "https://ribershamoelias.com/apps/intime.html"
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <div class="bg-layer" id="bg-parallax"></div>
@@ -35,58 +219,141 @@
       <a class="nav-link" href="../challenges/">Challenges</a>
       <a class="nav-link" href="../tools/">Tools</a>
       <a class="nav-link" href="../blog/">Blog</a>
+      <a class="nav-link active" href="../apps/">Apps</a>
       <a class="nav-link" href="../partners/7zoras/">7 ZORAS</a>
+      <a class="nav-link" href="../partners/zumub/">ZUMUB</a>
       <button class="lang-toggle" onclick="toggleLang()">EN</button>
     </div>
   </nav>
 
   <main class="page-shell">
+
     <section class="hero compact">
-      <span class="section-kicker">Apps In Development</span>
+      <div class="dev-badge">
+        <div class="dev-dot"></div>
+        <span class="lang-de">Aktiv in Entwicklung</span><span class="lang-en">Active Development</span>
+      </div>
       <h1>NOEXCUSE<br>APPS.</h1>
-      <p><span class="lang-de">Unsere digitalen Tools sind in Entwicklung: NOEXCUSE UvsU fuer Challenges und NOEXCUSE INTIME fuer Fokus, Timing und persoenliche Routinen.</span><span class="lang-en">Our digital tools are in development: NOEXCUSE UvsU for challenges and NOEXCUSE INTIME for focus, timing and personal routines.</span></p>
+      <p>
+        <span class="lang-de">Wir bauen gerade zwei Apps. Eine für Challenges und direkte Vergleiche, eine für Fokus und persönliche Routinen. Beide kommen aus dem NOEXCUSE-System heraus – kein Bloat, kein Bullshit.</span>
+        <span class="lang-en">We are building two apps right now. One for challenges and direct comparisons, one for focus and personal routines. Both come out of the NOEXCUSE system — no bloat, no bullshit.</span>
+      </p>
       <div class="actions">
-        <a href="#features" class="button primary"><span class="lang-de">Preview ansehen</span><span class="lang-en">View preview</span></a>
-        <a href="mailto:r.s.elias@proton.me?subject=NOEXCUSE%20Apps%20Updates" class="button"><span class="lang-de">Updates erhalten</span><span class="lang-en">Get updates</span></a>
+        <a href="mailto:r.s.elias@proton.me?subject=NOEXCUSE%20Apps%20Updates" class="button primary">
+          <span class="lang-de">Updates erhalten</span><span class="lang-en">Get updates</span>
+        </a>
+        <a href="#apps" class="button">
+          <span class="lang-de">Status ansehen</span><span class="lang-en">View status</span>
+        </a>
       </div>
     </section>
 
-    <section class="content-grid" style="padding: 0 0 70px;">
-      <div class="card card-md panel-card">
-        <span class="card-tag">App Preview</span>
-        <h2>Two Apps. One Standard.</h2>
-        <p><span class="lang-de">NOEXCUSE UvsU und NOEXCUSE INTIME sind geplant, um Challenges, Fokus und Fortschritt klarer zu machen.</span><span class="lang-en">NOEXCUSE UvsU and NOEXCUSE INTIME are planned to make challenges, focus and progress clearer.</span></p>
-        <div class="actions">
-          <a href="../apps/uvsu.html" class="button"><span class="lang-de">UvsU ansehen</span><span class="lang-en">View UvsU</span></a>
-          <a href="../apps/intime.html" class="button"><span class="lang-de">INTIME ansehen</span><span class="lang-en">View INTIME</span></a>
-        </div>
+    <div class="status-grid">
+      <div class="status-tile">
+        <span class="label"><span class="lang-de">Apps in Entwicklung</span><span class="lang-en">Apps in Development</span></span>
+        <div class="value">2</div>
+        <div class="sub">UvsU · INTIME</div>
       </div>
-      <div class="card card-lg panel-card">
-        <div class="phone-mock" aria-label="App preview">
-          <div class="phone-screen">
-            <span class="section-kicker">Today</span>
-            <h3>7K Route</h3>
-            <div class="phone-line red"></div>
-            <div class="phone-line"></div>
-            <div class="phone-line"></div>
-            <div class="phone-line red" style="width: 52%;"></div>
+      <div class="status-tile">
+        <span class="label">Status</span>
+        <div class="value" style="color:var(--red);"><span class="lang-de">Aktiv</span><span class="lang-en">Active</span></div>
+        <div class="sub"><span class="lang-de">Wird laufend gebaut</span><span class="lang-en">Actively being built</span></div>
+      </div>
+      <div class="status-tile">
+        <span class="label">Platform</span>
+        <div class="value" style="font-size:1rem;padding-top:4px;">iOS · Android</div>
+        <div class="sub"><span class="lang-de">Geplant</span><span class="lang-en">Planned</span></div>
+      </div>
+      <div class="status-tile">
+        <span class="label"><span class="lang-de">Beta-Anfragen</span><span class="lang-en">Beta requests</span></span>
+        <div class="value" style="font-size:1rem;padding-top:4px;"><span class="lang-de">Via Mail</span><span class="lang-en">Via Email</span></div>
+        <div class="sub">r.s.elias@proton.me</div>
+      </div>
+    </div>
+
+    <div id="apps" class="app-grid">
+
+      <div class="app-card">
+        <div class="app-card-header">
+          <span class="card-tag"><span class="lang-de">Challenge App · In Entwicklung</span><span class="lang-en">Challenge App · In Development</span></span>
+          <div class="app-name">NOEXCUSE <span>UvsU</span></div>
+          <p class="app-desc">
+            <span class="lang-de">User versus User. Direkte Vergleiche, Challenges, Rankings und Streaks für Athleten, die sich messen wollen – ehrlich, klar, ohne Social-Media-Noise.</span>
+            <span class="lang-en">User versus User. Direct comparisons, challenges, rankings and streaks for athletes who want to compete — honest, clear, without social media noise.</span>
+          </p>
+        </div>
+        <div class="app-card-body">
+          <div>
+            <div class="app-progress-label">
+              <span><span class="lang-de">Entwicklungsstand</span><span class="lang-en">Development progress</span></span>
+              <span>~40%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:40%;"></div></div>
           </div>
+          <ul class="app-feature-list">
+            <li><span class="lang-de">UvsU Challenges: direkte 1-vs-1 Vergleiche über Reps, Zeit oder Distanz</span><span class="lang-en">UvsU Challenges: direct 1-vs-1 comparisons over reps, time or distance</span></li>
+            <li><span class="lang-de">Community Rankings und persönliche Bestzeiten</span><span class="lang-en">Community rankings and personal best times</span></li>
+            <li><span class="lang-de">Streaks und Missionen für langfristige Konsistenz</span><span class="lang-en">Streaks and missions for long-term consistency</span></li>
+            <li><span class="lang-de">Integration mit NOEXCUSE Challenges (7K Mission u.a.)</span><span class="lang-en">Integration with NOEXCUSE challenges (7K Mission and more)</span></li>
+          </ul>
+        </div>
+        <div class="app-card-footer">
+          <a class="button primary" href="uvsu.html" data-transition><span class="lang-de">Details ansehen</span><span class="lang-en">View details</span></a>
+          <a class="button" href="mailto:r.s.elias@proton.me?subject=NOEXCUSE%20UvsU%20Beta"><span class="lang-de">Beta-Liste</span><span class="lang-en">Beta list</span></a>
+        </div>
+      </div>
+
+      <div class="app-card">
+        <div class="app-card-header">
+          <span class="card-tag"><span class="lang-de">Focus App · In Entwicklung</span><span class="lang-en">Focus App · In Development</span></span>
+          <div class="app-name">NOEXCUSE <span>INTIME</span></div>
+          <p class="app-desc">
+            <span class="lang-de">Fokus, Routinen und Timing. Eine App, die dir hilft, deinen Tag zu steuern – Training, Arbeit, Recovery, Schlaf. Alles in einem ruhigen, klaren System.</span>
+            <span class="lang-en">Focus, routines and timing. An app that helps you control your day — training, work, recovery, sleep. All in one calm, clear system.</span>
+          </p>
+        </div>
+        <div class="app-card-body">
+          <div>
+            <div class="app-progress-label">
+              <span><span class="lang-de">Entwicklungsstand</span><span class="lang-en">Development progress</span></span>
+              <span>~25%</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:25%;"></div></div>
+          </div>
+          <ul class="app-feature-list">
+            <li><span class="lang-de">Zeitblöcke für Training, Arbeit und Recovery planen</span><span class="lang-en">Time blocks for training, work and recovery</span></li>
+            <li><span class="lang-de">Tägliche Check-ins: lebst du deine eigenen Standards?</span><span class="lang-en">Daily check-ins: are you living your own standards?</span></li>
+            <li><span class="lang-de">Fokusphasen und Momentum-Tracking</span><span class="lang-en">Focus phases and momentum tracking</span></li>
+            <li><span class="lang-de">Minimalismus-First Design – kein Tracking-Overload</span><span class="lang-en">Minimalism-first design — no tracking overload</span></li>
+          </ul>
+        </div>
+        <div class="app-card-footer">
+          <a class="button primary" href="intime.html" data-transition><span class="lang-de">Details ansehen</span><span class="lang-en">View details</span></a>
+          <a class="button" href="mailto:r.s.elias@proton.me?subject=NOEXCUSE%20INTIME%20Beta"><span class="lang-de">Beta-Liste</span><span class="lang-en">Beta list</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <section class="guide-section">
+      <div class="guide-panel">
+        <span class="section-kicker"><span class="lang-de">Warum wir das bauen</span><span class="lang-en">Why We Are Building This</span></span>
+        <h2><span class="lang-de">Kein Tool, das du nicht brauchst</span><span class="lang-en">No Tool You Do Not Need</span></h2>
+        <p>
+          <span class="lang-de">Die meisten Fitness-Apps sind zu voll, zu gamified oder zu unehrlich. Wir bauen etwas, das wir selbst täglich nutzen würden – schlanke Tools, die wirklich zu Calisthenics, Boxing und einem disziplinierten Alltag passen. Keine Dark Patterns, kein Abo-Bullshit. Stand jetzt bauen wir aktiv, testen regelmäßig und passen laufend an.</span>
+          <span class="lang-en">Most fitness apps are too bloated, too gamified or too dishonest. We are building something we would actually use every day ourselves — lean tools that genuinely fit calisthenics, boxing and a disciplined lifestyle. No dark patterns, no subscription bullshit. Right now we are actively building, testing regularly and adjusting continuously.</span>
+        </p>
+        <div class="actions">
+          <a class="button primary" href="mailto:r.s.elias@proton.me?subject=NOEXCUSE%20Apps%20Feedback">
+            <span class="lang-de">Feedback geben</span><span class="lang-en">Give feedback</span>
+          </a>
+          <a class="button" href="../training/">
+            <span class="lang-de">Zum Training</span><span class="lang-en">Go to Training</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="features" class="features-grid" aria-label="Geplante Apps">
-      <a class="feature" href="../apps/uvsu.html" data-transition>
-        <span class="card-tag"><span class="lang-de">In Planung</span><span class="lang-en">In Development</span></span>
-        <h3>NOEXCUSE UvsU</h3>
-        <p class="muted"><span class="lang-de">Challenge-App fuer direkte Vergleiche, Streaks, Rankings und persoenliche Missionen.</span><span class="lang-en">Challenge app for direct comparisons, streaks, rankings and personal missions.</span></p>
-      </a>
-      <a class="feature" href="../apps/intime.html" data-transition>
-        <span class="card-tag"><span class="lang-de">In Planung</span><span class="lang-en">In Development</span></span>
-        <h3>NOEXCUSE INTIME</h3>
-        <p class="muted"><span class="lang-de">Fokus-App fuer Routinen, Timing, Check-ins und persoenliche Progression.</span><span class="lang-en">Focus app for routines, timing, check-ins and personal progression.</span></p>
-      </a>
-    </section>
   </main>
 
   <footer class="site-footer">

@@ -4,12 +4,12 @@
   --red: #ff1f1f;
   --red-dark: #b80f0f;
   --bg: #030303;
-  --surface: rgba(14, 14, 14, 0.84);
-  --surface-strong: rgba(14, 14, 14, 0.94);
-  --border: rgba(255, 255, 255, 0.18);
+  --surface: rgba(14, 14, 14, 0.95);
+  --surface-strong: rgba(14, 14, 14, 0.98);
+  --border: rgba(255, 255, 255, 0.22);
   --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.76);
-  --faint: rgba(255, 255, 255, 0.58);
+  --muted: rgba(255, 255, 255, 0.82);
+  --faint: rgba(255, 255, 255, 0.68);
   --glass-effect: blur(20px) saturate(180%);
   --ease: cubic-bezier(0.2, 1, 0.2, 1);
 }
@@ -404,13 +404,20 @@ nav.site-nav-shell {
 }
 
 blockquote,
-.affiliate-section,
 .ad-slot {
   margin: 28px 0;
   padding: 24px;
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.affiliate-section {
+  margin: 28px 0;
+  padding: 24px;
+  border: 1px solid rgba(255, 31, 31, 0.35);
+  border-radius: 22px;
+  background: rgba(14, 14, 14, 0.92);
 }
 
 blockquote {
@@ -572,7 +579,7 @@ blockquote {
   min-height: 100%;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
-  background: rgba(8, 8, 8, 0.62);
+  background: rgba(8, 8, 8, 0.90);
   padding: 20px;
 }
 

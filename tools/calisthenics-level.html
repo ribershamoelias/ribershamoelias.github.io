@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOEXCUSE Calisthenics Level Check: Push-Ups, Pull-Ups, Dips und L-Sit eingeben – sofort dein Level (Beginner bis Elite) und den passenden Trainingsplan erhalten.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Riber Shamo Elias">
+  <meta name="theme-color" content="#030303">
+  <link rel="icon" type="image/png" href="../noexcuse_logo_v1.1.png">
+  <link rel="canonical" href="https://ribershamoelias.com/tools/calisthenics-level.html">
+  <title>NOEXCUSE | Calisthenics Level Check</title>
+  <link rel="stylesheet" href="../style.css">
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "NOEXCUSE Calisthenics Level Check",
+  "url": "https://ribershamoelias.com/tools/calisthenics-level.html",
+  "description": "Kostenloser Calisthenics Level Check. Push-Ups, Pull-Ups, Dips und L-Sit eingeben, Level ermitteln und passenden Plan erhalten.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Riber Shamo Elias"
+  }
+}
+  </script>
+</head>
+<body>
+  <div class="bg-layer" id="bg-parallax"></div><div class="glow" id="mouse-glow"></div>
+
+  <nav class="site-nav-shell" aria-label="Hauptnavigation">
+    <a class="logo" href="../">NO <span>EXCUSE</span></a>
+    <div class="nav-menu">
+      <a class="nav-link" href="../training/">Training</a>
+      <a class="nav-link" href="../nutrition/">Nutrition</a>
+      <a class="nav-link" href="../challenges/">Challenges</a>
+      <a class="nav-link active" href="../tools/">Tools</a>
+      <a class="nav-link" href="../blog/">Blog</a>
+      <a class="nav-link" href="../apps/">Apps</a>
+      <a class="nav-link" href="../partners/7zoras/">7 ZORAS</a>
+      <a class="nav-link" href="../partners/zumub/">ZUMUB</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero compact">
+      <span class="section-kicker"><span class="lang-de">Tool · Calisthenics</span><span class="lang-en">Tool · Calisthenics</span></span>
+      <h1>LEVEL<br>CHECK.</h1>
+      <p>
+        <span class="lang-de">Gib deine maximalen Wiederholungen ein und finde sofort heraus, auf welchem Calisthenics-Level du bist – und welcher Plan als nächstes passt.</span>
+        <span class="lang-en">Enter your max reps and instantly find out which calisthenics level you are at — and which plan fits you next.</span>
+      </p>
+    </section>
+
+    <section class="tool-grid" aria-label="Calisthenics Level Check">
+      <article class="tool-card" data-tool="calilevel">
+        <span class="card-tag">Calisthenics · Level</span>
+        <h2><span class="lang-de">Dein Level</span><span class="lang-en">Your Level</span></h2>
+        <p>
+          <span class="lang-de">Trage deine maximalen sauberen Wiederholungen ein. Kein Mogeln – nur echte, kontrollierte Reps zählen.</span>
+          <span class="lang-en">Enter your max clean reps. No cheating — only real, controlled reps count.</span>
+        </p>
+        <div class="tool-form">
+          <div class="tool-row">
+            <div class="tool-field">
+              <label>Push-Ups <span class="lang-de">(max. sauber)</span><span class="lang-en">(max. clean)</span></label>
+              <input id="cl-pushups" type="number" min="0" max="200" value="15">
+            </div>
+            <div class="tool-field">
+              <label>Pull-Ups <span class="lang-de">(max. sauber)</span><span class="lang-en">(max. clean)</span></label>
+              <input id="cl-pullups" type="number" min="0" max="50" value="5">
+            </div>
+          </div>
+          <div class="tool-row">
+            <div class="tool-field">
+              <label>Dips <span class="lang-de">(max. sauber)</span><span class="lang-en">(max. clean)</span></label>
+              <input id="cl-dips" type="number" min="0" max="100" value="8">
+            </div>
+            <div class="tool-field">
+              <label>L-Sit <span class="lang-de">(Sekunden)</span><span class="lang-en">(seconds)</span></label>
+              <input id="cl-lsit" type="number" min="0" max="120" value="0">
+            </div>
+          </div>
+        </div>
+        <div class="tool-result" id="cl-result" aria-live="polite"></div>
+      </article>
+
+      <aside class="guide-panel">
+        <span class="section-kicker"><span class="lang-de">Richtig testen</span><span class="lang-en">Test Correctly</span></span>
+        <h2><span class="lang-de">So testest du dein Maximum</span><span class="lang-en">How To Test Your Max</span></h2>
+        <ul class="check-list">
+          <li>
+            <span class="lang-de"><strong>Push-Ups:</strong> Vollständige Range, Brust berührt fast den Boden, Körper gerade.</span>
+            <span class="lang-en"><strong>Push-Ups:</strong> Full range, chest nearly touches the floor, body straight.</span>
+          </li>
+          <li>
+            <span class="lang-de"><strong>Pull-Ups:</strong> Hang aus gestreckten Armen, Kinn klar über der Stange, kein Schwingen.</span>
+            <span class="lang-en"><strong>Pull-Ups:</strong> Start from straight arms, chin clearly over the bar, no swinging.</span>
+          </li>
+          <li>
+            <span class="lang-de"><strong>Dips:</strong> Oberarme mindestens parallel zum Boden, kontrolliert runter und hoch.</span>
+            <span class="lang-en"><strong>Dips:</strong> Upper arms at least parallel to the floor, controlled down and up.</span>
+          </li>
+          <li>
+            <span class="lang-de"><strong>L-Sit:</strong> Beine gerade und parallel zum Boden – kein Tuck.</span>
+            <span class="lang-en"><strong>L-Sit:</strong> Legs straight and parallel to the floor — no tuck.</span>
+          </li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="guide-section">
+      <div class="guide-panel">
+        <span class="section-kicker"><span class="lang-de">Ehrlichkeit zählt</span><span class="lang-en">Honesty Counts</span></span>
+        <h2><span class="lang-de">Dein Level ist kein Urteil</span><span class="lang-en">Your Level Is Not a Judgement</span></h2>
+        <p>
+          <span class="lang-de">Beginner zu sein ist kein Problem. Es ist der Startpunkt. Jeder starke Athlet war einmal Anfänger. Wichtig ist nur, dass du auf dem richtigen Level anfängst – dann ist Fortschritt garantiert.</span>
+          <span class="lang-en">Being a beginner is not a problem. It is the starting point. Every strong athlete was once a beginner. What matters is starting at the right level — then progress is guaranteed.</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="button" href="../tools/"><span class="lang-de">Alle Tools</span><span class="lang-en">All Tools</span></a>
+      <a class="button primary" href="max-reps.html"><span class="lang-de">Max Reps Rechner</span><span class="lang-en">Max Reps Calculator</span></a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a class="footer-link" href="../impressum.html">Impressum</a>
+      <a class="footer-link" href="../datenschutz.html"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></a>
+      <a class="footer-link" href="mailto:r.s.elias@proton.me"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a>
+    </div>
+    <div class="copyright">© 2026 NOEXCUSE PERFORMANCE. ALL RIGHTS RESERVED.</div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
