@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOEXCUSE First Rep: 10 Wochen Calisthenics-Plan. Von null Klimmzügen zum ersten – und weiter auf 10 saubere Wiederholungen. 3 Einheiten pro Woche, kein Gym.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Riber Shamo Elias">
+  <meta name="theme-color" content="#030303">
+  <link rel="icon" type="image/png" href="../noexcuse_logo_v1.1.png">
+  <link rel="canonical" href="https://ribershamoelias.com/training/first-rep.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="NOEXCUSE">
+  <meta property="og:title" content="NOEXCUSE | First Rep – 10 Wochen Calisthenics Plan">
+  <meta property="og:description" content="Von null Klimmzügen auf 10. 10 Wochen, 3x pro Woche, kein Gym. Level 1 + Level 2 komplett.">
+  <meta property="og:url" content="https://ribershamoelias.com/training/first-rep.html">
+  <meta property="og:image" content="https://ribershamoelias.com/img/sidekick.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NOEXCUSE | First Rep – 10 Wochen Plan">
+  <meta name="twitter:description" content="Von null Klimmzügen auf 10. Level 1 + Level 2. 3x pro Woche, kein Gym.">
+  <meta name="twitter:image" content="https://ribershamoelias.com/img/sidekick.jpg">
+  <title>NOEXCUSE | First Rep – 10 Wochen Calisthenics Plan</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .plan-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; margin-bottom: 48px; }
+    .plan-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; text-align: center; }
+    .plan-stat .label { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .plan-stat .value { font-family: "Bebas Neue", sans-serif; font-size: 1.6rem; color: var(--text); }
+    .level-section { margin-top: 56px; }
+    .level-badge { display: inline-block; background: var(--red); color: #fff; font-family: "Bebas Neue", sans-serif; font-size: 0.85rem; letter-spacing: 3px; padding: 4px 14px; border-radius: 4px; margin-bottom: 10px; }
+    .level-title { font-family: "Bebas Neue", sans-serif; font-size: 2.2rem; margin-bottom: 6px; line-height: 1.1; }
+    .level-prereq { color: var(--faint); font-size: 0.85rem; line-height: 1.6; margin-bottom: 24px; padding-left: 14px; border-left: 2px solid rgba(255,255,255,0.15); }
+    .week-schedule { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 28px; }
+    .week-day { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 4px; text-align: center; }
+    .week-day .day-label { font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 4px; }
+    .week-day .day-type { font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+    .week-day.active { border-color: rgba(255,31,31,0.5); background: rgba(255,31,31,0.07); }
+    .week-day.active .day-type { color: var(--red); }
+    .day-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 16px; }
+    .day-block h3 { font-family: "Bebas Neue", sans-serif; font-size: 1.15rem; letter-spacing: 2px; color: var(--red); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .day-block h3 span.duration { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; color: var(--faint); font-family: "Inter", sans-serif; border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 3px; }
+    .wtable { width: 100%; border-collapse: collapse; }
+    .wtable th { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); font-weight: 700; padding: 6px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .wtable th:not(:first-child) { text-align: center; }
+    .wtable td { padding: 9px 10px; font-size: 0.87rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--muted); vertical-align: middle; }
+    .wtable td:not(:first-child) { text-align: center; }
+    .wtable tr:last-child td { border-bottom: none; }
+    .wtable td:first-child { color: var(--text); font-weight: 600; }
+    .wtable td:nth-child(2) { color: var(--red); font-weight: 700; }
+    .wtable td:nth-child(4) { color: var(--faint); font-size: 0.8rem; }
+    .wtable td:last-child { color: var(--faint); font-size: 0.8rem; }
+    .cond-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+    .cond-block h4 { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); margin-bottom: 12px; font-weight: 700; }
+    .cond-table { width: 100%; border-collapse: collapse; }
+    .cond-table th { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); font-weight: 700; padding: 5px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .cond-table th:not(:first-child) { text-align: center; }
+    .cond-table td { padding: 8px 10px; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--muted); }
+    .cond-table td:not(:first-child) { text-align: center; }
+    .cond-table tr:last-child td { border-bottom: none; }
+    .cond-table td:first-child { color: var(--text); font-weight: 600; }
+    .cond-note { font-size: 0.78rem; color: var(--faint); margin-top: 10px; }
+    .abbrev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .abbrev-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .abbrev-item .abbrev-key { font-family: "Bebas Neue", sans-serif; font-size: 1.1rem; color: var(--red); display: block; margin-bottom: 4px; }
+    .abbrev-item p { font-size: 0.8rem; color: var(--faint); line-height: 1.5; margin: 0; }
+    .tip-box { background: rgba(255,31,31,0.18); border: 1px solid rgba(255,31,31,0.40); border-radius: 8px; padding: 18px 20px; margin: 24px 0; }
+    .tip-box p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin: 0; }
+    .section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 48px 0; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "NOEXCUSE First Rep – Calisthenics 10 Wochen",
+    "description": "10-Wochen Calisthenics-Plan von null Klimmzügen auf 10 saubere Wiederholungen. Level 1 + Level 2. 3 Einheiten pro Woche, kein Gym.",
+    "provider": {
+      "@type": "Person",
+      "name": "Riber Shamo Elias",
+      "url": "https://ribershamoelias.com/"
+    },
+    "url": "https://ribershamoelias.com/training/first-rep.html",
+    "educationalLevel": "Beginner",
+    "timeRequired": "P10W",
+    "teaches": ["Pull-Ups", "Chin-Ups", "Dips", "Australian Rows", "Dragon Flag", "Calisthenics-Technik"]
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-layer" id="bg-parallax"></div>
+  <div class="glow" id="mouse-glow"></div>
+
+  <nav class="site-nav-shell" aria-label="Hauptnavigation">
+    <a class="logo" href="../">NO <span>EXCUSE</span></a>
+    <div class="nav-menu">
+      <a class="nav-link active" href="../training/">Training</a>
+      <a class="nav-link" href="../nutrition/">Nutrition</a>
+      <a class="nav-link" href="../challenges/">Challenges</a>
+      <a class="nav-link" href="../tools/">Tools</a>
+      <a class="nav-link" href="../blog/">Blog</a>
+      <a class="nav-link" href="../apps/">Apps</a>
+      <a class="nav-link" href="../partners/7zoras/">7 ZORAS</a>
+      <a class="nav-link" href="../partners/zumub/">ZUMUB</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero compact">
+      <span class="section-kicker">Calisthenics · Level 1 + 2</span>
+      <h1>FIRST<br>REP.</h1>
+      <p>
+        <span class="lang-de">10 Wochen. 3x pro Woche. Von null Klimmzügen auf 10 saubere Wiederholungen.</span>
+        <span class="lang-en">10 weeks. 3x per week. From zero pull-ups to 10 clean reps.</span>
+      </p>
+    </section>
+
+    <div class="plan-stats">
+      <div class="plan-stat">
+        <span class="label"><span class="lang-de">Dauer</span><span class="lang-en">Duration</span></span>
+        <span class="value"><span class="lang-de">10 Wochen</span><span class="lang-en">10 Weeks</span></span>
+      </div>
+      <div class="plan-stat">
+        <span class="label"><span class="lang-de">Einheiten/Wo.</span><span class="lang-en">Sessions/Wk</span></span>
+        <span class="value">3×</span>
+      </div>
+      <div class="plan-stat">
+        <span class="label"><span class="lang-de">Level</span><span class="lang-en">Level</span></span>
+        <span class="value">1 + 2</span>
+      </div>
+      <div class="plan-stat">
+        <span class="label"><span class="lang-de">Pro Einheit</span><span class="lang-en">Per Session</span></span>
+        <span class="value">90 Min</span>
+      </div>
+    </div>
+
+    <!-- Abkürzungen -->
+    <div class="phase-header" style="border-left: 3px solid rgba(255,255,255,0.2); padding-left: 16px; margin: 0 0 20px;">
+      <span style="font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--faint);">
+        <span class="lang-de">Abkürzungen</span><span class="lang-en">Abbreviations</span>
+      </span>
+    </div>
+    <div class="abbrev-grid">
+      <div class="abbrev-item">
+        <span class="abbrev-key">WDH</span>
+        <p><span class="lang-de">Wiederholungen pro Satz. Halte die Vorgabe ein – wenn du sie nicht schaffst, wechsle zur leichteren Progression.</span><span class="lang-en">Reps per set. Stick to the target – if you can't, switch to an easier progression.</span></p>
+      </div>
+      <div class="abbrev-item">
+        <span class="abbrev-key">RIR</span>
+        <p><span class="lang-de">Reps in Reserve – so viele Wiederholungen sollten am Ende eines Satzes noch in dir stecken.</span><span class="lang-en">Reps in Reserve – how many reps you should still have left at the end of each set.</span></p>
+      </div>
+      <div class="abbrev-item">
+        <span class="abbrev-key">Submax</span>
+        <p><span class="lang-de">Maximale Zeit/Wiederholungen, die du sauber schaffst – aber noch 1–2 in Reserve lassen.</span><span class="lang-en">Maximum time/reps you can do cleanly – but leave 1–2 in reserve.</span></p>
+      </div>
+      <div class="abbrev-item">
+        <span class="abbrev-key">Supersatz</span>
+        <p><span class="lang-de">Zwei Übungen direkt hintereinander, ohne Pause dazwischen. Die angegebene Pause gilt zwischen den Supersätzen.</span><span class="lang-en">Two exercises back to back with no rest between them. Listed rest applies between supersets.</span></p>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LEVEL 1                                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="level-section">
+      <span class="level-badge">Level 1</span>
+      <h2 class="level-title">
+        <span class="lang-de">Der Weg zum ersten Klimmzug</span>
+        <span class="lang-en">The Road to Your First Pull-Up</span>
+      </h2>
+      <p class="level-prereq">
+        <span class="lang-de"><strong>Voraussetzung:</strong> Kein Klimmzug mit sauberer Ausführung nötig. Genau hier fängt Level 1 an – mit Progressionen, die dich systematisch aufbauen.</span>
+        <span class="lang-en"><strong>Prerequisite:</strong> No pull-up required. That's exactly where Level 1 starts — with progressions that build you up systematically.</span>
+      </p>
+
+      <!-- Wochenplan -->
+      <div class="week-schedule">
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 1</span><span class="lang-en">Day 1</span></span>
+          <span class="day-type"><span class="lang-de">Training 1</span><span class="lang-en">Session 1</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 2</span><span class="lang-en">Day 2</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 3</span><span class="lang-en">Day 3</span></span>
+          <span class="day-type"><span class="lang-de">Training 2</span><span class="lang-en">Session 2</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 4</span><span class="lang-en">Day 4</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 5</span><span class="lang-en">Day 5</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 6</span><span class="lang-en">Day 6</span></span>
+          <span class="day-type"><span class="lang-de">Training 3</span><span class="lang-en">Session 3</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 7</span><span class="lang-en">Day 7</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <p>
+          <span class="lang-de">Du kannst die Trainingstage auf deinen Alltag anpassen – wichtig ist nur, dass zwischen zwei Trainingstagen mindestens ein Ruhetag liegt. Hör auf deinen Körper und gib ihm Pause, wenn er sie braucht.</span>
+          <span class="lang-en">You can arrange the training days to fit your schedule — the only rule is at least one rest day between sessions. Listen to your body and give it rest when it needs it.</span>
+        </p>
+      </div>
+
+      <!-- Trainingstag 1 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 1</span><span class="lang-en">Session 1</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="lang-de">Assisted Chin-Up</span><span class="lang-en">Assisted Chin-Up</span></td>
+              <td>3</td><td>3–5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Push-Ups</td>
+              <td>3</td><td>3–5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Australian Rows</td>
+              <td>3</td><td>10–12</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Scapular Pull-Ups</span><span class="lang-en">Scapular Pull-Ups</span></td>
+              <td>3</td><td>5</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Plank Hold</td>
+              <td>3</td><td>30 Sek.</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Dead Hang</td>
+              <td>3</td><td>Submax</td><td>1</td><td>1 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trainingstag 2 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 2</span><span class="lang-en">Session 2</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="lang-de">Assisted Pull-Up</span><span class="lang-en">Assisted Pull-Up</span></td>
+              <td>3</td><td>3–5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Push-Ups</td>
+              <td>3</td><td>3–5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Australian Chin-Up</td>
+              <td>3</td><td>10–12</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Plank Hold</td>
+              <td>3</td><td>30 Sek.</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Superman Hold</td>
+              <td>3</td><td>30 Sek.</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Hollow Body Hold</td>
+              <td>3</td><td>Submax</td><td>1</td><td>1 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trainingstag 3 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 3</span><span class="lang-en">Session 3</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="lang-de">Assisted Chin-Up</span><span class="lang-en">Assisted Chin-Up</span></td>
+              <td>3</td><td>3–5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Push-Ups</td>
+              <td>4</td><td>4–6</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Scapular Pull-Ups</span><span class="lang-en">Scapular Pull-Ups</span></td>
+              <td>3</td><td>5</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Hollow Body Hold</td>
+              <td>3</td><td>Submax</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Dead Hang</td>
+              <td>3</td><td>Submax</td><td>2</td><td>1 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Conditioning Level 1 -->
+      <div class="cond-block">
+        <h4>Conditioning – <span class="lang-de">nach jeder Einheit</span><span class="lang-en">after every session</span></h4>
+        <table class="cond-table">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Satz</span><span class="lang-en">Set</span></th>
+              <th>WDH</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+              <th><span class="lang-de">Runden</span><span class="lang-en">Rounds</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lunges</td>
+              <td>1</td>
+              <td>10/<span class="lang-de">Bein</span><span class="lang-en">leg</span></td>
+              <td rowspan="3" style="vertical-align:middle;">30 Sek. <span class="lang-de">nach jeder Runde</span><span class="lang-en">after each round</span></td>
+              <td rowspan="3" style="vertical-align:middle;">3</td>
+            </tr>
+            <tr>
+              <td>Wall Sit</td>
+              <td>1</td>
+              <td>45 Sek.</td>
+            </tr>
+            <tr>
+              <td>Squat</td>
+              <td>1</td>
+              <td>10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <p>
+          <span class="lang-de"><strong>Notiz:</strong> Wenn eine Übung zu leicht oder zu schwer ist, ersetze sie durch eine passende Progression. Baue das Conditioning nach jedem Trainingstag ein – nicht davor.</span>
+          <span class="lang-en"><strong>Note:</strong> If an exercise is too easy or too hard, replace it with a suitable progression. Add the conditioning after each training session — not before.</span>
+        </p>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- LEVEL 2                                         -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div class="level-section">
+      <span class="level-badge">Level 2</span>
+      <h2 class="level-title">
+        <span class="lang-de">Calisthenics Basics</span>
+        <span class="lang-en">Calisthenics Basics</span>
+      </h2>
+      <p class="level-prereq">
+        <span class="lang-de"><strong>Voraussetzung:</strong> Du schaffst aktuell ca. 1–5 Klimmzüge. Genau dort setzt Level 2 an – Klimmzüge und Dips auf 10 Wiederholungen bringen, plus erste Skills mit der Dragon Flag.</span>
+        <span class="lang-en"><strong>Prerequisite:</strong> You can currently do around 1–5 pull-ups. That's exactly where Level 2 picks up — building pull-ups and dips to 10 reps, plus a first skill: the Dragon Flag.</span>
+      </p>
+
+      <!-- Wochenplan -->
+      <div class="week-schedule">
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 1</span><span class="lang-en">Day 1</span></span>
+          <span class="day-type"><span class="lang-de">Training 1</span><span class="lang-en">Session 1</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 2</span><span class="lang-en">Day 2</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 3</span><span class="lang-en">Day 3</span></span>
+          <span class="day-type"><span class="lang-de">Training 2</span><span class="lang-en">Session 2</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 4</span><span class="lang-en">Day 4</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 5</span><span class="lang-en">Day 5</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+        <div class="week-day active">
+          <span class="day-label"><span class="lang-de">Tag 6</span><span class="lang-en">Day 6</span></span>
+          <span class="day-type"><span class="lang-de">Training 3</span><span class="lang-en">Session 3</span></span>
+        </div>
+        <div class="week-day">
+          <span class="day-label"><span class="lang-de">Tag 7</span><span class="lang-en">Day 7</span></span>
+          <span class="day-type"><span class="lang-de">Pause</span><span class="lang-en">Rest</span></span>
+        </div>
+      </div>
+
+      <!-- Trainingstag 1 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 1</span><span class="lang-en">Session 1</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chin-Ups</td>
+              <td>3</td><td>1–3</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Dips</td>
+              <td>3</td><td>1–3</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Negative Pull-Ups</span><span class="lang-en">Negative Pull-Ups</span></td>
+              <td>3</td><td>2</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Assisted Dips</span><span class="lang-en">Assisted Dips</span></td>
+              <td>3</td><td>6–8</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Tucked Dragon Flag Hold</td>
+              <td>3</td><td>5 Sek.</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Scapular Pull-Ups</span><span class="lang-en">Scapular Pull-Ups</span></td>
+              <td>3</td><td>6</td><td>1</td><td>2 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trainingstag 2 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 2</span><span class="lang-en">Session 2</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pull-Ups</td>
+              <td>3</td><td>1–3</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Enge Push-Ups</span><span class="lang-en">Close-Grip Push-Ups</span></td>
+              <td>3</td><td>5</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Negative Chin-Up</span><span class="lang-en">Negative Chin-Up</span></td>
+              <td>3</td><td>2</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Push-Ups</td>
+              <td>3</td><td>8</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Band Pull-Aparts</span><span class="lang-en">Band Pull-Aparts</span></td>
+              <td>3</td><td>10</td><td>1</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Bizeps Curls (Band)</span><span class="lang-en">Biceps Curls (Band)</span></td>
+              <td>3</td><td>10</td><td>1</td><td>2 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Trainingstag 3 -->
+      <div class="day-block">
+        <h3>
+          <span class="lang-de">Trainingstag 3</span><span class="lang-en">Session 3</span>
+          <span class="duration">90 Min.</span>
+        </h3>
+        <table class="wtable">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th>
+              <th>WDH</th>
+              <th>RIR</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chin-Ups</td>
+              <td>3</td><td>1–3</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td>Dips</td>
+              <td>3</td><td>1–3</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Assisted Pull-Ups</span><span class="lang-en">Assisted Pull-Ups</span></td>
+              <td>3</td><td>6–8</td><td>2</td><td>3 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Assisted Dips</span><span class="lang-en">Assisted Dips</span></td>
+              <td>3</td><td>6–8</td><td>2</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td>Tucked Dragon Flag Hold</td>
+              <td>3</td><td>5 Sek.</td><td>1</td><td>2 Min.</td>
+            </tr>
+            <tr>
+              <td><span class="lang-de">Supersatz: 8 Push-Ups + 10 Sek. Hold</span><span class="lang-en">Superset: 8 Push-Ups + 10 Sec. Hold</span></td>
+              <td>3</td><td>1</td><td>1</td><td>2 Min.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Conditioning Level 2 -->
+      <div class="cond-block">
+        <h4>Conditioning – <span class="lang-de">nach jeder Einheit</span><span class="lang-en">after every session</span></h4>
+        <table class="cond-table">
+          <thead>
+            <tr>
+              <th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th>
+              <th><span class="lang-de">Satz</span><span class="lang-en">Set</span></th>
+              <th>WDH</th>
+              <th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th>
+              <th><span class="lang-de">Runden</span><span class="lang-en">Rounds</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mountain Climbers</td>
+              <td>1</td>
+              <td>10/<span class="lang-de">Bein</span><span class="lang-en">leg</span></td>
+              <td rowspan="3" style="vertical-align:middle;">30 Sek. <span class="lang-de">nach jeder Runde</span><span class="lang-en">after each round</span></td>
+              <td rowspan="3" style="vertical-align:middle;">3</td>
+            </tr>
+            <tr>
+              <td>Plank</td>
+              <td>1</td>
+              <td>60 Sek.</td>
+            </tr>
+            <tr>
+              <td>Squat Jumps</td>
+              <td>1</td>
+              <td>10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-box">
+        <p>
+          <span class="lang-de"><strong>Notiz:</strong> Wenn eine Übung zu leicht oder zu schwer ist, ersetze sie durch eine passende Progression. Baue das Conditioning nach jedem Trainingstag ein. Sobald du Level 2 abgeschlossen hast, bist du bereit für <a href="evolution-peak.html" style="color:var(--red);">Evolution Peak</a>.</span>
+          <span class="lang-en"><strong>Note:</strong> If an exercise is too easy or too hard, replace it with a suitable progression. Add the conditioning after each training day. Once you complete Level 2, you're ready for <a href="evolution-peak.html" style="color:var(--red);">Evolution Peak</a>.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="affiliate-section">
+      <h3><span class="lang-de">Equipment & Grip für diesen Plan</span><span class="lang-en">Equipment & Grip for This Plan</span></h3>
+      <p>
+        <span class="lang-de"><a href="../partners/zumub/" rel="sponsored">Flüssigkreide 250mL (€11.99)</a> – für Pull-Ups und Hängeübungen, wo Grip der Flaschenhals ist. <a href="../partners/zumub/" rel="sponsored">Resistance Bands</a> für Assisted Pull-Ups und Pull-Aparts. <a href="../partners/zumub/" rel="sponsored">Kreatin 1kg (€14.99, −40%)</a> als einzige täglich sinnvolle Ergänzung. Code <strong>NOEXCUSE</strong>, kostenloser Versand ab €40.</span>
+        <span class="lang-en"><a href="../partners/zumub/" rel="sponsored">Liquid Chalk 250mL (€11.99)</a> — for pull-ups and hanging work where grip is the bottleneck. <a href="../partners/zumub/" rel="sponsored">Resistance Bands</a> for assisted pull-ups and pull-aparts. <a href="../partners/zumub/" rel="sponsored">Creatine 1kg (€14.99, −40%)</a> as the only daily supplement worth taking. Code <strong>NOEXCUSE</strong>, free shipping over €40.</span>
+      </p>
+    </div>
+
+    <div class="actions">
+      <a class="button" href="../training/"><span class="lang-de">Alle Pläne</span><span class="lang-en">All Plans</span></a>
+      <a class="button primary" href="evolution-peak.html"><span class="lang-de">Weiter: Evolution Peak</span><span class="lang-en">Next: Evolution Peak</span></a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a class="footer-link" href="../impressum.html">Impressum</a>
+      <a class="footer-link" href="../datenschutz.html"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></a>
+      <a class="footer-link" href="mailto:r.s.elias@proton.me"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a>
+    </div>
+    <div class="copyright">© 2026 NOEXCUSE PERFORMANCE. ALL RIGHTS RESERVED.</div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
