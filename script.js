@@ -1,3 +1,38 @@
+// ── Google Analytics Consent ──────────────────────────
+function loadGA() {
+  if (window._gaLoaded) return;
+  window._gaLoaded = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XVD224TS57';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function() { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-XVD224TS57');
+}
+
+function acceptCookies() {
+  localStorage.setItem('noexcuse-cookie', 'yes');
+  const b = document.getElementById('cookie-banner');
+  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(() => b.remove(), 400); }
+  loadGA();
+}
+
+function declineCookies() {
+  localStorage.setItem('noexcuse-cookie', 'no');
+  const b = document.getElementById('cookie-banner');
+  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(() => b.remove(), 400); }
+}
+
+function openCookieSettings() {
+  localStorage.removeItem('noexcuse-cookie');
+  location.reload();
+}
+
+if (localStorage.getItem('noexcuse-cookie') === 'yes') loadGA();
+
+// ── Language ───────────────────────────────────────────
 function toggleLang() {
   var next = document.documentElement.lang === 'de' ? 'en' : 'de';
   document.documentElement.lang = next;
@@ -342,4 +377,37 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => window.setTimeout(updateTools, 0));
   });
   updateTools();
+
+  // ── Cookie banner ──────────────────────────────────
+  if (!localStorage.getItem('noexcuse-cookie')) {
+    const isDE = document.documentElement.lang !== 'en';
+    const privacyUrl = 'https://ribershamoelias.com/datenschutz.html';
+    const banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.className = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', isDE ? 'Cookie-Einstellungen' : 'Cookie settings');
+    banner.innerHTML = `
+      <p>${isDE
+        ? `Diese Website nutzt <strong>Google Analytics</strong>, um die Nutzung zu analysieren und zu verbessern. <a href="${privacyUrl}">Datenschutzerklärung</a>`
+        : `This website uses <strong>Google Analytics</strong> to analyse and improve usage. <a href="${privacyUrl}">Privacy policy</a>`
+      }</p>
+      <div class="cookie-banner-actions">
+        <button class="cookie-decline" onclick="declineCookies()">${isDE ? 'Ablehnen' : 'Decline'}</button>
+        <button class="cookie-accept" onclick="acceptCookies()">${isDE ? 'Akzeptieren' : 'Accept'}</button>
+      </div>`;
+    document.body.appendChild(banner);
+    requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('is-visible')));
+  }
+
+  // ── Cookie settings link in footer ─────────────────
+  const footerLinks = document.querySelector('.footer-links');
+  if (footerLinks) {
+    const cookieLink = document.createElement('a');
+    cookieLink.className = 'footer-link';
+    cookieLink.href = '#';
+    cookieLink.textContent = 'Cookies';
+    cookieLink.addEventListener('click', (e) => { e.preventDefault(); openCookieSettings(); });
+    footerLinks.appendChild(cookieLink);
+  }
 });
