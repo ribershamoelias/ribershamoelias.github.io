@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NOEXCUSE Band Power: 6 Wochen Widerstandsband-Trainingsplan. Push, Pull, Beine und Core – komplett ohne Gym, überall trainierbar. 3 Einheiten pro Woche.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Riber Shamo Elias">
+  <meta name="theme-color" content="#030303">
+  <link rel="icon" type="image/png" href="../noexcuse_logo_v1.1.png">
+  <link rel="canonical" href="https://ribershamoelias.com/training/band-power.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="NOEXCUSE">
+  <meta property="og:title" content="NOEXCUSE | Band Power – 6 Wochen Resistance Band Plan">
+  <meta property="og:description" content="Push, Pull, Beine, Core – alles mit Widerstandsbändern. 6 Wochen, 3x pro Woche, kein Gym.">
+  <meta property="og:url" content="https://ribershamoelias.com/training/band-power.html">
+  <meta property="og:image" content="https://ribershamoelias.com/img/sidekick.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NOEXCUSE | Band Power – 6 Wochen Resistance Band Plan">
+  <meta name="twitter:description" content="Push, Pull, Beine, Core – alles mit Widerstandsbändern. 6 Wochen, 3x pro Woche.">
+  <meta name="twitter:image" content="https://ribershamoelias.com/img/sidekick.jpg">
+  <title>NOEXCUSE | Band Power – 6 Wochen Resistance Band Plan</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .plan-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; margin-bottom: 48px; }
+    .plan-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px 16px; text-align: center; }
+    .plan-stat .label { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 6px; }
+    .plan-stat .value { font-family: "Bebas Neue", sans-serif; font-size: 1.6rem; color: var(--text); }
+    .phase-section { margin-top: 56px; }
+    .phase-badge { display: inline-block; background: var(--red); color: #fff; font-family: "Bebas Neue", sans-serif; font-size: 0.85rem; letter-spacing: 3px; padding: 4px 14px; border-radius: 4px; margin-bottom: 10px; }
+    .phase-title { font-family: "Bebas Neue", sans-serif; font-size: 2.2rem; margin-bottom: 6px; line-height: 1.1; }
+    .phase-note { color: var(--faint); font-size: 0.85rem; line-height: 1.6; margin-bottom: 24px; padding-left: 14px; border-left: 2px solid rgba(255,255,255,0.15); }
+    .week-schedule { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 28px; }
+    .week-day { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 10px 4px; text-align: center; }
+    .week-day .day-label { font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase; color: var(--faint); display: block; margin-bottom: 4px; }
+    .week-day .day-type { font-size: 0.72rem; font-weight: 600; color: var(--muted); }
+    .week-day.active { border-color: rgba(255,31,31,0.5); background: rgba(255,31,31,0.07); }
+    .week-day.active .day-type { color: var(--red); }
+    .day-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; margin-bottom: 16px; }
+    .day-block h3 { font-family: "Bebas Neue", sans-serif; font-size: 1.15rem; letter-spacing: 2px; color: var(--red); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .day-block h3 span.duration { font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; color: var(--faint); font-family: "Inter", sans-serif; border: 1px solid rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 3px; }
+    .day-block h3 span.gear-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; color: var(--red); font-family: "Inter", sans-serif; border: 1px solid rgba(255,31,31,0.3); padding: 2px 8px; border-radius: 3px; background: rgba(255,31,31,0.07); }
+    .wtable { width: 100%; border-collapse: collapse; }
+    .wtable th { font-size: 0.62rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--faint); font-weight: 700; padding: 6px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .wtable th:not(:first-child) { text-align: center; }
+    .wtable td { padding: 9px 10px; font-size: 0.87rem; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--muted); vertical-align: middle; }
+    .wtable td:not(:first-child) { text-align: center; }
+    .wtable tr:last-child td { border-bottom: none; }
+    .wtable td:first-child { color: var(--text); font-weight: 600; }
+    .wtable td:nth-child(2) { color: var(--red); font-weight: 700; }
+    .wtable td:nth-child(4) { color: var(--faint); font-size: 0.8rem; }
+    .wtable td:last-child { color: var(--faint); font-size: 0.8rem; }
+    .abbrev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 32px; }
+    .abbrev-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .abbrev-item .abbrev-key { font-family: "Bebas Neue", sans-serif; font-size: 1.1rem; color: var(--red); display: block; margin-bottom: 4px; }
+    .abbrev-item p { font-size: 0.8rem; color: var(--faint); line-height: 1.5; margin: 0; }
+    .tip-box { background: rgba(255,31,31,0.08); border: 1px solid rgba(255,31,31,0.30); border-radius: 8px; padding: 18px 20px; margin: 24px 0; }
+    .tip-box p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin: 0; }
+    .band-guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-bottom: 28px; }
+    .band-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .band-item .band-color { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; color: var(--faint); display: block; margin-bottom: 4px; }
+    .band-item .band-name { font-weight: 700; font-size: 0.9rem; color: var(--text); display: block; margin-bottom: 2px; }
+    .band-item .band-desc { font-size: 0.78rem; color: var(--faint); }
+    .section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 48px 0; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "NOEXCUSE Band Power – 6 Wochen Resistance Band Training",
+    "description": "6-Wochen Resistance-Band-Plan von Riber Shamo Elias. Push, Pull, Beine und Core – 3 Einheiten pro Woche, kein Gym, überall trainierbar.",
+    "provider": {
+      "@type": "Person",
+      "name": "Riber Shamo Elias",
+      "url": "https://ribershamoelias.com/"
+    },
+    "url": "https://ribershamoelias.com/training/band-power.html",
+    "educationalLevel": "Beginner to Intermediate",
+    "timeRequired": "P6W",
+    "teaches": ["Resistance Band Training", "Schulterdrücken", "Band Row", "Band Squat", "Hip Thrust", "Core Rotation", "Bizeps Curl"]
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-layer" id="bg-parallax"></div>
+  <div class="glow" id="mouse-glow"></div>
+
+  <nav class="site-nav-shell" aria-label="Hauptnavigation">
+    <a class="logo" href="../">NO <span>EXCUSE</span></a>
+    <div class="nav-menu">
+      <a class="nav-link active" href="../training/">Training</a>
+      <a class="nav-link" href="../nutrition/">Nutrition</a>
+      <a class="nav-link" href="../challenges/">Challenges</a>
+      <a class="nav-link" href="../tools/">Tools</a>
+      <a class="nav-link" href="../blog/">Blog</a>
+      <a class="nav-link" href="../apps/">Apps</a>
+      <a class="nav-link" href="../partners/7zoras/">7 ZORAS</a>
+      <a class="nav-link" href="../partners/zumub/">ZUMUB</a>
+      <button class="lang-toggle" onclick="toggleLang()">EN</button>
+    </div>
+  </nav>
+
+  <main class="page-shell">
+    <section class="hero compact">
+      <span class="section-kicker">Resistance Bands · 6 Weeks · All Levels</span>
+      <h1>BAND POWER.</h1>
+      <p>
+        <span class="lang-de">Ganzkörperkraft mit Widerstandsbändern. Push, Pull, Beine und Core – strukturiert auf 6 Wochen verteilt. Kein Gym, kein Gewicht, kein Ausrede.</span>
+        <span class="lang-en">Full-body strength with resistance bands. Push, pull, legs and core — structured across 6 weeks. No gym, no weights, no excuse.</span>
+      </p>
+    </section>
+
+    <section class="article-body">
+
+      <div class="plan-stats">
+        <div class="plan-stat"><span class="label"><span class="lang-de">Wochen</span><span class="lang-en">Weeks</span></span><span class="value">6</span></div>
+        <div class="plan-stat"><span class="label"><span class="lang-de">Einheiten/Woche</span><span class="lang-en">Sessions/Week</span></span><span class="value">3</span></div>
+        <div class="plan-stat"><span class="label"><span class="lang-de">Einheiten gesamt</span><span class="lang-en">Total Sessions</span></span><span class="value">18</span></div>
+        <div class="plan-stat"><span class="label"><span class="lang-de">Dauer/Einheit</span><span class="lang-en">Duration/Session</span></span><span class="value">40–55 min</span></div>
+        <div class="plan-stat"><span class="label">Level</span><span class="value"><span class="lang-de">Alle</span><span class="lang-en">All</span></span></div>
+        <div class="plan-stat"><span class="label">Equipment</span><span class="value">Bands</span></div>
+      </div>
+
+      <h2><span class="lang-de">Legende</span><span class="lang-en">Legend</span></h2>
+      <div class="abbrev-grid">
+        <div class="abbrev-item">
+          <span class="abbrev-key">WDH</span>
+          <p><span class="lang-de">Wiederholungen pro Satz</span><span class="lang-en">Reps per set</span></p>
+        </div>
+        <div class="abbrev-item">
+          <span class="abbrev-key">RIR</span>
+          <p><span class="lang-de">Reps in Reserve – so viele Wdh. hättest du noch geschafft. RIR 2 = 2 Wdh. vor dem Versagen stoppen.</span><span class="lang-en">Reps in Reserve – reps you had left. RIR 2 = stop 2 reps before failure.</span></p>
+        </div>
+        <div class="abbrev-item">
+          <span class="abbrev-key">Submax</span>
+          <p><span class="lang-de">Submaximal: kontrolliert und technisch sauber, nicht ans Limit</span><span class="lang-en">Submaximal: controlled and technically clean, not to the limit</span></p>
+        </div>
+        <div class="abbrev-item">
+          <span class="abbrev-key">Bandstärke</span>
+          <p><span class="lang-de">Wähle die Stärke so, dass die angegebene WDH-Zahl mit korrekter Technik möglich ist, aber fordernd bleibt.</span><span class="lang-en">Choose resistance so the target rep count is achievable with correct form but remains demanding.</span></p>
+        </div>
+      </div>
+
+      <h2><span class="lang-de">Equipment-Übersicht</span><span class="lang-en">Equipment Overview</span></h2>
+      <div class="band-guide">
+        <div class="band-item">
+          <span class="band-color"><span class="lang-de">Einheit A + B</span><span class="lang-en">Session A + B</span></span>
+          <span class="band-name"><span class="lang-de">Tube / Röhrenband</span><span class="lang-en">Tube Band</span></span>
+          <span class="band-desc"><span class="lang-de">Mit Griffen, ideal für Drücken und Ziehen. Türanker empfohlen.</span><span class="lang-en">With handles, ideal for press and pull movements. Door anchor recommended.</span></span>
+        </div>
+        <div class="band-item">
+          <span class="band-color"><span class="lang-de">Einheit C</span><span class="lang-en">Session C</span></span>
+          <span class="band-name"><span class="lang-de">Loop Band</span><span class="lang-en">Loop Band</span></span>
+          <span class="band-desc"><span class="lang-de">Geschlossenes Band für Beine und Gesäß. Um Oberschenkel oder Knöchel.</span><span class="lang-en">Closed loop for legs and glutes. Around thighs or ankles.</span></span>
+        </div>
+        <div class="band-item">
+          <span class="band-color"><span class="lang-de">Optional</span><span class="lang-en">Optional</span></span>
+          <span class="band-name">Türanker</span>
+          <span class="band-desc"><span class="lang-de">Für alle Zug-Übungen in Einheit B. Alternativ: festes Geländer oder Baum.</span><span class="lang-en">For all pull movements in Session B. Alternative: solid railing or tree.</span></span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <p><strong><span class="lang-de">Warm-Up (5 min):</span><span class="lang-en">Warm-Up (5 min):</span></strong> <span class="lang-de">Armkreisen, Schulterrotationen, Hüftkreisen, 10 Bodyweight Squats, 10 Arm Swings – bevor jede Einheit startet.</span><span class="lang-en">Arm circles, shoulder rotations, hip circles, 10 bodyweight squats, 10 arm swings — before every session.</span></p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- ====== PHASE 1 ====== -->
+      <div class="phase-section">
+        <span class="phase-badge">PHASE 1</span>
+        <h2 class="phase-title"><span class="lang-de">Woche 1–3: Aufbau</span><span class="lang-en">Week 1–3: Foundation</span></h2>
+        <p class="phase-note">
+          <span class="lang-de">Technik vor Intensität. RIR hoch halten, saubere Bewegungsmuster einschleifen. Bandstärke wählen, mit der du die Wdh.-Zahl noch vollständig schaffst.</span>
+          <span class="lang-en">Technique before intensity. Keep RIR high, groove clean movement patterns. Choose resistance where you can complete all reps with full control.</span>
+        </p>
+
+        <div class="week-schedule">
+          <div class="week-day active"><span class="day-label">Mo</span><span class="day-type">A</span></div>
+          <div class="week-day"><span class="day-label">Di</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day active"><span class="day-label">Mi</span><span class="day-type">B</span></div>
+          <div class="week-day"><span class="day-label">Do</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day active"><span class="day-label">Fr</span><span class="day-type">C</span></div>
+          <div class="week-day"><span class="day-label">Sa</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day"><span class="day-label">So</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+        </div>
+
+        <!-- Session A: Push -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit A – Push & Schultern</span><span class="lang-en">Session A – Push & Shoulders</span> <span class="duration">~40 min</span> <span class="gear-tag">Tube</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Push-Up (Band über Rücken)</span><span class="lang-en">Band Push-Up (Band over back)</span></td><td>3</td><td>8–10</td><td>2–3</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Chest Press (stehend, vorwärts)</span><span class="lang-en">Band Chest Press (standing, forward)</span></td><td>3</td><td>12</td><td>2</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Overhead Press (beidhändig)</span><span class="lang-en">Band Overhead Press (bilateral)</span></td><td>3</td><td>10</td><td>2–3</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Lateral Raise</span><span class="lang-en">Band Lateral Raise</span></td><td>3</td><td>12–15</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Triceps Extension (über Kopf)</span><span class="lang-en">Band Triceps Extension (overhead)</span></td><td>3</td><td>12</td><td>2</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Session B: Pull -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit B – Pull & Bizeps</span><span class="lang-en">Session B – Pull & Biceps</span> <span class="duration">~40 min</span> <span class="gear-tag">Tube + Anker</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Row (Türanker / stehend)</span><span class="lang-en">Band Row (door anchor / standing)</span></td><td>3</td><td>10–12</td><td>2–3</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Face Pull (Schultergesundheit)</span><span class="lang-en">Band Face Pull (shoulder health)</span></td><td>3</td><td>15</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Biceps Curl (beidhändig)</span><span class="lang-en">Band Biceps Curl (bilateral)</span></td><td>3</td><td>12</td><td>2</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Reverse Fly (Rücken-Schmetterling)</span><span class="lang-en">Band Reverse Fly</span></td><td>3</td><td>12–15</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Hammer Curl (Untergriff, neutral)</span><span class="lang-en">Band Hammer Curl (neutral grip)</span></td><td>2</td><td>12</td><td>2</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Session C: Legs + Core -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit C – Beine & Core</span><span class="lang-en">Session C – Legs & Core</span> <span class="duration">~45 min</span> <span class="gear-tag">Loop</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Squat (Band oberhalb Knie)</span><span class="lang-en">Band Squat (band above knees)</span></td><td>3</td><td>12–15</td><td>2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Hip Thrust (Schultern auf Sofa/Bank)</span><span class="lang-en">Band Hip Thrust (shoulders on bench)</span></td><td>3</td><td>12</td><td>2</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Deadlift (Band unter Füße)</span><span class="lang-en">Band Deadlift (band under feet)</span></td><td>3</td><td>10</td><td>2–3</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Lateral Walk (seitlich, 10 Schritte je Seite)</span><span class="lang-en">Band Lateral Walk (10 steps each side)</span></td><td>3</td><td>10/Seite</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Woodchop (Rotation, je Seite)</span><span class="lang-en">Band Woodchop (rotation, each side)</span></td><td>3</td><td>10/Seite</td><td>2</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Crunch / Bauchpresse</span><span class="lang-en">Band Crunch / Ab Press</span></td><td>3</td><td>15</td><td>Submax</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- ====== PHASE 2 ====== -->
+      <div class="phase-section">
+        <span class="phase-badge">PHASE 2</span>
+        <h2 class="phase-title"><span class="lang-de">Woche 4–6: Kraft</span><span class="lang-en">Week 4–6: Strength</span></h2>
+        <p class="phase-note">
+          <span class="lang-de">Intensität erhöhen. Mehr Sätze, weniger RIR, schwereres Band oder engerer Griff. Technik bleibt Priorität – falls Sätze deutlich abfallen, Band eine Stufe zurück.</span>
+          <span class="lang-en">Raise intensity. More sets, less RIR, heavier band or closer grip. Technique stays priority — if sets drop off noticeably, step down one band resistance.</span>
+        </p>
+
+        <div class="week-schedule">
+          <div class="week-day active"><span class="day-label">Mo</span><span class="day-type">A</span></div>
+          <div class="week-day"><span class="day-label">Di</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day active"><span class="day-label">Mi</span><span class="day-type">B</span></div>
+          <div class="week-day"><span class="day-label">Do</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day active"><span class="day-label">Fr</span><span class="day-type">C</span></div>
+          <div class="week-day"><span class="day-label">Sa</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+          <div class="week-day"><span class="day-label">So</span><span class="day-type lang-de">Pause</span><span class="day-type lang-en">Rest</span></div>
+        </div>
+
+        <!-- Session A Phase 2 -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit A – Push & Schultern</span><span class="lang-en">Session A – Push & Shoulders</span> <span class="duration">~50 min</span> <span class="gear-tag">Tube</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Push-Up (Band über Rücken)</span><span class="lang-en">Band Push-Up (Band over back)</span></td><td>4</td><td>8–10</td><td>1–2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Chest Press (stehend, vorwärts)</span><span class="lang-en">Band Chest Press (standing, forward)</span></td><td>4</td><td>10–12</td><td>1</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Overhead Press (beidhändig)</span><span class="lang-en">Band Overhead Press (bilateral)</span></td><td>4</td><td>8–10</td><td>1–2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Lateral Raise</span><span class="lang-en">Band Lateral Raise</span></td><td>4</td><td>12</td><td>1</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Front Raise (abwechselnd)</span><span class="lang-en">Band Front Raise (alternating)</span></td><td>3</td><td>10/Seite</td><td>1–2</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Triceps Extension (über Kopf)</span><span class="lang-en">Band Triceps Extension (overhead)</span></td><td>3</td><td>12</td><td>1</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Session B Phase 2 -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit B – Pull & Bizeps</span><span class="lang-en">Session B – Pull & Biceps</span> <span class="duration">~50 min</span> <span class="gear-tag">Tube + Anker</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Row (Türanker, mit Pause oben)</span><span class="lang-en">Band Row (door anchor, hold at top)</span></td><td>4</td><td>10</td><td>1–2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Face Pull</span><span class="lang-en">Band Face Pull</span></td><td>3</td><td>15</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Biceps Curl (beidhändig)</span><span class="lang-en">Band Biceps Curl (bilateral)</span></td><td>4</td><td>10</td><td>1</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Reverse Fly</span><span class="lang-en">Band Reverse Fly</span></td><td>3</td><td>12</td><td>1–2</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Hammer Curl (neutral)</span><span class="lang-en">Band Hammer Curl (neutral grip)</span></td><td>3</td><td>10</td><td>1</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Straight-Arm Pulldown</span><span class="lang-en">Band Straight-Arm Pulldown</span></td><td>3</td><td>12</td><td>1–2</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Session C Phase 2 -->
+        <div class="day-block">
+          <h3><span class="lang-de">Einheit C – Beine & Core</span><span class="lang-en">Session C – Legs & Core</span> <span class="duration">~55 min</span> <span class="gear-tag">Loop</span></h3>
+          <table class="wtable">
+            <thead>
+              <tr><th><span class="lang-de">Übung</span><span class="lang-en">Exercise</span></th><th><span class="lang-de">Sätze</span><span class="lang-en">Sets</span></th><th>WDH</th><th>RIR</th><th><span class="lang-de">Pause</span><span class="lang-en">Rest</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="lang-de">Band Squat (Pause unten: 2 Sek.)</span><span class="lang-en">Band Squat (2 sec pause at bottom)</span></td><td>4</td><td>12</td><td>1–2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Hip Thrust (1 Sek. Squeeze oben)</span><span class="lang-en">Band Hip Thrust (1 sec squeeze at top)</span></td><td>4</td><td>12</td><td>1</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Deadlift (langsam runter, 3 Sek.)</span><span class="lang-en">Band Deadlift (3 sec eccentric)</span></td><td>4</td><td>8–10</td><td>1–2</td><td>90s</td></tr>
+              <tr><td><span class="lang-de">Band Jump Squat (Band oberhalb Knie)</span><span class="lang-en">Band Jump Squat (band above knees)</span></td><td>3</td><td>10</td><td>Submax</td><td>75s</td></tr>
+              <tr><td><span class="lang-de">Band Lateral Walk</span><span class="lang-en">Band Lateral Walk</span></td><td>3</td><td>12/Seite</td><td>Submax</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Woodchop (Rotation)</span><span class="lang-en">Band Woodchop (rotation)</span></td><td>3</td><td>12/Seite</td><td>1–2</td><td>60s</td></tr>
+              <tr><td><span class="lang-de">Band Crunch</span><span class="lang-en">Band Crunch</span></td><td>3</td><td>15</td><td>Submax</td><td>60s</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <h2><span class="lang-de">Progressions-Regeln</span><span class="lang-en">Progression Rules</span></h2>
+      <ul class="check-list">
+        <li><span class="lang-de">Schaffst du alle Sätze mit sauberer Technik und mehr als 2 RIR – nächste Woche schwereres Band oder engeren Griff.</span><span class="lang-en">If you complete all sets cleanly with more than 2 RIR — next week use a heavier band or closer grip.</span></li>
+        <li><span class="lang-de">Fällt die Wdh.-Zahl im letzten Satz um mehr als 3 ab – Band eine Stufe leichter.</span><span class="lang-en">If reps drop by more than 3 in the last set — go one band resistance lighter.</span></li>
+        <li><span class="lang-de">Bände können kombiniert werden: zwei Loop Bands gleichzeitig erhöhen den Widerstand stufenlos.</span><span class="lang-en">Bands can be combined: two loop bands at once increases resistance smoothly.</span></li>
+        <li><span class="lang-de">Tempo: 2 Sek. runter, 1 Sek. oben halten, 1 Sek. hoch. Nicht mit Schwung arbeiten.</span><span class="lang-en">Tempo: 2 sec down, 1 sec hold, 1 sec up. No momentum.</span></li>
+        <li><span class="lang-de">Nach 6 Wochen: direkt in Evolution Peak oder Clean Start weitermachen – oder diesen Plan mit schwereren Bändern wiederholen.</span><span class="lang-en">After 6 weeks: continue directly into Evolution Peak or Clean Start — or repeat this plan with heavier bands.</span></li>
+      </ul>
+
+      <hr class="section-divider">
+
+      <!-- Zumub Affiliate -->
+      <section class="guide-section" style="margin-top: 0;">
+        <div class="partner-callout">
+          <div>
+            <span class="ad-label"><span class="lang-de">Werbung · Partner</span><span class="lang-en">Ad · Partner</span></span>
+            <h2><span class="lang-de">Bänder für diesen Plan</span><span class="lang-en">Bands for This Plan</span></h2>
+            <p><span class="lang-de">Für Band Power brauchst du ein Tube-Band-Set mit Griffen und einen Türanker für die Pull-Einheiten, sowie ein Loop-Band-Set für Beine und Gesäß. Meinen Partner Zumub findest du unter <strong>zumu.be/vipnoexcuse</strong> – mit Code <strong>NOEXCUSE</strong> gibt es Rabatt.</span><span class="lang-en">For Band Power you need a tube band set with handles and a door anchor for pull sessions, plus a loop band set for legs and glutes. My partner Zumub is at <strong>zumu.be/vipnoexcuse</strong> — use code <strong>NOEXCUSE</strong> for a discount.</span></p>
+            <ul style="margin-top: 12px; padding-left: 18px; color: var(--muted); font-size: 0.88rem; line-height: 1.9;">
+              <li><span class="lang-de">Tube Resistance Bands Set (5 Stärken + Griffe + Anker)</span><span class="lang-en">Tube Resistance Bands Set (5 resistances + handles + anchor)</span></li>
+              <li><span class="lang-de">Mini Loop Bands Set (5 Stärken)</span><span class="lang-en">Mini Loop Bands Set (5 resistances)</span></li>
+              <li><span class="lang-de">Liquid Chalk – kein Rutschen bei langen Sätzen</span><span class="lang-en">Liquid Chalk — no slipping during long sets</span></li>
+            </ul>
+          </div>
+          <div>
+            <div class="code-pill">NOEXCUSE</div>
+            <div class="actions">
+              <a class="button primary" href="../partners/zumub/"><span class="lang-de">Zu Zumub</span><span class="lang-en">Go to Zumub</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <div class="guide-panel">
+        <span class="section-kicker"><span class="lang-de">Wichtiger Hinweis</span><span class="lang-en">Important Note</span></span>
+        <p><span class="lang-de">Dieser Plan ersetzt keine medizinische Beratung. Bei Gelenkschmerzen, Verletzungen oder langer Trainingspause zuerst einen Arzt oder Physiotherapeuten konsultieren. Schmerz in Gelenken ist ein Stoppsignal.</span><span class="lang-en">This plan does not replace medical advice. For joint pain, injuries or a long training break, consult a doctor or physiotherapist first. Joint pain is a stop signal.</span></p>
+      </div>
+
+      <div class="actions" style="margin-top: 40px;">
+        <a class="button" href="../training/"><span class="lang-de">Alle Pläne</span><span class="lang-en">All Plans</span></a>
+        <a class="button primary" href="../training/first-rep.html"><span class="lang-de">Nächster Plan: First Rep.</span><span class="lang-en">Next Plan: First Rep.</span></a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a class="footer-link" href="../impressum.html">Impressum</a>
+      <a class="footer-link" href="../datenschutz.html"><span class="lang-de">Datenschutz</span><span class="lang-en">Privacy</span></a>
+      <a class="footer-link" href="mailto:r.s.elias@proton.me"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a>
+    </div>
+    <div class="copyright">© 2026 NOEXCUSE PERFORMANCE. ALL RIGHTS RESERVED.</div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
