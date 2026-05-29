@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.lang = localStorage.getItem('noexcuse-lang') || 'de';</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="NOEXCUSE Combo Rush – Mini Game von Riber Shamo Elias.">
   <meta name="robots" content="noindex">
@@ -313,6 +314,25 @@
     .inst-dot.c { background: rgba(255,195,0,.1); border: 1.5px solid rgba(255,195,0,.55); color: rgba(255,210,0,1); }
     .inst-label { font-size: .58rem; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.35); }
     .inst-pts   { font-family: "Bebas Neue", sans-serif; font-size: 1rem; color: #fff; }
+
+    /* ── Language ── */
+    html[lang="de"] .lang-en { display: none; }
+    html[lang="en"] .lang-de { display: none; }
+
+    #lang-btn {
+      position: absolute; top: 14px; right: 20px; z-index: 50;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.4);
+      font-family: "Inter", sans-serif;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; padding: 3px 9px; border-radius: 3px;
+      transition: color .2s, border-color .2s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #lang-btn:hover { color: #fff; border-color: var(--red); }
   </style>
 </head>
 <body>
@@ -325,6 +345,9 @@
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       NOEXCUSE
     </a>
+
+    <!-- Language toggle -->
+    <button id="lang-btn" onclick="toggleLang()">EN</button>
 
     <!-- HUD -->
     <div id="hud">
@@ -345,17 +368,17 @@
       <div class="inst-grid">
         <div class="inst-cell">
           <div class="inst-dot a">+1</div>
-          <div class="inst-label">Leicht</div>
+          <div class="inst-label"><span class="lang-de">Leicht</span><span class="lang-en">Easy</span></div>
           <div class="inst-pts">1 Pt</div>
         </div>
         <div class="inst-cell">
           <div class="inst-dot b">+2</div>
-          <div class="inst-label">Mittel</div>
+          <div class="inst-label"><span class="lang-de">Mittel</span><span class="lang-en">Medium</span></div>
           <div class="inst-pts">2 Pt</div>
         </div>
         <div class="inst-cell">
           <div class="inst-dot c">+3</div>
-          <div class="inst-label">Schnell</div>
+          <div class="inst-label"><span class="lang-de">Schnell</span><span class="lang-en">Fast</span></div>
           <div class="inst-pts">3 Pt</div>
         </div>
       </div>
@@ -363,7 +386,7 @@
         <span class="hs-label">Highscore</span>
         <span class="hs-val" id="hs-start">0</span>
       </div>
-      <button class="btn" id="btn-start">STARTEN</button>
+      <button class="btn" id="btn-start"><span class="lang-de">STARTEN</span><span class="lang-en">START</span></button>
     </div>
 
     <!-- COUNTDOWN SCREEN -->
@@ -380,7 +403,7 @@
         <span class="hs-label">Highscore</span>
         <span class="hs-val" id="hs-over">0</span>
       </div>
-      <button class="btn" id="btn-retry">NOCHMAL</button>
+      <button class="btn" id="btn-retry"><span class="lang-de">NOCHMAL</span><span class="lang-en">AGAIN</span></button>
     </div>
   </div>
 
@@ -393,11 +416,13 @@ const TYPES = [
   { cls:'tc', sz:36, pts:3, life:1250, lbl:'+3' },
 ];
 const COMBOS = [
-  { at:3,  mult:2, txt:'COMBO ×2' },
-  { at:7,  mult:3, txt:'ON FIRE ×3' },
-  { at:12, mult:4, txt:'UNSTOPPABLE ×4' },
-  { at:20, mult:5, txt:'NO EXCUSE ×5' },
+  { at:3,  mult:2, de:'COMBO ×2',        en:'COMBO ×2' },
+  { at:7,  mult:3, de:'ON FIRE ×3',      en:'ON FIRE ×3' },
+  { at:12, mult:4, de:'UNAUFHALTBAR ×4', en:'UNSTOPPABLE ×4' },
+  { at:20, mult:5, de:'NO EXCUSE ×5',    en:'NO EXCUSE ×5' },
 ];
+const lang = () => document.documentElement.lang || 'de';
+const t = (c) => c[lang()] || c.de;
 
 // ── STATE ────────────────────────────────────────────────
 let state='idle', score=0, combo=0, mult=1;
@@ -613,7 +638,7 @@ function onMiss(el, x, y, sz) {
 // ── COMBO ─────────────────────────────────────────────────
 function checkCombo() {
   let newMult = 1, txt = '';
-  for (const c of COMBOS) { if (combo >= c.at) { newMult = c.mult; txt = c.txt; } }
+  for (const c of COMBOS) { if (combo >= c.at) { newMult = c.mult; txt = t(c); } }
 
   if (newMult > mult) {
     mult = newMult;
@@ -680,8 +705,18 @@ function clearAll() {
   arena.querySelectorAll('.fx-pts,.fx-hit,.fx-miss').forEach(e => e.remove());
 }
 
+// ── LANGUAGE ──────────────────────────────────────────────
+function toggleLang() {
+  const next = document.documentElement.lang === 'de' ? 'en' : 'de';
+  document.documentElement.lang = next;
+  localStorage.setItem('noexcuse-lang', next);
+  document.getElementById('lang-btn').textContent = next === 'de' ? 'EN' : 'DE';
+}
+
 // Init
 refreshHs();
+const savedLang = localStorage.getItem('noexcuse-lang') || 'de';
+document.getElementById('lang-btn').textContent = savedLang === 'de' ? 'EN' : 'DE';
 </script>
 </body>
 </html>
