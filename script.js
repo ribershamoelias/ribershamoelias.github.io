@@ -101,6 +101,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Restore page when navigating back (bfcache restores frozen state with opacity:0)
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+      document.body.style.transition = "";
+      document.body.style.opacity = "1";
+      document.querySelectorAll(".card, .recipe-card, .feature, .gallery-item, .challenge-card, .stat-card, .legal-box, .guide-panel, .info-tile, .partner-callout, .quick-guide, .tool-card").forEach((el) => {
+        el.classList.add("is-visible");
+      });
+    }
+  });
+
   document.querySelectorAll("[data-modal-target]").forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
